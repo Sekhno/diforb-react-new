@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'Lib-Explosions';
+  src:  url('fonts/Lib-Explosions.eot?i48tzi');
+  src:  url('fonts/Lib-Explosions.eot?i48tzi#iefix') format('embedded-opentype'),
+    url('fonts/Lib-Explosions.woff2?i48tzi') format('woff2'),
+    url('fonts/Lib-Explosions.ttf?i48tzi') format('truetype'),
+    url('fonts/Lib-Explosions.woff?i48tzi') format('woff'),
+    url('fonts/Lib-Explosions.svg?i48tzi#Lib-Explosions') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="explosions-"], [class*=" explosions-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Lib-Explosions' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+  ['shot', 'tinnitus', 'explode-long', 'explode-small', 'energy-blast', 'explode', 'other', 'elements', 'debris', 'glass']
+*/
+
+.explosions-shot:before {
+  content: "\e909";
+}
+.explosions-tinnitus:before {
+  content: "\e908";
+}
+.explosions-explode-long:before {
+  content: "\e906";
+}
+.explosions-explode-small:before {
+  content: "\e907";
+}
+.explosions-energy-blast:before {
+  content: "\e900";
+}
+.explosions-explode:before {
+  content: "\e901";
+}
+.explosions-other:before {
+  content: "\e902";
+}
+.explosions-elements:before {
+  content: "\e903";
+}
+.explosions-debris:before {
+  content: "\e904";
+}
+.explosions-glass:before {
+  content: "\e905";
+}
+

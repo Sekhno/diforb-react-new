@@ -1,0 +1,58 @@
+.form {
+  padding: 1rem;
+  text-align: center;
+
+  > h1 {
+    margin-top: -40px;
+    font-size: 150px;
+  }
+
+  > h2 {
+    margin-top: -50px;
+  }
+
+  input[type=email],
+  input[type=password] {
+
+    border: 1px solid #0a0;
+    background-color: rgba(white, .1);
+    color: #0a0;
+
+    &::placeholder {
+      text-transform: capitalize;
+      color: #0a0;
+      opacity: .4;
+    }
+
+    &:hover {
+      border: 1px solid #060;
+    }
+  }
+
+  .button {
+    width: 100%;
+    margin-top: 1rem;
+    background-color: #060;
+    border: none;
+
+    &:hover, &:active {
+      background-color: #0d0;
+    }
+  }
+
+  .group {
+    margin-bottom: 1rem;
+    label {
+      display: flex;
+      justify-content: start;
+      // float: left;
+    }
+  }
+
+  .links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
