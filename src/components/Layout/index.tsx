@@ -23,7 +23,7 @@ const Layout = (props: PropsType): JSX.Element => {
   
   return (
     <React.Fragment>
-      <div>Preload!!!</div>
+      {/* <div>Preload!!!</div> */}
       <div>{ props.children }</div>
     </React.Fragment>
   )

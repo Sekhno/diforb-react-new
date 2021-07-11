@@ -1,5 +1,5 @@
 
-import { login, logout, reset } from '../features/auth/authSlice'
+import { loginSuccess, loginReject, logoutSuccess, logoutReject, reset } from '../features/auth/authSlice'
 import { getFirebaseBackend } from '../helpers/firebase.helper'
 
 export const onLogin = (email: string, password: string) => {
@@ -8,10 +8,22 @@ export const onLogin = (email: string, password: string) => {
     firebaseBackend?.loginUser(email, password)
       .then(
         () => {
-          dispatch(login())
+          dispatch(loginSuccess())
         }
-      ).catch((e) => console.error(e))
+      ).catch((e) => dispatch(loginReject(e)))
     
+  }
+}
+
+export const onLoginWithSocial = (type: 'google' | 'facebook') => {
+  const firebaseBackend = getFirebaseBackend()
+  return (dispatch: Function) => {
+    firebaseBackend?.socialLoginUser(type)
+      .then(
+        () => {
+          dispatch(loginSuccess())
+        }
+      ).catch((e) => dispatch(loginReject(e)))
   }
 }
 
@@ -20,19 +32,19 @@ export const onLogout = () => {
   return (dispatch: Function) => {
     firebaseBackend?.logout()
       .then(() => {
-        dispatch(logout())
-      }).catch((e) => console.error(e))
+        dispatch(logoutSuccess())
+      }).catch((e) => dispatch(logoutReject(e)))
   }
 }
 
-export const onSignin = (email: string, password: string) => {
+export const onSignUp = (email: string, password: string) => {
   const firebaseBackend = getFirebaseBackend()
   return (dispatch: Function) => {
     firebaseBackend?.registerUser(email, password)
       .then((res) => {
-        dispatch(login())
+        dispatch(loginSuccess())
       })
-      .catch(e => console.error(e))
+      .catch(e => loginReject(e))
   }
 }
 

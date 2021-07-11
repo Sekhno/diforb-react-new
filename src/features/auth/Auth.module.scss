@@ -1,51 +1,47 @@
-.form {
+@import '../../assets/styles/app/variable.scss';
+
+.wrapper {
   padding: 1rem;
   text-align: center;
 
   > h1 {
-    margin-top: -40px;
+    margin: 0;
     font-size: 150px;
+    line-height: .4em;
   }
 
   > h2 {
-    margin-top: -50px;
+    margin: 0;
   }
 
-  input[type=email],
-  input[type=password] {
+  .button {
+    margin-top: 1rem;
+    background-color: #060;
+    border: none;
+  
+    &:hover, &:active {
+      background-color: #0d0 !important;
+    }
+  }
 
+  .group {
+    text-align: left;
+    margin: 0.5rem 0;
+  }
+
+  input {
     border: 1px solid #0a0;
     background-color: rgba(white, .1);
     color: #0a0;
-
+  
     &::placeholder {
       text-transform: capitalize;
       color: #0a0;
       opacity: .4;
     }
-
+  
     &:hover {
       border: 1px solid #060;
-    }
-  }
-
-  .button {
-    width: 100%;
-    margin-top: 1rem;
-    background-color: #060;
-    border: none;
-
-    &:hover, &:active {
-      background-color: #0d0;
-    }
-  }
-
-  .group {
-    margin-bottom: 1rem;
-    label {
-      display: flex;
-      justify-content: start;
-      // float: left;
     }
   }
 
@@ -53,6 +49,93 @@
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
+    .link {
+      color: #0a0;
+      animation: text-color-change 0.1s infinite;
+      text-decoration: none;
+    
+      &:hover {
+        color: #060;
+        text-decoration: underline;
+      }
+    }
   }
+
+  .error {
+    font-size: $font-size-sm;
+    /* text-shadow: 2px 3px 3px #a00; */
+    background-color: rgba(200, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// .form {
+//   padding: 1rem;
+//   text-align: center;
+
+//   > h1 {
+//     margin-top: -40px;
+//     font-size: 150px;
+//   }
+
+//   > h2 {
+//     margin-top: -50px;
+//   }
+
+//   input[type=email],
+//   input[type=password] {
+
+//     border: 1px solid #0a0;
+//     background-color: rgba(white, .1);
+//     color: #0a0;
+
+//     &::placeholder {
+//       text-transform: capitalize;
+//       color: #0a0;
+//       opacity: .4;
+//     }
+
+//     &:hover {
+//       border: 1px solid #060;
+//     }
+//   }
+
+//   .button {
+//     width: 100%;
+//     margin-top: 1rem;
+//     background-color: #060;
+//     border: none;
+
+//     &:hover, &:active {
+//       background-color: #0d0;
+//     }
+//   }
+
+//   .group {
+//     margin-bottom: 1rem;
+//     label {
+//       display: flex;
+//       justify-content: start;
+//       // float: left;
+//     }
+//   }
+
+//   .links {
+//     margin-top: 1rem;
+//     display: flex;
+//     justify-content: space-between;
+//   }
+// }
 

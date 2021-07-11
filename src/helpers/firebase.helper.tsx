@@ -5,17 +5,11 @@ import 'firebase/auth'
 import 'firebase/firestore'
 import 'firebase/storage'
 
-import { UserInterface } from './firebase.interface'
+import { UserInterface, FirebaseConfig} from './firebase.interface'
 
-interface FirebaseConfig {
-  apiKey: string,
-  authDomain: string,
-  projectId: string,
-  storageBucket: string,
-  messagingSenderId: string,
-  appId: string,
-  measurementId: string
-}
+
+type SocialType = 'google' | 'facebook'
+type ProviderType = firebase.auth.GoogleAuthProvider_Instance | firebase.auth.FacebookAuthProvider_Instance
 
 class FirebaseAuthBackend {
   constructor(firebaseConfig: FirebaseConfig) {
@@ -32,7 +26,7 @@ class FirebaseAuthBackend {
         }
       })
       /////////////////////////////////////////////
-      // const firestore = firebase.firestore()
+      const firestore = firebase.firestore()
       // firestore
       //     .collection('libraries')
       //     .get()
@@ -50,11 +44,12 @@ class FirebaseAuthBackend {
       //   .onSnapshot(docSnapshot => {
       //     console.log(docSnapshot.data())
       //   })
+      
     }
   }
 
   /**
-   * Registers the user with given details
+   * @name registerUser Registers the user with given details
    */
   registerUser = (email: string, password: string) => {
     return new Promise((resolve, reject) => {
@@ -74,7 +69,7 @@ class FirebaseAuthBackend {
   }
 
   /**
-   * Registers the user with given details
+   * @name editProfileAPI Registers the user with given details
    */
   editProfileAPI = (email: string, password: string) => {
     return new Promise((resolve, reject) => {
@@ -94,7 +89,7 @@ class FirebaseAuthBackend {
   }
 
   /**
-   * Login user with given details
+   * @name loginUser Login user with given details
    */
   loginUser = (email: string, password: string) => {
     return new Promise((resolve, reject) => {
@@ -114,7 +109,7 @@ class FirebaseAuthBackend {
   }
 
   /**
-   * forget Password user with given details
+   * @name forgetPassword forget Password user with given details
    */
   forgetPassword = (email: string) => {
     return new Promise((resolve, reject) => {
@@ -134,7 +129,7 @@ class FirebaseAuthBackend {
   }
 
   /**
-   * Logout the user
+   * @name logout Logout the user
    */
   logout = (): Promise<boolean> => {
     return new Promise((resolve, reject) => {
@@ -151,29 +146,23 @@ class FirebaseAuthBackend {
   }
 
   /**
-   * Social Login user with given details
+   * @name socialLoginUser Social Login user with given details
    */
-  socialLoginUser = (data: any, type: 'google' | 'facebook') => {
-    let credential = {}
+  socialLoginUser = (type: SocialType): Promise<any> => {
+    let provider: ProviderType | null = null
+
     if (type === 'google') {
-      credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.token)
+      provider = new firebase.auth.GoogleAuthProvider()
+      provider.addScope('profile')
+      provider.addScope('email')
     } else if (type === 'facebook') {
-      credential = firebase.auth.FacebookAuthProvider.credential(data.token)
+      provider = new firebase.auth.FacebookAuthProvider()
+      provider.addScope('user_birthday')
+    } else {
+      return Promise.reject('Что то с провайдером не так')
     }
-    return new Promise((resolve, reject) => {
-      if (Object.keys(credential).length) {
-        firebase.auth().signInWithCredential(credential as any)
-          .then((user) => {
-            resolve(this.addNewUserToFirestore(user))
-          })
-          .catch(error => {
-            reject(this._handleError(error))
-          })
-      } else {
-        const error = new Error('Some thin wrong')
-        reject(this._handleError(error))
-      }
-    })
+
+    return firebase.auth().signInWithPopup(provider)
   }
 
   addNewUserToFirestore = (user: any) => {
@@ -243,4 +232,8 @@ const getFirebaseStorage = () => {
   return firebase.storage()
 }
 
-export { initFirebaseBackend, getFirebaseBackend, getFirebaseStorage }
+const getFirebaseFirestore = () => {
+  return firebase.firestore()
+}
+
+export { initFirebaseBackend, getFirebaseBackend, getFirebaseStorage, getFirebaseFirestore }

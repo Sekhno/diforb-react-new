@@ -1,3 +1,28 @@
-@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+/*
+// Libraries
+*/
+@import '../node_modules/primereact/resources/themes/saga-blue/theme.css';
+@import '../node_modules/primereact/resources/primereact.min.css';
+// @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-@import './assets/styles/icons/Diforb_ui/style.css'
+
+/*
+// Fonts
+*/
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+/* 
+// Icons 
+*/
+@import './assets/styles/icons/Diforb_ui/style.css';
+
+/*
+// App
+*/
+@import './assets/styles/app/variable.scss';
+@import './assets/styles/app/carousel.custom.scss';
+@import './assets/styles/app/menubar.custom.scss';
+@import './assets/styles/app/toolbar.custom.scss';
+@import './assets/styles/app/progressbar.custom.scss';
+@import './assets/styles/app/button.custom.scss';
+@import './assets/styles/app/avatar.custom.scss';

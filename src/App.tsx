@@ -8,7 +8,7 @@ import AppRoute from './routes/route'
 import NonAuthLayout from './components/NonAuthLayout'
 import Layout from './components/Layout'
 import { initFirebaseBackend, getFirebaseBackend } from './helpers/firebase.helper'
-import { login } from './features/auth/authSlice'
+import { loginSuccess } from './features/auth/authSlice'
 
 const firebaseConfig = {
   apiKey: "AIzaSyBG8znM0AFK8v3yMScWoiwPzPWgCcA-LnY",
@@ -27,7 +27,7 @@ const App = () => {
 
   useEffect(() => {
     if (firebaseBackend?.getAuthenticatedUser() !== null) {
-      dispatch(login())
+      dispatch(loginSuccess())
     }
   }, [])
 

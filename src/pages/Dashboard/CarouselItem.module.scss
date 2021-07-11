@@ -1,0 +1,59 @@
+@import '../../assets/styles/app/variable.scss';
+
+.wrapper {
+  // width: 250px;
+  height: 100%;
+  border: 2px solid $green-dark-3;
+  border-radius: 4px;
+  background: $background-gradient;
+  transition: opacity .3s;
+
+  .imageWrapper {
+    // font-size: 0;
+    > img {
+      width: 100%;
+    }
+  }
+
+  > h1 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  > .footer {
+    > .title {
+      text-align: center;
+      text-transform: uppercase;
+    }
+    > .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      margin: 1rem .5rem;
+      // align-content: stretch;
+      > i {
+        font-size: 2rem;
+        cursor: pointer;
+      }
+      > button {
+        padding: 0 1rem;
+        text-transform: uppercase;
+        background: transparent;
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 0 4px $green;
+        cursor: pointer;
+        &:hover {
+          box-shadow: 0 0 8px $green;
+        }
+        &:active {
+          box-shadow: 0 0 4px $green-dark;
+        }
+      }
+    }
+    
+  }
+
+  
+}
+

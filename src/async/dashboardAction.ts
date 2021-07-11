@@ -1,9 +1,15 @@
-import { getFirebaseStorage } from '../helpers/firebase.helper'
+import { getFirebaseFirestore } from '../helpers/firebase.helper'
+import { getLibraries } from '../pages/Dashboard/dashboardSlice'
 
 export const onLoadLibraries = () => {
-  const firestore = getFirebaseStorage()
-  return (dispatch: Function) => {
-
+  const firestore = getFirebaseFirestore()
+  return async (dispatch: Function) => {
+    const response = await firestore.collection('libraries').get()
+    response.forEach(documentSnapshot => {
+      console.log('Libraries ID: ', documentSnapshot.id, documentSnapshot.data())
+      dispatch(getLibraries(documentSnapshot.data().data as any[]))
+    })
+    
   }
 }
 

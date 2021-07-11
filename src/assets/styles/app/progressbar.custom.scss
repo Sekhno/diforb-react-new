@@ -1,0 +1,26 @@
+@import './variable.scss';
+
+// Container element.
+.p-progressbar {
+  
+  font-family: $font-family-base;
+  background: $green-dark-3;
+  border-radius: 0;
+  height: .3rem;
+
+  // Container element of a determinate progressbar.
+  .p-progressbar-determinate	{}
+
+  // Container element of an indeterminate progressbar.
+  .p-progressbar-indeterminate	{}
+
+  // Element whose width changes according to value.
+  .p-progressbar-value	{
+    background: $green;
+  }
+
+  .p-progressbar-label {
+    display: none;
+  }
+}	
+

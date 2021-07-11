@@ -1,0 +1,12 @@
+.p-avatar {
+  background-color: transparent;
+
+  .p-avatar-image {} //	Container element in image mode.
+  .p-avatar-circle {} //	Container element with a circle shape.
+  .p-avatar-text {} //	Text of the Avatar.
+  .p-avatar-icon {
+    font-size: 2rem;
+  } //	Icon of the Avatar.
+  .p-avatar-lg {} //	Container element with a large size.
+  .p-avatar-xl {} //	Container element with an xlarge size.
+} //	Container element.

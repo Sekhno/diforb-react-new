@@ -1,0 +1,67 @@
+@import './variable.scss';
+
+.p-carousel {
+
+  .p-carousel-container {
+
+    .p-carousel-items-content {
+      perspective: 1200px;
+
+      .p-carousel-items-container {
+        transform-style: preserve-3d;
+        transition-duration: 0ms;
+        transform: translate3d(0px, 0px, 0px);
+        perspective-origin: 0px 50%;
+
+        .p-carousel-item {
+          will-change: transform;
+          transform: translate3d(0px, 0px, -1200px) rotateX(0deg) rotateY(0deg) scale(0);
+          transition: transform .3s;
+
+          &.p-carousel-item-active {
+            position: relative;
+
+            &.p-carousel-item-start {
+              transform: translate3d(0px, 0px, -400px) rotateX(0deg) rotateY(40deg) scale(1);
+
+              & + .p-carousel-item-active {
+                transform: translate3d(0px, 0px, -200px) rotateX(0deg) rotateY(20deg) scale(1);
+
+                & + .p-carousel-item-active {
+                  transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1);
+  
+                  & + .p-carousel-item-active {
+                    transform: translate3d(0px, 0px, -200px) rotateX(0deg) rotateY(-20deg) scale(1);
+                  }
+                }
+              }
+            }
+
+            &.p-carousel-item-end {
+              transform: translate3d(0px, 0px, -400px) rotateX(0deg) rotateY(-40deg) scale(1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .p-carousel-indicators {
+
+    .p-carousel-indicator {
+
+      button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: rgba($white, 0.2)  
+      }
+
+      &.p-highlight {
+        button {
+          background-color: $green-dark;
+        }
+      }
+    }
+  }
+}

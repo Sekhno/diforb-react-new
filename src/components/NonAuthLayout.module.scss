@@ -1,3 +1,5 @@
+@import '../assets/styles/app/variable.scss';
+
 .wrapper {
   width: 100vw;
   height: 100vh;
@@ -5,26 +7,26 @@
   justify-content: center;
   align-items: center;
 
-  color: transparent;
-  animation: text-color-change 0.1s infinite;
-  font-size: 16px;
-  line-height: 24px;
-  font-family: monospace;
-  margin: 0;
-  padding: 0;
-  text-shadow: 0 0 3px rgba(100, 200, 10, 0.8);
+  // color: transparent;
+  // animation: text-color-change 0.1s infinite;
+  // font-size: 16px;
+  // line-height: 24px;
+  // font-family: monospace;
+  // margin: 0;
+  // padding: 0;
+  // text-shadow: 0 0 3px $font-text-shadow;
 
-  &:before {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(#020 5%, #000);
-    background-color: #020;
-    z-index: -1;
-    content: '';
-  }
+  // &:before {
+  //   position: fixed;
+  //   top: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   background-image: $background-gradient;
+  //   background-color: #020;
+  //   z-index: -1;
+  //   content: '';
+  // }
 
   .content {
     width: 100%;
@@ -35,44 +37,3 @@
 }
 
 
-a {
-  color: #0a0;
-  animation: text-color-change 0.1s infinite;
-}
-
-a:hover {
-  color: #060;
-  text-decoration: underline;
-}
-
-p {
-  margin: 16px 0;
-}
-
-.signature {
-  color: #0a0;
-  animation: text-color-change 0.1s infinite;
-  text-align: right;
-  font-size: 1.6em;
-  font-weight: 100;
-}
-
-.cursor {
-  animation: blinking 1s infinite;
-}
-
-
-@keyframes blinking {
-  50% {
-    opacity: 0;
-  }
-}
-
-@keyframes text-color-change {
-  10% {
-    color: #070;
-  }
-  66% {
-    color: #080;
-  }
-}
