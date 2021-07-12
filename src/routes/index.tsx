@@ -1,13 +1,15 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import Dashboard from '../pages/Dashboard'
-import Login  from '../features/auth/Login'
-import Signup from '../features/auth/Signup'
-import Reset  from '../features/auth/Reset'
+import Dashboard    from '../pages/Dashboard'
+import Player       from '../pages/Player'
+import Login        from '../features/auth/Login'
+import Signup       from '../features/auth/Signup'
+import Reset        from '../features/auth/Reset'
+
 
 const authProtectedRoutes = [
   { path: '/dashboard', component: Dashboard },
-  { path: '/app', component: null },
+  { path: '/app', component: Player },
   { path: '/', exact: true, component: () => <Redirect to='/dashboard' /> }
 ]
 

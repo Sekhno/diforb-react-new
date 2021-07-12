@@ -38,7 +38,7 @@ const Dashboard = (): JSX.Element => {
   }
   ]
   const LeftContents = (): JSX.Element => {
-    return <span className = { 'icon-diforb-logo-slogan' }/>
+    return <span className = { 'icon-diforb-logo' }/>
   }
   const RightContents = (): JSX.Element => {
     return (
@@ -96,9 +96,6 @@ const Dashboard = (): JSX.Element => {
         </p>
       </section>
     </div>
-    // <nav>
-    //   <button onClick = {() => dispatch(onLogout())}>Logout</button>
-    // </nav>
   )
 }
 
