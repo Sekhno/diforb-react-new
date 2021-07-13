@@ -1,4 +1,6 @@
 import { getFirebaseStorage } from '../../helpers/firebase.helper'
+import { setPlaying } from '../../pages/Player/playerSlice'
+import { SideType } from '../../pages/Player/types'
 
 const cache: Map<string, Blob> = new Map()
 
@@ -6,17 +8,21 @@ export class AudioService {
   audioCtx: AudioContext
   mainNode: GainNode
   compressor: DynamicsCompressorNode
-  reverb: ConvolverNode
+  
 
   constructor() {
-    this.audioCtx = new AudioContext()
-    this.mainNode = this.audioCtx.createGain()
-    // this.mainNode.connect(this.audioCtx.destination)
+    this.audioCtx   = new AudioContext()
+    this.mainNode   = this.audioCtx.createGain()
     this.compressor = this.audioCtx.createDynamicsCompressor()
     this.compressor.connect(this.audioCtx.destination)
     this.mainNode.connect(this.compressor)
-    this.reverb = this.audioCtx.createConvolver()
-    this.reverb.connect(this.mainNode)
+    // this.reverb     = this.audioCtx.createConvolver()
+    // this.reverb.connect(this.mainNode)
+    // this.reverbBuffers = {
+    //   room: null,
+    //   hall: null,
+    //   stadium: null
+    // }
   }
 
   loaderBuffer(urlFile: string): Promise<Blob | undefined> {
@@ -45,78 +51,105 @@ export class AudioService {
     })
     
   }
+
+  loaderReverb(urlFile: string, name: 'room' | 'hall' | 'stadium'): Promise<Blob> {
+    return new Promise((resolve, reject) => {
+      const storage = getFirebaseStorage()
+      storage.ref()
+        .child(urlFile).getDownloadURL()
+        .then((url) => {
+          const xhr = new XMLHttpRequest()
+          xhr.responseType = 'blob'//'arraybuffer';
+          xhr.onload = () => {
+            resolve(xhr.response as Blob)
+          }
+          xhr.open('GET', url, true)
+          xhr.send()
+        })
+        .catch((error) => {
+          console.log(error)
+          reject(error)
+        })
+    })
+  }
 }
 
 export class Sound extends AudioService {
-  name: string
-  dry1: GainNode
-  wet1: GainNode
+  name: SideType
+  dry: GainNode
+  wet: GainNode
   source: AudioBufferSourceNode
   lowpassFilter: BiquadFilterNode
+  selected: string  = ''
+  playing: boolean = false
+  reverb: ConvolverNode
+  reverbBuffers: { [key: string]: Blob | null }
   
-  constructor(name: string){
+  
+  constructor(name: SideType){
     super()
-    
-    this.name = name
-    this.lowpassFilter = this.audioCtx.createBiquadFilter()
-    this.source = this.audioCtx.createBufferSource()
-    this.dry1 = this.audioCtx.createGain()
-    this.wet1 = this.audioCtx.createGain()
+    this.name           = name
+    this.reverb         = this.audioCtx.createConvolver()
+    this.lowpassFilter  = this.audioCtx.createBiquadFilter()
+    this.source         = this.audioCtx.createBufferSource()
+    this.dry            = this.audioCtx.createGain()
+    this.wet            = this.audioCtx.createGain()
     this.source.connect(this.lowpassFilter)
-    this.lowpassFilter.connect(this.dry1)
-    this.lowpassFilter.connect(this.wet1)
-    this.dry1.connect(this.mainNode)
-    this.wet1.connect(this.reverb)
-    if (this.name === 'Left') {
-      this.dry1.gain.value = 0
-      this.wet1.gain.value = 0
-    } else {
-      this.dry1.gain.value = 1
-      this.wet1.gain.value = 0
+    this.lowpassFilter.connect(this.dry)
+    this.lowpassFilter.connect(this.wet)
+    this.dry.connect(this.mainNode)
+    this.wet.connect(this.reverb)
+    this.reverb.connect(this.mainNode)
+    this.reverbBuffers = {
+      room: null,
+      hall: null,
+      stadium: null
     }
-    // this.source = this.audioCtx.createBufferSource()
-    // this.soundNode = this.audioCtx.createGain()
-    // // this.soundNode.gain.value = 2
-    // // this.soundNode.connect(this.mainNode)
-    // this.soundNode.connect(this.mainNode)
     
-    // this.reverbNode = this.audioCtx.createGain()
-    // this.mainNode.connect(this.reverb)
-    // this.reverbNode.connect(this.mainNode)
-    
-    
-    
-    // this.reverb.connect(this.reverbNode)
-    // // this.reverbNode.connect(this.soundNode)
-    // this.soundNode.connect(this.reverb)
-    // this.reverbNode.connect(this.mainNode)
     
   }
 
-  // setVolume(gain: number) {
-  //   this.soundNode.gain.value = gain
-  // }
+  setVolume(value: number) {
+    this.dry.gain.value = value / 100
+  }
 
-  // setReverb(buffer: any) {
-  //   this.reverb.buffer = buffer
-  // }
+  async setReverb(type: 'room' | 'hall' | 'stadium') {
+    const blob = this.reverbBuffers[type]
+    const buffer = await blob?.arrayBuffer()
+    buffer && await this.onReverbDecodeData(buffer)
+    console.log(this.reverbBuffers, this.reverb.buffer)
+  }
 
-  // setBuffer(buffer: any){
-  //   this.source.buffer = buffer
-  // }
+  resetReverb() {
+    this.reverb.buffer = null
+    this.reverb.disconnect()
+  }
+
+  onSelect(urlFile: string) {
+    this.selected = urlFile
+  }
 
   onStart() {
-    this.source.start(0)
+    return (dispatch: Function) => {
+      dispatch(setPlaying({ key: this.name, value: true }))
+      this.playing = true
+      this.source.start(0)
+      this.source.addEventListener('ended', async () => {
+        const blob = await this.loaderBuffer(this.selected)
+        const buffer = await blob?.arrayBuffer()
+        buffer && await this.onDecodeData(buffer)
+        this.playing = false
+        dispatch(setPlaying({ key: this.name, value: false }))
+      }, { once: true })
+    }
   }
 
   onDecodeData(buffer: ArrayBuffer): Promise<void> {
     return new Promise((resolve, reject) => {
       this.audioCtx.decodeAudioData(buffer).then(decodeData => {
         this.source = this.audioCtx.createBufferSource()
-        
         // var semitoneRatio = Math.pow(2, 1/12);
         // this.source.playbackRate.value = Math.pow(semitoneRatio, -5);
-
         this.source.buffer = decodeData
         this.source.connect(this.lowpassFilter)
         resolve()
@@ -127,9 +160,11 @@ export class Sound extends AudioService {
   onReverbDecodeData(buffer: ArrayBuffer): Promise<void> {
     return new Promise((resolve, reject) => {
       this.audioCtx.decodeAudioData(buffer).then(decodeData => {
-        // this.reverbNode.gain.value = .2
+        this.dry.gain.value = 0
+        this.wet.gain.value = 3
         this.reverb.buffer = decodeData
-        
+        this.reverb.disconnect()
+        this.reverb.connect(this.mainNode)
         resolve()
       }).catch((e) => console.error(e))
     })

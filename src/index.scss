@@ -8,8 +8,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: $font-size-base;
 
-  color: transparent;
-  animation: text-color-change 0.1s infinite;
+  color: white; //transparent;
+  // animation: text-color-change 0.1s infinite;
   font-size: 16px;
   line-height: 24px;
   font-family: monospace;
@@ -40,14 +40,15 @@ h6 { font-size: $h6-font-size }
 button {
   font-weight: bold;
   letter-spacing: 1px;
-  color: transparent;
-  text-shadow: 0 0 3px $font-text-shadow;
-  animation: text-color-change 0.1s infinite;
+  color: white;
+  background: transparent;
+  // text-shadow: 0 0 3px $font-text-shadow;
+  // animation: text-color-change 0.1s infinite;
 }
 
 a {
   color: $green;
-  animation: text-color-change 0.1s infinite;
+  // animation: text-color-change 0.1s infinite;
   text-decoration: none;
 
   &:hover {
@@ -64,7 +65,7 @@ p {
 
 .signature {
   color: $green;
-  animation: text-color-change 0.1s infinite;
+  // animation: text-color-change 0.1s infinite;
   text-align: right;
   font-size: 1.6em;
   font-weight: 100;

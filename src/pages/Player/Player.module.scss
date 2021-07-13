@@ -1,3 +1,35 @@
 @import '../../assets/styles/app/variable.scss';
 // Librarie icons
 @import '../../assets/styles/icons/8bit/style.css';
+
+.wrapper {
+  border: 1px solid red;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: [LEFT] 1fr [LEFT_SIDE_PLAYER] 700px [RIGHT_SIDE_PLAYER] 1fr [RIGHT];
+  grid-template-rows: [TOP] auto [BOTTOM];
+
+  .leftSide {
+    grid-column-start: [LEFT];
+    grid-column-end: [LEFT_SIDE_PLAYER];
+    grid-row-start: [TOP];
+    grid-row-end: [BOTTOM];
+  }
+
+  .rightSide {
+    grid-column-start: [RIGHT_SIDE_PLAYER];
+    grid-column-end: [RIGHT];
+    grid-row-start: [TOP];
+    grid-row-end: [BOTTOM];
+  }
+
+  .player {
+    grid-column-start: [LEFT_SIDE_PLAYER];
+    grid-column-end: [RIGHT_SIDE_PLAYER];
+    grid-row-start: [TOP];
+    grid-row-end: [BOTTOM];
+    text-align: center;
+  }
+}
