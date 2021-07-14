@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState, ReactNode, BaseSyntheticEvent } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
+import useScript from 'react-script-hook'
 import { withRouter } from 'react-router-dom'
 import { audioService, leftSnd, rightSnd } from '../../services/audio/audio.instance'
 import { ReverbType } from './types'
@@ -7,14 +8,20 @@ import styles from './Player.module.scss'
 
 const sound1 = 'libraries/Interface/Music/Positive/Digital_01.wav'
 const sound2 = 'libraries/Interface/Music/Negative/Digital_01.wav'
-const rever1 = 'reverbs/rever_room.wav'
-const rever2 = 'reverbs/rever_hall.wav'
-const rever3 = 'reverbs/wildecho.wav'
+const rever1 = 'reverbs/DomesticLivingRoom.wav'
+const rever2 = 'reverbs/ElvedenHallLordsCloakroom.wav'
+const rever3 = 'reverbs/YorkMinster.wav'
 
 interface PlayerProps {
   children?: ReactNode
   left?: boolean,
   right?: boolean
+}
+
+interface ExtendedAudioContext extends AudioContext {
+  createReverbFromBase64: (audioBase64: any, callback: Function) => {},
+  createReverbFromUrl: (audioUrl: string, callback: Function) => {},
+  createReverbFromBase64Url: (audioBase64: any, callback: Function) => {}
 }
 
 const defaultReverState = {
@@ -24,12 +31,21 @@ const defaultReverState = {
 }
 
 const Player: FC = (props: PlayerProps): JSX.Element =>  {
+  // useScript({ 
+  //   src: 'http://reverbjs.org/reverb.js',
+  //   onload: () => {
+  //     console.log((window as any).reverbjs);
+  //     (window as any).reverbjs.extend(audioService.audioCtx)
+  //     console.log((audioService.audioCtx as ExtendedAudioContext).createReverbFromUrl)
+  //   } 
+  // })
   const dispatch = useDispatch()
   const [ loading, setLoading ] = useState(false)
   const [ playing, setPlaying ] = useState(false)
   const [ leftReverb, setLeftReverbs ] = useState(defaultReverState)
   const [ rightReverb, setRightReverbs ] = useState(defaultReverState)
   const { left, right } = props
+  
   
   useEffect(() => {
     onInit()
@@ -45,7 +61,7 @@ const Player: FC = (props: PlayerProps): JSX.Element =>  {
     Object.entries(leftReverb).forEach(([type, state]) => {
       
       if (state) {
-        leftSnd.setReverb(type as ReverbType)
+        leftSnd.setTypeReverb(type as ReverbType)
       } else {
         leftSnd.resetReverb()
       }
@@ -53,7 +69,7 @@ const Player: FC = (props: PlayerProps): JSX.Element =>  {
     Object.entries(rightReverb).forEach(([type, state]) => {
       
       if (state) {
-        rightSnd.setReverb(type as ReverbType)
+        rightSnd.setTypeReverb(type as ReverbType)
       } else {
         rightSnd.resetReverb()
       }
@@ -152,6 +168,14 @@ const Player: FC = (props: PlayerProps): JSX.Element =>  {
     rightSnd.setVolume(e.target.value)
   }
 
+  const changedLeftReverbVolume = (e: BaseSyntheticEvent) => {
+    leftSnd.setVolumeReverb(e.target.value)
+  }
+
+  const changedRightReverbVolume = (e: BaseSyntheticEvent) => {
+    rightSnd.setVolumeReverb(e.target.value)
+  }
+
   return (
     <div className = { styles.wrapper }>
       <div className = { styles.leftSide }>
@@ -168,7 +192,7 @@ const Player: FC = (props: PlayerProps): JSX.Element =>  {
           <input type = 'range' onChange = { changedRightHandler }/>
         </div>
         <div className = { styles.leftReverb }>
-          <input type = 'range' />
+          <input type = 'range' onChange = { changedLeftReverbVolume }/>
           <label>
             <input type="checkbox" name = 'leftReverb' checked = { leftReverb.room } 
               onChange = {(e) => { setLeftReverbs({ ...defaultReverState, room: !leftReverb.room }) }}
@@ -186,7 +210,7 @@ const Player: FC = (props: PlayerProps): JSX.Element =>  {
           </label>
         </div>
         <div className = { styles.rightReverb }>
-          <input type = 'range' />
+          <input type = 'range' onChange = { changedRightReverbVolume }/>
           <label>
             <input type="checkbox" name = 'rightReverb' checked = { rightReverb.room }
               onChange = {(e) => { setRightReverbs({ ...defaultReverState, room: !rightReverb.room }) }}

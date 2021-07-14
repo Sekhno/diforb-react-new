@@ -4,6 +4,8 @@ import { SideType } from '../../pages/Player/types'
 
 const cache: Map<string, Blob> = new Map()
 
+
+
 export class AudioService {
   audioCtx: AudioContext
   mainNode: GainNode
@@ -16,13 +18,6 @@ export class AudioService {
     this.compressor = this.audioCtx.createDynamicsCompressor()
     this.compressor.connect(this.audioCtx.destination)
     this.mainNode.connect(this.compressor)
-    // this.reverb     = this.audioCtx.createConvolver()
-    // this.reverb.connect(this.mainNode)
-    // this.reverbBuffers = {
-    //   room: null,
-    //   hall: null,
-    //   stadium: null
-    // }
   }
 
   loaderBuffer(urlFile: string): Promise<Blob | undefined> {
@@ -75,6 +70,7 @@ export class AudioService {
 }
 
 export class Sound extends AudioService {
+  static maxKoef = 3
   name: SideType
   dry: GainNode
   wet: GainNode
@@ -105,19 +101,22 @@ export class Sound extends AudioService {
       hall: null,
       stadium: null
     }
-    
-    
+    this.setVolume(50)
+    this.setVolumeReverb(50)
   }
 
   setVolume(value: number) {
-    this.dry.gain.value = value / 100
+    this.dry.gain.value = (value * Sound.maxKoef) / 100
   }
 
-  async setReverb(type: 'room' | 'hall' | 'stadium') {
+  setVolumeReverb(value: number) {
+    this.wet.gain.value = (value * Sound.maxKoef) / 100
+  }
+
+  async setTypeReverb(type: 'room' | 'hall' | 'stadium') {
     const blob = this.reverbBuffers[type]
     const buffer = await blob?.arrayBuffer()
     buffer && await this.onReverbDecodeData(buffer)
-    console.log(this.reverbBuffers, this.reverb.buffer)
   }
 
   resetReverb() {
@@ -160,8 +159,6 @@ export class Sound extends AudioService {
   onReverbDecodeData(buffer: ArrayBuffer): Promise<void> {
     return new Promise((resolve, reject) => {
       this.audioCtx.decodeAudioData(buffer).then(decodeData => {
-        this.dry.gain.value = 0
-        this.wet.gain.value = 3
         this.reverb.buffer = decodeData
         this.reverb.disconnect()
         this.reverb.connect(this.mainNode)
