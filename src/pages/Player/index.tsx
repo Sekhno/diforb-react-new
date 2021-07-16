@@ -1,27 +1,30 @@
 import React, { FC, useEffect, useState, ReactNode, BaseSyntheticEvent } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
-import useScript from 'react-script-hook'
 import { withRouter } from 'react-router-dom'
-import { audioService, leftSnd, rightSnd } from '../../services/audio/audio.instance'
+import { 
+  setupRoutingGraph, 
+  setupReverbBuffers,
+  setBufferToLeftSide, setBufferToRightSide, 
+  changeTimeshiftValue,
+  changeLeftVolumeGain, changeRightVolumeGain,
+  changeLeftReverVolumeGain, changeRightReverVolumeGain,
+  changeLeftPitchValue, changeRightPitchValue,
+  leftSoundBuffer, rightSoundBuffer,
+  selectLeftReverb, selectRightReverb,
+  resetLeftReverb, resetRightReverb,
+  saveCanvasElem, 
+  onPlay 
+} from '../../services/audio/audio.instance'
 import { ReverbType } from './types'
 import styles from './Player.module.scss'
+import { useRef } from 'react'
 
 const sound1 = 'libraries/Interface/Music/Positive/Digital_01.wav'
 const sound2 = 'libraries/Interface/Music/Negative/Digital_01.wav'
-const rever1 = 'reverbs/DomesticLivingRoom.wav'
-const rever2 = 'reverbs/ElvedenHallLordsCloakroom.wav'
-const rever3 = 'reverbs/YorkMinster.wav'
 
 interface PlayerProps {
   children?: ReactNode
-  left?: boolean,
-  right?: boolean
-}
-
-interface ExtendedAudioContext extends AudioContext {
-  createReverbFromBase64: (audioBase64: any, callback: Function) => {},
-  createReverbFromUrl: (audioUrl: string, callback: Function) => {},
-  createReverbFromBase64Url: (audioBase64: any, callback: Function) => {}
+  playing?: boolean
 }
 
 const defaultReverState = {
@@ -31,149 +34,68 @@ const defaultReverState = {
 }
 
 const Player: FC = (props: PlayerProps): JSX.Element =>  {
-  // useScript({ 
-  //   src: 'http://reverbjs.org/reverb.js',
-  //   onload: () => {
-  //     console.log((window as any).reverbjs);
-  //     (window as any).reverbjs.extend(audioService.audioCtx)
-  //     console.log((audioService.audioCtx as ExtendedAudioContext).createReverbFromUrl)
-  //   } 
-  // })
+  const canvasRef = useRef(null)
   const dispatch = useDispatch()
   const [ loading, setLoading ] = useState(false)
-  const [ playing, setPlaying ] = useState(false)
+  const [ localPlayingState, setLocalPlayingState ] = useState(false)
   const [ leftReverb, setLeftReverbs ] = useState(defaultReverState)
   const [ rightReverb, setRightReverbs ] = useState(defaultReverState)
-  const { left, right } = props
+  const { playing } = props
   
   
   useEffect(() => {
-    onInit()
+    if (canvasRef && canvasRef.current) {
+      setupRoutingGraph(() => {
+        saveCanvasElem(canvasRef.current)
+        setupReverbBuffers()
+      })
+    }
   }, [])
 
   useEffect(() => {
-    if (!leftSnd.playing && !rightSnd.playing) {
-      setPlaying(false)
+    if (!playing) {
+      setLocalPlayingState(false)
+    } else {
+      setLocalPlayingState(true)
     }
-  }, [ left, right ])
+  }, [ playing ])
 
   useEffect(() => {
-    Object.entries(leftReverb).forEach(([type, state]) => {
-      
-      if (state) {
-        leftSnd.setTypeReverb(type as ReverbType)
-      } else {
-        leftSnd.resetReverb()
-      }
-    })
-    Object.entries(rightReverb).forEach(([type, state]) => {
-      
-      if (state) {
-        rightSnd.setTypeReverb(type as ReverbType)
-      } else {
-        rightSnd.resetReverb()
-      }
-    })
-    console.log('>>>>', leftReverb, rightReverb)
+    const leftStateDisabled = Object.values(leftReverb).every(state => !state)
+    const rightStateDisabled = Object.values(rightReverb).every(state => !state)
+    if (leftStateDisabled) {
+      resetLeftReverb()
+    } else {
+      Object.entries(leftReverb).forEach(([type, state]) => {
+        state && selectLeftReverb(type as ReverbType)
+      })
+    }
+    if (rightStateDisabled) {
+      resetRightReverb()
+    } else {
+      Object.entries(rightReverb).forEach(([type, state]) => {
+        state && selectRightReverb(type as ReverbType)
+      })
+    }
   }, [ leftReverb, rightReverb ])
-
-  const onClickHandler = () => {
-    setLoading(true)
-    
-    // Promise.all([ 
-    //   audioService.loaderBuffer(sound1), 
-    //   audioService.loaderBuffer(sound2),
-    //   audioService.loaderBuffer(rever1) 
-    // ]).then(async ([ blob1, blob2, rever ]) => {
-    //     if (blob1) {
-    //       const buffer = await blob1?.arrayBuffer()
-    //       await leftSnd.onDecodeData(buffer)
-    //     }
-    //     if (blob2) {
-    //       const buffer = await blob2.arrayBuffer()
-    //       await rightSnd.onDecodeData(buffer)
-    //     }
-    //     if (rever) {
-    //       const buffer1 = await rever.arrayBuffer()
-    //       const buffer2 = await rever.arrayBuffer()
-    //       await leftSnd.onReverbDecodeData(buffer1)
-    //       await rightSnd.onReverbDecodeData(buffer2)
-    //     }
-    //     // console.log(rever1)
-        
-    //     blob1 && leftSnd.onStart()
-    //     blob2 && rightSnd.onStart()
-    //     setLoading(false)
-    //   })
-  }
-
-  const loadSound = async (name: string): Promise<ArrayBuffer> => {
-    return new Promise(async (resolve) => {
-      const blob = await audioService.loaderBuffer(name)
-      const buffer = await blob?.arrayBuffer()
-      if (buffer) resolve(buffer)
-    })
-  }
 
   const onSelectLeftSound = async (sound: string) => {
     setLoading(true)
-    leftSnd.selected = sound
-    const buffer = await loadSound(sound)
-    buffer && await leftSnd.onDecodeData(buffer)
+    await setBufferToLeftSide(sound)
     setLoading(false)
   }
 
   const onSelectRightSound = async (sound: string) => {
     setLoading(true)
-    rightSnd.selected = sound
-    const buffer = await loadSound(sound)
-    buffer && await rightSnd.onDecodeData(buffer)
+    await setBufferToRightSide(sound)
     setLoading(false)
   }
 
-  const onPlay = () => {
-    if (!leftSnd.selected && !rightSnd.selected) {
+  const onClickPlay = () => {
+    if (!leftSoundBuffer && !rightSoundBuffer) {
       return alert('Выберите звук!')
     }
-    setPlaying(true)
-    if (leftSnd.selected && !leftSnd.playing) {
-      dispatch(leftSnd.onStart())
-    }
-    if (rightSnd.selected && !rightSnd.playing) {
-      dispatch(rightSnd.onStart())
-    }
-  }
-
-  const onInit = () => {
-    Promise.all([
-      audioService.loaderReverb(rever1, 'hall'),
-      audioService.loaderReverb(rever2, 'room'),
-      audioService.loaderReverb(rever3, 'stadium')
-    ]).then(([rever1, rever2, rever3]) => {
-      
-      const sounds = [ leftSnd, rightSnd ]
-      sounds.forEach(sound => {
-        sound.reverbBuffers['room'] = rever1
-        sound.reverbBuffers['hall'] = rever2
-        sound.reverbBuffers['stadium'] = rever3
-      })
-    })
-  }
-
-  const changedLeftHandler = (e: BaseSyntheticEvent) => {
-    leftSnd.setVolume(e.target.value)
-  }
-
-  const changedRightHandler = (e: BaseSyntheticEvent) => {
-    rightSnd.setVolume(e.target.value)
-  }
-
-  const changedLeftReverbVolume = (e: BaseSyntheticEvent) => {
-    leftSnd.setVolumeReverb(e.target.value)
-  }
-
-  const changedRightReverbVolume = (e: BaseSyntheticEvent) => {
-    rightSnd.setVolumeReverb(e.target.value)
+    dispatch(onPlay())
   }
 
   return (
@@ -184,15 +106,26 @@ const Player: FC = (props: PlayerProps): JSX.Element =>  {
         </ul>
       </div>
       <div className = { styles.player }>
-        <div>{ loading ? 'loading' : 'no loading' }</div>
+        <div className = { styles.timeshift }>
+          <label>
+            Timeshift: 
+            <input type = 'range' onChange = {(e) => changeTimeshiftValue(+e.target.value - 50)}/>
+          </label>
+        </div>
         <div className = { styles.leftVolume }>
-          <input type = 'range' onChange = { changedLeftHandler }/>
+          <label>
+            Left Volume
+            <input type = 'range' onChange = {(e) =>  changeLeftVolumeGain(+e.target.value) }/>
+          </label>
         </div>
         <div className = { styles.rightVolume }>
-          <input type = 'range' onChange = { changedRightHandler }/>
+          <label>
+            Right Volume
+            <input type = 'range' onChange = {(e) => changeRightVolumeGain(+e.target.value)}/>
+          </label>
         </div>
         <div className = { styles.leftReverb }>
-          <input type = 'range' onChange = { changedLeftReverbVolume }/>
+          <input type = 'range' onChange = {(e) => changeLeftReverVolumeGain(+e.target.value)}/>
           <label>
             <input type="checkbox" name = 'leftReverb' checked = { leftReverb.room } 
               onChange = {(e) => { setLeftReverbs({ ...defaultReverState, room: !leftReverb.room }) }}
@@ -210,7 +143,7 @@ const Player: FC = (props: PlayerProps): JSX.Element =>  {
           </label>
         </div>
         <div className = { styles.rightReverb }>
-          <input type = 'range' onChange = { changedRightReverbVolume }/>
+          <input type = 'range' onChange = {(e) => changeRightReverVolumeGain(+e.target.value)}/>
           <label>
             <input type="checkbox" name = 'rightReverb' checked = { rightReverb.room }
               onChange = {(e) => { setRightReverbs({ ...defaultReverState, room: !rightReverb.room }) }}
@@ -227,8 +160,22 @@ const Player: FC = (props: PlayerProps): JSX.Element =>  {
             /> Stadium
           </label>
         </div>
+        <div className = { styles.leftPitch }>
+          <label>
+            Left Pitch <input type = 'range' onChange = {(e) => changeLeftPitchValue(+e.target.value)}/>
+          </label>
+        </div>
+        <div className = { styles.rightPitch }>
+          <label>
+            Right Pitch <input type = 'range' onChange = {(e) => changeRightPitchValue(+e.target.value)}/>
+          </label>
+        </div>
         <div className = { styles.btnPlay }>
-        <button onClick = { onPlay }>{ playing ? 'Stop' : 'Play' }</button>
+        <button onClick = { onClickPlay }>{ localPlayingState ? 'Stop' : 'Play' }</button>
+        <div className = { styles.analizer }>
+          <canvas ref = { canvasRef } width = '200' height = '200'></canvas>
+        </div>
+        <div>{ loading ? 'loading' : 'no loading' }</div>
       </div>
       </div>
       <div className = { styles.rightSide }>
@@ -242,15 +189,13 @@ const Player: FC = (props: PlayerProps): JSX.Element =>  {
 
 interface StateToProps {
   player: { 
-    left: { playing: boolean },
-    right: { playing: boolean }
+    playing: boolean 
   }
 }
 
 const mapStateToProps = (state: StateToProps) => {
   return {
-    left: state.player.left.playing,
-    right: state.player.right.playing
+    playing: state.player.playing
   }
 }
 

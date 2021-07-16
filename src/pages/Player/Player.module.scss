@@ -3,7 +3,6 @@
 @import '../../assets/styles/icons/8bit/style.css';
 
 .wrapper {
-  border: 1px solid red;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -31,5 +30,11 @@
     grid-row-start: [TOP];
     grid-row-end: [BOTTOM];
     text-align: center;
+
+    .analizer {
+      canvas {
+        
+      }
+    }
   }
 }
