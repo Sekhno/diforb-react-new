@@ -1,0 +1,279 @@
+// @import "compass/css3";
+
+// @import url( https://fonts.googleapis.com/css?family=Raleway:300 );
+// @import 'compass';
+
+// html {
+//   height: 100%;
+// }
+
+// body {
+//   background: #eee;
+//   margin: 0;
+//   height: 100%;
+// }
+
+// form {
+//   padding: 1em;
+//   -webkit-backface-visibility: hidden;
+//      -moz-backface-visibility: hidden;
+//       -ms-backface-visibility: hidden;
+//           backface-visibility: hidden;
+// }
+
+// .knobs {
+//   list-style: none;
+
+//   text-align: center;
+
+//   li {
+//     display: inline-block;
+//     margin: 1em;
+//   }
+// }
+
+.a-knob {
+    width: 300px;
+    height: 300px;
+    position: relative;
+
+    // @include transform( translateZ( 0 ) );
+
+    .a-knob-handle {
+
+        pointer-events: none;
+
+        width: 270px;
+        height: 270px;
+        background: #ddd;
+        background-image: linear-gradient( #eee, #ccc );
+        border: 0;
+        left: 50%;
+        top: 50%;
+        margin: -135px 0 0 -135px;
+
+        display: block;
+        position: absolute;
+        z-index: 1;
+        border-radius: 50%;
+
+        box-shadow:
+            0 3px 6px -3px #000,
+            inset 0 -5px 5px -5px #000,
+            inset 0 5px 5px -5px #fff;
+
+        &::before, &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+        }
+
+        &::before {
+            width: 176px;
+            height: 176px;
+            margin-left: -88px;
+            margin-top: -88px;
+            background: #f2f2f2;
+            box-shadow:
+                inset 0 -50px 50px 15px #dadada,
+                0 -5px 10px -5px #fefefe,
+                0 1px 3px -1px rgba( 0, 0, 0, .35 );
+        }
+
+        &::after {
+            width: 156px;
+            height: 156px;
+            background: #ddd;
+            margin-left: -78px;
+            margin-top: -78px;
+
+            box-shadow:
+                inset 0 -10px 15px -5px rgba( 0, 0, 0, .25 ),
+                inset 0 10px 25px -10px #fff,
+                0 25px 50px rgba( 0, 0, 0, .25 ),
+                0 5px 5px -5px rgba( 0, 0, 0, .35 ),
+                0 15px 10px -6px rgba( 0, 0, 0, .3 ),
+                0 25px 15px -7px rgba( 0, 0, 0, .25 ),
+                0 35px 20px -8px rgba( 0, 0, 0, .2 ),
+                0 45px 25px -9px rgba( 0, 0, 0, .15 ),
+                0 55px 30px -10px rgba( 0, 0, 0, .1 );
+        }
+    }
+
+    .a-knob-input {
+        // @include appearance( none );
+        // @include transition( color 1s );
+        // @include transform( translateZ( 0 ) );
+
+        &::selection {
+        color: #c30;
+        background: rgba( 255, 255, 255, .3 );
+        }
+        &::-moz-selection {
+        color: #c30;
+        background: rgba( 255, 255, 255, .3 );
+        }
+
+        position: absolute;
+
+        z-index: 2;
+
+        top: 50%;
+        left: 50%;
+
+        z-index: 10;
+
+        width: 100px;
+        height: 100px;
+        margin: -50px 0 0 -50px;
+
+        padding: 0;
+
+        color: #ccc;
+        font-family: 'Raleway', sans-serif;
+        font-size: 32px;
+        text-align: center;
+        text-shadow: 0 1px 1px #fff, 0 -1px 1px #ccc;
+
+        background: none;
+
+        border: 0;
+        border-radius: 50%;
+        outline: none;
+
+        box-shadow:
+        0 1px 2px -1px #fff,
+        0 -1px 2px -1px #ccc,
+        inset 0 -1px 2px -1px #fff,
+        inset 0 1px 2px -1px #ccc
+        ;
+
+        &:focus {
+        // @include transition( color .25s ease-out );
+
+        color: #999;
+        }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+    }
+
+    .a-knob-label {
+        box-shadow: inset 0 5px 3px -1px rgba( 0, 0, 0, .15 );
+        display: block;
+        width: 294px;
+        height: 294px;
+        border-radius: 50%;
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 0;
+
+        background: #fc0;
+        background-repeat: no-repeat;
+        background-image: linear-gradient( -5deg, #bada55, #fc0, #c30 );
+
+        &.mono {
+        background: #ccc;
+        background-image: linear-gradient( -5deg, #ccc, #666 );
+        }
+
+        &.blue {
+        background: #58b;
+        background-image: linear-gradient( -5deg, #9cf, #689, #036 );
+        }
+
+        &.stripes {
+        box-shadow: none;
+        background-image:
+            linear-gradient( 5deg, transparent 48%, #eee 48%, #eee 52%, transparent 52% ),
+            linear-gradient( 35deg, transparent 48%, #eee 48%, #eee 52%, transparent 52% ),
+            linear-gradient( 65deg, transparent 48%, #eee 48%, #eee 52%, transparent 52% ),
+            linear-gradient( 95deg, transparent 48%, #eee 48%, #eee 52%, transparent 52% ),
+            linear-gradient( 125deg, transparent 48%, #eee 48%, #eee 52%, transparent 52% ),
+            linear-gradient( 155deg, transparent 48%, #eee 48%, #eee 52%, transparent 52% ),
+            linear-gradient( 185deg, #4ac, #17a)
+        ;
+        }
+
+        &.red {
+        background: #c30;
+        background-image: linear-gradient( -5deg, #930, #c30, #f30 );
+        }
+
+        &::before,
+        &::after {
+        position: absolute;
+        content: '';
+        background: #eee;
+        }
+
+        &::before {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        top: 10px;
+        left: 10px;
+        }
+
+        &::after {
+        position: absolute;
+        left: 50%;
+        width: 50%;
+        height: 100%;
+        border: 0 solid transparent;
+        border-right-width: 100px;
+        border-bottom-width: 100px;
+        border-right-color: #eee;
+        margin-left: 5px;
+
+        box-sizing: border-box;
+        background-clip: padding-box;
+        }
+    }
+
+    .a-knob-indicator {
+        // @include transform( translateZ( 0 ) );
+
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+        width: 140px;
+        height: 140px;
+
+        margin: -70px 0 0 -70px;
+        z-index: 1;
+
+        border-radius: 50%;
+        border-color: rgba( 0, 0, 0, .1 );
+
+        pointer-events: none;
+
+        // @include transition( all .25s );
+
+        &.dragged {
+        // @include transition( all 0s );
+        }
+        
+        &::before {
+        $size: 6px;
+
+        content: '';
+
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: -$size;
+
+        border: $size solid transparent;
+        border-top: 0;
+        border-bottom-color: inherit;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import Dashboard    from '../pages/Dashboard'
-import Player       from '../pages/Player'
+import DiforbApp    from '../pages/Player'
 import Login        from '../features/auth/Login'
 import Signup       from '../features/auth/Signup'
 import Reset        from '../features/auth/Reset'
@@ -9,7 +9,7 @@ import Reset        from '../features/auth/Reset'
 
 const authProtectedRoutes = [
   { path: '/dashboard', component: Dashboard },
-  { path: '/app', component: Player },
+  { path: '/app', component: DiforbApp },
   { path: '/', exact: true, component: () => <Redirect to='/dashboard' /> }
 ]
 

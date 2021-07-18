@@ -1,0 +1,43 @@
+
+@import '../../../assets/styles/app/variable.scss';
+/*
+  const className = {
+    volumeRange: "volume-range",
+    volumeGrad: "volume-grad",
+    sliderGrad: "slider-grad",
+    handler: "handler"
+  }
+*/
+
+.volumeRange {
+  fill: #CACACA; //$green;
+  .volumeRangeShadow {
+    fill: #709795;
+    opacity: .8;
+  }
+}
+
+.volumeGrad {
+  .sliderGrad {
+    .sliderGradInner {
+      fill: #5EC7E1;
+    }
+  }
+}
+
+.handler {
+  .handlerWrapper {
+    fill: #E9E9E2;
+    opacity: .7;
+  }
+  .handlerInner {
+    // color: #4AB873;
+    fill: $green-dark;
+  }
+  &:hover {
+    cursor: pointer;
+    .handlerInner {
+      fill: $green;
+    }
+  }
+}

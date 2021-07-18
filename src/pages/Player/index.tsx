@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, ReactNode, BaseSyntheticEvent } from 'react'
+import React, { FC, useEffect, useState, ReactNode, useRef } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { 
@@ -15,9 +15,10 @@ import {
   saveCanvasElem, 
   onPlay 
 } from '../../services/audio/audio.instance'
+import Player from './components/Player'
+import Diforb from './Diforb/Diforb'
 import { ReverbType } from './types'
-import styles from './Player.module.scss'
-import { useRef } from 'react'
+import styles from './DiforbApp.module.scss'
 
 const sound1 = 'libraries/Interface/Music/Positive/Digital_01.wav'
 const sound2 = 'libraries/Interface/Music/Negative/Digital_01.wav'
@@ -33,7 +34,7 @@ const defaultReverState = {
   stadium: false
 }
 
-const Player: FC = (props: PlayerProps): JSX.Element =>  {
+const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   const canvasRef = useRef(null)
   const dispatch = useDispatch()
   const [ loading, setLoading ] = useState(false)
@@ -106,7 +107,9 @@ const Player: FC = (props: PlayerProps): JSX.Element =>  {
         </ul>
       </div>
       <div className = { styles.player }>
-        <div className = { styles.timeshift }>
+        {/* <Diforb/> */}
+        <Player />
+        {/* <div className = { styles.timeshift }>
           <label>
             Timeshift: 
             <input type = 'range' onChange = {(e) => changeTimeshiftValue(+e.target.value - 50)}/>
@@ -171,12 +174,12 @@ const Player: FC = (props: PlayerProps): JSX.Element =>  {
           </label>
         </div>
         <div className = { styles.btnPlay }>
-        <button onClick = { onClickPlay }>{ localPlayingState ? 'Stop' : 'Play' }</button>
+          <button onClick = { onClickPlay }>{ localPlayingState ? 'Stop' : 'Play' }</button>
+        </div>
         <div className = { styles.analizer }>
           <canvas ref = { canvasRef } width = '200' height = '200'></canvas>
         </div>
-        <div>{ loading ? 'loading' : 'no loading' }</div>
-      </div>
+        <div>{ loading ? 'loading' : 'no loading' }</div> */}
       </div>
       <div className = { styles.rightSide }>
         <ul>
@@ -199,4 +202,4 @@ const mapStateToProps = (state: StateToProps) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Player))
+export default withRouter(connect(mapStateToProps)(DiforbApp))

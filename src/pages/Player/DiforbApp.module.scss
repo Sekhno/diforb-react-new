@@ -7,7 +7,7 @@
   height: 100vh;
   overflow: hidden;
   display: grid;
-  grid-template-columns: [LEFT] 1fr [LEFT_SIDE_PLAYER] 700px [RIGHT_SIDE_PLAYER] 1fr [RIGHT];
+  grid-template-columns: [LEFT] 1fr [LEFT_SIDE_PLAYER] 650px [RIGHT_SIDE_PLAYER] 1fr [RIGHT];
   grid-template-rows: [TOP] auto [BOTTOM];
 
   .leftSide {
@@ -29,7 +29,9 @@
     grid-column-end: [RIGHT_SIDE_PLAYER];
     grid-row-start: [TOP];
     grid-row-end: [BOTTOM];
-    text-align: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
 
     .analizer {
       canvas {
