@@ -8,3 +8,9 @@ export enum MouseEvents  {
   MOUSEMOVE = 'mousemove'
 }
 
+export enum ReverbsEnum {
+  Room = 'room',
+  Hall = 'hall',
+  Stadium = 'stadium'
+}
+

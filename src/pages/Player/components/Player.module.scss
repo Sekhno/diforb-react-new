@@ -102,7 +102,40 @@
           top: 14px; left: 7px;
         }
 
-        .sliderMiddleRight {}
+        .sliderMiddleRight {
+          position: relative;
+          top: 14px; right: 7px;
+        }
+      }
+
+      .pitchWrappers {
+        display: flex;
+        justify-content: space-between;
+
+        .pitchLeft {}
+
+        .pitchRight {}
+      }
+
+      .sliderBottom {
+        display: flex;
+        justify-content: space-between;
+
+        .sliderBottomLeft {
+          position: relative;
+          top: 20px; left: 56px;
+        }
+
+        .sliderBottomRight {
+          position: relative;
+          top: 20px; right: 59px;
+        }
+
+        .bottomControl {
+          display: inherit;
+          flex-direction: column;
+          
+        }
       }
     }
   } 

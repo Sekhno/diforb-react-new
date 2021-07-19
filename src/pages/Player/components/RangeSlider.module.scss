@@ -1,16 +1,8 @@
 
 @import '../../../assets/styles/app/variable.scss';
-/*
-  const className = {
-    volumeRange: "volume-range",
-    volumeGrad: "volume-grad",
-    sliderGrad: "slider-grad",
-    handler: "handler"
-  }
-*/
 
 .volumeRange {
-  fill: #CACACA; //$green;
+  fill: #CACACA;
   .volumeRangeShadow {
     fill: #709795;
     opacity: .8;
@@ -31,13 +23,51 @@
     opacity: .7;
   }
   .handlerInner {
-    // color: #4AB873;
     fill: $green-dark;
   }
   &:hover {
     cursor: pointer;
     .handlerInner {
       fill: $green;
+    }
+  }
+}
+
+.reverbButton {
+  fill: #E9E9E2;
+  
+  .active {
+    .reverbButtonBorder {
+      fill: #4AB873;
+    }
+    .reverbButtonInner {
+      fill: #4AB873;
+    }
+  }
+
+  text {
+    fill: #838383;
+    font-size: 12px;
+    text-transform: uppercase;
+    user-select: none;  
+  }
+
+  &Border {
+    fill: #838383
+  }
+
+  &Wrapper {
+    opacity: 0.8;
+  }
+
+  &Inner {
+    fill: #838383 // #4AB873
+  }
+
+  &:hover {
+    cursor: pointer;
+    .reverbButtonInner {
+      fill: #4AB873;
     }
   }
 }
