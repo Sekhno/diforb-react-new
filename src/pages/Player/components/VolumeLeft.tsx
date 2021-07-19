@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { fromEvent, Subscription } from 'rxjs'
 import { MouseEvents } from '../types'
-import { PropsSliderInterface } from './types/interfaces'
+import { PropsSliderInterface } from '../types'
 import styles from './RangeSlider.module.scss'
 
 

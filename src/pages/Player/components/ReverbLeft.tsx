@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { fromEvent, Subscription } from 'rxjs'
 import { MouseEvents, ReverbsEnum } from '../types'
-import { PropsSliderInterface } from './types/interfaces'
+import { PropsSliderInterface } from '../types'
 import styles from './RangeSlider.module.scss'
 
 const RADIUS = 256
@@ -27,7 +27,7 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
   let centerX = RADIUS + OFFSETX, centerY = RADIUS - OFFSETY
   let X, Y
 
-  const { onChange } = props
+  const { onChange, onChangeReverbType } = props
   const handlerMove = (event: Event) => {
     const { offsetY } = (event as MouseEvent)
     if (offsetY > TOP && offsetY <= BOTTOM) {
@@ -40,6 +40,10 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
       onChange && onChange(value)
     }
   }
+  const clickHandle = (type: ReverbsEnum) => {
+		onChangeReverbType && onChangeReverbType(type)
+		setCurrent(type === current ? null : type)
+	}
   const reverbBtns = reverbConfigs.map((value, index) => {
     index = index + 1
     return (
@@ -47,7 +51,7 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
         key = { 'reverb_left_' + index }
         className = { styles.reverbButton }
         transform = { `translate(${ value.x }, ${ value.y })` }
-        onClick = {_ => setCurrent(value.title === current ? null : value.title)}
+        onClick = {() => clickHandle(value.title)}
       >
         <g className = { current === value.title ? styles.active : '' }>
           <path className = { styles.reverbButtonBorder } d='M7.995,2c2.375,0,4.626,1.421,5.57,3.761c1.241,3.071-0.243,6.565-3.314,7.804
@@ -83,7 +87,7 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
           <path className = { styles.reverbButtonInner } fillRule='evenodd' clipRule='evenodd' d='M11.003,8.002c0,1.656-1.344,2.998-3,2.998c-1.658,0-3.001-1.342-3-3c0-1.656,1.343-2.999,3-2.999C9.661,5.001,11.004,6.346,11.003,8.002z' />
         </g>
         <g>
-          <text x='25' y='10'  textRendering='optimizeLegibility' fontVariant='small-caps' letterSpacing='0.22px'>
+          <text x='25' y='10' textRendering='optimizeLegibility' fontVariant='small-caps' letterSpacing='0.22px'>
             { value.title }
           </text>
         </g>
@@ -240,23 +244,23 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
             <stop offset='0.8328' style={{ stopColor: '#5A5A5A', stopOpacity: 0 }} />
           </linearGradient>
           <path fill='url(#REVERB_LEFT_HANDLER)' d='M28.444,23.575c0.949-2.236,0.973-4.709,0.062-6.964c-0.484-1.197-1.199-2.244-2.08-3.104
-                        l0.004-0.007L16.321,3.393l-0.005,0.003c-1.664-1.629-3.92-2.589-6.358-2.589c-1.165,0-2.31,0.223-3.396,0.66
-                        C4.309,2.374,2.544,4.108,1.596,6.345c-0.949,2.235-0.971,4.709-0.061,6.96c0.538,1.33,1.368,2.467,2.388,3.38l9.274,9.272
-                        c1.695,1.97,4.178,3.153,6.887,3.153c1.167,0,2.309-0.221,3.396-0.662C25.729,27.541,27.495,25.812,28.444,23.575z' />
+            l0.004-0.007L16.321,3.393l-0.005,0.003c-1.664-1.629-3.92-2.589-6.358-2.589c-1.165,0-2.31,0.223-3.396,0.66
+            C4.309,2.374,2.544,4.108,1.596,6.345c-0.949,2.235-0.971,4.709-0.061,6.96c0.538,1.33,1.368,2.467,2.388,3.38l9.274,9.272
+            c1.695,1.97,4.178,3.153,6.887,3.153c1.167,0,2.309-0.221,3.396-0.662C25.729,27.541,27.495,25.812,28.444,23.575z' />
           <g>
             <path className = { styles.handlerWrapper } fill='#E9E9E2' d='M19.267,6.264C17.731,2.46,14.09,0,9.99,0C8.709,0,7.453,0.246,6.258,0.727
-                            C3.782,1.725,1.843,3.629,0.8,6.088c-1.042,2.457-1.066,5.175-0.066,7.649C2.27,17.542,5.911,20,10.01,20
-                            c1.282,0,2.538-0.244,3.733-0.728c2.474-0.996,4.413-2.898,5.455-5.356C20.244,11.46,20.267,8.74,19.267,6.264z' />
+              C3.782,1.725,1.843,3.629,0.8,6.088c-1.042,2.457-1.066,5.175-0.066,7.649C2.27,17.542,5.911,20,10.01,20
+              c1.282,0,2.538-0.244,3.733-0.728c2.474-0.996,4.413-2.898,5.455-5.356C20.244,11.46,20.267,8.74,19.267,6.264z' />
             <linearGradient id='REVERB_LEFT_HANDLER_2' gradientUnits='userSpaceOnUse' x1='2.3364' y1='3.5698' x2='17.6648' y2='16.4319'>
               <stop offset='0' style={{ stopColor: '#FFFFFF' }} />
               <stop offset='1' style={{ stopColor: '#A8A6A6' }} />
             </linearGradient>
             <path fill='url(#REVERB_LEFT_HANDLER_2)' d='M9.99,1c3.689,0,6.966,2.213,8.35,5.638c0.901,2.231,0.879,4.677-0.062,6.888
-                            c-0.938,2.211-2.681,3.923-4.91,4.82C12.294,18.779,11.164,19,10.01,19c-3.689,0-6.966-2.213-8.349-5.638
-                            c-0.9-2.227-0.879-4.672,0.06-6.884C2.66,4.266,4.404,2.552,6.631,1.654C7.711,1.22,8.841,1,9.99,1 M9.99,0
-                            C8.709,0,7.453,0.246,6.258,0.727C3.782,1.725,1.843,3.629,0.8,6.088c-1.042,2.457-1.066,5.175-0.066,7.649
-                            C2.27,17.542,5.911,20,10.01,20c1.282,0,2.538-0.244,3.733-0.728c2.474-0.996,4.413-2.898,5.455-5.356
-                            c1.045-2.456,1.069-5.176,0.069-7.652C17.731,2.46,14.09,0,9.99,0L9.99,0z' />
+              c-0.938,2.211-2.681,3.923-4.91,4.82C12.294,18.779,11.164,19,10.01,19c-3.689,0-6.966-2.213-8.349-5.638
+              c-0.9-2.227-0.879-4.672,0.06-6.884C2.66,4.266,4.404,2.552,6.631,1.654C7.711,1.22,8.841,1,9.99,1 M9.99,0
+              C8.709,0,7.453,0.246,6.258,0.727C3.782,1.725,1.843,3.629,0.8,6.088c-1.042,2.457-1.066,5.175-0.066,7.649
+              C2.27,17.542,5.911,20,10.01,20c1.282,0,2.538-0.244,3.733-0.728c2.474-0.996,4.413-2.898,5.455-5.356
+              c1.045-2.456,1.069-5.176,0.069-7.652C17.731,2.46,14.09,0,9.99,0L9.99,0z' />
           </g>
           <path className = { styles.handlerInner } fillRule='evenodd' clipRule='evenodd' fill='#4AB873' d='M13.749,10.003c0,2.07-1.68,3.747-3.748,3.747c-2.072,0-3.75-1.677-3.75-3.75c0-2.07,1.68-3.749,3.75-3.749S13.75,7.933,13.749,10.003z' />
         </g>

@@ -128,13 +128,14 @@
 
         .sliderBottomRight {
           position: relative;
-          top: 20px; right: 59px;
+          top: 20px; right: 56px;
         }
 
         .bottomControl {
           display: inherit;
           flex-direction: column;
-          
+          position: relative;
+          z-index: 1;
         }
       }
     }

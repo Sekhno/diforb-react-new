@@ -14,3 +14,8 @@ export enum ReverbsEnum {
   Stadium = 'stadium'
 }
 
+export interface PropsSliderInterface {
+  onChange?: (gain: number) => void
+  onChangeReverbType?: (type: ReverbsEnum) => void
+}
+

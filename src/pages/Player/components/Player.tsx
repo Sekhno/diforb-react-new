@@ -41,14 +41,20 @@ export const Player = () => {
 					</div>
 					<div className = { styles.sliderBottom }>
 						<div className = { styles.sliderBottomLeft }>
-							<ReverbLeft/>
+							<ReverbLeft 
+								onChange = {(gain) => console.log(gain)} 
+								onChangeReverbType = {(type) => console.log(type)}
+							/>
 						</div>
 						<div className = { styles.bottomControl }>
 							<button>Play</button>
 							<button>Download</button>
 						</div>
 						<div className = { styles.sliderBottomRight }>
-							<ReverbRight />
+							<ReverbRight 
+								onChange = {(gain) => console.log(gain)} 
+								onChangeReverbType = {(type) => console.log(type)}
+							/>
 						</div>
 					</div>
 				</div>
