@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, ReactNode, useRef } from 'react'
+import React, { FC, useEffect, useState, ReactNode, useRef, createRef, RefObject } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { 
@@ -16,8 +16,7 @@ import {
   onPlay 
 } from '../../services/audio/audio.instance'
 import Player from './components/Player'
-import Diforb from './Diforb/Diforb'
-import { ReverbType } from './types'
+import { ReverbsEnum, ReverbType } from './types'
 import styles from './DiforbApp.module.scss'
 
 const sound1 = 'libraries/Interface/Music/Positive/Digital_01.wav'
@@ -35,7 +34,7 @@ const defaultReverState = {
 }
 
 const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
-  const canvasRef = useRef(null)
+  const canvasRef = createRef()
   const dispatch = useDispatch()
   const [ loading, setLoading ] = useState(false)
   const [ localPlayingState, setLocalPlayingState ] = useState(false)
@@ -43,11 +42,11 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   const [ rightReverb, setRightReverbs ] = useState(defaultReverState)
   const { playing } = props
   
-  
   useEffect(() => {
+    console.log(canvasRef)
     if (canvasRef && canvasRef.current) {
       setupRoutingGraph(() => {
-        saveCanvasElem(canvasRef.current)
+        saveCanvasElem((canvasRef as RefObject<HTMLCanvasElement>)?.current)
         setupReverbBuffers()
       })
     }
@@ -107,8 +106,21 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
         </ul>
       </div>
       <div className = { styles.player }>
-        {/* <Diforb/> */}
-        <Player />
+        <div style = {{textAlign: 'center'}}>{ loading ? 'loading' : 'no loading' }</div> 
+        <Player 
+          ref = { canvasRef }
+          playing = { localPlayingState }
+          changeTimeshiftValue = { changeTimeshiftValue }
+          changeLeftVolumeValue = { changeLeftVolumeGain }
+          changeRightVolumeValue = { changeRightVolumeGain }
+          changeLeftPitchValue = { changeLeftPitchValue }
+          changeRightPitchValue = { changeRightPitchValue }
+          changeLeftReverVolumeGain = { changeLeftReverVolumeGain }
+          changeRightReverVolumeGain = { changeRightReverVolumeGain }
+          changeLeftReverType = {(type: ReverbsEnum) => setLeftReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
+          changeRightReverType = {(type: ReverbsEnum) => setRightReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
+          onClickPlay = { onClickPlay }
+        />
         {/* <div className = { styles.timeshift }>
           <label>
             Timeshift: 

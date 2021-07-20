@@ -1,15 +1,10 @@
 import React, { createRef, useRef, useEffect, LegacyRef } from 'react'
 import { fromEvent, Subscription } from 'rxjs'
-import { MouseEvents } from '../types'
+import { MouseEvents, PropsSliderInterface } from '../types'
 import styles from './RangeSlider.module.scss'
 
 
-
-interface PropsInterface {
-  onChange?: (gain: number) => {}
-}
-
-export const Timeshift = (props: PropsInterface) => {
+export const Timeshift = (props: PropsSliderInterface) => {
   const { onChange } = props
   const handlerRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
   const handlerMove = (event: Event) => {
@@ -34,7 +29,6 @@ export const Timeshift = (props: PropsInterface) => {
 
     handlerRef.current && handlerRef.current.setAttribute(prop, value)
     onChange && onChange(volume)
-    console.log(volume)
   }
 
   useEffect(() => {

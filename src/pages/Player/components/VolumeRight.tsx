@@ -1,11 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { fromEvent, Subscription } from 'rxjs'
-import { MouseEvents } from '../types'
+import { MouseEvents, PropsSliderInterface } from '../types'
 import styles from './RangeSlider.module.scss'
-
-interface PropsInterface {
-  onChange?: (gain: number) => {}
-}
 
 const RADIUS = 233
 const OFFSETX = 75  
@@ -16,7 +12,7 @@ const DIFFANGLE = STARTANGLE - ENDANGLE
 const TOP = 13, BOTTOM = 200
 const STEP = DIFFANGLE / (BOTTOM - TOP)
 
-export const VolumeRight = (props: PropsInterface) => {
+export const VolumeRight = (props: PropsSliderInterface) => {
   let angle = STARTANGLE - DIFFANGLE / 2
   let centerX = RADIUS + OFFSETX, centerY = RADIUS - OFFSETY
   let X, Y

@@ -152,12 +152,12 @@ const changeRightReverVolumeGain = (gain: number) => {
 }
 
 const changeLeftPitchValue = (gain: number) => {
-  leftPitchValue = gain / 50
+  leftPitchValue = 0.01 * (gain + 100 )
   if (source1) {
     source1.playbackRate.value = leftPitchValue
   }
   console.log(leftPitchValue)
-  console.log(Math.tan(leftPitchValue))
+  // console.log(Math.tan(leftPitchValue))
 }
 
 const changeRightPitchValue = (gain: number) => {
