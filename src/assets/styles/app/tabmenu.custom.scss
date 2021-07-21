@@ -1,0 +1,41 @@
+@import './variable.scss';
+
+// Container element.
+.p-tabmenu	{
+
+  // List element of headers.
+  .p-tabmenu-nav {
+    background: transparent;
+    border: none;
+
+    // Menuitem element.
+    .p-tabmenuitem	{
+
+      &.p-highlight {
+        .p-menuitem-link	{
+          opacity: 1;
+          background: transparent;
+          border-color: transparent;
+          color: transparent;
+        }
+      }
+
+      // Link inside a menuitem.
+      .p-menuitem-link	{
+
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+        opacity: 0.8;
+
+        // Label of a menuitem.
+        .p-menuitem-text	{}
+
+        // Icon of a menuitem.
+        .p-menuitem-icon	{
+          font-size: 28px;
+        }
+      }
+    }
+  }	
+}

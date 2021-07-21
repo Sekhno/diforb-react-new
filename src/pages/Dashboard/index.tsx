@@ -5,14 +5,14 @@ import { Carousel }         from 'primereact/carousel'
 import { Toolbar }          from 'primereact/toolbar'
 import { Button }           from 'primereact/button'
 import { Avatar }           from 'primereact/avatar'
+import { TabMenu }          from 'primereact/tabmenu'
 import { getFirebaseBackend } from '../../helpers/firebase.helper'
 import { Library }          from '../../helpers/firebase.interface'
 import { onLogout }         from '../../async/authActions'
 import { onLoadLibraries }  from '../../async/dashboardAction'
 import CarouselItem         from './CarouselItem'
+import image                from '../../assets/img/wire-frame.png'
 import styles               from './Dashboard.module.scss'
-
-
 
 
 const Dashboard = (): JSX.Element => {
@@ -38,7 +38,13 @@ const Dashboard = (): JSX.Element => {
   }
   ]
   const LeftContents = (): JSX.Element => {
-    return <span className = { 'icon-diforb-logo' }/>
+    const leftContentsItems = [
+      { label: 'Libraries', icon: 'icon-libs' },
+      { label: 'Terms', icon: 'icon-certificate' },
+      { label: 'F.A.Q.', icon: 'icon-info' }
+    ]
+    return <TabMenu model = { leftContentsItems } activeIndex = { 0 } 
+      onTabChange={(e) => console.log(e.value)}/>
   }
   const RightContents = (): JSX.Element => {
     return (
@@ -80,21 +86,32 @@ const Dashboard = (): JSX.Element => {
           responsiveOptions = { responsiveOptions }
           itemTemplate = { CarouselItem } 
           header = { null } 
-          page = { page }
-          circular = { true }
-          onPageChange = {(e) => setPage(e.page)}
+          // page = { page }
+          autoplayInterval = { 3000 }
+          circular
+          // onPageChange = {(e) => setPage(e.page)}
         />
       </section>
       <section className = { styles.sectionSlogan }>
-        <p>
-          <i className = 'icon-diforb-logo'/>
-          – это онлайн сервис для создания звуковых эффектов и музыки.
-          Наша целевая аудитория - разработчики компьютерных игр, но сервис также будет 
-          полезен и в других направлениях : анимация, реклама, презентации и другие медиа продукты. 
-          На сегодняшний день у нас готов прототип для создания звуков. 
-          Проведено тестирование гипотез на русскоязычной аудитории и получены положительные отзывы.
-        </p>
+        <div className = 'p-grid'>
+          <div className = 'p-col-8'>
+            <i className = 'icon-diforb-logo'/>
+            – это онлайн сервис для создания звуковых эффектов и музыки.
+            Наша целевая аудитория - разработчики компьютерных игр, но сервис также будет 
+            полезен и в других направлениях : анимация, реклама, презентации и другие медиа продукты. 
+            На сегодняшний день у нас готов прототип для создания звуков. 
+            Проведено тестирование гипотез на русскоязычной аудитории и получены положительные отзывы.
+          </div>
+          <div className = 'p-col-4'>
+            <img src = { image } alt = '' />
+          </div>
+         
+          
+          
+          
+        </div>
       </section>
+      
     </div>
   )
 }

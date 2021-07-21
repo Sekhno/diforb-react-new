@@ -1,5 +1,6 @@
 import React, { MouseEvent } from 'react'
 import { ProgressBar, ProgressBarProps } from 'primereact/progressbar'
+import { Rating }           from 'primereact/rating';
 import { LibraryInterface } from '../../models/interfaces'
 import styles               from './CarouselItem.module.scss'
 
@@ -31,18 +32,13 @@ const CarouselItem = (library: LibraryInterface): JSX.Element => {
         <img src = { cover } alt = 'cover_image' onLoad = {(e) => onLoad((e.target as HTMLImageElement).parentElement?.parentElement)}/>
       </div>
       <div className = { styles.footer }>
-        {/* <div className = {styles.title}>{ name }</div> */}
         <div className = { styles.controls }>
           <button>Launch</button>
-          {/* <Button label = 'Launch'/>*/
-          <i 
-            className = { IconsUi.RadialPlay } 
+          <i className = { IconsUi.RadialPlay } 
             onClick = {(e: MouseEvent) => onClickPlay(e.target as HTMLElement, playing = !playing)}
-          /> }
+          />
         </div>
         <ProgressBar { ...progressBarProps } />
-        
-        {/* <p>{ description }</p> */}
       </div>
     </article>
   )

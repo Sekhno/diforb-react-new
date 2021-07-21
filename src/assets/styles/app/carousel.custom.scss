@@ -4,6 +4,24 @@
 
   .p-carousel-container {
 
+    .p-link {
+      font-family: 'Diforb_ui';
+      &.p-carousel-prev {
+        .pi {
+          &:before {
+            content: "\e912";
+          }
+        }
+      }
+      &.p-carousel-next {
+        .pi {
+          &:before {
+            content: "\e914";
+          }
+        }
+      }
+    }
+
     .p-carousel-items-content {
       perspective: 1200px;
 
@@ -12,6 +30,8 @@
         transition-duration: 0ms;
         transform: translate3d(0px, 0px, 0px);
         perspective-origin: 0px 50%;
+
+        
 
         .p-carousel-item {
           will-change: transform;
