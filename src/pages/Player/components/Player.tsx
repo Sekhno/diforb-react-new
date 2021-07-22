@@ -9,6 +9,7 @@ import ReverbRight from './ReverbRight'
 import styles 		from './Player.module.scss'
 
 interface PlayerPropsInterface {
+	id: string
 	playing: boolean | undefined
 	changeTimeshiftValue: (gain: number) => void
 	changeLeftVolumeValue: (gain: number) => void
@@ -24,7 +25,7 @@ interface PlayerPropsInterface {
 
 export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 	const { 
-		playing,
+		id, playing,
 		changeTimeshiftValue,
 		changeLeftVolumeValue,
 		changeRightVolumeValue,
@@ -52,7 +53,7 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 								</div> 
 								<div className = { styles.title } style = {{ opacity: playing ? '0' : '1' }}>
 									<i className = 'icon-logo'></i>
-									<h1>{ 'Interface' }</h1>
+									<h1>{ id }</h1>
 								</div>
 							</div>
 						</div>

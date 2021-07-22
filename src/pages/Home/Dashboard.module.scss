@@ -1,0 +1,84 @@
+@import '../../assets/styles/app/variable.scss';
+
+body {
+  overflow-x: hidden;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: auto;
+  
+
+  .sectionSlogan {
+    padding: 1rem 0;
+    
+
+    .slogan {
+      height: 100%;
+      padding-top: 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      span {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        // text-align: justify;
+
+        
+      }
+      i {
+        margin-left: -1rem;
+        font-size: 14rem;
+        // line-height: 3rem;
+      }
+    }
+
+    .image {
+      position: relative;
+
+      img {
+        position: absolute;
+        top: 0; left: 0;
+        width: 600px;
+        filter: drop-shadow(2px 2px 1rem $green);
+      }
+    }
+    
+  }
+
+  .sectionCarousel {
+    // max-width: 1024px;
+    // margin: auto;
+    padding: 2rem 0;
+  }
+
+  .sectionProblems {
+    max-width: 1180px;
+    margin: auto;
+
+    ul {
+      padding: 0;
+    }
+  }
+
+  .sectionTeams {
+    max-width: 1180px;
+    margin: auto;
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      margin: auto;
+      border-radius: 50%;
+      border: 1px solid;
+      overflow: hidden;
+
+      img {
+        // height: 100%;
+        width: 100%;
+      }
+    }
+
+  }
+}

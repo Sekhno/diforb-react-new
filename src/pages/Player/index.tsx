@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState, ReactNode, useRef, createRef, RefObject } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, useParams } from 'react-router-dom'
 import { 
   setupRoutingGraph, 
   setupReverbBuffers,
@@ -17,7 +17,7 @@ import {
 } from '../../services/audio/audio.instance'
 import Player from './components/Player'
 import { ReverbsEnum, ReverbType } from './types'
-import styles from './DiforbApp.module.scss'
+import styles from './index.module.scss'
 
 const sound1 = 'libraries/Interface/Music/Positive/Digital_01.wav'
 const sound2 = 'libraries/Interface/Music/Negative/Digital_01.wav'
@@ -34,6 +34,7 @@ const defaultReverState = {
 }
 
 const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
+  const { id } = useParams<{id: string}>()
   const canvasRef = createRef()
   const dispatch = useDispatch()
   const [ loading, setLoading ] = useState(false)
@@ -108,6 +109,7 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
       <div className = { styles.player }>
         <div style = {{textAlign: 'center'}}>{ loading ? 'loading' : 'no loading' }</div> 
         <Player 
+          id = { id }
           ref = { canvasRef }
           playing = { localPlayingState }
           changeTimeshiftValue = { changeTimeshiftValue }

@@ -1,4 +1,5 @@
 import React, { MouseEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { ProgressBar, ProgressBarProps } from 'primereact/progressbar'
 import { Rating }           from 'primereact/rating';
 import { LibraryInterface } from '../../models/interfaces'
@@ -33,7 +34,7 @@ const CarouselItem = (library: LibraryInterface): JSX.Element => {
       </div>
       <div className = { styles.footer }>
         <div className = { styles.controls }>
-          <button>Launch</button>
+          <button> <Link to = {`/app/${name}`}>Launch</Link>  </button>
           <i className = { IconsUi.RadialPlay } 
             onClick = {(e: MouseEvent) => onClickPlay(e.target as HTMLElement, playing = !playing)}
           />

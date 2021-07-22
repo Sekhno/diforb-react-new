@@ -1,6 +1,5 @@
-export function drawAudioWave (channelData, ctx) {
+export function drawAudioWave (channelData: any, ctx: any) {
   if (!ctx) return
-  console.log(channelData[40])
   ctx.clearRect(0, 0, 204, 204);
 
   for (var i = 0; i < 51; i++) {

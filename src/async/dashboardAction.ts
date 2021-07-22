@@ -1,5 +1,5 @@
 import { getFirebaseFirestore } from '../helpers/firebase.helper'
-import { getLibraries } from '../pages/Dashboard/dashboardSlice'
+import { getLibraries } from '../pages/Home/dashboardSlice'
 
 export const onLoadLibraries = () => {
   const firestore = getFirebaseFirestore()
