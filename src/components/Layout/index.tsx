@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { withRouter, RouteComponentProps, useHistory, Link } from 'react-router-dom'
+import { withRouter, RouteComponentProps, useHistory, Link, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch }  from 'react-redux'
 import { Toolbar }          from 'primereact/toolbar'
 import { Button }           from 'primereact/button'
@@ -10,7 +10,7 @@ import { getFirebaseBackend } from '../../helpers/firebase.helper'
 
 
 interface PropsType extends RouteComponentProps {
-  children: JSX.Element
+  children: JSX.Element,
 }
 
 interface HeaderLeftSideItemType {
@@ -20,10 +20,12 @@ interface HeaderLeftSideItemType {
 }
 
 const Layout = (props: PropsType): JSX.Element => {
+  const location = useLocation()
   const dispatch = useDispatch()
   const history = useHistory()
   const isLogged = useSelector((state: { auth: { isLogged: boolean } }) => state.auth.isLogged)
   const firebaseBackend = getFirebaseBackend()
+  console.log(location)
 
   const LeftContents = (): JSX.Element => {
     const leftContentsItems = [
@@ -41,7 +43,7 @@ const Layout = (props: PropsType): JSX.Element => {
     return (
       <React.Fragment>
         {
-          leftContentsItems.map(item => <ItemTemplate { ...item } />)
+          leftContentsItems.map(item => <ItemTemplate key = { item.label } { ...item } />)
         }
       </React.Fragment>
     )
@@ -67,6 +69,15 @@ const Layout = (props: PropsType): JSX.Element => {
     )
   }
 
+  const Header = () => {
+    return <React.Fragment>
+      { 
+        location.pathname.substr(1, 3) === 'app' ? null :
+        <Toolbar left = { LeftContents } right = { RightContents }/> 
+      }
+    </React.Fragment>
+  }
+
   useEffect(() => {
     console.log('use Effect', isLogged)
     if (firebaseBackend?.getAuthenticatedUser() === null) {
@@ -76,7 +87,7 @@ const Layout = (props: PropsType): JSX.Element => {
   
   return (
     <React.Fragment>
-      <Toolbar left = { LeftContents } right = { RightContents }/> 
+      <Header/>
       <div>{ props.children }</div>
     </React.Fragment>
   )

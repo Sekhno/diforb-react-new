@@ -43,5 +43,27 @@ export interface FirebaseConfig {
 }
 
 export interface Library {
-  
+  cover: string,
+  data: LibrariesCategory[],
+  description: string,
+  name: string
+}
+
+interface LibrariesCategory {
+  type: 'category',
+  icon: string,
+  name: string,
+  data: LibrariesSubCategory[]
+}
+
+interface LibrariesSubCategory {
+  type: 'subcategory'
+  icon: string,
+  name: string,
+  data: LibrariesSound[]
+}
+
+interface LibrariesSound {
+  type: 'sound'
+  name: string
 }

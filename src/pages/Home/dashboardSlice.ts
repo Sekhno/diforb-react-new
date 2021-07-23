@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { Library } from '../../helpers/firebase.interface'
 
 
 export const dashboardSlice = createSlice({
   name: 'dashboard',
   initialState: {
-    libraries: <any[]>[]
+    libraries: <Library[]>[]
   },
   reducers: {
-    getLibraries: (state, action: PayloadAction<any[]>) => {
+    getLibraries: (state, action: PayloadAction<Library[]>) => {
       state.libraries = action.payload
     },
   }

@@ -16,11 +16,17 @@ import {
   onPlay 
 } from '../../services/audio/audio.instance'
 import Player from './components/Player'
+import LeftSide from './components/LeftSide'
+import RightSide from './components/RightSide'
 import { ReverbsEnum, ReverbType } from './types'
+import { StoreType } from '../../store/types'
+import { onLoadLibraries } from '../../async/dashboardAction'
 import styles from './index.module.scss'
 
 const sound1 = 'libraries/Interface/Music/Positive/Digital_01.wav'
 const sound2 = 'libraries/Interface/Music/Negative/Digital_01.wav'
+
+
 
 interface PlayerProps {
   children?: ReactNode
@@ -36,7 +42,9 @@ const defaultReverState = {
 const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   const { id } = useParams<{id: string}>()
   const canvasRef = createRef()
+  const library = useSelector((state: StoreType) => state.dashboard.libraries).filter(v => v.name === id)[0]
   const dispatch = useDispatch()
+
   const [ loading, setLoading ] = useState(false)
   const [ localPlayingState, setLocalPlayingState ] = useState(false)
   const [ leftReverb, setLeftReverbs ] = useState(defaultReverState)
@@ -44,13 +52,13 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   const { playing } = props
   
   useEffect(() => {
-    console.log(canvasRef)
     if (canvasRef && canvasRef.current) {
       setupRoutingGraph(() => {
         saveCanvasElem((canvasRef as RefObject<HTMLCanvasElement>)?.current)
         setupReverbBuffers()
       })
     }
+    dispatch(onLoadLibraries())
   }, [])
 
   useEffect(() => {
@@ -102,9 +110,12 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   return (
     <div className = { styles.wrapper }>
       <div className = { styles.leftSide }>
-        <ul>
+        <LeftSide 
+          library = { library } 
+        />
+        {/* <ul>
           <li onClick = {() => onSelectLeftSound(sound1)}>Left sound 1</li>
-        </ul>
+        </ul> */}
       </div>
       <div className = { styles.player }>
         <div style = {{textAlign: 'center'}}>{ loading ? 'loading' : 'no loading' }</div> 
@@ -123,82 +134,14 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
           changeRightReverType = {(type: ReverbsEnum) => setRightReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
           onClickPlay = { onClickPlay }
         />
-        {/* <div className = { styles.timeshift }>
-          <label>
-            Timeshift: 
-            <input type = 'range' onChange = {(e) => changeTimeshiftValue(+e.target.value - 50)}/>
-          </label>
-        </div>
-        <div className = { styles.leftVolume }>
-          <label>
-            Left Volume
-            <input type = 'range' onChange = {(e) =>  changeLeftVolumeGain(+e.target.value) }/>
-          </label>
-        </div>
-        <div className = { styles.rightVolume }>
-          <label>
-            Right Volume
-            <input type = 'range' onChange = {(e) => changeRightVolumeGain(+e.target.value)}/>
-          </label>
-        </div>
-        <div className = { styles.leftReverb }>
-          <input type = 'range' onChange = {(e) => changeLeftReverVolumeGain(+e.target.value)}/>
-          <label>
-            <input type="checkbox" name = 'leftReverb' checked = { leftReverb.room } 
-              onChange = {(e) => { setLeftReverbs({ ...defaultReverState, room: !leftReverb.room }) }}
-            /> Room
-          </label>
-          <label>
-            <input type="checkbox" name = 'leftReverb' checked = { leftReverb.hall } 
-              onChange = {(e) => { setLeftReverbs({ ...defaultReverState, hall: !leftReverb.hall }) }}
-            /> Hall
-          </label>
-          <label>
-            <input type="checkbox" name = 'leftReverb' checked = { leftReverb.stadium }
-            onChange = {(e) => { setLeftReverbs({ ...defaultReverState, stadium: !leftReverb.stadium }) }}
-          /> Stadium
-          </label>
-        </div>
-        <div className = { styles.rightReverb }>
-          <input type = 'range' onChange = {(e) => changeRightReverVolumeGain(+e.target.value)}/>
-          <label>
-            <input type="checkbox" name = 'rightReverb' checked = { rightReverb.room }
-              onChange = {(e) => { setRightReverbs({ ...defaultReverState, room: !rightReverb.room }) }}
-            /> Room
-          </label>
-          <label>
-            <input type="checkbox" name = 'rightReverb' checked = { rightReverb.hall }
-              onChange = {(e) => { setRightReverbs({ ...defaultReverState, hall: !rightReverb.hall }) }}
-            /> Hall
-          </label>
-          <label>
-            <input type="checkbox" name = 'rightReverb' checked = { rightReverb.stadium }
-              onChange = {(e) => { setRightReverbs({ ...defaultReverState, stadium: !rightReverb.stadium }) }}
-            /> Stadium
-          </label>
-        </div>
-        <div className = { styles.leftPitch }>
-          <label>
-            Left Pitch <input type = 'range' onChange = {(e) => changeLeftPitchValue(+e.target.value)}/>
-          </label>
-        </div>
-        <div className = { styles.rightPitch }>
-          <label>
-            Right Pitch <input type = 'range' onChange = {(e) => changeRightPitchValue(+e.target.value)}/>
-          </label>
-        </div>
-        <div className = { styles.btnPlay }>
-          <button onClick = { onClickPlay }>{ localPlayingState ? 'Stop' : 'Play' }</button>
-        </div>
-        <div className = { styles.analizer }>
-          <canvas ref = { canvasRef } width = '200' height = '200'></canvas>
-        </div>
-        <div>{ loading ? 'loading' : 'no loading' }</div> */}
       </div>
       <div className = { styles.rightSide }>
-        <ul>
+        <RightSide
+          library = { library } 
+        />
+        {/* <ul>
           <li onClick = {() => onSelectRightSound(sound2)}>Right sound 1</li>
-        </ul>
+        </ul> */}
       </div>
     </div>
   )
