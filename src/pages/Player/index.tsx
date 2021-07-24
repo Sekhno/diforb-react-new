@@ -1,6 +1,9 @@
-import React, { FC, useEffect, useState, ReactNode, useRef, createRef, RefObject } from 'react'
+import React, { FC, useEffect, useState, ReactNode, createRef, RefObject, Fragment, SyntheticEvent } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { withRouter, useParams } from 'react-router-dom'
+import { PlayState, Tween } from 'react-gsap'
+import { fromEvent, filter, distinctUntilChanged } from 'rxjs'
+import { InputSwitch } from 'primereact/inputswitch'
 import { 
   setupRoutingGraph, 
   setupReverbBuffers,
@@ -18,13 +21,10 @@ import {
 import Player from './components/Player'
 import LeftSide from './components/LeftSide'
 import RightSide from './components/RightSide'
-import { ReverbsEnum, ReverbType } from './types'
+import { ReverbsEnum, ReverbType, KeypressEvent } from './types'
 import { StoreType } from '../../store/types'
 import { onLoadLibraries } from '../../async/dashboardAction'
 import styles from './index.module.scss'
-
-const sound1 = 'libraries/Interface/Music/Positive/Digital_01.wav'
-const sound2 = 'libraries/Interface/Music/Negative/Digital_01.wav'
 
 
 
@@ -40,17 +40,18 @@ const defaultReverState = {
 }
 
 const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
+  const { playing } = props
   const { id } = useParams<{id: string}>()
   const canvasRef = createRef()
   const library = useSelector((state: StoreType) => state.dashboard.libraries).filter(v => v.name === id)[0]
   const dispatch = useDispatch()
-
   const [ loading, setLoading ] = useState(false)
   const [ localPlayingState, setLocalPlayingState ] = useState(false)
   const [ leftReverb, setLeftReverbs ] = useState(defaultReverState)
   const [ rightReverb, setRightReverbs ] = useState(defaultReverState)
-  const { playing } = props
+  const [ activeMenu, setActiveMenu ] = useState(false)
   
+  console.log(activeMenu)
   useEffect(() => {
     if (canvasRef && canvasRef.current) {
       setupRoutingGraph(() => {
@@ -59,6 +60,8 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
       })
     }
     dispatch(onLoadLibraries())
+
+    
   }, [])
 
   useEffect(() => {
@@ -88,6 +91,22 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
     }
   }, [ leftReverb, rightReverb ])
 
+  useEffect(() => {
+    const keypressSubscription = fromEvent(document, KeypressEvent.KEYDOWN).pipe(
+      filter((e: Event) => (e as KeyboardEvent).keyCode === 27),
+      distinctUntilChanged()
+    ).subscribe(escpress => {
+      if (escpress.type === KeypressEvent.KEYDOWN) {
+        console.log(!activeMenu)
+        setActiveMenu(!activeMenu)
+      }
+    })
+
+    return () => {
+      keypressSubscription.unsubscribe()
+    }
+  }, [ activeMenu ])
+
   const onSelectLeftSound = async (sound: string) => {
     setLoading(true)
     await setBufferToLeftSide(sound)
@@ -108,43 +127,54 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   }
 
   return (
-    <div className = { styles.wrapper }>
-      <div className = { styles.leftSide }>
-        <LeftSide 
-          library = { library } 
-        />
-        {/* <ul>
-          <li onClick = {() => onSelectLeftSound(sound1)}>Left sound 1</li>
-        </ul> */}
+    <main className = { activeMenu ? styles.openedMenu : '' }>
+      <header className = { styles.header }>
+        <div className = { styles.leftSide }>
+          <i className = { true ? 'icon-volume' : 'icon-volume-off' }/>
+          <InputSwitch checked={true} onChange={(e) => console.log(e.value)} />
+          <span>Выберите звук</span>
+        </div>
+        <div className = { styles.rightSide }>
+          <i className = { true ? 'icon-volume' : 'icon-volume-off' }/>
+          <InputSwitch checked={true} onChange={(e) => console.log(e.value)} />
+          <span>Выберите звук</span>
+        </div>
+      </header>
+      <div className = { styles.wrapper }>
+        <div className = { styles.leftSide }>
+          <LeftSide 
+            library = { library } 
+            onChangeSound = {(url) => onSelectLeftSound(url)}
+          />
+        </div>
+        <div className = { styles.player }>
+          <div style = {{textAlign: 'center'}}>{ loading ? 'loading' : 'no loading' }</div> 
+          <Player 
+            id = { id }
+            ref = { canvasRef }
+            playing = { localPlayingState }
+            changeTimeshiftValue = { changeTimeshiftValue }
+            changeLeftVolumeValue = { changeLeftVolumeGain }
+            changeRightVolumeValue = { changeRightVolumeGain }
+            changeLeftPitchValue = { changeLeftPitchValue }
+            changeRightPitchValue = { changeRightPitchValue }
+            changeLeftReverVolumeGain = { changeLeftReverVolumeGain }
+            changeRightReverVolumeGain = { changeRightReverVolumeGain }
+            changeLeftReverType = {(type: ReverbsEnum) => setLeftReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
+            changeRightReverType = {(type: ReverbsEnum) => setRightReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
+            onClickPlay = { onClickPlay }
+          />
+        </div>
+        <div className = { styles.rightSide }>
+          <RightSide
+            library = { library } 
+            onChangeSound = {(url) => onSelectRightSound(url)}
+          />
+        </div>
       </div>
-      <div className = { styles.player }>
-        <div style = {{textAlign: 'center'}}>{ loading ? 'loading' : 'no loading' }</div> 
-        <Player 
-          id = { id }
-          ref = { canvasRef }
-          playing = { localPlayingState }
-          changeTimeshiftValue = { changeTimeshiftValue }
-          changeLeftVolumeValue = { changeLeftVolumeGain }
-          changeRightVolumeValue = { changeRightVolumeGain }
-          changeLeftPitchValue = { changeLeftPitchValue }
-          changeRightPitchValue = { changeRightPitchValue }
-          changeLeftReverVolumeGain = { changeLeftReverVolumeGain }
-          changeRightReverVolumeGain = { changeRightReverVolumeGain }
-          changeLeftReverType = {(type: ReverbsEnum) => setLeftReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
-          changeRightReverType = {(type: ReverbsEnum) => setRightReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
-          onClickPlay = { onClickPlay }
-        />
-      </div>
-      <div className = { styles.rightSide }>
-        <RightSide
-          library = { library } 
-        />
-        {/* <ul>
-          <li onClick = {() => onSelectRightSound(sound2)}>Right sound 1</li>
-        </ul> */}
-      </div>
-    </div>
+    </main>
   )
+  
 }
 
 interface StateToProps {

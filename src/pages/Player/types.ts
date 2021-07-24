@@ -16,6 +16,10 @@ export enum MouseEvents  {
   MOUSEMOVE = 'mousemove'
 }
 
+export enum KeypressEvent {
+  KEYDOWN = 'keydown'
+}
+
 export enum ReverbsEnum {
   Room = 'room',
   Hall = 'hall',
@@ -29,5 +33,6 @@ export interface PropsSliderInterface {
 
 export interface PropsSideInterface {
   library: Library
+  onChangeSound: (url: string) => void
 }
 

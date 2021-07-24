@@ -147,7 +147,7 @@ class KnobInput {
         this._input.addEventListener('focus', this._handlers.focus);
         this._input.addEventListener('blur', this._handlers.blur);
         // init
-        this.updateToInputValue();
+        // this.updateToInputValue();
     }
     
     static setupRotationContext(minRotation, maxRotation) {
@@ -163,12 +163,10 @@ class KnobInput {
     
     // handlers
     handleInputChange(evt) {
-        // console.log('input change');
         this.updateToInputValue();
     }
     
     handleTouchStart(evt) {
-        // console.log('touch start');
         this.clearDrag();
         evt.preventDefault();
         var touch = evt.changedTouches.item(evt.changedTouches.length - 1);
@@ -181,7 +179,6 @@ class KnobInput {
     }
     
     handleTouchMove(evt) {
-        // console.log('touch move');
         var activeTouch = this.findActiveTouch(evt.changedTouches);
         if (activeTouch) {
             this.updateDrag(activeTouch.clientY);
@@ -191,7 +188,6 @@ class KnobInput {
     }
     
     handleTouchEnd(evt) {
-        // console.log('touch end');
         var activeTouch = this.findActiveTouch(evt.changedTouches);
         if (activeTouch) {
             this.finalizeDrag(activeTouch.clientY);
@@ -199,14 +195,12 @@ class KnobInput {
     }
     
     handleTouchCancel(evt) {
-        // console.log('touch cancel');
         if (this.findActiveTouch(evt.changedTouches)) {
             this.clearDrag();
         }
     }
     
     handleMouseDown(evt) {
-        // console.log('mouse down');
         this.clearDrag();
         evt.preventDefault();
         this._activeDrag = true;
@@ -217,7 +211,6 @@ class KnobInput {
     }
     
     handleMouseMove(evt) {
-        // console.log('mouse move');
         if (evt.buttons&1) {
             this.updateDrag(evt.clientY);
         } else {
@@ -226,12 +219,10 @@ class KnobInput {
     }
     
     handleMouseUp(evt) {
-        // console.log('mouse up');
         this.finalizeDrag(evt.clientY);
     }
     
     handleMouseWheel(evt) {
-        // console.log('mouse wheel');
         this._input.focus();
         this.clearDrag();
         this._prevValue = parseFloat(this._input.value);
@@ -239,19 +230,16 @@ class KnobInput {
     }
     
     handleDoubleClick(evt) {
-        // console.log('double click');
         this.clearDrag();
         this._input.value = this.initial;
         this.updateToInputValue();
     }
     
     handleFocus(evt) {
-        // console.log('focus on');
         this._container.classList.add('focus-active');
     }
     
     handleBlur(evt) {
-        // console.log('focus off');
         this._container.classList.remove('focus-active');
     }
     

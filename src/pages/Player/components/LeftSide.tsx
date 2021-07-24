@@ -1,16 +1,17 @@
-import React, { SyntheticEvent, useState } from 'react'
-import { Controls, PlayState, Tween } from 'react-gsap'
-import { of, timeout } from 'rxjs'
+import React, { useState } from 'react'
+import { PlayState, Tween } from 'react-gsap'
 import { PropsSideInterface, SoundListType } from '../types'
 import styles from './Side.module.scss'
 
 const TIME = .3
 
 const LeftSide = (props: PropsSideInterface) => {
-  const [ activeCategory, setActiveCategory ] = useState(0)
+  const [ activeCategory, setActiveCategory ] = useState(-1)
+  const [ activeSubCategory, setActiveSubcategory ] = useState(-1)
   const [ playStateSubcategory, setPlayStateSubCategory ] = useState(PlayState.play)
-  const { library } = props
+  const { library, onChangeSound } = props
   const clickCategory = (i: number) => {
+    setActiveSubcategory(-1)
     setPlayStateSubCategory(PlayState.reverse)
     setTimeout(() => {
       setPlayStateSubCategory(PlayState.restart)
@@ -20,6 +21,7 @@ const LeftSide = (props: PropsSideInterface) => {
   }
   const clickSubcategory = (i: number) => {}
   const clickSound = (url: string) => {}
+
 
   return(
     <div className = { styles.leftSide }>
@@ -45,8 +47,27 @@ const LeftSide = (props: PropsSideInterface) => {
                         clickSubcategory(i) : 
                         clickSound(``)
                       }}>
-                        <i className = { subcategory.type === SoundListType.sub ? subcategory.icon : category.icon }/>
-                        <span>{ subcategory.name }</span>
+                        <div onClick = {() => { activeSubCategory !== i ? setActiveSubcategory(i) : setActiveSubcategory(-1)}}>
+                          <i className = { subcategory.type === SoundListType.sub ? subcategory.icon : category.icon }/>
+                          <span>{ subcategory.name }</span>
+                        </div>
+                        {
+                          subcategory.type === SoundListType.sub &&
+                          <Tween
+                            from = {{ height: 0, opacity: 0 }} duration = { TIME }
+                            playState = { activeSubCategory === i ? PlayState.play : PlayState.reverse }>
+                            <ul className = { styles.sounds }>
+                              {
+                                subcategory.data.map(sound => (
+                                  <li onClick = {() => onChangeSound(`libraries/${library.name}/${category.name}/${subcategory.name}/${sound.name}.wav`)}
+                                    key = { `${subcategory.name}_${sound.name}` } 
+                                    className = { styles.sound }
+                                  >{ sound.name }</li>
+                                ))
+                              }
+                            </ul>
+                          </Tween>
+                        }
                       </li>
                     </Tween>
                   ))

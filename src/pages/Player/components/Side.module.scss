@@ -1,8 +1,84 @@
 @import '../../../assets/styles/app/variable.scss';
 
 ul {
+  margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.leftSide {
+  .categories {
+    align-items: flex-start;
+
+    .subcategory {
+      left: $side-category-size;
+      padding-left: 1rem;
+
+      > li {
+        > div {
+          span {
+            padding-left: .5rem;
+          }
+        }
+      }
+
+      .sound {
+        padding-left: 2rem;
+        
+        &:before {
+          left: .7rem;
+          border-left: 1px dotted;
+        }
+
+        &:after {
+          left: .7rem;
+        }
+      }
+    }
+  }
+
+  .categoryShadow {
+    left: 0;
+  }
+}
+
+.rightSide {
+  .categories {
+    align-items: flex-end;
+
+    .subcategory {
+      right: $side-category-size;
+      padding-right: 1rem;
+
+      > li  {
+          
+        > div {
+          flex-direction: row-reverse;
+
+          span {
+            padding-right: .5rem;
+          }
+        }
+      }
+
+      .sound {
+        padding-right: 2rem;
+
+        &:before {
+          right: .7rem;
+          border-right: 1px dotted;
+        }
+
+        &:after {
+          right: .7rem;
+        }
+      }
+    }
+  }
+
+  .categoryShadow {
+    right: 0;
+  }
 }
 
 .leftSide,
@@ -10,15 +86,17 @@ ul {
   position: relative;
 
   .categories {
-    
+    display: flex;
+    flex-direction: column;
+
     > li {
       width: $side-category-size;
       height: $side-category-size;
       
       
       &.active {
-        > ul {
-          display: block;
+        > .subcategory {
+          visibility: visible;
         }
       }
 
@@ -30,6 +108,7 @@ ul {
         display: flex;
         flex-direction: column;
         align-items: center;
+
         i {
           font-size: 3rem;
         }
@@ -44,19 +123,47 @@ ul {
       .subcategory {
         position: absolute;
         top: 0; 
-        left: $side-category-size;
-        display: none;
-        padding-left: 1rem;
+        
+        visibility: hidden;
+        
 
         > li  {
-          display: flex;
-          align-items: center;
-          line-height: 2rem;
-          > i {
-            font-size: 1.5rem;
+          
+          > div {
+            display: flex;
+            align-items: center;
+            line-height: 2rem;
+            i {
+              font-size: 1.5rem;
+            }
+            
           }
-          > span {
-            padding-left: .5rem;
+        }
+
+        .sound {
+          position: relative;
+          
+          &:before, &:after {
+            position: absolute;
+            content: '';
+            clear: both;
+            display: block;
+          }
+
+          &:before {
+            height: 100%;
+          }
+
+          &:after {
+            top: 50%; 
+            width: 1rem;
+            border-top: 1px dotted;
+          }
+
+          &:last-child {
+            &:before {
+              height: 50%;
+            }
           }
         }
       }
@@ -65,7 +172,7 @@ ul {
 
   .categoryShadow {
     position: absolute;
-    top: 0; left: 0;
+    top: 0; 
     width: $side-category-size;
     height: $side-category-size;
     background: rgba(white, .5);

@@ -1,6 +1,41 @@
 @import '../../assets/styles/app/variable.scss';
+
 // Librarie icons
 @import '../../assets/styles/icons/8bit/style.css';
+
+main {
+  will-change: transform;
+  transform: scale(1) perspective(0px) translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotate3d(0, 0, 0, 0deg);
+  transition: transform .3s;
+  
+  &.openedMenu {
+    transform: scale(1) perspective(300px) translate3d(100px, 0px, -30px) scale3d(1, 1, 2) rotate3d(0, 40, 0, -3deg);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+
+  .leftSide, .rightSide {
+    display: inherit;
+    align-items: center;
+
+    i, span {
+      padding: 0 .5rem;
+    }
+
+    i {
+      font-size: 1.5rem;
+    }
+  }
+
+  .rightSide {
+    flex-direction: row-reverse;
+  }
+}
 
 .wrapper {
   width: 100vw;
@@ -29,14 +64,8 @@
     grid-column-end: [RIGHT_SIDE_PLAYER];
     grid-row-start: [TOP];
     grid-row-end: [BOTTOM];
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-
-    .analizer {
-      canvas {
-        
-      }
-    }
+    // margin-top: -70px;
+    // position: relative;
+    // top: -70px;
   }
 }

@@ -1,0 +1,28 @@
+@import './variable.scss';
+/*
+p-inputswitch	Container element.
+p-inputswitch-checked	Container element in active state.
+p-inputswitch-slider	Slider element behind the handle.
+*/
+.p-inputswitch {
+
+  &.p-inputswitch-checked {
+    &:not(.p-disabled) {
+      &:hover {
+        .p-inputswitch-slider {
+          background: $green  ;
+    
+        }
+      }
+    }
+    .p-inputswitch-slider {
+      background: $green-dark-1;
+
+    }
+  }
+
+  .p-inputswitch-slider {
+   
+
+  }
+}
