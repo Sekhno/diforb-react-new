@@ -1,15 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter }       from 'react-router-dom'
+import { PlayState, Tween } from 'react-gsap'
 import { Carousel }         from 'primereact/carousel'
-import { Toolbar }          from 'primereact/toolbar'
-import { Button }           from 'primereact/button'
-import { Avatar }           from 'primereact/avatar'
-import { TabMenu }          from 'primereact/tabmenu'
-import { Divider }          from 'primereact/divider'
-import { getFirebaseBackend } from '../../helpers/firebase.helper'
+import { DeferredContent }  from 'primereact/deferredcontent'
 import { Library }          from '../../helpers/firebase.interface'
-import { onLogout }         from '../../async/authActions'
 import { onLoadLibraries }  from '../../async/dashboardAction'
 import CarouselItem         from './CarouselItem'
 import diforbPlayerImage    from '../../assets/img/wire-frame.png'
@@ -74,9 +69,13 @@ const Home = (): JSX.Element => {
             
           </div>
           <div className = 'p-col-4'>
-            <div className = { styles.image }>
-              <img src = { diforbPlayerImage } alt = 'diforb_player' />
-            </div>
+            <DeferredContent>
+              <Tween from = {{ x: 200, opacity: 0 }} duration = {1} >
+                <div className = { styles.image }>
+                  <img src = { diforbPlayerImage } alt = 'diforb_player' />
+                </div>
+              </Tween>
+            </DeferredContent>
           </div>
         </div>   
       </section>
@@ -179,6 +178,7 @@ const Home = (): JSX.Element => {
         </div>
         
       </section>
+      
     </div>
   )
 }

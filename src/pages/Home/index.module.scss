@@ -41,7 +41,8 @@ body {
         position: absolute;
         top: 0; left: 0;
         width: 600px;
-        filter: drop-shadow(2px 2px 1rem $green);
+        opacity: 0.5;
+        // filter: drop-shadow(2px 2px 1rem $green);
       }
     }
     
