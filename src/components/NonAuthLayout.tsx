@@ -15,7 +15,7 @@ const NonAuthLayout = (props: PropsType): JSX.Element => {
 
   useEffect(() => {
     if (firebaseBackend?.getAuthenticatedUser() !== null) {
-      history.push('/dashboard')
+      history.push('/home')
     }
   }, [ isLogged ])
 

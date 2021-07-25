@@ -156,16 +156,13 @@ const changeLeftPitchValue = (gain: number) => {
   if (source1) {
     source1.playbackRate.value = leftPitchValue
   }
-  console.log(leftPitchValue)
-  // console.log(Math.tan(leftPitchValue))
 }
 
 const changeRightPitchValue = (gain: number) => {
-  rightPitchValue = gain / 50
+  rightPitchValue = 0.01 * (gain + 100 )
   if (source1) {
     source2.playbackRate.value = rightPitchValue
   }
-  console.log(gain / 50)
 }
 
 const changeTimeshiftValue = (gain: number) => {

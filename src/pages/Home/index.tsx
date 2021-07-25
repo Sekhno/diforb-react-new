@@ -18,7 +18,7 @@ import sekhnoImage          from '../../assets/img/teams/sekhno.jpeg'
 import arismyatovImage      from '../../assets/img/teams/arismyatov.jpeg'
 import shcheglovImage       from '../../assets/img/teams/shcheglov.jpeg'
 import hilobokImage         from '../../assets/img/teams/hilobok.jpeg'
-import styles               from './Dashboard.module.scss'
+import styles               from './index.module.scss'
 
 
 const Home = (): JSX.Element => {

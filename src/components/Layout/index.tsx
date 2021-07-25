@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import { withRouter, RouteComponentProps, useHistory, Link, useLocation } from 'react-router-dom'
+import { withRouter, useHistory, Link, useLocation, RouteComponentProps } from 'react-router-dom'
 import { useSelector, useDispatch }  from 'react-redux'
 import { Toolbar }          from 'primereact/toolbar'
 import { Button }           from 'primereact/button'
 import { Avatar }           from 'primereact/avatar'
-import { TabMenu }          from 'primereact/tabmenu'
 import { onLogout }         from '../../async/authActions'
 import { getFirebaseBackend } from '../../helpers/firebase.helper'
+import styles               from './index.module.scss'
 
 
 interface PropsType extends RouteComponentProps {
@@ -35,7 +35,7 @@ const Layout = (props: PropsType): JSX.Element => {
     ]
     const ItemTemplate = (props: HeaderLeftSideItemType) => {
       const { label, icon, url } = props
-      return <Link to = { `/${url}` }>
+      return <Link  className = { styles.headerLink } to = { `/${url}` }>
         <i className = { icon }/>
         <span>{ label }</span>
       </Link> 
@@ -64,16 +64,17 @@ const Layout = (props: PropsType): JSX.Element => {
       <React.Fragment>
         
         <Avatar icon = 'icon-avatar' shape="circle"/>
-        <span>{ user?.displayName }</span>
+        <span>{ user?.displayName ? user?.displayName : user?.email }</span>
       </React.Fragment>
     )
   }
-
   const Header = () => {
     return <React.Fragment>
       { 
         location.pathname.substr(1, 3) === 'app' ? null :
-        <Toolbar left = { LeftContents } right = { RightContents }/> 
+        <div className = { styles.container }>
+          <Toolbar left = { LeftContents } right = { RightContents }/> 
+        </div>
       }
     </React.Fragment>
   }
@@ -88,7 +89,7 @@ const Layout = (props: PropsType): JSX.Element => {
   return (
     <React.Fragment>
       <Header/>
-      <div>{ props.children }</div>
+      <div className = { styles.content }>{ props.children }</div>
     </React.Fragment>
   )
 }
