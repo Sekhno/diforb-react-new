@@ -1,27 +1,121 @@
-.content {
-  overflow-x: hidden;
+@import '../../assets/styles/app/variable.scss';
+
+.wrapper {
+  height: inherit;
+  display: grid;
+  grid-template-columns: [start] 270px [middleStart] 1rem [middleEnd] auto [end];
+  grid-template-rows: [top] 70px [endHeader] auto [bottom];
+
+  .sidebar {
+    grid-column-start: start;
+    grid-column-end: middleStart;
+    grid-row-start: top;
+    grid-row-end: bottom;
+  }
+
+  .header {
+    grid-column-start: middleEnd;
+    grid-column-end: end;
+    grid-row-start: top;
+    grid-row-end: endHeader;
+  }
+
+  .content {
+    grid-column-start: middleEnd;
+    grid-column-end: end;
+    grid-row-start: endHeader;
+    grid-row-end: bottom;
+  }
 }
 
-.container {
-  max-width: 1280px;
-  margin: auto;
-  padding: 0 2rem;
+.sidebar {
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    border-bottom: $sidebar-field-border-bottom;
+    background-color: $sidebar-field-bg-a4;
+  }
+
+  .logo {
+    overflow: hidden;
+    i {
+      position: relative;
+      top: 42px;
+      font-size: 150px;
+      line-height: 0px;
+    }
+  }
+
+  .user {
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    background-color: $sidebar-field-bg-a6;
+
+    .controls {
+      display: inherit;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 1.2rem;
+
+      i {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .simpleLink {
+    padding: 1rem;
+
+    > a {
+      color: $white;
+      display: flex;
+      align-items: center;
+      
+      i {
+        font-size: 1.5rem;
+      }
+      span {
+        margin-left: .5rem;
+      }
+    }
+  }
+
+  .otherLinks {
+    display: inherit;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    padding-left: 2rem;
+    background-color: $sidebar-field-bg-a2;
+  }
+
+  .socialLinks {
+    display: inherit;
+    justify-content: flex-end;
+    background-color: $sidebar-field-bg-a8;
+    border-bottom: none;
+
+    a {
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+  }
 }
 
-.headerLink {
+.header {
   display: flex;
   align-items: center;
-  margin-right: 1rem;
+  height: 100%;
+  padding-left: 1rem;
+  border-bottom: $sidebar-field-border-bottom;
+  background-color: $sidebar-field-bg-a4;
+}
 
-  i {
-    font-size: 1.5rem;
-  }
-
-  span {
-    font-size: 1rem;
-  }
-
-  &:hover {
-    text-decoration: none;
-  }
+.content {
+  // padding: .5rem;
+  height: calc(100vh - 70px);
+  background-color: $sidebar-field-bg-a2;
 }

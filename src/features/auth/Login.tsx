@@ -25,7 +25,7 @@ const Login = (props: any): JSX.Element => {
       <div className = 'p-grid p-fluid'>
         <div className = 'p-col-12 p-md-12'>
           <div className = { styles.group }>
-            <label>Email</label>
+            {/* <label>Email</label> */}
             <div className='p-inputgroup'>
               <InputText 
                 ref = { emailRef }
@@ -36,7 +36,7 @@ const Login = (props: any): JSX.Element => {
             </div>
           </div>
           <div className = { styles.group }>
-            <label>Password</label>
+            {/* <label>Password</label> */}
             <div className='p-inputgroup'>
               <Password  
                 ref = { passwordRef }
@@ -49,15 +49,19 @@ const Login = (props: any): JSX.Element => {
           </div>
           <p className = { styles.error }>{ error }</p>
           <Button 
-            className = {styles.button} label = 'Login' loading = {false} icon = 'icon-login'
+            className = { styles.button +' '+ styles.primary } 
+            label = 'Login' loading = {false} icon = 'icon-login'
             onClick = { () => dispatch(onLogin(email, password)) }
           />
+          <div className = { styles.divider }>- or -</div>
           <Button 
-            className = {styles.button} label = 'Login with Google' loading = {false} icon = 'icon-google'
+            className = { styles.button +' '+ styles.fb } 
+            label = 'Login with Google' loading = {false} icon = 'icon-google'
             onClick = { () => dispatch(onLoginWithSocial('google')) }
           />
           <Button 
-            className = {styles.button} label = 'Login with Facebook' loading = {false} icon = 'icon-facebook'
+            className = { styles.button +' '+ styles.google } 
+            label = 'Login with Facebook' loading = {false} icon = 'icon-facebook'
             onClick = { () => dispatch(onLoginWithSocial('facebook')) }
           />
           <div className = { styles.links }>

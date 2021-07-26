@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react'
-import { connect, useDispatch, useSelector } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import { authProtectedRoutes, publicRoutes } from './routes'
-import './App.scss'
-// import Auth from './features/auth/Auth'
-import AppRoute from './routes/route'
-import NonAuthLayout from './components/NonAuthLayout'
-import Layout from './components/Layout'
-import { initFirebaseBackend, getFirebaseBackend } from './helpers/firebase.helper'
+import AppRoute         from './routes/route'
+import NonAuthLayout    from './components/NonAuthLayout'
+import Layout           from './components/Layout'
+import { initFirebaseBackend } from './helpers/firebase.helper'
 import { loginSuccess } from './features/auth/authSlice'
+import './App.scss'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBG8znM0AFK8v3yMScWoiwPzPWgCcA-LnY",
-  authDomain: "diforb-react-1ec55.firebaseapp.com",
-  projectId: "diforb-react-1ec55",
-  storageBucket: "diforb-react-1ec55.appspot.com",
-  messagingSenderId: "998910724069",
-  appId: "1:998910724069:web:6b1e390b94b84921fe910c",
-  measurementId: "G-FK6LNR554Z"
+  apiKey: 'AIzaSyBG8znM0AFK8v3yMScWoiwPzPWgCcA-LnY',
+  authDomain: 'diforb-react-1ec55.firebaseapp.com',
+  projectId: 'diforb-react-1ec55',
+  storageBucket: 'diforb-react-1ec55.appspot.com',
+  messagingSenderId: '998910724069',
+  appId: '1:998910724069:web:6b1e390b94b84921fe910c',
+  measurementId: 'G-FK6LNR554Z'
 }
 
 const firebaseBackend = initFirebaseBackend(firebaseConfig)
@@ -35,7 +34,6 @@ const App = () => {
     <React.Fragment>
       <Router>
         <Switch>
-          
           {
             publicRoutes.map((route, idx) => (
               <AppRoute
@@ -47,7 +45,6 @@ const App = () => {
               />
             ))
           }
-
           { 
             authProtectedRoutes.map((route, idx) => (
               <AppRoute

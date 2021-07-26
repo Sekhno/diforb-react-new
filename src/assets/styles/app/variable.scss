@@ -2,13 +2,37 @@
 
 $white: #fff;
 $black: #000;
-$green: #0a0;
+$primary: #00cd99;
+$facebook: #5692d1;
+$google: #e06746;
+$green: #52d669;
+
+// $green: #0a0;
 $green-dark: #060;
 $green-dark-1: #070;
 $green-dark-2: #080;
 $green-dark-3: #020;
+$blue-blur: #6cc0bd;
+$blue-dark: #276585;
 
-$background-gradient: linear-gradient(#020 5%, #000);
+// $background-gradient: linear-gradient(#020 5%, #000);
+$background-gradient: #000 radial-gradient(ellipse at top,#4ebffb 0,#276585 70%);
+
+// Authentification component
+$auth-form-background: linear-gradient(180deg ,rgba(0,0,0,.3) 0,transparent);
+$auth-form-h1: hsla(0, 0, 100%, .8);
+$auth-form-input-color: $blue-blur;
+$auth-form-input-border: 1px solid hsla(0, 0, 100%, .2);
+$auth-form-input-background: rgba(0, 0, 0, .6);
+$auth-form-input-text-fill-color: #7beaf4;
+$auth-form-button-bg-primary: rgba(0, 0, 0, .2);
+
+// Sidebar
+$sidebar-field-border-bottom: 1px solid $blue-dark;
+$sidebar-field-bg-a2: rgba(0, 0, 0, .2);
+$sidebar-field-bg-a4: rgba(0, 0, 0, .4);
+$sidebar-field-bg-a6: rgba(0, 0, 0, .6);
+$sidebar-field-bg-a8: rgba(0, 0, 0, .8);
 
 // Player Component
 $player-size: 623px;

@@ -4,8 +4,11 @@ import { useSelector, useDispatch }  from 'react-redux'
 import { Toolbar }          from 'primereact/toolbar'
 import { Button }           from 'primereact/button'
 import { Avatar }           from 'primereact/avatar'
+import { ScrollPanel }      from 'primereact/scrollpanel';
 import { onLogout }         from '../../async/authActions'
 import { getFirebaseBackend } from '../../helpers/firebase.helper'
+import { StoreType }        from  '../../store/types'
+import Sidebar              from './Sidebar'
 import styles               from './index.module.scss'
 
 
@@ -23,9 +26,8 @@ const Layout = (props: PropsType): JSX.Element => {
   const location = useLocation()
   const dispatch = useDispatch()
   const history = useHistory()
-  const isLogged = useSelector((state: { auth: { isLogged: boolean } }) => state.auth.isLogged)
-  const firebaseBackend = getFirebaseBackend()
-  console.log(location)
+  const isLogged = useSelector((state: StoreType) => state.auth.isLogged)
+  
 
   const LeftContents = (): JSX.Element => {
     const leftContentsItems = [
@@ -62,8 +64,7 @@ const Layout = (props: PropsType): JSX.Element => {
     const user = getFirebaseBackend()?.getAuthenticatedUser()
     return (
       <React.Fragment>
-        
-        <Avatar icon = 'icon-avatar' shape="circle"/>
+        <Avatar icon = 'icon-avatar' shape = 'circle'/>
         <span>{ user?.displayName ? user?.displayName : user?.email }</span>
       </React.Fragment>
     )
@@ -80,17 +81,22 @@ const Layout = (props: PropsType): JSX.Element => {
   }
 
   useEffect(() => {
-    console.log('use Effect', isLogged)
+    const firebaseBackend = getFirebaseBackend()
     if (firebaseBackend?.getAuthenticatedUser() === null) {
       history.push('/login')
     }
   }, [ isLogged ])
   
   return (
-    <React.Fragment>
-      <Header/>
-      <div className = { styles.content }>{ props.children }</div>
-    </React.Fragment>
+    <div className = { styles.wrapper }>
+      <Sidebar className = { styles.sidebar }/>
+      <header className = { styles.header }>Header</header>
+      <div className = { styles.content }>
+        <ScrollPanel style={{width: '100%', height: '100%', overflowY: 'auto'}}>
+          { props.children }
+        </ScrollPanel>
+      </div>
+    </div>
   )
 }
 

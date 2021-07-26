@@ -1,18 +1,18 @@
 @import './variable.scss';
 
-//	Button element
 .p-button {
   background: none;
   border: none;
 
   &:not(a):not(.p-disabled):hover {
-    background: $green-dark;
+    background: $green;
   }
+  
+  .p-button-icon {
+    color: $white;
+    font-size: 1.5rem;
+    margin-right: -1.5rem;
+  } 
+  .p-button-text {} 
 
 } 
-//	Icon element
-.p-button-icon {
-  color: $green;
-  font-size: 1.5rem;
-} 
-.p-button-text {} //

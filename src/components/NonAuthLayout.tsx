@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { withRouter, RouteComponentProps, useHistory } from 'react-router-dom'
-import styles from './NonAuthLayout.module.scss'
 import { getFirebaseBackend } from '../helpers/firebase.helper'
+import styles from './NonAuthLayout.module.scss'
+import videoBackground from '../assets/video/Ambience+sound+library.mp4'
+
 
 interface PropsType extends RouteComponentProps  {
   children: JSX.Element,
@@ -21,6 +23,11 @@ const NonAuthLayout = (props: PropsType): JSX.Element => {
 
   return (
     <div className = { styles.wrapper }>
+      <div className = { styles.videoContainer }>
+        <video autoPlay loop muted width = '1280' height = '720'>
+          <source src = { videoBackground } type = 'video/mp4'/>
+        </video>
+      </div>
       <div className = { styles.content }>{ props.children }</div>
     </div>
   )

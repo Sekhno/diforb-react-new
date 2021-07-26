@@ -1,6 +1,13 @@
 @import './assets/styles/app/variable.scss';
 
+body, html {
+  height: 100%;
+  overflow: hidden;
+}
 
+#root {
+  height: inherit;
+}
 
 body {
   margin: 0;
@@ -9,14 +16,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: $font-size-base;
 
-  color: transparent; // white;
-  animation: text-color-change 0.1s infinite;
+  color: white;
+  // animation: text-color-change 0.1s infinite;
   font-size: 16px;
   line-height: 24px;
   font-family: monospace;
   margin: 0;
   padding: 0;
-  text-shadow: 0 0 3px $font-text-shadow;
+  // text-shadow: 0 0 3px $font-text-shadow;
 
   &:before {
     position: fixed;
@@ -24,8 +31,8 @@ body {
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: $background-gradient;
-    background-color: $green-dark-3;
+    background: $background-gradient;
+    // background-color: $green-dark-3;
     z-index: -1;
     content: '';
   }
@@ -38,43 +45,27 @@ h4 { font-size: $h4-font-size }
 h5 { font-size: $h5-font-size }
 h6 { font-size: $h6-font-size }
 
-button {
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: transparent; // white;
-  background: transparent;
-  text-shadow: 0 0 3px $font-text-shadow;
-  animation: text-color-change 0.1s infinite;
-}
+// button {
+//   font-weight: bold;
+//   letter-spacing: 1px;
+//   color: white;
+//   background: transparent;
+//   // text-shadow: 0 0 3px $font-text-shadow;
+//   // animation: text-color-change 0.1s infinite;
+// }
 
 a {
-  color: $green;
-  animation: text-color-change 0.1s infinite;
+  color: $white;
+  // animation: text-color-change 0.1s infinite;
   text-decoration: none;
 
   &:hover {
-    color: $green-dark;
-    text-decoration: underline;
+    // color: $green-dark;
+    text-decoration: none;
   }
 }
 
 
-
-p {
-  margin: 16px 0;
-}
-
-.signature {
-  color: $green;
-  animation: text-color-change 0.1s infinite;
-  text-align: right;
-  font-size: 1.6em;
-  font-weight: 100;
-}
-
-.cursor {
-  animation: blinking 1s infinite;
-}
 
 
 @keyframes blinking {

@@ -1,7 +1,9 @@
 import { Library } from "../helpers/firebase.interface";
 
 export interface StoreType {
-  auth: any,
+  auth: {
+    isLogged: boolean
+  },
   dashboard: {
     libraries: Library[]
   },

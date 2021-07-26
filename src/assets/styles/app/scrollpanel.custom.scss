@@ -1,0 +1,14 @@
+/*
+p-scrollpanel	Container element.
+p-scrollpanel-wrapper	Wrapper of content section.
+p-scrollpanel-content	Content section.
+p-scrollpanel-bar	Scrollbar handle.
+p-scrollpanel-bar-x	Scrollbar handle of a horizontal bar.
+p-scrollpanel-bar-y	Scrollbar handle of a vertical bar
+*/
+
+.p-scrollpanel {
+  .p-scrollpanel-bar-y {
+    width: 3px;
+  }
+}
