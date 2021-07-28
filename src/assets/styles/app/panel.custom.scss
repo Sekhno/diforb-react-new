@@ -1,0 +1,21 @@
+@import './variable.scss';
+/*
+p-panel	Container element.
+p-panel-titlebar	Header section.
+p-panel-title	Title text of panel.
+p-panel-titlebar-toggler	Toggle icon.
+p-panel-content	Content of panel.
+*/
+
+.p-panel {
+  .p-panel-header {
+    display: none;
+  }
+
+  .p-panel-content {
+    color: $white;
+    background-color: $sidebar-field-bg-a6;
+    border: none;
+    border-bottom: $sidebar-field-border-bottom;
+  }
+}

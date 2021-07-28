@@ -46,7 +46,8 @@ export interface Library {
   cover: string,
   data: LibrariesCategory[],
   description: string,
-  name: string
+  name: string,
+  tizer: string
 }
 
 interface LibrariesCategory {

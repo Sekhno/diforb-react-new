@@ -1,9 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, Fragment } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
-import { withRouter }       from 'react-router-dom'
+import { withRouter, useParams, Link } from 'react-router-dom'
+import { Panel }            from 'primereact/panel'
 import { StoreType }        from '../../store/types'
 import { onLoadLibraries }  from '../../async/dashboardAction'
 import LibItem              from './LibItem'
+import PanelInfo            from './PanelInfo'
 
 
 const Libraries = (): JSX.Element => {
@@ -15,21 +17,24 @@ const Libraries = (): JSX.Element => {
   }, [])
 
   return (
-    <div className = 'p-grid' style = {{margin: '.2rem'}}>
-      {
-        !libraries.length
-        ? <div className = 'p-col-12'>Downloading</div> 
-        : libraries.map(library => (
-          <div className = 'p-col-12 p-md-6 p-lg-3' >
-            <LibItem data = { library }/>
-          </div>
-        ))
-
-        
-      }
-    </div>
+    <React.Fragment>
+      <PanelInfo/>
+      <div className = 'p-grid' style = {{margin: '.2rem'}}>
+        {
+          !libraries.length
+          ? <div className = 'p-col-12'>Downloading</div> 
+          : libraries.map(library => (
+            <div key = { library.name } className = 'p-col-12 p-md-6 p-lg-3' style = {{ padding: '0.2rem' }}>
+              <LibItem data = { library }/>
+            </div>
+          ))
+        }
+      </div>
+    </React.Fragment>
   )
 }
+
+
 
 
 
