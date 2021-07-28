@@ -2,7 +2,7 @@ import React, { MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { ProgressBar, ProgressBarProps } from 'primereact/progressbar'
 import { Rating }           from 'primereact/rating';
-import { LibraryInterface } from '../../models/interfaces'
+import { Library }          from '../../helpers/firebase.interface'
 import styles               from './CarouselItem.module.scss'
 
 enum IconsUi {
@@ -19,7 +19,7 @@ const onClickPlay = (element: HTMLElement, state: boolean): void => {
   element.className = state ? IconsUi.RadialPlay : IconsUi.RadialPause
 }
 
-const CarouselItem = (library: LibraryInterface): JSX.Element => {
+const CarouselItem = (library: Library): JSX.Element => {
   const { name, cover, description, data } = library
   const progressBarProps: ProgressBarProps = {
     value: 0

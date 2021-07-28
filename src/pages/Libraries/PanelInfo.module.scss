@@ -1,0 +1,53 @@
+@import '../../assets/styles/app/variable.scss';
+
+.title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  padding: 0 .2rem;
+  font-size: .8rem;
+  text-transform: uppercase;
+  background-color: rgba($white, 0.2);
+  color: rgba($white, 0.5);
+  i {
+    font-size: 1.2rem;
+  }
+}
+
+.author {
+  margin-left: 1rem;
+  color: $blue-light;
+
+  span, a {
+    color: $green;
+  }
+}
+
+.desc {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5rem
+}
+
+.inside {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      padding: .5rem;
+      display: inherit;
+      flex-direction: column;
+      align-items: center;
+
+      i {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+

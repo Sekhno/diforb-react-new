@@ -1,18 +1,14 @@
-import React, { useState, useEffect, useRef, Ref } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { ProgressBar, ProgressBarProps } from 'primereact/progressbar'
 import { Library } from '../../helpers/firebase.interface'
+import { IconsUI } from '../../models/enums'
 import styles from './LibItem.module.scss'
-import { useMemo } from 'react'
 
 interface PropsType {
   data: Library
 }
 
-enum IconsUI {
-  radialPlay = 'icon-play-radial',
-  radialPause = 'icon-pause-radial'
-}
 
 export const LibItem = (props: PropsType) => {
   
