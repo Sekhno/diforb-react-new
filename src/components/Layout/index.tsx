@@ -93,6 +93,10 @@ const Layout = (props: PropsType): JSX.Element => {
     switch (currentRoute) {
       case Routes.Libraries: 
         return IconsUI.libraries
+      case Routes.Tutorial:
+        return IconsUI.play
+      case Routes.Faq:
+        return IconsUI.info
       default: 
         return IconsUI.attention
     }

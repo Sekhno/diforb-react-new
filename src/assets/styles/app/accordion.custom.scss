@@ -1,5 +1,38 @@
+@import './variable.scss';
 /*
 p-accordion	Container element.
 p-accordion-header	Header of a tab.
 p-accordion-content	Container of a tab.
 */
+
+.p-accordion {
+
+  .p-accordion-header {
+
+    &:not(.p-highlight):not(.p-disabled):hover{
+      .p-accordion-header-link {
+        color: $black;
+        background: rgba($black, .1);
+        border: none;
+      }
+    }
+
+    .p-accordion-header-link {
+      border: none;
+      background: none;
+    }
+  }
+
+  .p-accordion-content {
+    border: none;
+    background: none;
+
+    p {
+      padding-left: 1.5rem;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+}
+

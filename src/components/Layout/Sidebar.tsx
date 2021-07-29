@@ -40,10 +40,11 @@ export const Sidebar = (props: PropsType) => {
         </Link>
       </div>
       <div className = { styles.otherLinks }>
-        <Link to = '/license'>License agreement</Link>
+        <Link to = '/terms'>License agreement</Link>
         <Link to = '/privacy'>Privacy policy</Link>
         <Link to = '/support'>Support</Link>
-        <Link to = '/touch'>Get in touch</Link>
+        {/* <Link to = '/touch'>Get in touch</Link> */}
+        <Link to = '/reviews'>Reviews</Link>
       </div>
       <div className = { styles.socialLinks }>
         <a className = 'icon-facebook' href = 'https://www.facebook.com/diforb/'/>

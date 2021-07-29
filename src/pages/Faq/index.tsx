@@ -10,13 +10,15 @@ export const Faq = () => {
   return(
     <div className = 'paperWrapper'>
       {
-        <Accordion activeIndex = { activeIndex } onTabChange={(e) => setActiveIndex(e.index)}>
+        <Accordion activeIndex = { activeIndex } 
+          expandIcon = 'icon-chevron-down' collapseIcon = 'icon-chevron-up'
+          onTabChange={(e) => setActiveIndex(e.index)}>
           {
             faqs.map(({id, header, content}, i) => (
               <AccordionTab headerTemplate = { 
                 <HeaderTemplate header = {header} active = { activeIndex === i }/> 
                }>
-                <p>{`A: ${content}`}</p>
+                <p> <span className = 'p-mr-1'>A:</span>{content}</p>
               </AccordionTab>
             ))
           }
@@ -31,12 +33,7 @@ const HeaderTemplate = (props: any): JSX.Element => {
 
   return (
     <React.Fragment>
-      <div>
-        <b>Q:</b> <span>{ header }</span> 
-      </div>
-      <div>
-        <span>{ active ? '-' : '+' }</span>
-      </div>
+      <b className = 'p-mr-1'>Q:</b> <span>{ header }</span> 
     </React.Fragment>
   )
 }

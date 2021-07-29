@@ -1,0 +1,70 @@
+@import '../../assets/styles/app/variable.scss';
+
+.wrapper {
+  padding: 1rem;
+  max-width: 600px;
+  margin: auto;
+
+  .form {
+    text-align: center;
+
+    h1 {
+      padding: 2rem 0;
+      font-size: 1.2rem;
+    }
+    textarea {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 5px;
+      font-size: 1.2em;
+      color: $blue-blur;
+      -webkit-text-fill-color: $blue-ice;
+      border: none;
+      background: rgba($black, .6);
+      resize: none; 
+    }
+
+    button {
+      margin: 1rem 0;
+      padding: .5rem 2rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: $white;
+      background: $green;
+      border-radius: 25px;
+      border: 1px solid transparent;
+    }
+
+    .error {
+      margin: 1rem 0;
+      padding: .5rem 0;
+      background-color: rgba(red, .2);
+    }
+   }
+  
+  .reviewsWrapper {
+    li {
+      display: flex;
+      align-items: center;
+      line-height: 1.2rem;
+
+      .avatar {
+        margin: 0 1rem;
+      }
+
+      .date {
+        font-size: 0.8rem;
+        font-style: italic;
+      }
+
+      .message {
+        
+      }
+
+      .author {
+        font-size: 0.8rem;
+        color: $green;
+      }
+    }
+  }
+}

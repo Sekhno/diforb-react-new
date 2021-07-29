@@ -70,3 +70,10 @@ interface LibrariesSound {
   type: 'sound'
   name: string
 }
+
+export interface Review {
+  date: any,
+  name: string,
+  photo: string,
+  review: string
+}
