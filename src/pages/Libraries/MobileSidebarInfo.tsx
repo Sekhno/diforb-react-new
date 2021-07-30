@@ -7,40 +7,32 @@ import { Library }    from '../../helpers/firebase.interface'
 import { StoreType }  from '../../store/types'
 import styles         from './MobileSidebarInfo.module.scss'
 
-export const MobileSidebarInfo = (props: any) => {
-  const [ visibleRight, setVisibleRight] = useState(false)
-  const [ current, setCurrent ] = useState<Library>()
-  const { id } = useParams<{id: string}>()
-  const libraries = useSelector((state: StoreType) => state.dashboard.libraries)
+interface PropsType {
+  current: Library | null,
+  setCurerent: (state: Library | null) => void
+}
 
-
-  useEffect(() => {
-    setVisibleRight(id ? true : false)
-    id && setCurrent(libraries.find(v => v.name === id))
-  }, [ id, libraries])
+export const MobileSidebarInfo = (props: PropsType) => {
+  const { current, setCurerent } = props
 
   return (
-    <Sidebar visible = { visibleRight } position = 'right' 
-      icons = {(<Link to = '/libraries' className = 'icon-close'></Link>)}
-      onHide={() => {}}>
-      {
-        current ?
-        <div className = { styles.wrapper }>
-          <figure className = { styles.wrapperImage }>
-            <img src = { current.cover } alt = { current.name } />
-          </figure>
-          <div className = 'p-d-flex p-jc-around p-pt-3'>
-            <button className = 'btn play'>
-              <i className = { IconsUI.radialPlay }/> <span>Demo</span>
-            </button>
-            <button className = 'btn launch'>
-              <Link to = {`/app/${ current.name }`}>Launch</Link>
-            </button>
-          </div>
-          <p className = 'p-my-3'>{ current.description }</p>
+    <Sidebar visible = { Boolean(current) } position = 'right' 
+      icons = {(<i className = 'icon-close' onTouchStart = {() => setCurerent(null)}/>)} onHide={() => {}}
+    >
+      <div className = { styles.wrapper }>
+        <figure className = { styles.wrapperImage }>
+          <img src = { current?.cover } alt = { current?.name } />
+        </figure>
+        <div className = 'p-d-flex p-jc-around p-pt-3'>
+          <button className = 'btn play'>
+            <i className = { IconsUI.radialPlay }/> <span>Demo</span>
+          </button>
+          <button className = 'btn launch'>
+            <Link to = {`/app/${ current?.name }`}>Launch</Link>
+          </button>
         </div>
-        : null
-      }
+        <p className = 'p-my-3'>{ current?.description }</p>
+      </div>
     </Sidebar>
   )
 }

@@ -7,13 +7,14 @@ import { IconsUI } from '../../models/enums'
 import styles from './LibItem.module.scss'
 
 interface PropsType {
-  data: Library
+  data: Library,
+  setCurrent?: (current: Library) => void
 }
 
-
 export const LibItem = (props: PropsType) => {
+  const { data, setCurrent } = props
   
-  const { name, cover, tizer } = props.data
+  const { name, cover, tizer } = data
   const history = useHistory()
   const audio = useMemo(() => new Audio(tizer), [tizer])
   const [ progress, setProgress ] = useState(0)
@@ -84,7 +85,8 @@ export const LibItem = (props: PropsType) => {
             <h1>{ name }</h1>
             <div className = { styles.controls }>
               <div className = { styles.buttons }>
-                <Link to = { `/libraries/${name}` }> Info </Link>
+                <button onTouchStart = {() => setCurrent && setCurrent(data)}>Info</button>
+                {/* <Link to = { `/libraries/${name}` }> Info </Link> */}
                 {/* <Link to = { `/app/${name}` }> Launch </Link> */}
                 <i className = { !playing ? IconsUI.radialPlay: IconsUI.radialPause } 
                   onClick = {() => setPlaying(!playing)}/>
