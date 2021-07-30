@@ -39,7 +39,7 @@ const Libraries = (): JSX.Element => {
         <div style = {{ filter: current ? 'blur(3px)' : 'blur(0)' }}>
           {
             libraries.map(library => (
-              <div key = { library.name } style = {{ margin: '0.2rem' }} onTouchStart = {() => setCurerent(library)}>
+              <div key = { library.name } style = {{ margin: '0.2rem' }}>
                 <LibItem data = { library } setCurrent = { setCurerent }/>
               </div>
             ))
