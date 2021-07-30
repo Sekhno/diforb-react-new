@@ -1,0 +1,38 @@
+@import './variable.scss';
+// p-sidebar-close
+/*
+  p-sidebar	Container element
+p-sidebar-left	Container element of left sidebar.
+p-sidebar-right	Container element of right sidebar.
+p-sidebar-top	Container element of top sidebar.
+p-sidebar-bottom	Container element of bottom sidebar.
+p-sidebar-full	Container element of a full screen sidebar.
+p-sidebar-active	Container element when sidebar is visible.
+p-sidebar-close	Close anchor element.
+p-sidebar-sm	Small sized sidebar.
+p-sidebar-md	Medium sized sidebar.
+p-sidebar-lg	Large sized sidebar.
+p-sidebar-view	The page view is displayed according to the sidebar position.
+p-sidebar-content	A content is displayed according to the sidebar position. To use this style, a sidebar must be created inside that content using the appendTo property and this content must have position:"relative" style.
+p-sidebar-mask	Modal layer of the sidebar.
+*/
+
+.p-sidebar {
+  background-color: rgba($black, .8);
+  color: $white;
+
+  &.p-sidebar-left, &.p-sidebar-right {
+    .p-sidebar-header {
+      .p-sidebar-close {
+        display: none;
+      }
+      .icon-close {
+        color: $white;
+      }
+    }
+
+    .p-sidebar-content {
+      height: 100%;
+    }
+  }
+}

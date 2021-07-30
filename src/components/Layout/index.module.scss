@@ -13,6 +13,90 @@
     grid-column-end: middleStart;
     grid-row-start: top;
     grid-row-end: bottom;
+    display: flex;
+    flex-direction: column;
+  
+    > div {
+      border-bottom: $sidebar-field-border-bottom;
+      background-color: $sidebar-field-bg-a4;
+    }
+  
+    .logo {
+      overflow: hidden;
+      i {
+        position: relative;
+        top: 42px;
+        font-size: 150px;
+        line-height: 0px;
+      }
+    }
+  
+    .user {
+      padding: .5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      height: 100px;
+      background-color: $sidebar-field-bg-a6;
+  
+      .controls {
+        display: inherit;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 1.2rem;
+  
+        i {
+          cursor: pointer;
+        }
+      }
+    }
+  
+    .simpleLink {
+      padding: 1rem;
+  
+      > a {
+        color: $white;
+        display: flex;
+        align-items: center;
+  
+        &.selected {
+          color: $green;
+        }
+        
+        i {
+          font-size: 1.5rem;
+        }
+        span {
+          margin-left: .5rem;
+        }
+      }
+    }
+  
+    .otherLinks {
+      display: inherit;
+      flex-direction: column;
+      justify-content: center;
+      flex-grow: 1;
+      padding-left: 2rem;
+      line-height: 1.5rem;
+      background-color: $sidebar-field-bg-a2;
+  
+  
+      .selected {
+        color: $green;
+      }
+    }
+  
+    .socialLinks {
+      display: inherit;
+      justify-content: flex-end;
+      background-color: $sidebar-field-bg-a8;
+      border-bottom: none;
+  
+      a {
+        padding: 1rem;
+        font-size: 1.2rem;
+      }
+    }
   }
 
   .header {
@@ -20,6 +104,27 @@
     grid-column-end: end;
     grid-row-start: top;
     grid-row-end: endHeader;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+    border-bottom: $sidebar-field-border-bottom;
+    background-color: $sidebar-field-bg-a4;
+  
+    i {
+      margin-right: .5rem;
+    }
+  
+    span {
+      &.currentRoute {
+        text-transform: capitalize;
+      }
+      &.currentSubroute {
+        margin-left: .2rem;
+        color: $green;
+      }
+    }
   }
 
   .content {
@@ -27,54 +132,70 @@
     grid-column-end: end;
     grid-row-start: endHeader;
     grid-row-end: bottom;
+    height: calc(100vh - 70px);
+    background-color: $sidebar-field-bg-a2;
   }
 }
 
-.sidebar {
-  display: flex;
-  flex-direction: column;
+.mobileWrapper {
 
-  > div {
-    border-bottom: $sidebar-field-border-bottom;
-    background-color: $sidebar-field-bg-a4;
-  }
+  .header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    background-color: $blue-dark;
+    z-index: 1000;
 
-  .logo {
-    overflow: hidden;
-    i {
-      position: relative;
-      top: 42px;
-      font-size: 150px;
-      line-height: 0px;
+    button {
+      // margin-right: -2rem;
+      font-size: 2rem;
+    }
+
+    > span {
+      pointer-events: none;
+      margin-left: -2rem;
+      display: flex;
+      justify-content: center;
+      flex-grow: 1;
+      text-transform: uppercase;
     }
   }
 
+  .content {
+    // height: 100%;
+  }
+}
+
+.mobileSidebar {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+
   .user {
-    padding: .5rem 1rem;
     display: flex;
     justify-content: space-between;
-    height: 100px;
-    background-color: $sidebar-field-bg-a6;
 
     .controls {
+      height: 5rem;
       display: inherit;
       flex-direction: column;
       justify-content: space-between;
-      font-size: 1.2rem;
-
-      i {
-        cursor: pointer;
-      }
+      font-size: 1.5rem;
     }
   }
 
   .simpleLink {
-    padding: 1rem;
-
+    // padding: .2rem;
+  
     > a {
-      color: $white;
+      
       display: flex;
       align-items: center;
+      line-height: 2.5rem;
+      color: $white;
 
       &.selected {
         color: $green;
@@ -90,12 +211,13 @@
   }
 
   .otherLinks {
+    
     display: inherit;
     flex-direction: column;
     justify-content: center;
     flex-grow: 1;
     padding-left: 2rem;
-    line-height: 1.5rem;
+    line-height: 2rem;
     background-color: $sidebar-field-bg-a2;
 
 
@@ -105,44 +227,13 @@
   }
 
   .socialLinks {
-    display: inherit;
+    display: flex;
     justify-content: flex-end;
-    background-color: $sidebar-field-bg-a8;
-    border-bottom: none;
+    font-size: 2rem;
 
     a {
-      padding: 1rem;
-      font-size: 1.2rem;
+      margin: 1rem;
     }
   }
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding-left: 1rem;
-  font-size: 1.5rem;
-  border-bottom: $sidebar-field-border-bottom;
-  background-color: $sidebar-field-bg-a4;
-
-  i {
-    margin-right: .5rem;
-  }
-
-  span {
-    &.currentRoute {
-      text-transform: capitalize;
-    }
-    &.currentSubroute {
-      margin-left: .2rem;
-      color: $green;
-    }
-  }
-}
-
-.content {
-  // padding: .5rem;
-  height: calc(100vh - 70px);
-  background-color: $sidebar-field-bg-a2;
-}

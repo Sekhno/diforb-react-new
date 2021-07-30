@@ -3,7 +3,7 @@
 
 body, html {
   height: 100%;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 #root {
@@ -46,14 +46,14 @@ h4 { font-size: $h4-font-size }
 h5 { font-size: $h5-font-size }
 h6 { font-size: $h6-font-size }
 
-// button {
-//   font-weight: bold;
-//   letter-spacing: 1px;
-//   color: white;
-//   background: transparent;
-//   // text-shadow: 0 0 3px $font-text-shadow;
-//   // animation: text-color-change 0.1s infinite;
-// }
+button {
+  padding: 0;
+  color: white;
+  background: transparent;
+  border: none;
+  // text-shadow: 0 0 3px $font-text-shadow;
+  // animation: text-color-change 0.1s infinite;
+}
 
 a {
   color: $white;
