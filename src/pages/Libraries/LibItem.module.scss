@@ -13,7 +13,7 @@
     align-items: flex-start;
 
     &.mobileWrapperImage {
-      width: 120px;
+      width: 40%;
     }
 
     img {
@@ -61,7 +61,7 @@
 
 .mobileWrapper {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
 
   section {
     display: inherit;

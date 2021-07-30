@@ -32,6 +32,7 @@ p-sidebar-mask	Modal layer of the sidebar.
     }
 
     .p-sidebar-content {
+      overflow: auto;
       height: 100%;
     }
   }

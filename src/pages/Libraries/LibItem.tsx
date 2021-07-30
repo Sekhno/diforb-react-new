@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { BrowserView, MobileOnlyView } from 'react-device-detect'
 import { ProgressBar, ProgressBarProps } from 'primereact/progressbar'
-import { Sidebar } from 'primereact/sidebar'
 import { Library } from '../../helpers/firebase.interface'
 import { IconsUI } from '../../models/enums'
 import styles from './LibItem.module.scss'
@@ -13,16 +12,17 @@ interface PropsType {
 
 
 export const LibItem = (props: PropsType) => {
-  const { name, cover, cover_retina, tizer, description } = props.data
+  
+  const { name, cover, tizer } = props.data
   const history = useHistory()
   const audio = useMemo(() => new Audio(tizer), [tizer])
   const [ progress, setProgress ] = useState(0)
   const [ playing, setPlaying ] = useState(false) 
-  const [ visibleInfoBar, setVisibleInfoBar ] = useState(false)
   const progressBarProps: ProgressBarProps = {
     id: name,
     value: progress
   }
+  
   const updateTime = () => {
     if (audio.currentTime === audio.duration) {
       setPlaying(false)
@@ -71,11 +71,10 @@ export const LibItem = (props: PropsType) => {
             <div onClick = { clickProgress }>
               <ProgressBar { ...progressBarProps }/>
             </div>
+            
           </div>
         </div>
       </BrowserView>
-      
-      
       <MobileOnlyView>
         <div className = { styles.mobileWrapper }>
           <figure className = { styles.mobileWrapperImage }>
@@ -85,43 +84,18 @@ export const LibItem = (props: PropsType) => {
             <h1>{ name }</h1>
             <div className = { styles.controls }>
               <div className = { styles.buttons }>
-                <button onTouchStart = {() => setVisibleInfoBar(true)}>About</button>
+                <Link to = { `/libraries/${name}` }> Info </Link>
                 {/* <Link to = { `/app/${name}` }> Launch </Link> */}
                 <i className = { !playing ? IconsUI.radialPlay: IconsUI.radialPause } 
-                  onTouchStart = {() => setPlaying(!playing)}/>
+                  onClick = {() => setPlaying(!playing)}/>
               </div>
-              <div>
+              <div onClick = { clickProgress }>
                 <ProgressBar { ...progressBarProps }/>
               </div>
             </div>
           </section>
-         
         </div>
-        <Sidebar visible = { visibleInfoBar } position = 'right' onHide={() => {}} icons = {(
-          <header>
-            <i className = 'icon-close' onTouchStart = {() => setVisibleInfoBar(false)}/>
-          </header>
-        )}>
-          <div className = { styles.mobileInfoBar }>
-            <figure>
-              <img src = { cover } alt = { name } />
-            </figure>
-            <div className = { styles.controls }>
-              <div className = { styles.buttons }>
-                <Link to = { `/app/${name}` }> Launch </Link>
-                <i className = { !playing ? IconsUI.radialPlay: IconsUI.radialPause } 
-                  onTouchStart = {() => setPlaying(!playing)}/>
-              </div>
-              <div>
-                <ProgressBar { ...progressBarProps }/>
-              </div>
-            </div>
-            <p>{ description }</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Adipisci, nulla dignissimos? Iste ipsam voluptatem laborum. Aliquam, temporibus! Impedit, repudiandae eius rem voluptatem aperiam, velit, illo libero nostrum quo omnis itaque.</p>
-          </div>
-        </Sidebar>
       </MobileOnlyView>
-    
     </React.Fragment>
     
   )
