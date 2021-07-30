@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserView, MobileView, MobileOnlyView } from 'react-device-detect'
 import './index.scss'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
@@ -8,7 +9,12 @@ import store from './store/store'
 
 ReactDOM.render(
   <Provider store = { store }>
-    <App />
+    <BrowserView>
+      <App />
+    </BrowserView>
+    <MobileOnlyView>
+      Mobile Only!
+    </MobileOnlyView>
   </Provider>,
   document.getElementById('root')
 );

@@ -31,14 +31,12 @@ const Reviews = () => {
       review: review 
     })
     .then(() => {
-        console.log('Document successfully written!');
+      gerReviews()
     })
-    .catch((error) => {
-        console.error('Error writing document: ', error);
-    })
+    .catch(console.error)
   }
 
-  useEffect(() => {
+  const gerReviews = () => {
     db.collection(REVIEWS).get()
       .then((querySnapshot) => {
         const reviews: Review[] = []
@@ -51,6 +49,10 @@ const Reviews = () => {
         })
         setReviewList(reviews)
       }).catch(console.error)
+  }
+
+  useEffect(() => {
+    gerReviews()
   }, [])
 
   return(

@@ -1,6 +1,7 @@
 @import '../../assets/styles/app/variable.scss';
 
 .wrapper {
+  position: relative;
   padding: 8px 20px;
   text-align: center;
   background: $auth-form-background;
@@ -8,7 +9,7 @@
 
   > h1 {
     position: absolute;
-    top: -0.5em; left: 50%;
+    top: -0.6em; left: 50%;
     color: $auth-form-h1;
     font-size: 150px;
     transform: translateX(-50%);

@@ -1,6 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import styles from './index.module.scss'
+import { useDispatch } from 'react-redux'
+import { Link, NavLink } from 'react-router-dom'
+import { onLogout } from '../../async/authActions'
+import styles       from './index.module.scss'
 import CustomAvatar from './CustomAvatar'
 
 interface PropsType {
@@ -9,6 +11,8 @@ interface PropsType {
 
 export const Sidebar = (props: PropsType) => {
   const { className } = props
+  const dispatch = useDispatch()
+
   return(
     <div className = { className }>
       <div className = { styles.logo }>
@@ -18,33 +22,33 @@ export const Sidebar = (props: PropsType) => {
         <CustomAvatar />
         <div className = { styles.controls }>
           <Link to = '/settings'><i className = 'icon-cog'/></Link>
-          <i className = 'icon-logout'/>
+          <i className = 'icon-logout' onClick = {() => dispatch(onLogout())}/>
         </div>
       </div>
       <div className = { styles.simpleLink }>
-        <Link to = '/libraries'>
+        <NavLink to = '/libraries' activeClassName = { styles.selected }>
           <i className = 'icon-libs'/>
           <span>Libraries</span>
-        </Link>
+        </NavLink>
       </div>
       <div className = { styles.simpleLink }>
-        <Link to = '/tutorial'>
+        <NavLink to = '/tutorial' activeClassName = { styles.selected }>
           <i className = 'icon-play'/>
           <span>Watch Tutorial</span>
-        </Link>
+        </NavLink>
       </div>
       <div className = { styles.simpleLink }>
-        <Link to = '/faq'>
+        <NavLink to = '/faq' activeClassName = { styles.selected }>
           <i className = 'icon-info'/>
           <span>F.A.Q.</span>
-        </Link>
+        </NavLink>
       </div>
       <div className = { styles.otherLinks }>
-        <Link to = '/terms'>License agreement</Link>
-        <Link to = '/privacy'>Privacy policy</Link>
-        <Link to = '/support'>Support</Link>
-        {/* <Link to = '/touch'>Get in touch</Link> */}
-        <Link to = '/reviews'>Reviews</Link>
+        <NavLink to = '/terms' activeClassName = { styles.selected }>License agreement</NavLink>
+        <NavLink to = '/privacy' activeClassName = { styles.selected }>Privacy policy</NavLink>
+        <NavLink to = '/support' activeClassName = { styles.selected }>Support</NavLink>
+        {/* <NavLink to = '/touch'>Get in touch</NavLink> */}
+        <NavLink to = '/reviews' activeClassName = { styles.selected }>Reviews</NavLink>
       </div>
       <div className = { styles.socialLinks }>
         <a className = 'icon-facebook' href = 'https://www.facebook.com/diforb/'/>

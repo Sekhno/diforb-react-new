@@ -17,7 +17,7 @@ export const Faq = () => {
             faqs.map(({id, header, content}, i) => (
               <AccordionTab headerTemplate = { 
                 <HeaderTemplate header = {header} active = { activeIndex === i }/> 
-               }>
+               } key = {i}>
                 <p> <span className = 'p-mr-1'>A:</span>{content}</p>
               </AccordionTab>
             ))

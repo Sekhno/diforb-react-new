@@ -1,6 +1,8 @@
 @import '../../assets/styles/app/variable.scss';
 
 .wrapper {
+  margin: auto;
+  max-width: 1280px;
   height: inherit;
   display: grid;
   grid-template-columns: [start] 270px [middleStart] 1rem [middleEnd] auto [end];
@@ -73,6 +75,10 @@
       color: $white;
       display: flex;
       align-items: center;
+
+      &.selected {
+        color: $green;
+      }
       
       i {
         font-size: 1.5rem;
@@ -89,7 +95,13 @@
     justify-content: center;
     flex-grow: 1;
     padding-left: 2rem;
+    line-height: 1.5rem;
     background-color: $sidebar-field-bg-a2;
+
+
+    .selected {
+      color: $green;
+    }
   }
 
   .socialLinks {
