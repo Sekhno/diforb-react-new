@@ -50,7 +50,6 @@ export const LibItem = (props: PropsType) => {
     const currentTime = audio.duration * Math.floor(percent) * 0.01
     setProgress(percent)
     audio.currentTime = currentTime
-    console.log(currentTime)
   }
 
   return(
@@ -78,7 +77,7 @@ export const LibItem = (props: PropsType) => {
       </BrowserView>
       <MobileOnlyView>
         <div className = { styles.mobileWrapper }>
-          <figure className = { styles.mobileWrapperImage }>
+          <figure>
             <img src = { cover } alt = { name } />
           </figure>
           <section>
@@ -86,8 +85,6 @@ export const LibItem = (props: PropsType) => {
             <div className = { styles.controls }>
               <div className = { styles.buttons }>
                 <button onTouchStart = {() => setCurrent && setCurrent(data)}>Info</button>
-                {/* <Link to = { `/libraries/${name}` }> Info </Link> */}
-                {/* <Link to = { `/app/${name}` }> Launch </Link> */}
                 <i className = { !playing ? IconsUI.radialPlay: IconsUI.radialPause } 
                   onClick = {() => setPlaying(!playing)}/>
               </div>
