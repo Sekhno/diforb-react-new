@@ -3883,7 +3883,442 @@ const LIBRARIES = [
     name: 'Creatures',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fcreatures.jpg?alt=media&token=2d8d1b6b-d12e-42bb-8282-928f41d85c72',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Fcreatures.jpg?alt=media&token=c747eb0f-316e-4d46-8134-341bcdb96de4',
-    data: [],
+    data: [
+      {
+        name: 'Alien',
+        type: 'category',
+        icon: 'creatures-alien',
+        data: [
+          {
+            name: 'Attack',
+            type: 'subcategory',
+            icon: 'creatures-attack',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Growl',
+            type: 'subcategory',
+            icon: 'creatures-growl',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Pain',
+            type: 'subcategory',
+            icon: 'creatures-pain',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Talk',
+            type: 'subcategory',
+            icon: 'creatures-talk',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Big_Monster',
+        type: 'category',
+        icon: 'creatures-big-monster',
+        data: [
+          {
+            name: 'Attack',
+            type: 'subcategory',
+            icon: 'creatures-attack',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Breath',
+            type: 'subcategory',
+            icon: 'creatures-breathe',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Growl',
+            type: 'subcategory',
+            icon: 'creatures-growl',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Pain',
+            type: 'subcategory',
+            icon: 'creatures-pain',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Talk',
+            type: 'subcategory',
+            icon: 'creatures-talk',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Medium_Monster',
+        type: 'category',
+        icon: 'creatures-medium-monster',
+        data: [
+          {
+            name: 'Attack',
+            type: 'subcategory',
+            icon: 'creatures-attack',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Growl',
+            type: 'subcategory',
+            icon: 'creatures-growl',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Pain',
+            type: 'subcategory',
+            icon: 'creatures-pain',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'Little_Monster',
+        type: 'category',
+        icon: 'creatures-little-monster',
+        data: [
+          {
+            name: 'Attack',
+            type: 'subcategory',
+            icon: 'creatures-attack',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Growl',
+            type: 'subcategory',
+            icon: 'creatures-growl',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Pain',
+            type: 'subcategory',
+            icon: 'creatures-pain',
+            data: [
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              },
+              {
+                name: '',
+                type: 'sound'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'Goblin',
+        type: 'category',
+        icon: 'creatures-goblin',
+        data: [
+          {
+            name: 'Attack',
+            type: 'subcategory',
+            icon: 'creatures-attack',
+            data: []
+          },
+          {
+            name: 'Death',
+            type: 'subcategory',
+            icon: 'creatures-death',
+            data: []
+          },
+          {
+            name: 'Growl',
+            type: 'subcategory',
+            icon: 'creatures-growl',
+            data: []
+          },
+          {
+            name: 'LongAttack',
+            type: 'subcategory',
+            icon: 'creatures-attack-long',
+            data: []
+          },
+          {
+            name: 'Pain',
+            type: 'subcategory',
+            icon: 'creatures-pain',
+            data: []
+          },
+          {
+            name: 'Snore',
+            type: 'subcategory',
+            icon: 'creatures-snore',
+            data: []
+          },
+          {
+            name: 'Talk',
+            type: 'subcategory',
+            icon: 'creatures-talk',
+            data: []
+          },
+        ]
+      },
+    ],
     description: 'Zombies, orcs, goblins and other mystical beings are already almost ready to break away from your loudspeakers and become a part of your project.',
     tizer: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/demo%2FMonster_tizer.mp3?alt=media&token=668d17dd-f131-4253-bb37-c03fc7772621'
   },
