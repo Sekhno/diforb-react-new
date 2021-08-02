@@ -5151,43 +5151,190 @@ const LIBRARIES = [
             name: 'Barrel',
             type: 'subcategory',
             icon: 'destruction-wood-barrel',
-            data: []
+            data: [
+              {
+                name: 'Barrel_01',
+                type: 'sound'
+              },
+              {
+                name: 'Barrel_02',
+                type: 'sound'
+              },
+              {
+                name: 'Barrel_03',
+                type: 'sound'
+              },
+              {
+                name: 'Barrel_04',
+                type: 'sound'
+              },
+              {
+                name: 'Barrel_05',
+                type: 'sound'
+              },
+            ]
           },
           {
             name: 'BigImpact',
             type: 'subcategory',
             icon: 'destruction-wood-bigimpacts',
-            data: []
+            data: [
+              {
+                name: 'Big_Impact_01',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Impact_02',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Impact_03',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Impact_04',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Impact_05',
+                type: 'sound'
+              },
+            ]
           },
           {
             name: 'Chair',
             type: 'subcategory',
             icon: 'destruction-wood-chair',
-            data: []
+            data: [
+              {
+                name: 'Chair_01',
+                type: 'sound'
+              },
+              {
+                name: 'Chair_02',
+                type: 'sound'
+              },
+              {
+                name: 'Chair_03',
+                type: 'sound'
+              },
+              {
+                name: 'Chair_04',
+                type: 'sound'
+              },
+              {
+                name: 'Chair_05',
+                type: 'sound'
+              },
+            ]
           },
           {
-            name: '',
+            name: 'Crate',
             type: 'subcategory',
-            icon: '',
-            data: []
+            icon: 'destruction-wood-chest',
+            data: [
+              {
+                name: 'Crate_01',
+                type: 'sound'
+              },
+              {
+                name: 'Crate_02',
+                type: 'sound'
+              },
+              {
+                name: 'Crate_03',
+                type: 'sound'
+              },
+              {
+                name: 'Crate_04',
+                type: 'sound'
+              },
+              {
+                name: 'Crate_05',
+                type: 'sound'
+              },
+            ]
           },
           {
-            name: '',
+            name: 'CreakLong',
             type: 'subcategory',
-            icon: '',
-            data: []
+            icon: 'destruction-wood-creak',
+            data: [
+              {
+                name: 'Creak_Long_01',
+                type: 'sound'
+              },
+              {
+                name: 'Creak_Long_02',
+                type: 'sound'
+              },
+              {
+                name: 'Creak_Long_03',
+                type: 'sound'
+              },
+              {
+                name: 'Creak_Long_04',
+                type: 'sound'
+              },
+              {
+                name: 'Creak_Long_05',
+                type: 'sound'
+              },
+            ]
           },
           {
-            name: '',
+            name: 'CreakShort',
             type: 'subcategory',
-            icon: '',
-            data: []
+            icon: 'destruction-wood-creak',
+            data: [
+              {
+                name: 'Creak_Short_01',
+                type: 'sound'
+              },
+              {
+                name: 'Creak_Short_02',
+                type: 'sound'
+              },
+              {
+                name: 'Creak_Short_03',
+                type: 'sound'
+              },
+              {
+                name: 'Creak_Short_04',
+                type: 'sound'
+              },
+              {
+                name: 'Creak_Short_05',
+                type: 'sound'
+              },
+            ]
           },
           {
-            name: '',
+            name: 'LightImpact',
             type: 'subcategory',
-            icon: '',
-            data: []
+            icon: 'destruction-wood-smallimpacts',
+            data: [
+              {
+                name: 'Light_Impact_01',
+                type: 'sound'
+              },
+              {
+                name: 'Light_Impact_02',
+                type: 'sound'
+              },
+              {
+                name: 'Light_Impact_03',
+                type: 'sound'
+              },
+              {
+                name: 'Light_Impact_04',
+                type: 'sound'
+              },
+              {
+                name: 'Light_Impact_05',
+                type: 'sound'
+              },
+            ]
           }
         ]
       },
@@ -5202,7 +5349,366 @@ const LIBRARIES = [
     name: 'Explosions',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fexplosions.jpg?alt=media&token=4290aa7b-9a89-4f86-8cbe-2142d037bbac',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Fexplosions.jpg?alt=media&token=27aded7e-a00d-49a9-9561-568436d535dc',
-    data: [],
+    data: [
+      {
+        name: 'Debris',
+        type: 'category',
+        icon: 'explosions-debris',
+        data: [
+          {
+            name: 'Debris_01',
+            type: 'sound'
+          },
+          {
+            name: 'Debris_02',
+            type: 'sound'
+          },
+          {
+            name: 'Debris_03',
+            type: 'sound'
+          },
+          {
+            name: 'Debris_04',
+            type: 'sound'
+          },
+          {
+            name: 'Debris_05',
+            type: 'sound'
+          },
+          {
+            name: 'Debris_06',
+            type: 'sound'
+          },
+          {
+            name: 'Debris_07',
+            type: 'sound'
+          },
+          {
+            name: 'Debris_08',
+            type: 'sound'
+          },
+          {
+            name: 'Debris_09',
+            type: 'sound'
+          },
+        ]
+      },
+      {
+        name: 'Elements',
+        type: 'category',
+        icon: 'explosions-elements',
+        data: [
+          {
+            name: 'Glass',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Glass_01',
+                type: 'sound'
+              },
+              {
+                name: 'Glass_02',
+                type: 'sound'
+              },
+              {
+                name: 'Glass_03',
+                type: 'sound'
+              },
+              {
+                name: 'Glass_04',
+                type: 'sound'
+              },
+              {
+                name: 'Glass_05',
+                type: 'sound'
+              },
+              {
+                name: 'Glass_06',
+                type: 'sound'
+              },
+              {
+                name: 'Glass_07',
+                type: 'sound'
+              },
+              {
+                name: 'Glass_08',
+                type: 'sound'
+              },
+              {
+                name: 'Glass_09',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Other',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Other_01',
+                type: 'sound'
+              },
+              {
+                name: 'Other_02',
+                type: 'sound'
+              },
+              {
+                name: 'Other_03',
+                type: 'sound'
+              },
+              {
+                name: 'Other_04',
+                type: 'sound'
+              },
+              {
+                name: 'Other_05',
+                type: 'sound'
+              },
+              {
+                name: 'Other_06',
+                type: 'sound'
+              },
+              {
+                name: 'Other_07',
+                type: 'sound'
+              },
+              {
+                name: 'Other_08',
+                type: 'sound'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'EnergyBlast',
+        type: 'category',
+        icon: 'explosions-energy-blast',
+        data: [
+          {
+            name: 'Energy_Blast_01',
+            type: 'sound'
+          },
+          {
+            name: 'Energy_Blast_02',
+            type: 'sound'
+          },
+          {
+            name: 'Energy_Blast_03',
+            type: 'sound'
+          },
+          {
+            name: 'Energy_Blast_04',
+            type: 'sound'
+          },
+          {
+            name: 'Energy_Blast_05',
+            type: 'sound'
+          },
+          {
+            name: 'Energy_Blast_06',
+            type: 'sound'
+          }
+        ]
+      },
+      {
+        name: 'Explosions',
+        type: 'category',
+        icon: 'explosions-explode',
+        data: [
+          {
+            name: 'Long',
+            type: 'subcategory',
+            icon: 'explosions-explode-long',
+            data: [
+              {
+                name: 'Long_01',
+                type: 'sound'
+              },
+              {
+                name: 'Long_02',
+                type: 'sound'
+              },
+              {
+                name: 'Long_03',
+                type: 'sound'
+              },
+              {
+                name: 'Long_04',
+                type: 'sound'
+              },
+              {
+                name: 'Long_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Low',
+            type: 'subcategory',
+            icon: 'explosions-explode-small',
+            data: [
+              {
+                name: 'Low_01',
+                type: 'sound'
+              },
+              {
+                name: 'Low_02',
+                type: 'sound'
+              },
+              {
+                name: 'Low_03',
+                type: 'sound'
+              },
+              {
+                name: 'Low_04',
+                type: 'sound'
+              },
+              {
+                name: 'Low_05',
+                type: 'sound'
+              },
+              {
+                name: 'Low_06',
+                type: 'sound'
+              },
+              {
+                name: 'Low_07',
+                type: 'sound'
+              },
+              {
+                name: 'Low_08',
+                type: 'sound'
+              },
+              {
+                name: 'Low_09',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Medium',
+            type: 'subcategory',
+            icon: 'explosions-explode',
+            data: [
+              {
+                name: 'Medium_01',
+                type: 'sound'
+              },
+              {
+                name: 'Medium_02',
+                type: 'sound'
+              },
+              {
+                name: 'Medium_03',
+                type: 'sound'
+              },
+              {
+                name: 'Medium_04',
+                type: 'sound'
+              },
+              {
+                name: 'Medium_05',
+                type: 'sound'
+              },
+              {
+                name: 'Medium_06',
+                type: 'sound'
+              },
+              {
+                name: 'Medium_07',
+                type: 'sound'
+              },
+              {
+                name: 'Medium_08',
+                type: 'sound'
+              },
+              {
+                name: 'Medium_09',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Shot',
+            type: 'subcategory',
+            icon: 'explosions-explode',
+            data: [
+              {
+                name: 'Shot_01',
+                type: 'sound'
+              },
+              {
+                name: 'Shot_02',
+                type: 'sound'
+              },
+              {
+                name: 'Shot_03',
+                type: 'sound'
+              },
+              {
+                name: 'Shot_04',
+                type: 'sound'
+              },
+              {
+                name: 'Shot_05',
+                type: 'sound'
+              },
+              {
+                name: 'Shot_06',
+                type: 'sound'
+              },
+              {
+                name: 'Shot_07',
+                type: 'sound'
+              },
+              {
+                name: 'Shot_08',
+                type: 'sound'
+              }
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Other',
+        type: 'category',
+        icon: 'explosions-other',
+        data: [
+          {
+            name: 'Tinnitus',
+            type: 'subcategory',
+            icon: 'explosions-tinnitus',
+            data: [
+              {
+                name: 'Tinnitus_01',
+                type: 'sound'
+              },
+              {
+                name: 'Tinnitus_02',
+                type: 'sound'
+              },
+              {
+                name: 'Tinnitus_03',
+                type: 'sound'
+              },
+              {
+                name: 'Tinnitus_04',
+                type: 'sound'
+              },
+              {
+                name: 'Tinnitus_05',
+                type: 'sound'
+              },
+              {
+                name: 'Tinnitus_06',
+                type: 'sound'
+              }
+            ]
+          }
+        ]
+      },
+    ],
     description: 'Here you can find a full set of sounds to create a maximum amount of noise.',
     tizer: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/demo%2FExplosions_tizer.mp3?alt=media&token=d0b98b22-bcea-4edf-be80-69bb7ca09397'
   },
