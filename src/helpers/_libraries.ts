@@ -2939,34 +2939,401 @@ const LIBRARIES = [
         ]
       },
       {
-        name: '',
+        name: 'Other',
         type: 'category',
-        icon: '',
-        data: []
+        icon: 'birds-other',
+        data: [
+          {
+            name: 'Cuckoo',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Cuckoo_01',
+                type: 'sound'
+              },
+              {
+                name: 'Cuckoo_02',
+                type: 'sound'
+              },
+              {
+                name: 'Cuckoo_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Magpie',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Magpie_01',
+                type: 'sound'
+              },
+              {
+                name: 'Magpie_02',
+                type: 'sound'
+              },
+              {
+                name: 'Magpie_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Owls',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Owls_01',
+                type: 'sound'
+              },
+              {
+                name: 'Owls_02',
+                type: 'sound'
+              },
+              {
+                name: 'Owls_03',
+                type: 'sound'
+              },
+              {
+                name: 'Owls_04',
+                type: 'sound'
+              },
+              {
+                name: 'Owls_05',
+                type: 'sound'
+              },
+              {
+                name: 'Owls_06',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Pigeons',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Pigeons_01',
+                type: 'sound'
+              },
+              {
+                name: 'Pigeons_02',
+                type: 'sound'
+              },
+              {
+                name: 'Pigeons_03',
+                type: 'sound'
+              },
+              {
+                name: 'Pigeons_04',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Sparrow',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Sparrow_01',
+                type: 'sound'
+              },
+              {
+                name: 'Sparrow_02',
+                type: 'sound'
+              },
+              {
+                name: 'Sparrow_03',
+                type: 'sound'
+              },
+              {
+                name: 'Sparrow_04',
+                type: 'sound'
+              },
+              {
+                name: 'Sparrow_05',
+                type: 'sound'
+              },
+              {
+                name: 'Sparrow_06',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Turkey',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Turkey_01',
+                type: 'sound'
+              },
+              {
+                name: 'Turkey_02',
+                type: 'sound'
+              },
+              {
+                name: 'Turkey_03',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
       },
       {
-        name: '',
+        name: 'Parrot',
         type: 'category',
-        icon: '',
-        data: []
+        icon: 'birds-parrot',
+        data: [
+          {
+            name: 'Parrot_01',
+            type: 'sound'
+          },
+          {
+            name: 'Parrot_02',
+            type: 'sound'
+          },
+          {
+            name: 'Parrot_03',
+            type: 'sound'
+          },
+          {
+            name: 'Parrot_04',
+            type: 'sound'
+          },
+          {
+            name: 'Parrot_05',
+            type: 'sound'
+          },
+          {
+            name: 'Parrot_06',
+            type: 'sound'
+          },
+          {
+            name: 'Parrot_07',
+            type: 'sound'
+          },
+          {
+            name: 'Parrot_08',
+            type: 'sound'
+          },
+          {
+            name: 'Parrot_09',
+            type: 'sound'
+          },
+          {
+            name: 'Parrot_10',
+            type: 'sound'
+          },
+        ]
       },
       {
-        name: '',
+        name: 'Seagulls',
         type: 'category',
-        icon: '',
-        data: []
+        icon: 'birds-seagul',
+        data: [
+          {
+            name: 'Seagulls_01',
+            type: 'sound'
+          },
+          {
+            name: 'Seagulls_02',
+            type: 'sound'
+          },
+          {
+            name: 'Seagulls_03',
+            type: 'sound'
+          },
+          {
+            name: 'Seagulls_04',
+            type: 'sound'
+          },
+          {
+            name: 'Seagulls_05',
+            type: 'sound'
+          },
+          {
+            name: 'Seagulls_06',
+            type: 'sound'
+          },
+          {
+            name: 'Seagulls_07',
+            type: 'sound'
+          },
+          {
+            name: 'Seagulls_08',
+            type: 'sound'
+          },
+          {
+            name: 'Seagulls_09',
+            type: 'sound'
+          },
+          {
+            name: 'Seagulls_10',
+            type: 'sound'
+          },
+          {
+            name: 'Seagulls_11',
+            type: 'sound'
+          },
+        ]
       },
       {
-        name: '',
+        name: 'Wings',
         type: 'category',
-        icon: '',
-        data: []
+        icon: 'birds-wings',
+        data: [
+          {
+            name: 'Big',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Big_01',
+                type: 'subcategory'
+              },
+              {
+                name: 'Big_02',
+                type: 'subcategory'
+              }
+            ]
+          },
+          {
+            name: 'Medium',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Medium_01',
+                type: 'subcategory'
+              },
+              {
+                name: 'Medium_02',
+                type: 'subcategory'
+              },
+              {
+                name: 'Medium_03',
+                type: 'subcategory'
+              },
+              {
+                name: 'Medium_04',
+                type: 'subcategory'
+              },{
+                name: 'Medium_05',
+                type: 'subcategory'
+              },
+              {
+                name: 'Medium_06',
+                type: 'subcategory'
+              }
+            ]
+          },
+          {
+            name: 'Small',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Small_01',
+                type: 'subcategory'
+              },
+              {
+                name: 'Small_02',
+                type: 'subcategory'
+              },
+              {
+                name: 'Small_03',
+                type: 'subcategory'
+              },
+              {
+                name: 'Small_04',
+                type: 'subcategory'
+              },{
+                name: 'Small_05',
+                type: 'subcategory'
+              },
+              {
+                name: 'Small_06',
+                type: 'subcategory'
+              },
+              {
+                name: 'Small_07',
+                type: 'subcategory'
+              },
+              {
+                name: 'Small_08',
+                type: 'subcategory'
+              },
+              {
+                name: 'Small_09',
+                type: 'subcategory'
+              },
+              {
+                name: 'Small_10',
+                type: 'subcategory'
+              },{
+                name: 'Small_11',
+                type: 'subcategory'
+              },
+            ]
+          },
+        ]
       },
       {
-        name: '',
+        name: 'Woodpecker',
         type: 'category',
-        icon: '',
-        data: []
+        icon: 'birds-woodpecker',
+        data: [
+          {
+            name: 'Knock',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Knock_01',
+                type: 'subcategory'
+              },
+              {
+                name: 'Knock_02',
+                type: 'subcategory'
+              },
+              {
+                name: 'Knock_03',
+                type: 'subcategory'
+              },
+              {
+                name: 'Knock_04',
+                type: 'subcategory'
+              },{
+                name: 'Knock_05',
+                type: 'subcategory'
+              },
+              {
+                name: 'Knock_06',
+                type: 'subcategory'
+              },
+              {
+                name: 'Knock_07',
+                type: 'subcategory'
+              }
+            ]
+          },
+          {
+            name: 'Sing',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Sing_01',
+                type: 'subcategory'
+              },
+              {
+                name: 'Sing_02',
+                type: 'subcategory'
+              },
+              {
+                name: 'Sing_03',
+                type: 'subcategory'
+              },
+            ]
+          }
+        ]
       },
     ],
     description: 'Here you can find variety of birds sounds such as crows, parrots, chickens and others.',
@@ -2979,7 +3346,533 @@ const LIBRARIES = [
     name: 'Cats N Dogs',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fcats-and-dogs.jpg?alt=media&token=cc85b73a-ba26-43c6-a609-707d4c777e47',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Fcats-and-dogs.jpg?alt=media&token=3f17255d-ef1d-4bb6-84d2-ea4e0443a665',
-    data: [],
+    data: [
+      {
+        name: 'Cats',
+        type: 'category',
+        icon: 'catsNdogs-cats',
+        data: [
+          {
+            name: 'Hisses',
+            type: 'subcategory',
+            icon: 'catsNdogs-cats-hisses',
+            data: [
+              {
+                name: 'Hisses_01',
+                type: 'sound'
+              },
+              {
+                name: 'Hisses_02',
+                type: 'sound'
+              },
+              {
+                name: 'Hisses_03',
+                type: 'sound'
+              },
+              {
+                name: 'Hisses_04',
+                type: 'sound'
+              },
+              {
+                name: 'Hisses_05',
+                type: 'sound'
+              },
+              {
+                name: 'Hisses_06',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Howling',
+            type: 'subcategory',
+            icon: 'catsNdogs-cats-Howling',
+            data: [
+              {
+                name: 'Howling_01',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_02',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_03',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_04',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_05',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_06',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_07',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Meow',
+            type: 'subcategory',
+            icon: 'catsNdogs-cats-meow',
+            data: [
+              {
+                name: 'Meow_01',
+                type: 'sound'
+              },
+              {
+                name: 'Meow_02',
+                type: 'sound'
+              },
+              {
+                name: 'Meow_03',
+                type: 'sound'
+              },
+              {
+                name: 'Meow_04',
+                type: 'sound'
+              },
+              {
+                name: 'Meow_05',
+                type: 'sound'
+              },
+              {
+                name: 'Meow_06',
+                type: 'sound'
+              },
+              {
+                name: 'Meow_07',
+                type: 'sound'
+              },
+              {
+                name: 'Meow_08',
+                type: 'sound'
+              },
+              {
+                name: 'Meow_09',
+                type: 'sound'
+              },
+              {
+                name: 'Meow_10',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Purring',
+            type: 'subcategory',
+            icon: 'catsNdogs-cats-purring',
+            data: [
+              {
+                name: 'Purring_01',
+                type: 'sound'
+              },
+              {
+                name: 'Purring_02',
+                type: 'sound'
+              },
+              {
+                name: 'Purring_03',
+                type: 'sound'
+              },
+              {
+                name: 'Purring_04',
+                type: 'sound'
+              },
+              {
+                name: 'Purring_05',
+                type: 'sound'
+              },
+              {
+                name: 'Purring_06',
+                type: 'sound'
+              },
+              {
+                name: 'Purring_07',
+                type: 'sound'
+              },
+              {
+                name: 'Purring_08',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Dogs',
+        type: 'category',
+        icon: 'catsNdogs-dog',
+        data: [
+          {
+            name: 'Big',
+            type: 'category',
+            icon: 'catsNdogs-dog',
+            data: [
+              {
+                name: 'Big_01',
+                type: 'sound'
+              },
+              {
+                name: 'Big_02',
+                type: 'sound'
+              },
+              {
+                name: 'Big_03',
+                type: 'sound'
+              },
+              {
+                name: 'Big_04',
+                type: 'sound'
+              },
+              {
+                name: 'Big_05',
+                type: 'sound'
+              },
+              {
+                name: 'Big_06',
+                type: 'sound'
+              },
+              {
+                name: 'Big_07',
+                type: 'sound'
+              },
+              {
+                name: 'Big_08',
+                type: 'sound'
+              },
+              {
+                name: 'Big_09',
+                type: 'sound'
+              },
+              {
+                name: 'Big_10',
+                type: 'sound'
+              },
+              {
+                name: 'Big_11',
+                type: 'sound'
+              },
+              {
+                name: 'Big_12',
+                type: 'sound'
+              },
+              {
+                name: 'Big_13',
+                type: 'sound'
+              },
+              {
+                name: 'Big_14',
+                type: 'sound'
+              },
+              {
+                name: 'Big_15',
+                type: 'sound'
+              },
+              {
+                name: 'Big_16',
+                type: 'sound'
+              },
+              {
+                name: 'Big_17',
+                type: 'sound'
+              },
+              {
+                name: 'Big_18',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Drinking',
+            type: 'category',
+            icon: 'catsNdogs-dog-drinking',
+            data: [
+              {
+                name: 'Drinking_01',
+                type: 'sound'
+              },
+              {
+                name: 'Drinking_02',
+                type: 'sound'
+              },
+              {
+                name: 'Drinking_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Eating',
+            type: 'category',
+            icon: 'catsNdogs-dog-eating',
+            data: [
+              {
+                name: 'Eating_01',
+                type: 'sound'
+              },
+              {
+                name: 'Eating_02',
+                type: 'sound'
+              },
+              {
+                name: 'Eating_03',
+                type: 'sound'
+              },
+              {
+                name: 'Eating_04',
+                type: 'sound'
+              },
+              {
+                name: 'Eating_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Growling',
+            type: 'category',
+            icon: 'catsNdogs-dog-Crowling',
+            data: [
+              {
+                name: 'Growling_01',
+                type: 'sound'
+              },
+              {
+                name: 'Growling_02',
+                type: 'sound'
+              },
+              {
+                name: 'Growling_03',
+                type: 'sound'
+              },
+              {
+                name: 'Growling_04',
+                type: 'sound'
+              },
+              {
+                name: 'Growling_05',
+                type: 'sound'
+              },
+              {
+                name: 'Growling_06',
+                type: 'sound'
+              },
+              {
+                name: 'Growling_07',
+                type: 'sound'
+              },
+              {
+                name: 'Growling_08',
+                type: 'sound'
+              },
+              {
+                name: 'Growling_09',
+                type: 'sound'
+              },
+              {
+                name: 'Growling_10',
+                type: 'sound'
+              },
+              {
+                name: 'Growling_11',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Howling',
+            type: 'category',
+            icon: 'catsNdogs-dog-Howling',
+            data: [
+              {
+                name: 'Howling_01',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_02',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_03',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_04',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_05',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_06',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_07',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_08',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Panting',
+            type: 'category',
+            icon: 'catsNdogs-dog-panting',
+            data: [
+              {
+                name: 'Panting_01',
+                type: 'sound'
+              },
+              {
+                name: 'Panting_02',
+                type: 'sound'
+              },
+              {
+                name: 'Panting_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Small',
+            type: 'category',
+            icon: 'catsNdogs-dog-small',
+            data: [
+              {
+                name: 'Small_01',
+                type: 'sound'
+              },
+              {
+                name: 'Small_02',
+                type: 'sound'
+              },
+              {
+                name: 'Small_03',
+                type: 'sound'
+              },
+              {
+                name: 'Small_04',
+                type: 'sound'
+              },
+              {
+                name: 'Small_05',
+                type: 'sound'
+              },
+              {
+                name: 'Small_06',
+                type: 'sound'
+              },
+              {
+                name: 'Small_07',
+                type: 'sound'
+              },
+              {
+                name: 'Small_08',
+                type: 'sound'
+              },
+              {
+                name: 'Small_09',
+                type: 'sound'
+              },
+              {
+                name: 'Small_10',
+                type: 'sound'
+              },
+              {
+                name: 'Small_11',
+                type: 'sound'
+              },
+              {
+                name: 'Small_12',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Snoring',
+            type: 'category',
+            icon: 'catsNdogs-dog-snoring',
+            data: [
+              {
+                name: 'Snoring_01',
+                type: 'sound'
+              },
+              {
+                name: 'Snoring_02',
+                type: 'sound'
+              },
+              {
+                name: 'Snoring_03',
+                type: 'sound'
+              },
+              {
+                name: 'Snoring_04',
+                type: 'sound'
+              },
+              {
+                name: 'Snoring_05',
+                type: 'sound'
+              },
+              {
+                name: 'Snoring_06',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Yelping',
+            type: 'category',
+            icon: 'catsNdogs-dog-Yelping',
+            data: [
+              {
+                name: 'Yelping_01',
+                type: 'sound'
+              },
+              {
+                name: 'Yelping_02',
+                type: 'sound'
+              },
+              {
+                name: 'Yelping_03',
+                type: 'sound'
+              },
+              {
+                name: 'Yelping_04',
+                type: 'sound'
+              },
+              {
+                name: 'Yelping_05',
+                type: 'sound'
+              },
+              {
+                name: 'Yelping_06',
+                type: 'sound'
+              },
+              {
+                name: 'Yelping_07',
+                type: 'sound'
+              },
+              {
+                name: 'Yelping_08',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
+      }
+    ],
     description: 'Here is a huge set of barking, growl, howl, hissing, snore and other sounds which are made by cats and dogs.',
     tizer: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/demo%2FCats-N-Dogs_tizer.mp3?alt=media&token=4c12237e-7490-44e8-abf3-438e103d8530'
   },
