@@ -7216,7 +7216,699 @@ const LIBRARIES = [
     name: 'Farm',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Ffarm.jpg?alt=media&token=6c5f2668-0a83-4797-89d8-84081df13685',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Ffarm.jpg?alt=media&token=19b53a26-9ae0-4abc-828d-45f7c997c373',
-    data: [],
+    data: [
+      {
+        name: 'Birds',
+        type: 'category',
+        icon: 'farm-chicken',
+        data: [
+          {
+            name: 'Chickens',
+            type: 'subcategory',
+            icon: 'farm-chicken',
+            data: [
+              {
+                name: 'Chickens_01',
+                type: 'sound',
+              },
+              {
+                name: 'Chickens_02',
+                type: 'sound',
+              },
+              {
+                name: 'Chickens_03',
+                type: 'sound',
+              },
+              {
+                name: 'Chickens_04',
+                type: 'sound',
+              },
+            ]
+          },
+          {
+            name: 'Goose',
+            type: 'subcategory',
+            icon: 'farm-goose',
+            data: [
+              {
+                name: 'Goose_01',
+                type: 'sound',
+              },
+              {
+                name: 'Goose_02',
+                type: 'sound',
+              },
+              {
+                name: 'Goose_03',
+                type: 'sound',
+              },
+              {
+                name: 'Goose_04',
+                type: 'sound',
+              },
+              {
+                name: 'Goose_05',
+                type: 'sound',
+              },
+              {
+                name: 'Goose_06',
+                type: 'sound',
+              },
+              {
+                name: 'Goose_07',
+                type: 'sound',
+              },
+            ]
+          },
+          {
+            name: 'Henhouse',
+            type: 'subcategory',
+            icon: 'farm-henhouse',
+            data: [
+              {
+                name: 'Hatched_01',
+                type: 'sound',
+              },
+              {
+                name: 'Henhouse_01',
+                type: 'sound',
+              },
+              {
+                name: 'Henhouse_02',
+                type: 'sound',
+              },
+              {
+                name: 'Talking_04',
+                type: 'sound',
+              },
+            ]
+          },
+          {
+            name: 'Rooster',
+            type: 'subcategory',
+            icon: 'farm-rooster',
+            data: [
+              {
+                name: 'Rooster_01',
+                type: 'sound',
+              },
+              {
+                name: 'Rooster_02',
+                type: 'sound',
+              },
+              {
+                name: 'Rooster_03',
+                type: 'sound',
+              },
+              {
+                name: 'Rooster_04',
+                type: 'sound',
+              },
+            ]
+          },
+          {
+            name: 'Turkey',
+            type: 'subcategory',
+            icon: 'farm-turkey',
+            data: [
+              {
+                name: 'Turkey_01',
+                type: 'sound',
+              },
+              {
+                name: 'Turkey_02',
+                type: 'sound',
+              },
+              {
+                name: 'Turkey_03',
+                type: 'sound',
+              }
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Cow',
+        type: 'category',
+        icon: 'farm-cow',
+        data: [
+          {
+            name: 'Milking',
+            type: 'subcategory',
+            icon: 'farm-milking',
+            data: [
+              {
+                name: 'Milking_01',
+                type: 'sound'
+              },
+              {
+                name: 'Milking_02',
+                type: 'sound'
+              },
+              {
+                name: 'Milking_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Mooing',
+            type: 'subcategory',
+            icon: 'farm-cow-eating',
+            data: [
+              {
+                name: 'Mooing_01',
+                type: 'sound'
+              },
+              {
+                name: 'Mooing_02',
+                type: 'sound'
+              },
+              {
+                name: 'Mooing_03',
+                type: 'sound'
+              },
+              {
+                name: 'Mooing_04',
+                type: 'sound'
+              },
+              {
+                name: 'Mooing_05',
+                type: 'sound'
+              },
+              {
+                name: 'Mooing_06',
+                type: 'sound'
+              },
+              {
+                name: 'Mooing_07',
+                type: 'sound'
+              },
+              {
+                name: 'Mooing_08',
+                type: 'sound'
+              },
+              {
+                name: 'Mooing_09',
+                type: 'sound'
+              },
+              {
+                name: 'Mooing_10',
+                type: 'sound'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'Donkey',
+        type: 'category',
+        icon: 'farm-donkey',
+        data: [
+          {
+            name: 'Donkey_01',
+            type: 'sound'
+          },
+          {
+            name: 'Donkey_02',
+            type: 'sound'
+          },
+          {
+            name: 'Donkey_03',
+            type: 'sound'
+          },
+          {
+            name: 'Donkey_04',
+            type: 'sound'
+          },
+          {
+            name: 'Donkey_05',
+            type: 'sound'
+          },
+          {
+            name: 'Donkey_06',
+            type: 'sound'
+          },
+          {
+            name: 'Donkey_07',
+            type: 'sound'
+          },
+          {
+            name: 'Donkey_08',
+            type: 'sound'
+          },
+          {
+            name: 'Donkey_09',
+            type: 'sound'
+          },
+          {
+            name: 'Donkey_10',
+            type: 'sound'
+          }
+        ]
+      },
+      {
+        name: 'Eating',
+        type: 'category',
+        icon: 'farm-eating',
+        data: [
+          {
+            name: 'Eating_01',
+            type: 'sound'
+          },
+          {
+            name: 'Eating_02',
+            type: 'sound'
+          },
+          {
+            name: 'Eating_03',
+            type: 'sound'
+          },
+          {
+            name: 'Eating_04',
+            type: 'sound'
+          },
+          {
+            name: 'Eating_05',
+            type: 'sound'
+          },
+          {
+            name: 'Eating_06',
+            type: 'sound'
+          }
+        ]
+      },
+      {
+        name: 'Goat',
+        type: 'category',
+        icon: 'farm-goat',
+        data: [
+          {
+            name: 'Goat_01',
+            type: 'sound'
+          },
+          {
+            name: 'Goat_02',
+            type: 'sound'
+          },
+          {
+            name: 'Goat_03',
+            type: 'sound'
+          },
+          {
+            name: 'Goat_04',
+            type: 'sound'
+          },
+          {
+            name: 'Goat_05',
+            type: 'sound'
+          },
+          {
+            name: 'Goat_06',
+            type: 'sound'
+          },
+          {
+            name: 'Goat_07',
+            type: 'sound'
+          }
+        ]
+      },
+      {
+        name: 'Horse',
+        type: 'category',
+        icon: 'farm-horse',
+        data: [
+          {
+            name: 'Carriage',
+            type: 'subcategory',
+            icon: 'farm-Carriage',
+            data: [
+              {
+                name: 'Carriage_01',
+                type: 'sound'
+              },
+              {
+                name: 'Carriage_02',
+                type: 'sound'
+              },
+              {
+                name: 'Carriage_03',
+                type: 'sound'
+              },
+              {
+                name: 'Carriage_04',
+                type: 'sound'
+              },
+              {
+                name: 'Carriage_05',
+                type: 'sound'
+              },
+              {
+                name: 'Carriage_06',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Galloping',
+            type: 'subcategory',
+            icon: 'farm-galloping',
+            data: [
+              {
+                name: 'Galloping_01',
+                type: 'sound'
+              },
+              {
+                name: 'Galloping_02',
+                type: 'sound'
+              },
+              {
+                name: 'Galloping_03',
+                type: 'sound'
+              },
+              {
+                name: 'Galloping_04',
+                type: 'sound'
+              },
+              {
+                name: 'Galloping_05',
+                type: 'sound'
+              },
+              {
+                name: 'Galloping_06',
+                type: 'sound'
+              },
+              {
+                name: 'Galloping_07',
+                type: 'sound'
+              },
+              {
+                name: 'Galloping_08',
+                type: 'sound'
+              },
+              {
+                name: 'Galloping_09',
+                type: 'sound'
+              },
+              {
+                name: 'Galloping_10',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Neighing',
+            type: 'subcategory',
+            icon: 'farm-neighing',
+            data: [
+              {
+                name: 'Neighing_01',
+                type: 'sound'
+              },
+              {
+                name: 'Neighing_02',
+                type: 'sound'
+              },
+              {
+                name: 'Neighing_03',
+                type: 'sound'
+              },
+              {
+                name: 'Neighing_04',
+                type: 'sound'
+              },
+              {
+                name: 'Neighing_05',
+                type: 'sound'
+              },
+              {
+                name: 'Neighing_06',
+                type: 'sound'
+              },
+              {
+                name: 'Neighing_07',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Snort',
+            type: 'subcategory',
+            icon: 'farm-horse',
+            data: [
+              {
+                name: 'Snort_01',
+                type: 'sound'
+              },
+              {
+                name: 'Snort_02',
+                type: 'sound'
+              },
+              {
+                name: 'Snort_03',
+                type: 'sound'
+              },
+              {
+                name: 'Snort_04',
+                type: 'sound'
+              },
+              {
+                name: 'Snort_05',
+                type: 'sound'
+              },
+              {
+                name: 'Snort_06',
+                type: 'sound'
+              }
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Pig',
+        type: 'category',
+        icon: 'farm-pig',
+        data: [
+          {
+            name: 'Eating',
+            type: 'subcategory',
+            icon: 'farm-pig-eating',
+            data: [
+              {
+                name: 'Eating_01',
+                type: 'sound'
+              },
+              {
+                name: 'Eating_02',
+                type: 'sound'
+              },
+              {
+                name: 'Eating_03',
+                type: 'sound'
+              },
+              {
+                name: 'Eating_04',
+                type: 'sound'
+              },
+              {
+                name: 'Eating_05',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Screaming',
+            type: 'subcategory',
+            icon: 'farm-pig-screaming',
+            data: [
+              {
+                name: 'Screaming_01',
+                type: 'sound'
+              },
+              {
+                name: 'Screaming_02',
+                type: 'sound'
+              },
+              {
+                name: 'Screaming_03',
+                type: 'sound'
+              },
+              {
+                name: 'Screaming_04',
+                type: 'sound'
+              },
+              {
+                name: 'Screaming_05',
+                type: 'sound'
+              },
+              {
+                name: 'Screaming_06',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Talk',
+            type: 'subcategory',
+            icon: 'farm-pig-talk',
+            data: [
+              {
+                name: 'Talk_01',
+                type: 'sound'
+              },
+              {
+                name: 'Talk_02',
+                type: 'sound'
+              },
+              {
+                name: 'Talk_03',
+                type: 'sound'
+              },
+              {
+                name: 'Talk_04',
+                type: 'sound'
+              },
+              {
+                name: 'Talk_05',
+                type: 'sound'
+              },
+              {
+                name: 'Talk_06',
+                type: 'sound'
+              },
+              {
+                name: 'Talk_07',
+                type: 'sound'
+              },
+              {
+                name: 'Talk_08',
+                type: 'sound'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'Sheep',
+        type: 'category',
+        icon: 'farm-sheep',
+        data: [
+          {
+            name: 'Baa',
+            type: 'subcategory',
+            icon: 'farm-baa',
+            data: [
+              {
+                name: 'Baa_01',
+                type: 'sound'
+              },
+              {
+                name: 'Baa_02',
+                type: 'sound'
+              },
+              {
+                name: 'Baa_03',
+                type: 'sound'
+              },
+              {
+                name: 'Baa_04',
+                type: 'sound'
+              },
+              {
+                name: 'Baa_05',
+                type: 'sound'
+              },
+              {
+                name: 'Baa_06',
+                type: 'sound'
+              },
+              {
+                name: 'Baa_07',
+                type: 'sound'
+              },
+              {
+                name: 'Baa_08',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Bells',
+            type: 'subcategory',
+            icon: 'farm-bells',
+            data: [
+              {
+                name: 'Bells_01',
+                type: 'sound'
+              },
+              {
+                name: 'Bells_02',
+                type: 'sound'
+              },
+              {
+                name: 'Bells_03',
+                type: 'sound'
+              },
+              {
+                name: 'Bells_04',
+                type: 'sound'
+              },
+              {
+                name: 'Bells_05',
+                type: 'sound'
+              },
+              {
+                name: 'Bells_06',
+                type: 'sound'
+              },
+              {
+                name: 'Bells_07',
+                type: 'sound'
+              },
+              {
+                name: 'Bells_08',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Flock',
+            type: 'subcategory',
+            icon: 'farm-sheep',
+            data: [
+              {
+                name: 'Flock_01',
+                type: 'sound'
+              },
+              {
+                name: 'Flock_02',
+                type: 'sound'
+              },
+              {
+                name: 'Flock_03',
+                type: 'sound'
+              },
+              {
+                name: 'Flock_04',
+                type: 'sound'
+              },
+              {
+                name: 'Flock_05',
+                type: 'sound'
+              },
+              {
+                name: 'Flock_06',
+                type: 'sound'
+              },
+              {
+                name: 'Flock_07',
+                type: 'sound'
+              }
+            ]
+          }
+        ]
+      },
+    ],
     description: 'This library is dedicated to different farm animals.You can find here all you need to recreate farm soundscape.It features 8 animal species  sounds with multiple variations for each animal.',
     tizer: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/demo%2FFarm_tizer.mp3?alt=media&token=14a1fbf9-86f2-4fff-a3a6-7e7b139e7aad'
   },
