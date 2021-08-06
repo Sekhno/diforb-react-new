@@ -6,7 +6,7 @@ import 'firebase/firestore'
 import 'firebase/storage'
 
 import { UserInterface, FirebaseConfig} from './firebase.interface'
-
+import LIBRARIES from './_libraries'
 
 type SocialType = 'google' | 'facebook'
 type ProviderType = firebase.auth.GoogleAuthProvider_Instance | firebase.auth.FacebookAuthProvider_Instance
@@ -27,6 +27,10 @@ class FirebaseAuthBackend {
       })
       /////////////////////////////////////////////
       const firestore = firebase.firestore()
+
+      // firestore.collection('libraries').doc('L4QVEIkmDDboPX0gUY3K').set({
+      //   data: LIBRARIES
+      // })
       // firestore
       //     .collection('libraries')
       //     .get()
