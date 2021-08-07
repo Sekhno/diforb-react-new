@@ -12,6 +12,9 @@ export const PanelInfo = () => {
   const [ panelCollapsed, setPanelCollapsed ] = useState(true)
   const [ current, setCurrent ] = useState<Library>()
   const libraries = useSelector((state: StoreType) => state.dashboard.libraries)
+  
+  const data = current?.data === null && current.main && current.extra 
+    ? [ ...current.main, ...current.extra ] : []
 
   useEffect(() => {
     setPanelCollapsed(id ? false : true)
@@ -53,7 +56,8 @@ export const PanelInfo = () => {
             <div className = { styles.inside }>
               <ul>
                 {
-                  current.data.map((category) => {
+                  
+                  data.map((category) => {
                     const counts = category.data.reduce((prev, cur) => {
                       if (cur.type === 'subcategory') {
                         return cur.data.reduce((prev) => (prev + 1), prev)

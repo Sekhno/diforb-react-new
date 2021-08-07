@@ -47,6 +47,8 @@ export interface Library {
   cover: string,
   cover_retina: string,
   data: LibrariesCategory[],
+  main?: LibrariesCategory[],
+  extra?: LibrariesCategory[],
   description: string,
   name: string,
   tizer: string

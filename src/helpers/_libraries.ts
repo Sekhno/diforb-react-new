@@ -8913,6 +8913,7 @@ const LIBRARIES = [
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fambience.jpg?alt=media&token=185d15e1-bd77-4990-8d12-322232981227',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Fambience.jpg?alt=media&token=2e3e7a18-7cf6-49e0-b74e-8d15868e8eda',
     data: [],
+    develop: true,
     description: 'Natural Ambience is a universal collection of high-quality sounds which can help you create the sound atmosphere of various locations such as a city, a forest, a beach, a cave, the underwater world and many other things. Thanks to the unique system of combination, you get the opportunity to create hundreds of original sounds.',
     tizer: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/demo%2FNatural_ambient_tizer.mp3?alt=media&token=099c288c-8a3f-4b52-901c-7cd0a43e1c5a'
   },
@@ -8923,7 +8924,44 @@ const LIBRARIES = [
     name: 'Pick Up',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fpick-up.jpg?alt=media&token=10c3be32-2b78-4240-a1a5-040e3378fb6c',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Fpick-up.jpg?alt=media&token=ab567998-069e-4d76-85de-20b9a2359e7f',
-    data: [],
+    data: [
+      {
+        name: 'Clothes',
+        type: 'category',
+        icon: 'pickup-clothes',
+        data: []
+      },
+      {
+        name: 'Metal',
+        type: 'category',
+        icon: 'pickup-metal',
+        data: []
+      },
+      {
+        name: 'Other',
+        type: 'category',
+        icon: '',
+        data: []
+      },
+      {
+        name: '',
+        type: 'category',
+        icon: '',
+        data: []
+      },
+      {
+        name: '',
+        type: 'category',
+        icon: '',
+        data: []
+      },
+      {
+        name: '',
+        type: 'category',
+        icon: '',
+        data: []
+      },
+    ],
     description: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fpick-up.jpg?alt=media&token=10c3be32-2b78-4240-a1a5-040e3378fb6c',
     tizer: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/demo%2FPick_up_tizer.mp3?alt=media&token=e7438b5e-e250-4bed-8ee4-981d6c82561e'
   },

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { BrowserView, MobileOnlyView } from 'react-device-detect'
 import { ProgressBar, ProgressBarProps } from 'primereact/progressbar'
+import { Skeleton } from 'primereact/skeleton'
 import { Library } from '../../helpers/firebase.interface'
 import { IconsUI } from '../../models/enums'
 import styles from './LibItem.module.scss'
@@ -19,11 +20,11 @@ export const LibItem = (props: PropsType) => {
   const audio = useMemo(() => new Audio(tizer), [tizer])
   const [ progress, setProgress ] = useState(0)
   const [ playing, setPlaying ] = useState(false) 
+  const [ loadedPreview, setLoadedPreview ] = useState(false)
   const progressBarProps: ProgressBarProps = {
     id: name,
     value: progress
   }
-  
   const updateTime = () => {
     if (audio.currentTime === audio.duration) {
       setPlaying(false)
@@ -31,6 +32,13 @@ export const LibItem = (props: PropsType) => {
     } else {
       setProgress( (audio.currentTime * 100)/audio.duration) 
     }
+  }
+  const clickProgress = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const offset = e.pageX - (e.target as HTMLElement).getBoundingClientRect().left
+    const percent = (offset * 100)/(e.target as HTMLElement).clientWidth
+    const currentTime = audio.duration * Math.floor(percent) * 0.01
+    setProgress(percent)
+    audio.currentTime = currentTime
   }
 
   useEffect(() => {
@@ -44,22 +52,21 @@ export const LibItem = (props: PropsType) => {
     }
   }, [ playing ])
 
-  const clickProgress = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const offset = e.pageX - (e.target as HTMLElement).getBoundingClientRect().left
-    const percent = (offset * 100)/(e.target as HTMLElement).clientWidth
-    const currentTime = audio.duration * Math.floor(percent) * 0.01
-    setProgress(percent)
-    audio.currentTime = currentTime
-  }
+  
 
   return(
     <React.Fragment>
       <BrowserView>
-        <div className = { styles.wrapper }>
+      {
+        !loadedPreview && <Skeleton height = '18vw'/>
+      }
+        
+        <div className = { styles.wrapper } 
+          style = {!loadedPreview ? { position: 'absolute', opacity: 0 } : {position: 'static', opacity: 1}}>
           <figure onClick = {() => {
             history.push(`/libraries/${name}`)
           }}>
-            <img src = { cover } alt = { name } />
+            <img src = { cover } alt = { name } onLoad = {() => setLoadedPreview(true) }/>
           </figure>
           <h1>{ name }</h1>
           <div className = { styles.controls }>

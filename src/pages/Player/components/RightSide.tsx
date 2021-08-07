@@ -10,6 +10,7 @@ export const RightSide = (props: PropsSideInterface) => {
   const [ activeSubCategory, setActiveSubcategory ] = useState(-1)
   const [ playStateSubcategory, setPlayStateSubCategory ] = useState(PlayState.play)
   const { library, onChangeSound } = props
+  const data = library?.data ? library?.data : library?.extra || []
   const clickCategory = (i: number) => {
     setActiveSubcategory(-1)
     setPlayStateSubCategory(PlayState.reverse)
@@ -28,7 +29,7 @@ export const RightSide = (props: PropsSideInterface) => {
       <ul className = { styles.categories }>
         {
           !library ? <li>Downloading...</li> :
-          library.data.map((category, i) => (
+          data.map((category, i) => (
             <li key = { category.name } 
               className = { activeCategory === i ? styles.active : '' }>
               <div onClick = {() => clickCategory(i)}>
@@ -48,7 +49,7 @@ export const RightSide = (props: PropsSideInterface) => {
                         clickSound(``)
                       }}>
                         <div onClick = {() => { activeSubCategory !== i ? setActiveSubcategory(i) : setActiveSubcategory(-1)}}>
-                          <i className = { subcategory.type === SoundListType.sub ? subcategory.icon : category.icon }/>
+                          <i className = { subcategory.icon || category.icon }/>
                           <span>{ subcategory.name }</span>
                         </div>
                         {
