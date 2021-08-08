@@ -67,7 +67,7 @@ export const VolumeLeft = (props: PropsSliderInterface) => {
 
   return (
     <svg x='0px' y='0px' width='105px' height='227px' viewBox='0 0 105 227' enableBackground='new 0 0 105 227' >
-      <g className = { styles.volumeRange }>
+      <g className = { styles.volumeRange } >
         <filter id='VOLUME_LEFT_RANGE_f2' y='0' x='0'>
           <feGaussianBlur in='SourceGraphic' stdDeviation='1'></feGaussianBlur>
         </filter>
@@ -76,17 +76,17 @@ export const VolumeLeft = (props: PropsSliderInterface) => {
         </filter>
         <g transform='translate(-1,0)'>
           <g>
-            <path opacity='0.5' fill='none' stroke='#000000' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'
+            <path opacity='0.3' fill='none' stroke='#000000' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'
               d='M90.797,14.962c-17.374,17.988-32.322,38.911-44.044,62.5c-20.636,41.524-28.652,86.028-25.512,129.153' />
           </g>
         </g>
-        <g transform='translate(1,1)'>
+        <g transform='translate(1,1)' >
           <g filter='url(#VOLUME_LEFT_RANGE_f2)'>
             <path fill='none' stroke='#FFFFFF' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' d='M90.797,14.962
                         c-17.374,17.988-32.322,38.911-44.044,62.5c-20.636,41.524-28.652,86.028-25.512,129.153' />
           </g>
         </g>
-        <g transform='translate(-1,0)'>
+        <g transform='translate(-1,0)' >
           <g filter='url(#VOLUME_LEFT_RANGE_f1)'>
             <circle opacity='0.3' cx='90.742' cy='15.068' r='2' />
           </g>
@@ -157,7 +157,7 @@ export const VolumeLeft = (props: PropsSliderInterface) => {
             c1.246,0,2.256-1.01,2.256-2.256C73.997,1.822,72.987,0.812,71.741,0.812z' />
         </g>
 
-        <g transform='translate(1,0)'>
+        <g transform='translate(1,0)' >
           <defs>
             <filter id='VOLUME_LEFT_GRAD_f2' x='0' y='0'>
               <feGaussianBlur in='SourceGraphic' stdDeviation='1' />

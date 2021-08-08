@@ -2,10 +2,10 @@
 @import '../../../assets/styles/app/variable.scss';
 
 .volumeRange {
-  fill: #CACACA;
+  fill: #848688;
+
   .volumeRangeShadow {
-    fill: #709795;
-    opacity: .8;
+    // fill: #709795;
   }
 }
 
@@ -20,10 +20,9 @@
 .handler {
   .handlerWrapper {
     fill: #E9E9E2;
-    opacity: .7;
   }
   .handlerInner {
-    fill: $green-dark;
+    fill: $green-blur;
   }
   &:hover {
     cursor: pointer;

@@ -55,7 +55,7 @@ const Knob = props => {
                     </linearGradient>
                 </defs>
                 <circle className = 'focus-indicator' cx='20' cy='20' r='18' fill='#4eccff' filter='url(#glow)'></circle>
-                <circle className = 'indicator-ring-bg' cx='20' cy='20' r='18' fill='#353b3f' stroke='#23292d'></circle>
+                <circle className = 'indicator-ring-bg' cx='20' cy='20' r='18' fill='#353b3f' stroke='#23292d' opacity='.1'></circle>
                 <path className = 'indicator-ring' d='M20,20Z' fill='#4eccff'></path>
                 <g className = 'dial'>
                     <circle cx='20' cy='20' r='16' fill='url(#grad-dial-soft-shadow)'></circle>

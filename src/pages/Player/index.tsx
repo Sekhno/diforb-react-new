@@ -150,7 +150,7 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
           />
         </div>
         <div className = { styles.player }>
-          <div style = {{textAlign: 'center'}}>{ loading ? 'loading' : 'no loading' }</div> 
+          {/* <div style = {{textAlign: 'center'}}>{ loading ? 'loading' : 'no loading' }</div>  */}
           <Player 
             id = { id }
             ref = { canvasRef }

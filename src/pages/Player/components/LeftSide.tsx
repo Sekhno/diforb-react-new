@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { PlayState, Tween } from 'react-gsap'
+import { Skeleton } from 'primereact/skeleton'
 import { PropsSideInterface, SoundListType } from '../types'
 import styles from './Side.module.scss'
 
 const TIME = .3
 
 const LeftSide = (props: PropsSideInterface) => {
-  const [ activeCategory, setActiveCategory ] = useState(-2)
+  const [ activeCategory, setActiveCategory ] = useState(0)
   const [ activeSubCategory, setActiveSubcategory ] = useState(-1)
   const [ playStateSubcategory, setPlayStateSubCategory ] = useState(PlayState.play)
   const { library, onChangeSound } = props
@@ -29,7 +30,15 @@ const LeftSide = (props: PropsSideInterface) => {
     <div className = { styles.leftSide }>
       <ul className = { styles.categories }>
         {
-          !library ? <li>Downloading...</li> :
+          !library ? (
+            <React.Fragment>
+              <li><Skeleton height = '100%'/></li>
+              <li><Skeleton height = '100%'/></li>
+              <li><Skeleton height = '100%'/></li>
+              <li><Skeleton height = '100%'/></li>
+              <li><Skeleton height = '100%'/></li>
+            </React.Fragment>
+          ) :
           data.map((category, i) => (
             <li key = { category.name } 
               className = { activeCategory === i ? styles.active : '' }>

@@ -27,7 +27,7 @@
         
         &:before {
           left: .7rem;
-          border-left: 1px dotted;
+          border-left: 1px dotted $black;
         }
 
         &:after {
@@ -71,7 +71,7 @@
 
         &:before {
           right: .7rem;
-          border-right: 1px dotted;
+          border-right: 1px dotted $black;
         }
 
         &:after {
@@ -173,7 +173,7 @@
           &:after {
             top: 50%; 
             width: 1rem;
-            border-top: 1px dotted;
+            border-top: 1px dotted $black;
           }
 
           &:last-child {
