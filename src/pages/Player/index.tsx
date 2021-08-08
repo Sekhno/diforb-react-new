@@ -47,6 +47,8 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   const dispatch = useDispatch()
   const [ loading, setLoading ] = useState(false)
   const [ localPlayingState, setLocalPlayingState ] = useState(false)
+  const [ leftMute, setLeftMute ] = useState(false)
+  const [ rightMute, setRightMute ] = useState(false)
   const [ leftReverb, setLeftReverbs ] = useState(defaultReverState)
   const [ rightReverb, setRightReverbs ] = useState(defaultReverState)
   const [ activeMenu, setActiveMenu ] = useState(false)
@@ -130,13 +132,13 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
     <main className = { activeMenu ? styles.openedMenu : '' }>
       <header className = { styles.header }>
         <div className = { styles.leftSide }>
-          <i className = { true ? 'icon-volume' : 'icon-volume-off' }/>
-          <InputSwitch checked={true} onChange={(e) => console.log(e.value)} />
+          <InputSwitch checked = { leftMute } onChange={(e) => setLeftMute(e.value)} />
+          <i className = { leftMute ? 'icon-volume' : 'icon-volume-off' }/>
           <span>Выберите звук</span>
         </div>
         <div className = { styles.rightSide }>
-          <i className = { true ? 'icon-volume' : 'icon-volume-off' }/>
-          <InputSwitch checked={true} onChange={(e) => console.log(e.value)} />
+          <InputSwitch checked = { rightMute } onChange={(e) => setRightMute(e.value)} />
+          <i className = { rightMute ? 'icon-volume' : 'icon-volume-off' }/>
           <span>Выберите звук</span>
         </div>
       </header>

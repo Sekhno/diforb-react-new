@@ -5,24 +5,64 @@ p-inputswitch-checked	Container element in active state.
 p-inputswitch-slider	Slider element behind the handle.
 */
 .p-inputswitch {
+  width: 3rem;
+  height: 1.2rem;
 
   &.p-inputswitch-checked {
+    .p-inputswitch-slider {
+      &:before {
+        transform: translateX(1.5rem);
+      }
+    }
+
     &:not(.p-disabled) {
       &:hover {
         .p-inputswitch-slider {
-          background: $green  ;
-    
+          background: $backround-color-black-2
         }
       }
     }
-    .p-inputswitch-slider {
-      background: $green-dark-1;
 
+
+    .p-inputswitch-slider {
+      background: $backround-color-black-5;
+
+      &:before {
+       
+        background: $green;
+      }
+    }
+  }
+
+  &:not(.p-disabled) {
+    &:hover {
+      .p-inputswitch-slider {
+        background: $backround-color-black-2;
+      }
+    }
+  }
+
+  &:not(.p-inputswitch-checked) {
+    .p-inputswitch-slider {
+      background: $backround-color-black-2;
+  
+      &:before {
+        background: $green-dark;
+      }
+  
     }
   }
 
   .p-inputswitch-slider {
-   
+    background: $backround-color-black-5;
+
+    &:before {
+      width: 1.5rem;
+      height: 1.5rem;
+      left: 0;
+      margin-top: -0.75rem;
+      background: $green;
+    }
 
   }
 }

@@ -8,6 +8,476 @@ const LIBRARIES = [
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Finterface.jpg?alt=media&token=d5aa7ff3-0128-43ce-b647-8e4eb5a7cf9d',
     data: [
       {
+        name: 'Design',
+        type: 'category',
+        icon: 'interface-designed',
+        data: [
+          {
+            name: 'Plastic',
+            type: 'subcategory',
+            icon: 'interface-plastic',
+            data: [
+              {
+                name: 'Light_01',
+                type: 'sound'
+              },
+              {
+                name: 'Light_02',
+                type: 'sound'
+              },
+              {
+                name: 'Light_03',
+                type: 'sound'
+              },
+              {
+                name: 'Light_04',
+                type: 'sound'
+              },
+              {
+                name: 'Light_05',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_01',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_02',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_03',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_04',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_05',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_06',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_07',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_08',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_09',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_10',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Wood',
+            type: 'subcategory',
+            icon: 'interface-wood',
+            data: [
+              {
+                name: 'Light_01',
+                type: 'sound'
+              },
+              {
+                name: 'Light_02',
+                type: 'sound'
+              },
+              {
+                name: 'Light_03',
+                type: 'sound'
+              },
+              {
+                name: 'Light_04',
+                type: 'sound'
+              },
+              {
+                name: 'Light_05',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_01',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_02',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_03',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_04',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_05',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_06',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_07',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_08',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_09',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_10',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Metal',
+            type: 'subcategory',
+            icon: 'interface-metal',
+            data: [
+              {
+                name: 'Light_01',
+                type: 'sound'
+              },
+              {
+                name: 'Light_02',
+                type: 'sound'
+              },
+              {
+                name: 'Light_03',
+                type: 'sound'
+              },
+              {
+                name: 'Light_04',
+                type: 'sound'
+              },
+              {
+                name: 'Light_05',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_01',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_02',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_03',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_04',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_05',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_06',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_07',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_08',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_09',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_10',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Digital',
+            type: 'subcategory',
+            icon: 'interface-digital',
+            data: [
+              {
+                name: 'Light_01',
+                type: 'sound'
+              },
+              {
+                name: 'Light_02',
+                type: 'sound'
+              },
+              {
+                name: 'Light_03',
+                type: 'sound'
+              },
+              {
+                name: 'Light_04',
+                type: 'sound'
+              },
+              {
+                name: 'Light_05',
+                type: 'sound'
+              },
+              {
+                name: 'Light_06',
+                type: 'sound'
+              },
+              {
+                name: 'Light_07',
+                type: 'sound'
+              },
+              {
+                name: 'Light_08',
+                type: 'sound'
+              },
+              {
+                name: 'Light_09',
+                type: 'sound'
+              },
+              {
+                name: 'Light_10',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_01',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_02',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_03',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_04',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_05',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_06',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_07',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_08',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_09',
+                type: 'sound'
+              },
+              {
+                name: 'Complex_10',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Extra',
+        type: 'category',
+        icon: 'interface-extra',
+        data: [
+          {
+            name: 'Digital',
+            type: 'subcategory',
+            icon: 'interface-digital',
+            data: [
+              {
+                name: 'Digital_01',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_02',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_03',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_04',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_05',
+                type: 'sound'
+              },
+              {
+                name: '8-Bit_01',
+                type: 'sound'
+              },
+              {
+                name: '8-Bit_02',
+                type: 'sound'
+              },
+              {
+                name: '8-Bit_03',
+                type: 'sound'
+              },
+              {
+                name: 'Sci_Fi_01',
+                type: 'sound'
+              },
+              {
+                name: 'Sci_Fi_02',
+                type: 'sound'
+              },
+              {
+                name: 'Sci_Fi_03',
+                type: 'sound'
+              },
+              {
+                name: 'Beap_01',
+                type: 'sound'
+              },
+              {
+                name: 'Beap_02',
+                type: 'sound'
+              },
+              {
+                name: 'Beap_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Snow',
+            type: 'subcategory',
+            icon: 'interface-snow',
+            data: [
+              {
+                name: 'Snow_01',
+                type: 'sound'
+              },
+              {
+                name: 'Snow_02',
+                type: 'sound'
+              },
+              {
+                name: 'Snow_03',
+                type: 'sound'
+              },
+              {
+                name: 'Snow_04',
+                type: 'sound'
+              },
+              {
+                name: 'Snow_05',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Voice',
+            type: 'subcategory',
+            icon: 'interface-voice',
+            data: [
+              {
+                name: 'Voice_01',
+                type: 'sound'
+              },
+              {
+                name: 'Voice_02',
+                type: 'sound'
+              },
+              {
+                name: 'Voice_03',
+                type: 'sound'
+              },
+              {
+                name: 'Voice_04',
+                type: 'sound'
+              },
+              {
+                name: 'Voice_05',
+                type: 'sound'
+              },
+              {
+                name: 'Voice_06',
+                type: 'sound'
+              },
+              {
+                name: 'Voice_07',
+                type: 'sound'
+              },
+              {
+                name: 'Voice_08',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Other',
+            type: 'subcategory',
+            icon: 'interface-other',
+            data: [
+              {
+                name: 'Paper',
+                type: 'sound'
+              },
+              {
+                name: 'Stone',
+                type: 'sound'
+              },
+              {
+                name: 'Water_01',
+                type: 'sound'
+              },
+              {
+                name: 'Water_02',
+                type: 'sound'
+              },
+              {
+                name: 'Water_03',
+                type: 'sound'
+              },
+              {
+                name: 'Organic_01',
+                type: 'sound'
+              },
+              {
+                name: 'Organic_02',
+                type: 'sound'
+              },
+              {
+                name: 'Organic_03',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
+      },
+      {
         name: 'Main',
         type: 'category',
         icon: 'interface-main',
@@ -15,6 +485,7 @@ const LIBRARIES = [
           {
             name: 'Glass',
             type: 'subcategory',
+            icon: 'interface-glass',
             data: [
               {
                 name: 'Glass_01',
@@ -41,6 +512,7 @@ const LIBRARIES = [
           {
             name: 'Plastic',
             type: 'subcategory',
+            icon: 'interface-plastic',
             data: [
               {
                 name: 'Small_01',
@@ -115,6 +587,7 @@ const LIBRARIES = [
           {
             name: 'Wood',
             type: 'subcategory',
+            icon: 'interface-wood',
             data: [
               {
                 name: 'Wood_01',
@@ -149,6 +622,7 @@ const LIBRARIES = [
           {
             name: 'Metal',
             type: 'subcategory',
+            icon: 'interface-metal',
             data: [
               {
                 name: 'Small_01',
@@ -207,251 +681,6 @@ const LIBRARIES = [
         ]
       },
       {
-        name: 'Extra',
-        type: 'category',
-        icon: 'interface-extra',
-        data: [
-          {
-            name: 'Digital',
-            type: 'subcategory',
-            data: [
-              {
-                name: 'Digital_01',
-                type: 'sound'
-              },
-              {
-                name: 'Digital_02',
-                type: 'sound'
-              },
-              {
-                name: 'Digital_03',
-                type: 'sound'
-              },
-              {
-                name: 'Digital_04',
-                type: 'sound'
-              },
-              {
-                name: 'Digital_05',
-                type: 'sound'
-              },
-              {
-                name: '8-Bit_01',
-                type: 'sound'
-              },
-              {
-                name: '8-Bit_02',
-                type: 'sound'
-              },
-              {
-                name: '8-Bit_03',
-                type: 'sound'
-              },
-              {
-                name: 'Sci_Fi_01',
-                type: 'sound'
-              },
-              {
-                name: 'Sci_Fi_02',
-                type: 'sound'
-              },
-              {
-                name: 'Sci_Fi_03',
-                type: 'sound'
-              },
-              {
-                name: 'Beap_01',
-                type: 'sound'
-              },
-              {
-                name: 'Beap_02',
-                type: 'sound'
-              },
-              {
-                name: 'Beap_03',
-                type: 'sound'
-              },
-            ]
-          },
-          {
-            name: 'Snow',
-            type: 'subcategory',
-            data: [
-              {
-                name: 'Snow_01',
-                type: 'sound'
-              },
-              {
-                name: 'Snow_02',
-                type: 'sound'
-              },
-              {
-                name: 'Snow_03',
-                type: 'sound'
-              },
-              {
-                name: 'Snow_04',
-                type: 'sound'
-              },
-              {
-                name: 'Snow_05',
-                type: 'sound'
-              }
-            ]
-          },
-          {
-            name: 'Voice',
-            type: 'subcategory',
-            data: [
-              {
-                name: 'Voice_01',
-                type: 'sound'
-              },
-              {
-                name: 'Voice_02',
-                type: 'sound'
-              },
-              {
-                name: 'Voice_03',
-                type: 'sound'
-              },
-              {
-                name: 'Voice_04',
-                type: 'sound'
-              },
-              {
-                name: 'Voice_05',
-                type: 'sound'
-              },
-              {
-                name: 'Voice_06',
-                type: 'sound'
-              },
-              {
-                name: 'Voice_07',
-                type: 'sound'
-              },
-              {
-                name: 'Voice_08',
-                type: 'sound'
-              },
-            ]
-          },
-          {
-            name: 'Other',
-            type: 'subcategory',
-            data: [
-              {
-                name: 'Paper',
-                type: 'sound'
-              },
-              {
-                name: 'Stone',
-                type: 'sound'
-              },
-              {
-                name: 'Water_01',
-                type: 'sound'
-              },
-              {
-                name: 'Water_02',
-                type: 'sound'
-              },
-              {
-                name: 'Water_03',
-                type: 'sound'
-              },
-              {
-                name: 'Organic_01',
-                type: 'sound'
-              },
-              {
-                name: 'Organic_02',
-                type: 'sound'
-              },
-              {
-                name: 'Organic_03',
-                type: 'sound'
-              },
-            ]
-          },
-        ]
-      },
-      {
-        name: 'Pop Up',
-        type: 'category',
-        icon: 'interface-popup',
-        data: [
-          {
-            name: 'Cartoon',
-            type: 'sound'
-          },
-          {
-            name: 'Magical',
-            type: 'sound'
-          },
-          {
-            name: 'Metal',
-            type: 'sound'
-          },
-          {
-            name: 'Musical',
-            type: 'sound'
-          },
-          {
-            name: 'Paper',
-            type: 'sound'
-          },
-          {
-            name: 'Scary',
-            type: 'sound'
-          },
-          {
-            name: 'Sci-fi',
-            type: 'sound'
-          },
-          {
-            name: 'Stone',
-            type: 'sound'
-          },
-          {
-            name: 'Water',
-            type: 'sound'
-          },
-          {
-            name: 'Wood',
-            type: 'sound'
-          },
-        ]
-      },
-      {
-        name: 'Swish',
-        type: 'category',
-        icon: 'interface-swish',
-        data: [
-          {
-            name: 'Swish_01',
-            type: 'sound'
-          },
-          {
-            name: 'Swish_02',
-            type: 'sound'
-          },
-          {
-            name: 'Swish_03',
-            type: 'sound'
-          },
-          {
-            name: 'Swish_04',
-            type: 'sound'
-          },
-          {
-            name: 'Swish_05',
-            type: 'sound'
-          },
-        ]
-      },
-      {
         name: 'Music',
         type: 'category',
         icon: 'interface-music',
@@ -459,6 +688,7 @@ const LIBRARIES = [
           {
             name: 'Positive',
             type: 'subcategory',
+            icon: 'interface-positive',
             data: [
               {
                 name: 'Natural_01',
@@ -545,6 +775,7 @@ const LIBRARIES = [
           {
             name: 'Negative',
             type: 'subcategory',
+            icon: 'interface-negative',
             data: [
               {
                 name: 'Natural_01',
@@ -591,296 +822,81 @@ const LIBRARIES = [
         ]
       },
       {
-        name: 'Design',
+        name: 'Pop Up',
         type: 'category',
-        icon: 'interface-designed',
+        icon: 'interface-popup',
         data: [
           {
-            name: 'Plastic',
-            type: 'subcategory',
-            data: [
-              {
-                name: 'Light_01',
-                type: 'sound'
-              },
-              {
-                name: 'Light_02',
-                type: 'sound'
-              },
-              {
-                name: 'Light_03',
-                type: 'sound'
-              },
-              {
-                name: 'Light_04',
-                type: 'sound'
-              },
-              {
-                name: 'Light_05',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_01',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_02',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_03',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_04',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_05',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_06',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_07',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_08',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_09',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_10',
-                type: 'sound'
-              },
-            ]
+            name: 'Cartoon',
+            type: 'sound'
           },
           {
-            name: 'Wood',
-            type: 'subcategory',
-            data: [
-              {
-                name: 'Light_01',
-                type: 'sound'
-              },
-              {
-                name: 'Light_02',
-                type: 'sound'
-              },
-              {
-                name: 'Light_03',
-                type: 'sound'
-              },
-              {
-                name: 'Light_04',
-                type: 'sound'
-              },
-              {
-                name: 'Light_05',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_01',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_02',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_03',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_04',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_05',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_06',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_07',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_08',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_09',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_10',
-                type: 'sound'
-              },
-            ]
+            name: 'Magical',
+            type: 'sound'
           },
           {
             name: 'Metal',
-            type: 'subcategory',
-            data: [
-              {
-                name: 'Light_01',
-                type: 'sound'
-              },
-              {
-                name: 'Light_02',
-                type: 'sound'
-              },
-              {
-                name: 'Light_03',
-                type: 'sound'
-              },
-              {
-                name: 'Light_04',
-                type: 'sound'
-              },
-              {
-                name: 'Light_05',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_01',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_02',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_03',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_04',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_05',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_06',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_07',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_08',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_09',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_10',
-                type: 'sound'
-              },
-            ]
+            type: 'sound'
           },
           {
-            name: 'Digital',
-            type: 'subcategory',
-            data: [
-              {
-                name: 'Light_01',
-                type: 'sound'
-              },
-              {
-                name: 'Light_02',
-                type: 'sound'
-              },
-              {
-                name: 'Light_03',
-                type: 'sound'
-              },
-              {
-                name: 'Light_04',
-                type: 'sound'
-              },
-              {
-                name: 'Light_05',
-                type: 'sound'
-              },
-              {
-                name: 'Light_06',
-                type: 'sound'
-              },
-              {
-                name: 'Light_07',
-                type: 'sound'
-              },
-              {
-                name: 'Light_08',
-                type: 'sound'
-              },
-              {
-                name: 'Light_09',
-                type: 'sound'
-              },
-              {
-                name: 'Light_10',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_01',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_02',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_03',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_04',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_05',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_06',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_07',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_08',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_09',
-                type: 'sound'
-              },
-              {
-                name: 'Complex_10',
-                type: 'sound'
-              },
-            ]
+            name: 'Musical',
+            type: 'sound'
+          },
+          {
+            name: 'Paper',
+            type: 'sound'
+          },
+          {
+            name: 'Scary',
+            type: 'sound'
+          },
+          {
+            name: 'Sci-fi',
+            type: 'sound'
+          },
+          {
+            name: 'Stone',
+            type: 'sound'
+          },
+          {
+            name: 'Water',
+            type: 'sound'
+          },
+          {
+            name: 'Wood',
+            type: 'sound'
           },
         ]
-      }
+      },
+      {
+        name: 'Swish',
+        type: 'category',
+        icon: 'interface-swish',
+        data: [
+          {
+            name: 'Swish_01',
+            type: 'sound'
+          },
+          {
+            name: 'Swish_02',
+            type: 'sound'
+          },
+          {
+            name: 'Swish_03',
+            type: 'sound'
+          },
+          {
+            name: 'Swish_04',
+            type: 'sound'
+          },
+          {
+            name: 'Swish_05',
+            type: 'sound'
+          },
+        ]
+      },
+      
+      
     ],
     description: 'The interface is a new and convenient way to create GUI sounds for games, applications, advertising, presentations and many other media projects. By means of the unique system of sound combination and processing, you can create original clicks, popups, swipes and many other sounds to polish up your project.',
     tizer: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/demo%2FInterface_tizer.mp3?alt=media&token=80a294db-2fe4-45e5-b48a-6c5d9eabcdbc',

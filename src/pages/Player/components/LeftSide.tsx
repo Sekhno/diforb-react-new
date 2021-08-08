@@ -6,7 +6,7 @@ import styles from './Side.module.scss'
 const TIME = .3
 
 const LeftSide = (props: PropsSideInterface) => {
-  const [ activeCategory, setActiveCategory ] = useState(-1)
+  const [ activeCategory, setActiveCategory ] = useState(-2)
   const [ activeSubCategory, setActiveSubcategory ] = useState(-1)
   const [ playStateSubcategory, setPlayStateSubCategory ] = useState(PlayState.play)
   const { library, onChangeSound } = props

@@ -1,10 +1,10 @@
 @import '../../../assets/styles/app/variable.scss';
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+// ul {
+//   margin: 0;
+//   padding: 0;
+//   list-style: none;
+// }
 
 .leftSide {
   .categories {
@@ -39,6 +39,10 @@ ul {
 
   .categoryShadow {
     left: 0;
+
+    &:before {
+      right: 0;
+    }
   }
 }
 
@@ -62,6 +66,7 @@ ul {
       }
 
       .sound {
+        text-align: right;
         padding-right: 2rem;
 
         &:before {
@@ -78,12 +83,17 @@ ul {
 
   .categoryShadow {
     right: 0;
+
+    &:before {
+      left: 0;
+    }
   }
 }
 
 .leftSide,
 .rightSide {
   position: relative;
+  // overflow: hidden;
 
   .categories {
     display: flex;
@@ -92,9 +102,13 @@ ul {
     > li {
       width: $side-category-size;
       height: $side-category-size;
-      
+      box-shadow: $side-category-shadow;
       
       &.active {
+        > div {
+          color: $green;
+        }
+
         > .subcategory {
           visibility: visible;
         }
@@ -107,32 +121,34 @@ ul {
       > div {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
+        height: inherit;
 
         i {
-          font-size: 3rem;
+          font-size: 2.5rem;
         }
   
         span {
-          font-size: 1rem;
+          font-size: .9rem;
+          text-transform: uppercase;
         }
       }
-
-      
 
       .subcategory {
         position: absolute;
         top: 0; 
-        
+        padding-top: 1rem;
         visibility: hidden;
-        
 
         > li  {
+          box-shadow: $side-category-shadow;
           
           > div {
             display: flex;
             align-items: center;
-            line-height: 2rem;
+            line-height: 3rem;
+
             i {
               font-size: 1.5rem;
             }
@@ -175,16 +191,17 @@ ul {
     top: 0; 
     width: $side-category-size;
     height: $side-category-size;
-    background: rgba(white, .5);
-    border-radius: 4px;
+    background: $backround-color-black-6;
+    z-index: -1;
 
-    // &:before {
-    //   content: '';
-
-    //   display: block;
-    //   width: 3px;
-    //   height: 100%;
-    //   background: linear-gradient(180deg,#63eff5 0,#54c75e);
-    // }
+    &:before {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 100%;
+      position: inherit;
+      
+      background: linear-gradient(180deg,#63eff5 0,#54c75e);
+    }
   }
 }

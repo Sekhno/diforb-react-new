@@ -18,28 +18,39 @@ $blue-dark: #276585;
 $blue-light: #7ab2ba;
 $blue-ice: #4ebffb;
 
+$backround-color-black-1: rgba(0, 0, 0, .1);
+$backround-color-black-2: rgba(0, 0, 0, .2);
+$backround-color-black-3: rgba(0, 0, 0, .3);
+$backround-color-black-4: rgba(0, 0, 0, .4);
+$backround-color-black-5: rgba(0, 0, 0, .5);
+$backround-color-black-6: rgba(0, 0, 0, .6);
+$backround-color-black-8: rgba(0, 0, 0, .8);
+
 // $background-gradient: linear-gradient(#020 5%, #000);
 $background-gradient: #000 radial-gradient(ellipse at top,#4ebffb 0,#276585 70%);
+
+$border-bottom: 1px solid $blue-dark;
 
 // Authentification component
 $auth-form-background: linear-gradient(180deg ,rgba(0,0,0,.3) 0,transparent);
 $auth-form-h1: hsla(0, 0, 100%, .8);
 $auth-form-input-color: $blue-blur;
 $auth-form-input-border: 1px solid hsla(0, 0, 100%, .2);
-$auth-form-input-background: rgba(0, 0, 0, .6);
+$auth-form-input-background: $backround-color-black-6;
 $auth-form-input-text-fill-color: #7beaf4;
-$auth-form-button-bg-primary: rgba(0, 0, 0, .2);
+$auth-form-button-bg-primary: $backround-color-black-2;
 
 // Sidebar
-$sidebar-field-border-bottom: 1px solid $blue-dark;
-$sidebar-field-bg-a2: rgba(0, 0, 0, .2);
-$sidebar-field-bg-a4: rgba(0, 0, 0, .4);
-$sidebar-field-bg-a6: rgba(0, 0, 0, .6);
-$sidebar-field-bg-a8: rgba(0, 0, 0, .8);
+$sidebar-field-border-bottom: $border-bottom;
+$sidebar-field-bg-a2: $backround-color-black-2;
+$sidebar-field-bg-a4: $backround-color-black-4;
+$sidebar-field-bg-a6: $backround-color-black-6;
+$sidebar-field-bg-a8: $backround-color-black-8;
 
 // Player Component
 $player-size: 623px;
-$player-wrapper-bg: linear-gradient(to bottom, rgba(255,255,255,.1) 0%, rgba(162,162,162,.1) 100%);
+$player-header-size: 70px;
+$player-wrapper-bg: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(162,162,162,1) 100%);
 $player-holder-bg: url(../../../assets/img/player_pattern.png),
   radial-gradient(ellipse at center,
     rgba(217, 217, 211, .1) 21%,
@@ -62,6 +73,7 @@ $player-wave-bg-position: -2px 0px, 0px -2px, -1px 1px, 1px -1px, 0px -4px, -4px
 
 // Left & Right Side Component
 $side-category-size: 80px;
+$side-category-shadow: 0 -1px rgba(black, .1) inset, 0 1px rgba(white, .2);
 
 // Typography
 //

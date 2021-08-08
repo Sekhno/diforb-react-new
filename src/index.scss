@@ -3,7 +3,6 @@
 
 body, html {
   height: 100%;
-  // overflow: hidden;
 }
 
 #root {
@@ -12,7 +11,7 @@ body, html {
 
 body {
   margin: 0;
-  font-family: $font-family-base !important;
+  font-family: $font-family-base;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: $font-size-base;
@@ -21,7 +20,7 @@ body {
   // animation: text-color-change 0.1s infinite;
   font-size: 16px;
   line-height: 24px;
-  font-family: monospace;
+  // font-family: monospace;
   margin: 0;
   padding: 0;
   // text-shadow: 0 0 3px $font-text-shadow;
@@ -138,6 +137,10 @@ a {
   66% {
     color: $green-dark-2;
   }
+}
+
+.p-component {
+  font-family: $font-family-base !important;
 }
 
 
