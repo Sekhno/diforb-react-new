@@ -146,9 +146,16 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
+            background: #e8e8e1;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, .2);
 
             i {
-              font-size: 30px;
+              font-size: 20px;
+              color: $green;
+            }
+
+            &:hover {
+              cursor: pointer;
             }
           }
 
@@ -158,6 +165,14 @@
             padding: 1rem;
             text-transform: uppercase;
             border-radius: 25px;
+            padding: 6px 20px;
+            background: $background-color-white-85;
+            color: $green;
+            border-bottom: 3px solid $grey;
+
+            &:hover {
+              cursor: pointer;
+            }
           }
         }
       }

@@ -9,8 +9,9 @@ const TIME = .3
 const LeftSide = (props: PropsSideInterface) => {
   const [ activeCategory, setActiveCategory ] = useState(0)
   const [ activeSubCategory, setActiveSubcategory ] = useState(-1)
+  const [ activeSound, setActiveSound ] = useState(-1)
   const [ playStateSubcategory, setPlayStateSubCategory ] = useState(PlayState.play)
-  const { library, onChangeSound } = props
+  const { library, loading, onChangeSound } = props
   const data = library?.data ? library?.data : library?.main || []
   const clickCategory = (i: number) => {
     setActiveSubcategory(-1)
@@ -21,9 +22,16 @@ const LeftSide = (props: PropsSideInterface) => {
       setActiveCategory(i)
     }, TIME * 1000)
   }
-  const clickSubcategory = (i: number) => {}
-  const clickSound = (url: string) => {}
-  
+  const clickSubcategory = (i: number, category: string, type: string, subcategory: string) => {
+    if (type === SoundListType.sound) {
+      onChangeSound(`libraries/${library.name}/${category}/${subcategory}.wav`)
+    } else {
+      activeSubCategory !== i ? setActiveSubcategory(i) : setActiveSubcategory(-1)
+    }
+  }
+  const currentSound = (i: number): boolean => {
+    return activeSound === i
+  }
 
 
   return(
@@ -53,12 +61,8 @@ const LeftSide = (props: PropsSideInterface) => {
                       from = {{ x: -50, opacity: 0 }} duration = { TIME } 
                       stagger = {() => i * TIME}
                       playState = { playStateSubcategory }>
-                      <li onClick = {() => {
-                        subcategory.type === SoundListType.sub ? 
-                        clickSubcategory(i) : 
-                        clickSound(``)
-                      }}>
-                        <div onClick = {() => { activeSubCategory !== i ? setActiveSubcategory(i) : setActiveSubcategory(-1)}}>
+                      <li>
+                        <div onClick = {() => clickSubcategory(i, category.name, subcategory.type, subcategory.name)}>
                           <i className = { subcategory.icon || category.icon }/>
                           <span>{ subcategory.name }</span>
                         </div>
@@ -69,11 +73,16 @@ const LeftSide = (props: PropsSideInterface) => {
                             playState = { activeSubCategory === i ? PlayState.play : PlayState.reverse }>
                             <ul className = { styles.sounds }>
                               {
-                                subcategory.data.map(sound => (
-                                  <li onClick = {() => onChangeSound(`libraries/${library.name}/${category.name}/${subcategory.name}/${sound.name}.wav`)}
+                                subcategory.data.map((sound, i) => (
+                                  <li className = { styles.sound } 
                                     key = { `${subcategory.name}_${sound.name}` } 
-                                    className = { styles.sound }
-                                  >{ sound.name }</li>
+                                    onClick = {() => (onChangeSound(`libraries/${library.name}/${category.name}/${subcategory.name}/${sound.name}.wav`),
+                                    setActiveSound(i))}
+                                  >
+                                    <span datatype = {sound.name} 
+                                      className = { loading && currentSound(i) ? styles.loading : !loading && currentSound(i) ? styles.active : '' }
+                                    >{ sound.name }</span>
+                                  </li>
                                 ))
                               }
                             </ul>

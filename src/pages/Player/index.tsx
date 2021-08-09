@@ -45,10 +45,12 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   const canvasRef = createRef()
   const library = useSelector((state: StoreType) => state.dashboard.libraries).filter(v => v.name === id)[0]
   const dispatch = useDispatch()
-  const [ loading, setLoading ] = useState(false)
+  // const [ loading, setLoading ] = useState(false)
+  const [ loadingLeftSound, setLoadingLeftSound ] = useState(false)
+  const [ loadingRightSound, setLoadingRightSound ] = useState(false)
   const [ localPlayingState, setLocalPlayingState ] = useState(false)
-  const [ leftMute, setLeftMute ] = useState(false)
-  const [ rightMute, setRightMute ] = useState(false)
+  const [ leftMute, setLeftMute ] = useState(true)
+  const [ rightMute, setRightMute ] = useState(true)
   const [ leftReverb, setLeftReverbs ] = useState(defaultReverState)
   const [ rightReverb, setRightReverbs ] = useState(defaultReverState)
   const [ activeMenu, setActiveMenu ] = useState(false)
@@ -110,15 +112,15 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   }, [ activeMenu ])
 
   const onSelectLeftSound = async (sound: string) => {
-    setLoading(true)
+    setLoadingLeftSound(true)
     await setBufferToLeftSide(sound)
-    setLoading(false)
+    setLoadingLeftSound(false)
   }
 
   const onSelectRightSound = async (sound: string) => {
-    setLoading(true)
+    setLoadingRightSound(true)
     await setBufferToRightSide(sound)
-    setLoading(false)
+    setLoadingRightSound(false)
   }
 
   const onClickPlay = () => {
@@ -146,6 +148,7 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
         <div className = { styles.leftSide }>
           <LeftSide 
             library = { library } 
+            loading = { loadingLeftSound }
             onChangeSound = {(url) => onSelectLeftSound(url)}
           />
         </div>
@@ -170,6 +173,7 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
         <div className = { styles.rightSide }>
           <RightSide
             library = { library } 
+            loading = { loadingRightSound }
             onChangeSound = {(url) => onSelectRightSound(url)}
           />
         </div>

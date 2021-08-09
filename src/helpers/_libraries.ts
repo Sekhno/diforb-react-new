@@ -8,7 +8,7 @@ const LIBRARIES = [
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Finterface.jpg?alt=media&token=d5aa7ff3-0128-43ce-b647-8e4eb5a7cf9d',
     data: [
       {
-        name: 'Design',
+        name: 'Designed',
         type: 'category',
         icon: 'interface-designed',
         data: [

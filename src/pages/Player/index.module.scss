@@ -69,7 +69,7 @@ main {
   }
 
   .leftSide {
-    opacity: 0;
+    // opacity: 0;
     grid-column-start: [LEFT];
     grid-column-end: [LEFT_SIDE_PLAYER];
     grid-row-start: [TOP];
@@ -78,7 +78,7 @@ main {
   }
 
   .rightSide {
-    opacity: 0;
+    // opacity: 0;
     grid-column-start: [RIGHT_SIDE_PLAYER];
     grid-column-end: [RIGHT];
     grid-row-start: [TOP];

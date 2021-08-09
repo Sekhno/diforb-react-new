@@ -33,6 +33,7 @@ export interface PropsSliderInterface {
 
 export interface PropsSideInterface {
   library: Library
+  loading: boolean
   onChangeSound: (url: string) => void
 }
 

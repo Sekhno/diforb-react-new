@@ -158,6 +158,33 @@
 
         .sound {
           position: relative;
+
+          span {
+            position: relative;
+
+            &.loading {
+              &:before {
+                width: 100%;
+                transition: width 1s;
+              }
+            }
+
+            &.active {
+              color: $green;
+              text-shadow: $side-sound-active-shadow;
+            }
+
+            &:before {
+              content: attr(datatype);
+              position: absolute;
+              display: inline-block;
+              color: $green;
+              width: 0%;
+              overflow: hidden;
+              will-change: width;
+              
+            }
+          }
           
           &:before, &:after {
             position: absolute;

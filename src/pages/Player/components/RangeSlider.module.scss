@@ -46,13 +46,14 @@
 
   text {
     fill: #838383;
-    font-size: 12px;
+    font-size: 10px;
     text-transform: uppercase;
     user-select: none;  
   }
 
   &Border {
-    fill: #838383
+    fill: #838383;
+    opacity: .3;
   }
 
   &Wrapper {
