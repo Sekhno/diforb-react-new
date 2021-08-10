@@ -1,5 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+interface ActiveSound {
+  category: string
+  sub: string
+  sound: string
+}
+
 export const playerSlice = createSlice({
   name: 'player',
   initialState: {
@@ -8,7 +14,7 @@ export const playerSlice = createSlice({
   reducers: {
     setPlaying: (state, action: PayloadAction<boolean>) => {
       state.playing = action.payload
-    }
+    },
   }
 })
 

@@ -21,7 +21,7 @@ import {
 import Player from './components/Player'
 import LeftSide from './components/LeftSide'
 import RightSide from './components/RightSide'
-import { ReverbsEnum, ReverbType, KeypressEvent } from './types'
+import { ReverbsEnum, ReverbType, KeypressEvent, ActiveSound } from './types'
 import { StoreType } from '../../store/types'
 import { onLoadLibraries } from '../../async/dashboardAction'
 import styles from './index.module.scss'
@@ -38,6 +38,11 @@ const defaultReverState = {
   hall: false,
   stadium: false
 }
+const defaultActiveSound: ActiveSound = {
+  category: '',
+  sub: '',
+  sound: 'Choice sound...'
+}
 
 const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   const { playing } = props
@@ -45,7 +50,8 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   const canvasRef = createRef()
   const library = useSelector((state: StoreType) => state.dashboard.libraries).filter(v => v.name === id)[0]
   const dispatch = useDispatch()
-  // const [ loading, setLoading ] = useState(false)
+  const [ activeLeftSound, setActiveLeftSound ] = useState(defaultActiveSound)
+  const [ activeRightSound, setActiveRightSound ] = useState(defaultActiveSound)
   const [ loadingLeftSound, setLoadingLeftSound ] = useState(false)
   const [ loadingRightSound, setLoadingRightSound ] = useState(false)
   const [ localPlayingState, setLocalPlayingState ] = useState(false)
@@ -55,7 +61,6 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   const [ rightReverb, setRightReverbs ] = useState(defaultReverState)
   const [ activeMenu, setActiveMenu ] = useState(false)
   
-  console.log(activeMenu)
   useEffect(() => {
     if (canvasRef && canvasRef.current) {
       setupRoutingGraph(() => {
@@ -64,8 +69,6 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
       })
     }
     dispatch(onLoadLibraries())
-
-    
   }, [])
 
   useEffect(() => {
@@ -136,12 +139,12 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
         <div className = { styles.leftSide }>
           <InputSwitch checked = { leftMute } onChange={(e) => setLeftMute(e.value)} />
           <i className = { leftMute ? 'icon-volume' : 'icon-volume-off' }/>
-          <span>Выберите звук</span>
+          <span>{ activeLeftSound.sound }</span>
         </div>
         <div className = { styles.rightSide }>
           <InputSwitch checked = { rightMute } onChange={(e) => setRightMute(e.value)} />
           <i className = { rightMute ? 'icon-volume' : 'icon-volume-off' }/>
-          <span>Выберите звук</span>
+          <span>{ activeRightSound.sound }</span>
         </div>
       </header>
       <div className = { styles.wrapper }>
@@ -150,6 +153,7 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
             library = { library } 
             loading = { loadingLeftSound }
             onChangeSound = {(url) => onSelectLeftSound(url)}
+            onActive = {(active) => setActiveLeftSound(active)}
           />
         </div>
         <div className = { styles.player }>
@@ -175,6 +179,7 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
             library = { library } 
             loading = { loadingRightSound }
             onChangeSound = {(url) => onSelectRightSound(url)}
+            onActive = {(active) => setActiveRightSound(active)}
           />
         </div>
       </div>

@@ -35,5 +35,12 @@ export interface PropsSideInterface {
   library: Library
   loading: boolean
   onChangeSound: (url: string) => void
+  onActive: (active: ActiveSound) => void
+}
+
+export interface ActiveSound {
+  category: string
+  sub: string
+  sound: string
 }
 

@@ -7,5 +7,7 @@ export interface StoreType {
   dashboard: {
     libraries: Library[]
   },
-  player: any
+  player: {
+    playing: boolean
+  }
 }

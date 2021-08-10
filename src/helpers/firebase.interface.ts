@@ -62,7 +62,7 @@ interface LibrariesCategory {
 }
 
 interface LibrariesSubCategory {
-  type: 'subcategory'
+  type: 'subcategory' | 'sound'
   icon: string,
   name: string,
   data: LibrariesSound[]

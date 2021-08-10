@@ -145,12 +145,39 @@
           box-shadow: $side-category-shadow;
           
           > div {
+            position: relative;
             display: flex;
             align-items: center;
             line-height: 3rem;
 
+            &.loading {
+              span {
+                &:before {
+                  width: 100%;
+                  transition: width 1s;
+                }
+              }
+            }
+
+            &.active {
+              color: $green;
+              text-shadow: $side-sound-active-shadow;
+            }
+
             i {
               font-size: 1.5rem;
+            }
+
+            span {
+              &:before {
+                content: attr(datatype);
+                position: absolute;
+                display: inline-block;
+                color: $green;
+                width: 0;
+                overflow: hidden;
+                will-change: width;
+              }
             }
             
           }

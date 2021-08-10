@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
 import { PlayState, Tween } from 'react-gsap'
-import { PropsSideInterface, SoundListType } from '../types'
+import { Skeleton } from 'primereact/skeleton'
+import { PropsSideInterface, SoundListType, ActiveSound } from '../types'
 import styles from './Side.module.scss'
 
 const TIME = .3
+const defaultActiveSound: ActiveSound = {
+  category: '',
+  sub: '',
+  sound: ''
+}
 
 export const RightSide = (props: PropsSideInterface) => {
+  const [ active, setActive ] = useState(defaultActiveSound)
   const [ activeCategory, setActiveCategory ] = useState(0)
   const [ activeSubCategory, setActiveSubcategory ] = useState(-1)
+  const [ activeSound, setActiveSound ] = useState(-1)
   const [ playStateSubcategory, setPlayStateSubCategory ] = useState(PlayState.play)
-  const { library, onChangeSound } = props
+  const { library, loading, onChangeSound, onActive } = props
   const data = library?.data ? library?.data : library?.extra || []
   const clickCategory = (i: number) => {
     setActiveSubcategory(-1)
@@ -20,15 +28,58 @@ export const RightSide = (props: PropsSideInterface) => {
       setActiveCategory(i)
     }, TIME * 1000)
   }
-  const clickSubcategory = (i: number) => {}
-  const clickSound = (url: string) => {}
-
+  const clickSubcategory = (i: number, category: string, type: string, subcategory: string) => {
+    if (type === SoundListType.sound) {
+      onChangeSound(`libraries/${library.name}/${category}/${subcategory}.wav`)
+      setActive({ category, sub: '', sound: subcategory})
+      onActive({ category, sub: '', sound: subcategory })
+    } else {
+      activeSubCategory !== i ? setActiveSubcategory(i) : setActiveSubcategory(-1)
+    }
+  }
+  const clickSound = (category: string, sub: string, sound: string, i: number) => {
+    onChangeSound(`libraries/${library.name}/${category}/${sub}/${sound}.wav`)
+    setActiveSound(i)
+    onActive({ category, sub, sound })
+    setActive({ category, sub, sound })
+  }
+  const currentSound = (visibleCategory: string, visibleSub: string, visibleSound: string, i: number): boolean => {
+    const { category, sub, sound } = active
+    return visibleCategory === category 
+    && visibleSub === sub
+    && visibleSound === sound
+    && activeSound === i
+  }
+  const currentSubSound = (visibleCategory: string, visibleSubSound: string, i: number): boolean => {
+    const { category, sound } = active
+    return visibleCategory === category 
+    && visibleSubSound === sound
+  }
+  const getClassIfTypeSound = (type: string, visibleCategory: string, visibleSound: string, i: number) => {
+    if (type === SoundListType.sound) {
+      if (loading && currentSubSound(visibleCategory, visibleSound, i)) {
+        return styles.loading
+      }
+      else if (!loading && currentSubSound(visibleCategory, visibleSound, i)) {
+        return styles.active
+      }
+      else return ''
+    }
+  }
 
   return(
     <div className = { styles.rightSide }>
       <ul className = { styles.categories }>
         {
-          !library ? <li>Downloading...</li> :
+          !library ? (
+            <React.Fragment>
+              <li><Skeleton height = '100%'/></li>
+              <li><Skeleton height = '100%'/></li>
+              <li><Skeleton height = '100%'/></li>
+              <li><Skeleton height = '100%'/></li>
+              <li><Skeleton height = '100%'/></li>
+            </React.Fragment>
+          ) :
           data.map((category, i) => (
             <li key = { category.name } 
               className = { activeCategory === i ? styles.active : '' }>
@@ -43,14 +94,12 @@ export const RightSide = (props: PropsSideInterface) => {
                       from = {{ x: -50, opacity: 0 }} duration = { TIME } 
                       stagger = {() => i * TIME}
                       playState = { playStateSubcategory }>
-                      <li onClick = {() => {
-                        subcategory.type === SoundListType.sub ? 
-                        clickSubcategory(i) : 
-                        clickSound(``)
-                      }}>
-                        <div onClick = {() => { activeSubCategory !== i ? setActiveSubcategory(i) : setActiveSubcategory(-1)}}>
+                      <li>
+                        <div className = { getClassIfTypeSound(subcategory.type, category.name, subcategory.name, i) }
+                          onClick = {() => clickSubcategory(i, category.name, subcategory.type, subcategory.name)}
+                        >
                           <i className = { subcategory.icon || category.icon }/>
-                          <span>{ subcategory.name }</span>
+                          <span datatype = { subcategory.name }>{ subcategory.name }</span>
                         </div>
                         {
                           subcategory.type === SoundListType.sub &&
@@ -59,11 +108,17 @@ export const RightSide = (props: PropsSideInterface) => {
                             playState = { activeSubCategory === i ? PlayState.play : PlayState.reverse }>
                             <ul className = { styles.sounds }>
                               {
-                                subcategory.data.map(sound => (
-                                  <li onClick = {() => onChangeSound(`libraries/${library.name}/${category.name}/${subcategory.name}/${sound.name}.wav`)}
+                                subcategory.data.map((sound, i) => (
+                                  <li className = { styles.sound } 
                                     key = { `${subcategory.name}_${sound.name}` } 
-                                    className = { styles.sound }
-                                  >{ sound.name }</li>
+                                    onClick = {() => clickSound(category.name, subcategory.name, sound.name, i)}
+                                  >
+                                    <span datatype = {sound.name} 
+                                      className = { loading && currentSound(category.name, subcategory.name, sound.name, i) 
+                                        ? styles.loading 
+                                        : !loading && currentSound(category.name, subcategory.name, sound.name, i) ? styles.active : '' }
+                                    >{ sound.name }</span>
+                                  </li>
                                 ))
                               }
                             </ul>
