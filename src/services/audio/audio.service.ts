@@ -20,7 +20,7 @@ export class AudioService {
   bufferLength: number = 1024
 
   constructor() {
-    this.audioCtx   = new AudioContext()
+    this.audioCtx   = new (AudioContext || (window as any).webkitAudioContext)()
     this.mainNode   = this.audioCtx.createGain()
     this.compressor = this.audioCtx.createDynamicsCompressor()
     this.mainNode.connect(this.compressor)

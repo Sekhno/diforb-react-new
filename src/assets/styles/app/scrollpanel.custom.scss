@@ -8,6 +8,9 @@ p-scrollpanel-bar-y	Scrollbar handle of a vertical bar
 */
 
 .p-scrollpanel {
+  .p-scrollpanel-content {
+    padding: 0;
+  }
   .p-scrollpanel-bar-y {
     width: 3px;
   }
