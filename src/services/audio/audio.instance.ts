@@ -26,8 +26,9 @@ let recSource: MediaStreamAudioSourceNode
 let rec: Recorder
 let leftVolumeValue: number = 1, rightVolumeValue: number = 1
 
+
 const setupRoutingGraph = (callback: Function): void => {
-  context = new AudioContext()
+  context = new (window.AudioContext || (window as any).webkitAudioContext)()
 
   analyser = context.createAnalyser()
   compressor = context.createDynamicsCompressor()
@@ -110,9 +111,12 @@ const setBufferToRightSide = (sound: string): Promise<null> => {
 }
 
 const setupReverbBuffers = async () => {
-  reverRoomBuffer = await context.decodeAudioData((await loadBuffer(rever1)))
-  reverHallBuffer = await context.decodeAudioData((await loadBuffer(rever2)))
-  reverStadiumBuffer = await context.decodeAudioData((await loadBuffer(rever3)))
+  context.decodeAudioData((await loadBuffer(rever1)), (buffer) => (reverRoomBuffer = buffer))
+  context.decodeAudioData((await loadBuffer(rever2)), (buffer) => (reverHallBuffer = buffer))
+  context.decodeAudioData((await loadBuffer(rever3)), (buffer) => (reverStadiumBuffer = buffer))
+  // reverRoomBuffer = await context.decodeAudioData((await loadBuffer(rever1)))
+  // reverHallBuffer = await context.decodeAudioData((await loadBuffer(rever2)))
+  // reverStadiumBuffer = await context.decodeAudioData((await loadBuffer(rever3)))
 }
 
 const selectLeftReverb = (type: ReverbType) => {
