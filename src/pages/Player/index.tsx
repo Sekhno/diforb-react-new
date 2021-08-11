@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState, ReactNode, createRef, RefObject, Fragment, SyntheticEvent } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { withRouter, useParams } from 'react-router-dom'
-import { PlayState, Tween } from 'react-gsap'
+import { PlayState, Tween, Timeline } from 'react-gsap'
 import { fromEvent, filter, distinctUntilChanged } from 'rxjs'
 import { InputSwitch } from 'primereact/inputswitch'
 import { 
@@ -16,7 +16,9 @@ import {
   selectLeftReverb, selectRightReverb,
   resetLeftReverb, resetRightReverb,
   saveCanvasElem, 
-  onPlay 
+  onPlay,
+  muteLeftSound, muteRightSound,
+  unmuteLeftSound, unmuteRightSound  
 } from '../../services/audio/audio.instance'
 import Player from './components/Player'
 import LeftSide from './components/LeftSide'
@@ -60,6 +62,7 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   const [ leftReverb, setLeftReverbs ] = useState(defaultReverState)
   const [ rightReverb, setRightReverbs ] = useState(defaultReverState)
   const [ activeMenu, setActiveMenu ] = useState(false)
+  const [ activeSoundAnimationState, setActiveSoundAnimationState ] = useState(PlayState.stopEnd)
   
   useEffect(() => {
     if (canvasRef && canvasRef.current) {
@@ -99,6 +102,19 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
   }, [ leftReverb, rightReverb ])
 
   useEffect(() => {
+    if (leftMute) {
+      unmuteLeftSound()
+    } else {
+      muteLeftSound()
+    }
+    if (rightMute) {
+      unmuteRightSound()
+    } else {
+      muteRightSound()
+    }
+  }, [ leftMute, rightMute ])
+
+  useEffect(() => {
     const keypressSubscription = fromEvent(document, KeypressEvent.KEYDOWN).pipe(
       filter((e: Event) => (e as KeyboardEvent).keyCode === 27),
       distinctUntilChanged()
@@ -128,7 +144,7 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
 
   const onClickPlay = () => {
     if (!leftSoundBuffer && !rightSoundBuffer) {
-      return alert('Выберите звук!')
+      return setActiveSoundAnimationState(PlayState.restart)
     }
     dispatch(onPlay())
   }
@@ -139,12 +155,21 @@ const DiforbApp: FC = (props: PlayerProps): JSX.Element =>  {
         <div className = { styles.leftSide }>
           <InputSwitch checked = { leftMute } onChange={(e) => setLeftMute(e.value)} />
           <i className = { leftMute ? 'icon-volume' : 'icon-volume-off' }/>
-          <span>{ activeLeftSound.sound }</span>
+          <Timeline target = {<span>{ activeLeftSound.sound }</span>} playState = { activeSoundAnimationState }
+            onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
+            <Tween to = {{y: -20}} duration = {.3}/>
+            <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
+          </Timeline>
         </div>
         <div className = { styles.rightSide }>
           <InputSwitch checked = { rightMute } onChange={(e) => setRightMute(e.value)} />
           <i className = { rightMute ? 'icon-volume' : 'icon-volume-off' }/>
-          <span>{ activeRightSound.sound }</span>
+          <Timeline target = {<span>{ activeRightSound.sound }</span>} playState = { activeSoundAnimationState }
+            onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
+            <Tween to = {{y: -20}} duration = {.3}/>
+            <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
+          </Timeline>
+          
         </div>
       </header>
       <div className = { styles.wrapper }>

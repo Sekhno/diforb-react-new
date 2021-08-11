@@ -1,4 +1,5 @@
-import React, { forwardRef, RefObject } from 'react'
+import React, { forwardRef, RefObject, createRef, LegacyRef } from 'react'
+import { loadRecordFile } from '../../../services/audio/audio.instance'
 import { ReverbsEnum } from '../types'
 import Timeshift 	from './Timeshift'
 import VolumeLeft from './VolumeLeft'
@@ -7,6 +8,8 @@ import Knob from './Knob'
 import ReverbLeft from './ReverbLeft'
 import ReverbRight from './ReverbRight'
 import styles 		from './Player.module.scss'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 interface PlayerPropsInterface {
 	id: string
@@ -37,6 +40,16 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 		changeRightReverType,
 		onClickPlay
 	} = props
+	
+	const [ isRecord, setIsRecord ] = useState(false)
+	const [ recordUrl, setRecordUrl ] = useState('')
+
+	useEffect(() => {
+		if (playing) setIsRecord(true)
+		if (isRecord) {
+			loadRecordFile().then(url => setRecordUrl(url as string))
+		}
+	}, [ playing ])
 	
 	return (
 		<div className = { styles.wrapper }>
@@ -88,7 +101,9 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 							<button className = { styles.btnPlay } onClick = { onClickPlay }>
 								<i className = { playing ? 'icon-pause' : 'icon-play' }></i>
 							</button>
-							<button className = { styles.btnDownload }>Download</button>
+							<a className = { styles.btnDownload } style = {{pointerEvents: !recordUrl ? 'none' : 'auto'}}
+								href = { recordUrl } download = 'output.wav' 
+							>Download</a>
 						</div>
 						<div className = { styles.sliderBottomRight }>
 							<ReverbRight 

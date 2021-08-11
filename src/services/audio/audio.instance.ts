@@ -1,3 +1,4 @@
+import { Recorder } from './record'
 import { getFirebaseStorage }   from '../../helpers/firebase.helper'
 import { ReverbType }           from '../../pages/Player/types'
 import { setPlaying }           from '../../pages/Player/playerSlice'
@@ -19,6 +20,11 @@ let timeshiftValue = 0
 var bufferLength: number, dataArray: Uint8Array
 var canvas: HTMLCanvasElement | null = null
 var canvasCtx: CanvasRenderingContext2D | null = null
+
+let streamDestinationNode: MediaStreamAudioDestinationNode
+let recSource: MediaStreamAudioSourceNode
+let rec: Recorder
+let leftVolumeValue: number = 1, rightVolumeValue: number = 1
 
 const setupRoutingGraph = (callback: Function): void => {
   context = new AudioContext()
@@ -51,7 +57,12 @@ const setupRoutingGraph = (callback: Function): void => {
   bufferLength = analyser.frequencyBinCount
   dataArray = new Uint8Array(bufferLength)
   analyser.getByteTimeDomainData(dataArray)
-  
+
+  streamDestinationNode = context.createMediaStreamDestination()
+  recSource = context.createMediaStreamSource(streamDestinationNode.stream)
+  rec = new Recorder(recSource)
+  compressor.connect(streamDestinationNode)
+
   callback && callback()
 }
 
@@ -135,6 +146,24 @@ const resetRightReverb = () => {
   rightReverbGain && rightReverbGain.disconnect()
 }
 
+const muteLeftSound = () => {
+  leftVolumeValue = leftVolumeGain.gain.value
+  changeLeftVolumeGain(0)
+}
+
+const muteRightSound = () => {
+  rightVolumeValue = rightVolumeGain.gain.value
+  changeRightVolumeGain(0)
+}
+
+const unmuteLeftSound = () => {
+  leftVolumeGain.gain.value = leftVolumeValue
+}
+
+const unmuteRightSound = () => {
+  rightVolumeGain.gain.value = rightVolumeValue
+}
+
 const changeLeftVolumeGain = (gain: number) => {
   leftVolumeGain.gain.value = (2 * gain) / 100
 }
@@ -173,6 +202,8 @@ const changeTimeshiftValue = (gain: number) => {
 const onPlay = () => {
   return (dispath: Function) => {
     let pausedSource1 = true, pausedSource2 = true
+    rec.clear()
+    rec.record()
     
     if (leftSoundBuffer) {
       source1 = context.createBufferSource()
@@ -189,6 +220,7 @@ const onPlay = () => {
         pausedSource1 = true
         if (pausedSource1 && pausedSource2) {
           dispath(setPlaying(false))
+          rec.stop()
         }
       }, {once: true})
       pausedSource1 = false
@@ -208,11 +240,13 @@ const onPlay = () => {
         pausedSource2 = true
         if (pausedSource1 && pausedSource2) {
           dispath(setPlaying(false))
+          rec.stop()
         }
       }, {once: true})
       pausedSource2 = false
     }
     dispath(setPlaying(true))
+    
   }
 }
 
@@ -255,6 +289,16 @@ const draw = (): void => {
   }
 }
 
+const loadRecordFile = () => {
+  return new Promise((resolve) => {
+    rec.exportWAV((file: Blob) => {
+      const blobURL = window.URL.createObjectURL(file)
+      resolve(blobURL)
+    })
+  })
+}
+
+
 export { 
   setupRoutingGraph, 
   setupReverbBuffers,
@@ -268,5 +312,8 @@ export {
   setBufferToLeftSide, setBufferToRightSide,
   leftSoundBuffer, rightSoundBuffer,
 
-  onPlay 
+  onPlay,
+  loadRecordFile,
+  muteLeftSound, muteRightSound,
+  unmuteLeftSound, unmuteRightSound 
 }

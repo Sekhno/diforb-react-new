@@ -11,6 +11,7 @@
     "date-fns": "^2.23.0",
     "firebase": "^8.6.8",
     "gsap": "^3.7.1",
+    "inline-worker": "^1.1.0",
     "node-sass": "^4.14.1",
     "primeflex": "^2.0.0",
     "primereact": "^6.5.0-rc.2",
