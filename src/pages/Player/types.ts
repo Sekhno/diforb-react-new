@@ -16,6 +16,13 @@ export enum MouseEvents  {
   MOUSEMOVE = 'mousemove'
 }
 
+export enum TouchEvents {
+  TOUCHSTART = 'touchstart',
+  TOUCHEND = 'touchend',
+  TOUCHMOVE = 'touchmove'
+
+}
+
 export enum KeypressEvent {
   KEYDOWN = 'keydown'
 }
