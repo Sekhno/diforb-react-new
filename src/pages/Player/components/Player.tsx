@@ -23,7 +23,8 @@ interface PlayerPropsInterface {
 	changeRightReverVolumeGain: (gain: number) => void,
 	changeLeftReverType: (gain: ReverbsEnum) => void,
 	changeRightReverType: (gain: ReverbsEnum) => void,
-	onClickPlay: () => void
+	onClickPlay: () => void,
+	onClickStop: () => void
 }
 
 export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
@@ -38,7 +39,8 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 		changeRightReverVolumeGain,
 		changeLeftReverType,
 		changeRightReverType,
-		onClickPlay
+		onClickPlay,
+		onClickStop
 	} = props
 	
 	const [ isRecord, setIsRecord ] = useState(false)
@@ -98,7 +100,7 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 							/>
 						</div>
 						<div className = { styles.bottomControl }>
-							<button className = { styles.btnPlay } onClick = { onClickPlay }>
+							<button className = { styles.btnPlay } onClick = { playing ? onClickStop : onClickPlay }>
 								<i className = { playing ? 'icon-pause' : 'icon-play' }></i>
 							</button>
 							<a className = { styles.btnDownload } style = {{pointerEvents: !recordUrl ? 'none' : 'auto'}}

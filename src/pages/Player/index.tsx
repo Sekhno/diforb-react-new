@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { BrowserView, MobileOnlyView } from 'react-device-detect'
-import DesctopWrapper from './DesctopWrapper'
+import DesktopWrapper from './DesktopWrapper'
 
 
 const DiforbApp: FC = (): JSX.Element =>  {
@@ -10,7 +10,7 @@ const DiforbApp: FC = (): JSX.Element =>  {
   return (
     <React.Fragment>
       <BrowserView>
-        <DesctopWrapper/>
+        <DesktopWrapper/>
       </BrowserView>
     </React.Fragment>
   )

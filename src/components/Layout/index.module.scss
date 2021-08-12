@@ -13,90 +13,6 @@
     grid-column-end: middleStart;
     grid-row-start: top;
     grid-row-end: bottom;
-    display: flex;
-    flex-direction: column;
-  
-    > div {
-      border-bottom: $sidebar-field-border-bottom;
-      background-color: $sidebar-field-bg-a4;
-    }
-  
-    .logo {
-      overflow: hidden;
-      i {
-        position: relative;
-        top: 42px;
-        font-size: 150px;
-        line-height: 0px;
-      }
-    }
-  
-    .user {
-      padding: .5rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      height: 100px;
-      background-color: $sidebar-field-bg-a6;
-  
-      .controls {
-        display: inherit;
-        flex-direction: column;
-        justify-content: space-between;
-        font-size: 1.2rem;
-  
-        i {
-          cursor: pointer;
-        }
-      }
-    }
-  
-    .simpleLink {
-      padding: 1rem;
-  
-      > a {
-        color: $white;
-        display: flex;
-        align-items: center;
-  
-        &.selected {
-          color: $green;
-        }
-        
-        i {
-          font-size: 1.5rem;
-        }
-        span {
-          margin-left: .5rem;
-        }
-      }
-    }
-  
-    .otherLinks {
-      display: inherit;
-      flex-direction: column;
-      justify-content: center;
-      flex-grow: 1;
-      padding-left: 2rem;
-      line-height: 1.5rem;
-      background-color: $sidebar-field-bg-a2;
-  
-  
-      .selected {
-        color: $green;
-      }
-    }
-  
-    .socialLinks {
-      display: inherit;
-      justify-content: flex-end;
-      background-color: $sidebar-field-bg-a8;
-      border-bottom: none;
-  
-      a {
-        padding: 1rem;
-        font-size: 1.2rem;
-      }
-    }
   }
 
   .header {
@@ -134,6 +50,93 @@
     grid-row-end: bottom;
     height: calc(100vh - 70px);
     background-color: $sidebar-field-bg-a2;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    border-bottom: $sidebar-field-border-bottom;
+    background-color: $sidebar-field-bg-a4;
+  }
+
+  .logo {
+    overflow: hidden;
+    i {
+      position: relative;
+      top: 42px;
+      font-size: 150px;
+      line-height: 0px;
+    }
+  }
+
+  .user {
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    background-color: $sidebar-field-bg-a6;
+
+    .controls {
+      display: inherit;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 1.2rem;
+
+      i {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .simpleLink {
+    padding: 1rem;
+
+    > a {
+      color: $white;
+      display: flex;
+      align-items: center;
+
+      &.selected {
+        color: $green;
+      }
+      
+      i {
+        font-size: 1.5rem;
+      }
+      span {
+        margin-left: .5rem;
+      }
+    }
+  }
+
+  .otherLinks {
+    display: inherit;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    padding-left: 2rem;
+    line-height: 1.5rem;
+    background-color: $sidebar-field-bg-a2;
+
+
+    .selected {
+      color: $green;
+    }
+  }
+
+  .socialLinks {
+    display: inherit;
+    justify-content: flex-end;
+    background-color: $sidebar-field-bg-a8;
+    border-bottom: none;
+
+    a {
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
   }
 }
 
