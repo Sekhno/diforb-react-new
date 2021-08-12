@@ -1,9 +1,10 @@
-import React, { FC, useEffect, useState, ReactNode, createRef, RefObject, Fragment, SyntheticEvent } from 'react'
+import React, { FC, useEffect, useState, ReactNode, createRef, RefObject } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { withRouter, useParams } from 'react-router-dom'
 import { PlayState, Tween, Timeline } from 'react-gsap'
 import { fromEvent, filter, distinctUntilChanged } from 'rxjs'
 import { InputSwitch } from 'primereact/inputswitch'
+import { Sidebar } from 'primereact/sidebar'
 import { 
   setupRoutingGraph, 
   setupReverbBuffers,
@@ -16,16 +17,18 @@ import {
   selectLeftReverb, selectRightReverb,
   resetLeftReverb, resetRightReverb,
   saveCanvasElem, 
-  onPlay,
+  onPlay, onStop,
   muteLeftSound, muteRightSound,
   unmuteLeftSound, unmuteRightSound  
 } from '../../services/audio/audio.instance'
-import Player from './components/Player'
+import TabletPlayer from './components/TabletPlayer'
 import LeftSide from './components/LeftSide'
 import RightSide from './components/RightSide'
 import { ReverbsEnum, ReverbType, KeypressEvent, ActiveSound } from './types'
 import { StoreType } from '../../store/types'
 import { onLoadLibraries } from '../../async/dashboardAction'
+import LayoutSidebar  from '../../components/Layout/Sidebar'
+import layotStyles from '../../components/Layout/index.module.scss'
 import styles from './index.module.scss'
 
 
@@ -45,7 +48,7 @@ const defaultActiveSound: ActiveSound = {
   sound: 'Choice sound...'
 }
 
-const DesctopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
+const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   const { playing } = props
   const { id } = useParams<{id: string}>()
   const canvasRef = createRef()
@@ -101,19 +104,6 @@ const DesctopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   }, [ leftReverb, rightReverb ])
 
   useEffect(() => {
-    if (leftMute) {
-      unmuteLeftSound()
-    } else {
-      muteLeftSound()
-    }
-    if (rightMute) {
-      unmuteRightSound()
-    } else {
-      muteRightSound()
-    }
-  }, [ leftMute, rightMute ])
-
-  useEffect(() => {
     const keypressSubscription = fromEvent(document, KeypressEvent.KEYDOWN).pipe(
       filter((e: Event) => (e as KeyboardEvent).keyCode === 27),
       distinctUntilChanged()
@@ -147,67 +137,85 @@ const DesctopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
     }
     dispatch(onPlay())
   }
+  const onClickStop = () => {
+    dispatch(onStop())
+  }
+  const onChangeLeftMute = (v: boolean) => {
+    if (v) unmuteLeftSound()
+    else muteLeftSound()
+    setLeftMute(v)
+  }
+  const onChangeRightMute = (v: boolean) => {
+    if (v) unmuteRightSound()
+    else muteRightSound()
+    setRightMute(v)
+  }
 
   return (
-    <main className = { activeMenu ? styles.openedMenu : '' }>
-      <header className = { styles.header }>
-        <div className = { styles.leftSide }>
-          <InputSwitch checked = { leftMute } onChange={(e) => setLeftMute(e.value)} />
-          <i className = { leftMute ? 'icon-volume' : 'icon-volume-off' }/>
-          <Timeline target = {<span>{ activeLeftSound.sound }</span>} playState = { activeSoundAnimationState }
-            onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
-            <Tween to = {{y: -20}} duration = {.3}/>
-            <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
-          </Timeline>
+    <React.Fragment>
+      <main className = { activeMenu ? styles.openedMenu : '' }>
+        <header className = { styles.header }>
+          <div className = { styles.leftSide }>
+            <InputSwitch checked = { leftMute } onChange={(e) => onChangeLeftMute(e.value)} />
+            <i className = { leftMute ? 'icon-volume' : 'icon-volume-off' }/>
+            <Timeline target = {<span>{ activeLeftSound.sound }</span>} playState = { activeSoundAnimationState }
+              onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
+              <Tween to = {{y: -20}} duration = {.3}/>
+              <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
+            </Timeline>
+          </div>
+          <div className = { styles.rightSide }>
+            <InputSwitch checked = { rightMute } onChange={(e) => onChangeRightMute(e.value)} />
+            <i className = { rightMute ? 'icon-volume' : 'icon-volume-off' }/>
+            <Timeline target = {<span>{ activeRightSound.sound }</span>} playState = { activeSoundAnimationState }
+              onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
+              <Tween to = {{y: -20}} duration = {.3}/>
+              <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
+            </Timeline>
+            
+          </div>
+        </header>
+        <div className = { styles.wrapper }>
+          <div className = { styles.leftSide }>
+            <LeftSide 
+              library = { library } 
+              loading = { loadingLeftSound }
+              onChangeSound = {(url) => onSelectLeftSound(url)}
+              onActive = {(active) => setActiveLeftSound(active)}
+            />
+          </div>
+          <div className = { styles.player }>
+            <TabletPlayer 
+              id = { id }
+              ref = { canvasRef }
+              playing = { localPlayingState }
+              changeTimeshiftValue = { changeTimeshiftValue }
+              changeLeftVolumeValue = { changeLeftVolumeGain }
+              changeRightVolumeValue = { changeRightVolumeGain }
+              changeLeftPitchValue = { changeLeftPitchValue }
+              changeRightPitchValue = { changeRightPitchValue }
+              changeLeftReverVolumeGain = { changeLeftReverVolumeGain }
+              changeRightReverVolumeGain = { changeRightReverVolumeGain }
+              changeLeftReverType = {(type: ReverbsEnum) => setLeftReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
+              changeRightReverType = {(type: ReverbsEnum) => setRightReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
+              onClickPlay = { onClickPlay }
+              onClickStop = { onClickStop }
+            />
+          </div>
+          <div className = { styles.rightSide }>
+            <RightSide
+              library = { library } 
+              loading = { loadingRightSound }
+              onChangeSound = {(url) => onSelectRightSound(url)}
+              onActive = {(active) => setActiveRightSound(active)}
+            />
+          </div>
         </div>
-        <div className = { styles.rightSide }>
-          <InputSwitch checked = { rightMute } onChange={(e) => setRightMute(e.value)} />
-          <i className = { rightMute ? 'icon-volume' : 'icon-volume-off' }/>
-          <Timeline target = {<span>{ activeRightSound.sound }</span>} playState = { activeSoundAnimationState }
-            onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
-            <Tween to = {{y: -20}} duration = {.3}/>
-            <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
-          </Timeline>
-          
-        </div>
-      </header>
-      <div className = { styles.wrapper }>
-        <div className = { styles.leftSide }>
-          <LeftSide 
-            library = { library } 
-            loading = { loadingLeftSound }
-            onChangeSound = {(url) => onSelectLeftSound(url)}
-            onActive = {(active) => setActiveLeftSound(active)}
-          />
-        </div>
-        <div className = { styles.player }>
-          {/* <div style = {{textAlign: 'center'}}>{ loading ? 'loading' : 'no loading' }</div>  */}
-          <Player 
-            id = { id }
-            ref = { canvasRef }
-            playing = { localPlayingState }
-            changeTimeshiftValue = { changeTimeshiftValue }
-            changeLeftVolumeValue = { changeLeftVolumeGain }
-            changeRightVolumeValue = { changeRightVolumeGain }
-            changeLeftPitchValue = { changeLeftPitchValue }
-            changeRightPitchValue = { changeRightPitchValue }
-            changeLeftReverVolumeGain = { changeLeftReverVolumeGain }
-            changeRightReverVolumeGain = { changeRightReverVolumeGain }
-            changeLeftReverType = {(type: ReverbsEnum) => setLeftReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
-            changeRightReverType = {(type: ReverbsEnum) => setRightReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
-            onClickPlay = { onClickPlay }
-          />
-        </div>
-        <div className = { styles.rightSide }>
-          <RightSide
-            library = { library } 
-            loading = { loadingRightSound }
-            onChangeSound = {(url) => onSelectRightSound(url)}
-            onActive = {(active) => setActiveRightSound(active)}
-          />
-        </div>
-      </div>
-    </main>
+      </main>
+      <Sidebar className = { styles.menu } visible = { activeMenu } fullScreen onHide={() => setActiveMenu(false)}>
+        <LayoutSidebar className = { layotStyles.sidebar }/>
+      </Sidebar>
+    </React.Fragment>
   )
   
 }
@@ -224,4 +232,4 @@ const mapStateToProps = (state: StateToProps) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(DesctopWrapper))
+export default withRouter(connect(mapStateToProps)(DesktopWrapper))

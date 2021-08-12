@@ -201,7 +201,7 @@ const changeTimeshiftValue = (gain: number) => {
 }
 
 const onPlay = () => {
-  return (dispath: Function) => {
+  return (dispatch: Function) => {
     let pausedSource1 = true, pausedSource2 = true
     rec.clear()
     rec.record()
@@ -220,7 +220,7 @@ const onPlay = () => {
         source1.disconnect()
         pausedSource1 = true
         if (pausedSource1 && pausedSource2) {
-          dispath(setPlaying(false))
+          dispatch(setPlaying(false))
           rec.stop()
         }
       }, {once: true})
@@ -240,14 +240,27 @@ const onPlay = () => {
         source2.disconnect()
         pausedSource2 = true
         if (pausedSource1 && pausedSource2) {
-          dispath(setPlaying(false))
+          dispatch(setPlaying(false))
           rec.stop()
         }
       }, {once: true})
       pausedSource2 = false
     }
-    dispath(setPlaying(true))
+    dispatch(setPlaying(true))
     
+  }
+}
+
+const onStop = () => {
+  return (dispatch: Function) => {
+    if (leftSoundBuffer) {
+      source1.disconnect()
+    }
+    if (rightSoundBuffer) {
+      source2.disconnect()
+    }
+    rec.stop()
+    dispatch(setPlaying(false))
   }
 }
 
@@ -313,7 +326,7 @@ export {
   setBufferToLeftSide, setBufferToRightSide,
   leftSoundBuffer, rightSoundBuffer,
 
-  onPlay,
+  onPlay, onStop,
   loadRecordFile,
   muteLeftSound, muteRightSound,
   unmuteLeftSound, unmuteRightSound 

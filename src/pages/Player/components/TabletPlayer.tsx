@@ -1,7 +1,7 @@
 import React, { forwardRef, RefObject, createRef, LegacyRef } from 'react'
 import { loadRecordFile } from '../../../services/audio/audio.instance'
 import { ReverbsEnum } from '../types'
-import Timeshift 	from './Timeshift'
+import TabletTimeshift 	from './TabletTimeshift'
 import VolumeLeft from './VolumeLeft'
 import VolumeRight from './VolumeRight'
 import Knob from './Knob'
@@ -74,7 +74,7 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 						</div>
 					</div>
 					<div className = { styles.timeshift }>
-						<Timeshift onChange = {(gain) => changeTimeshiftValue(gain)}/>
+						<TabletTimeshift onChange = {(gain) => changeTimeshiftValue(gain)}/>
 					</div>
 					<div className = { styles.sliderMiddle }>
 						<div className = { styles.sliderMiddleLeft }>
