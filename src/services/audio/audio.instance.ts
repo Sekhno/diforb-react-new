@@ -114,9 +114,6 @@ const setupReverbBuffers = async () => {
   context.decodeAudioData((await loadBuffer(rever1)), (buffer) => (reverRoomBuffer = buffer))
   context.decodeAudioData((await loadBuffer(rever2)), (buffer) => (reverHallBuffer = buffer))
   context.decodeAudioData((await loadBuffer(rever3)), (buffer) => (reverStadiumBuffer = buffer))
-  // reverRoomBuffer = await context.decodeAudioData((await loadBuffer(rever1)))
-  // reverHallBuffer = await context.decodeAudioData((await loadBuffer(rever2)))
-  // reverStadiumBuffer = await context.decodeAudioData((await loadBuffer(rever3)))
 }
 
 const selectLeftReverb = (type: ReverbType) => {
