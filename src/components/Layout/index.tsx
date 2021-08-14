@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { withRouter, useHistory, Link, useLocation, RouteComponentProps } from 'react-router-dom'
 import { useSelector }  from 'react-redux'
-import { BrowserView, MobileView, MobileOnlyView } from 'react-device-detect'
+import { BrowserView, MobileView, MobileOnlyView, TabletView } from 'react-device-detect'
 import { ScrollPanel }      from 'primereact/scrollpanel'
 import { getFirebaseBackend } from '../../helpers/firebase.helper'
 import { StoreType }        from  '../../store/types'
@@ -90,6 +90,21 @@ const Layout = (props: PropsType): JSX.Element => {
           </div>
         </div>
       </MobileOnlyView>
+      <TabletView>
+        <MobileSidebar visible = { visibleSidebar } onHide = {() => setVisibleSidebar(false)}/>
+        <div className = { styles.mobileWrapper } style = {{filter: visibleSidebar ?'blur(3px)' : 'blur(0)'}}>
+          <header className = { styles.header }>
+            <button className = 'icon-menu' onTouchStart = {()=> setVisibleSidebar(!visibleSidebar)}/>
+            <span>
+              <span className = { styles.currentRoute }>{ currentRoute }</span>
+              { currentSubroute && <span className = { styles.currentSubroute  }>/{ currentSubroute }</span> }
+            </span>
+          </header>
+          <div className = { styles.content }>
+            { props.children }
+          </div>
+        </div>
+      </TabletView> 
     </React.Fragment>
   )
 }

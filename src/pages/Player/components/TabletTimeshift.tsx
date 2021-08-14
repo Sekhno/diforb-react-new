@@ -6,9 +6,14 @@ import styles from './RangeSlider.module.scss'
 
 export const Timeshift = (props: PropsSliderInterface) => {
   const { onChange } = props
+  const offset = 7
+  const gradSVGRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
   const handlerRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
   const handlerMove = (event: Event) => {
-    let volume = Math.floor(140 - (event as TouchEvent).touches[0].pageX),
+    const gradSVGRect = gradSVGRef.current?.getBoundingClientRect()
+    const centre = (gradSVGRect && Math.round(gradSVGRect.left + 0.5 * gradSVGRect.width)) || 0
+    const curX = (Math.round((event as TouchEvent).touches[0].screenX))
+    let volume = curX > centre ? curX + 10 - centre : curX - 7 - centre,
         centerX = 125,
         centerY = 267,
         radius = 240,
@@ -16,12 +21,12 @@ export const Timeshift = (props: PropsSliderInterface) => {
         numObjects = 1450,
         slice = Math.PI * 2 / numObjects,
         x, y;
-		
+        
 		if (volume > 71) volume = 70;
 		if (volume < -70) volume = -70;
 
 		angle = volume * slice;
-		x = centerX - Math.sin(angle) * radius;
+		x = centerX + Math.sin(angle) * radius;
 		y = centerY - Math.cos(angle) * radius;
 
 		const prop = 'transform';
@@ -32,30 +37,30 @@ export const Timeshift = (props: PropsSliderInterface) => {
   }
 
   useEffect(() => {
-    let mouseDownSubscribed: Subscription
+    let touchStartSubscribed: Subscription
     if (handlerRef.current) {
       const svgElem = handlerRef?.current?.parentNode as SVGAElement
-      mouseDownSubscribed = fromEvent(handlerRef.current, TouchEvents.TOUCHSTART)
+      touchStartSubscribed = fromEvent(handlerRef.current, TouchEvents.TOUCHSTART)
         .subscribe(e => {
-          const mouseMoveSubscribed = fromEvent(svgElem, TouchEvents.TOUCHMOVE)
+          const touchMoveSubscribed = fromEvent(svgElem, TouchEvents.TOUCHMOVE)
             .subscribe(handlerMove)
-          const mouseUpSubscribed = fromEvent(window, TouchEvents.TOUCHEND)
+          const touchEndSubscribed = fromEvent(window, TouchEvents.TOUCHEND)
             .subscribe(e => {
-                mouseUpSubscribed.unsubscribe()
-                mouseMoveSubscribed.unsubscribe()
+              touchEndSubscribed.unsubscribe()
+              touchMoveSubscribed.unsubscribe()
             })
       })
       
     }
     return () => {
-      mouseDownSubscribed.unsubscribe()
+      touchStartSubscribed.unsubscribe()
       console.log('Destroy hendlerRef')
     }
   }, [ handlerRef ])
 
   return (
     <svg x = '0px' y = '0px' width = '274px' height = '76px' viewBox = '0 0 274 76' enableBackground = 'new 0 0 274 76'>
-      <g className = { styles.volumeRange }>
+      <g className = { styles.volumeRange } ref = { gradSVGRef }>
         <g>
           <g>
             <path d='M119.194,11.395c-0.099-0.087-0.222-0.131-0.355-0.115c-0.188,0.015-0.33,0.113-0.412,0.29l-3.252,8.087
@@ -160,8 +165,7 @@ export const Timeshift = (props: PropsSliderInterface) => {
               C201.414,47.418,201.806,47.744,202.293,47.874z' /> 
           </g>
       </g>
-      <g className = { styles.handler }
-        ref = { handlerRef } transform = 'translate(126, 27)'>
+      <g className = { styles.handler } ref = { handlerRef } transform = 'translate(126, 27)'>
         <g>
           <g>
             <path className = { styles.handlerWrapper } d='M19.267,6.264C17.731,2.46,14.09,0,9.99,0C8.709,0,7.453,0.246,6.258,0.727

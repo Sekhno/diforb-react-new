@@ -8,6 +8,7 @@ export const Timeshift = (props: PropsSliderInterface) => {
   const { onChange } = props
   const handlerRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
   const handlerMove = (event: Event) => {
+    console.log((event as MouseEvent).offsetX)
     let volume = Math.floor(140 - (event as MouseEvent).offsetX),
         centerX = 125,
         centerY = 267,
