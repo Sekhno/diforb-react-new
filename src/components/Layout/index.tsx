@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { withRouter, useHistory, Link, useLocation, RouteComponentProps } from 'react-router-dom'
 import { useSelector }  from 'react-redux'
-import { BrowserView, MobileView, MobileOnlyView, TabletView } from 'react-device-detect'
+import { BrowserView, MobileView, MobileOnlyView, TabletView, isMobileSafari, isIOS, isChrome, isIPad13, isMobile } from 'react-device-detect'
 import { ScrollPanel }      from 'primereact/scrollpanel'
 import { getFirebaseBackend } from '../../helpers/firebase.helper'
 import { StoreType }        from  '../../store/types'
@@ -54,27 +54,31 @@ const Layout = (props: PropsType): JSX.Element => {
   
   return (
     <React.Fragment>
-      <BrowserView>
-        {
-          currentRoute === 'app'
-          ? <ScrollPanel style={{width: '100%', height: '100%', overflowY: 'auto'}}>
-            { props.children }
-          </ScrollPanel>
-          : <div className = { styles.wrapper }>
-            <Sidebar className = { styles.sidebar }/>
-            <header className = { styles.header }>
-              <i className = { getHeaderIcon() }/>
-              <span className = { styles.currentRoute }>{ currentRoute }</span>
-              { currentSubroute && <span className = { styles.currentSubroute  }>/{ currentSubroute }</span> }
-            </header>
-            <div className = { styles.content }>
-              <ScrollPanel style={{width: '100%', height: '100%', overflowY: 'auto'}}>
-                { props.children }
-              </ScrollPanel>
+      
+      {
+        !isMobileSafari && 
+        <BrowserView>
+          {
+            currentRoute === 'app'
+            ? <ScrollPanel style={{width: '100%', height: '100%', overflowY: 'auto'}}>
+              { props.children }
+            </ScrollPanel>
+            : <div className = { styles.wrapper }>
+              <Sidebar className = { styles.sidebar }/>
+              <header className = { styles.header }>
+                <i className = { getHeaderIcon() }/>
+                <span className = { styles.currentRoute }>{ currentRoute }</span>
+                { currentSubroute && <span className = { styles.currentSubroute  }>/{ currentSubroute }</span> }
+              </header>
+              <div className = { styles.content }>
+                <ScrollPanel style={{width: '100%', height: '100%', overflowY: 'auto'}}>
+                  { props.children }
+                </ScrollPanel>
+              </div>
             </div>
-          </div>
-        }
-      </BrowserView>
+          }
+        </BrowserView>
+      }
       <MobileOnlyView>
         <MobileSidebar visible = { visibleSidebar } onHide = {() => setVisibleSidebar(false)}/>
         <div className = { styles.mobileWrapper } style = {{filter: visibleSidebar ?'blur(3px)' : 'blur(0)'}}>
