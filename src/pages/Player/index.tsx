@@ -1,12 +1,19 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { BrowserView, MobileOnlyView, TabletView, MobileView, isMobileSafari } from 'react-device-detect'
+import { BrowserView, MobileOnlyView, TabletView, isMobileSafari } from 'react-device-detect'
 import DesktopWrapper from './DesktopWrapper'
 import TabletWrapper from './TabletWrapper'
 
 
 const DiforbApp: FC = (): JSX.Element =>  {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  })
 
   return (
     <React.Fragment>

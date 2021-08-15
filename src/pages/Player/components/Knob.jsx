@@ -234,7 +234,8 @@ class KnobInput {
     
     handleTouchStart(evt) {
         this.clearDrag();
-        evt.preventDefault();
+
+        evt.cancelable && evt.preventDefault();
         var touch = evt.changedTouches.item(evt.changedTouches.length - 1);
         this._activeDrag = touch.identifier;
         this.startDrag(touch.clientY);
