@@ -6,7 +6,7 @@ import TabletVolumeLeft from './TabletVolumeLeft'
 import TabletVolumeRight from './TabletVolumeRight'
 import Knob from './Knob'
 import TabletReverbLeft from './TabletReverbLeft'
-import ReverbRight from './ReverbRight'
+import TabletReverbRight from './TabletReverbRight'
 import styles 		from './Player.module.scss'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -108,7 +108,7 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 							>Download</a>
 						</div>
 						<div className = { styles.sliderBottomRight }>
-							<ReverbRight 
+							<TabletReverbRight 
 								onChange = { changeRightReverVolumeGain } 
 								onChangeReverbType = { changeRightReverType }
 							/>
