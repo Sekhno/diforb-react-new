@@ -55,12 +55,12 @@ const Login = (props: any): JSX.Element => {
           />
           <div className = { styles.divider }>- or -</div>
           <Button 
-            className = { styles.button +' '+ styles.fb } 
+            className = { styles.button +' '+ styles.google } 
             label = 'Login with Google' loading = {false} icon = 'icon-google'
             onClick = { () => dispatch(onLoginWithSocial('google')) }
           />
           <Button 
-            className = { styles.button +' '+ styles.google } 
+            className = { styles.button +' '+ styles.fb } 
             label = 'Login with Facebook' loading = {false} icon = 'icon-facebook'
             onClick = { () => dispatch(onLoginWithSocial('facebook')) }
           />
@@ -84,4 +84,4 @@ const mapStateToProps = (state: { auth: { isLogged: boolean } }) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Login))
+export default Login
