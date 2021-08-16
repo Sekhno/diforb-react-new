@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, MutableRefObject } from 'react'
 import { fromEvent, Subscription } from 'rxjs'
 import { TouchEvents, PropsSliderInterface } from '../types'
 import styles from './RangeSlider.module.scss'
@@ -18,9 +18,9 @@ export const TabletVolumeRight = (props: PropsSliderInterface) => {
   let X, Y
 
   const { onChange } = props
-  const clipRef: React.MutableRefObject<SVGRectElement | null> = useRef(null)
-  const handlerRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
-  const gradSVGRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
+  const clipRef: MutableRefObject<SVGRectElement | null> = useRef(null)
+  const handlerRef: MutableRefObject<SVGAElement | null> = useRef(null)
+  const gradSVGRef: MutableRefObject<SVGAElement | null> = useRef(null)
   const handlerMove = (event: Event) => {
     const gradSVGRect = gradSVGRef.current?.getBoundingClientRect()
     const curY = (Math.round((event as TouchEvent).touches[0].pageY))
@@ -29,7 +29,6 @@ export const TabletVolumeRight = (props: PropsSliderInterface) => {
       angle = STARTANGLE + (curY - gradSVGRect.bottom) * STEP
       X = Math.ceil(centerX - RADIUS * Math.sin(angle)) - 2 * RADIUS
       Y = Math.ceil(centerY - RADIUS * Math.cos(angle))
-      console.log(`translate(${X}, ${Y})`)
       handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
       clipRef.current?.setAttribute('y', String(curY - gradSVGRect.top))
       onChange && onChange(value)

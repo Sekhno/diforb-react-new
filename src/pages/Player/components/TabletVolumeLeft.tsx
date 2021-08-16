@@ -22,7 +22,7 @@ export const TabletVolumeLeft = (props: PropsSliderInterface) => {
   const { onChange } = props
   const clipRef: MutableRefObject<SVGRectElement | null> = useRef(null)
   const handlerRef: MutableRefObject<SVGAElement | null> = useRef(null)
-  const gradSVGRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
+  const gradSVGRef: MutableRefObject<SVGAElement | null> = useRef(null)
   const handlerMove = (event: Event) => {
     const gradSVGRect = gradSVGRef.current?.getBoundingClientRect()
     const curY = (Math.round((event as TouchEvent).touches[0].pageY))
