@@ -3,7 +3,7 @@ import { loadRecordFile } from '../../../services/audio/audio.instance'
 import { ReverbsEnum } from '../types'
 import TabletTimeshift 	from './TabletTimeshift'
 import TabletVolumeLeft from './TabletVolumeLeft'
-import VolumeRight from './VolumeRight'
+import TabletVolumeRight from './TabletVolumeRight'
 import Knob from './Knob'
 import ReverbLeft from './ReverbLeft'
 import ReverbRight from './ReverbRight'
@@ -81,7 +81,7 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 							<TabletVolumeLeft onChange = { changeLeftVolumeValue }/>
 						</div>
 						<div className = { styles.sliderMiddleRight }>
-							<VolumeRight onChange = { changeRightVolumeValue }/>
+							<TabletVolumeRight onChange = { changeRightVolumeValue }/>
 						</div>
 					</div>
 					<div className = { styles.pitchWrappers }>
