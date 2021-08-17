@@ -2,7 +2,7 @@ const LIBRARIES = [
   // INTERFACE
   {
     author: 'Diforb',
-    id: 'interface',
+    id: 'Interface',
     name: 'Interface',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Finterface.jpg?alt=media&token=ffaa649f-84ad-44a5-a106-5f367a564e96',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Finterface.jpg?alt=media&token=d5aa7ff3-0128-43ce-b647-8e4eb5a7cf9d',
@@ -914,7 +914,7 @@ const LIBRARIES = [
   // Footsteps
   {
     author: 'Diforb',
-    id: 'footsteps',
+    id: 'Footsteps',
     name: 'Footsteps',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Ffootsteps.jpg?alt=media&token=1b5f3714-f944-4f01-a22f-1b045b2cf4fc',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Ffootsteps.jpg?alt=media&token=9298dbac-5328-4bdc-8961-0bfcc49b5740',
@@ -1244,6 +1244,112 @@ const LIBRARIES = [
             ]
           },
           {
+            name: 'Metal',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Barefoot_01',
+                type: 'sound'
+              },
+              {
+                name: 'Barefoot_02',
+                type: 'sound'
+              },
+              {
+                name: 'Barefoot_03',
+                type: 'sound'
+              },
+              {
+                name: 'Barefoot_04',
+                type: 'sound'
+              },
+              {
+                name: 'Barefoot_05',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_01',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_02',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_03',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_04',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_05',
+                type: 'sound'
+              },
+              {
+                name: 'Oxfords_01',
+                type: 'sound'
+              },
+              {
+                name: 'Oxfords_02',
+                type: 'sound'
+              },
+              {
+                name: 'Oxfords_03',
+                type: 'sound'
+              },
+              {
+                name: 'Oxfords_04',
+                type: 'sound'
+              },
+              {
+                name: 'Oxfords_05',
+                type: 'sound'
+              },
+              {
+                name: 'Slippers_01',
+                type: 'sound'
+              },
+              {
+                name: 'Slippers_02',
+                type: 'sound'
+              },
+              {
+                name: 'Slippers_03',
+                type: 'sound'
+              },
+              {
+                name: 'Slippers_04',
+                type: 'sound'
+              },
+              {
+                name: 'Slippers_05',
+                type: 'sound'
+              },
+              {
+                name: 'Sneakers_01',
+                type: 'sound'
+              },
+              {
+                name: 'Sneakers_02',
+                type: 'sound'
+              },
+              {
+                name: 'Sneakers_03',
+                type: 'sound'
+              },
+              {
+                name: 'Sneakers_04',
+                type: 'sound'
+              },
+              {
+                name: 'Sneakers_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
             name: 'Snow',
             type: 'subcategory',
             data: [
@@ -1423,6 +1529,112 @@ const LIBRARIES = [
               },
               {
                 name: 'Water_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Wood',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Barefoot_01',
+                type: 'sound'
+              },
+              {
+                name: 'Barefoot_02',
+                type: 'sound'
+              },
+              {
+                name: 'Barefoot_03',
+                type: 'sound'
+              },
+              {
+                name: 'Barefoot_04',
+                type: 'sound'
+              },
+              {
+                name: 'Barefoot_05',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_01',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_02',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_03',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_04',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_05',
+                type: 'sound'
+              },
+              {
+                name: 'Oxfords_01',
+                type: 'sound'
+              },
+              {
+                name: 'Oxfords_02',
+                type: 'sound'
+              },
+              {
+                name: 'Oxfords_03',
+                type: 'sound'
+              },
+              {
+                name: 'Oxfords_04',
+                type: 'sound'
+              },
+              {
+                name: 'Oxfords_05',
+                type: 'sound'
+              },
+              {
+                name: 'Slippers_01',
+                type: 'sound'
+              },
+              {
+                name: 'Slippers_02',
+                type: 'sound'
+              },
+              {
+                name: 'Slippers_03',
+                type: 'sound'
+              },
+              {
+                name: 'Slippers_04',
+                type: 'sound'
+              },
+              {
+                name: 'Slippers_05',
+                type: 'sound'
+              },
+              {
+                name: 'Sneakers_01',
+                type: 'sound'
+              },
+              {
+                name: 'Sneakers_02',
+                type: 'sound'
+              },
+              {
+                name: 'Sneakers_03',
+                type: 'sound'
+              },
+              {
+                name: 'Sneakers_04',
+                type: 'sound'
+              },
+              {
+                name: 'Sneakers_05',
                 type: 'sound'
               },
             ]
@@ -1753,6 +1965,112 @@ const LIBRARIES = [
             ]
           },
           {
+            name: 'Metal',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Boots_01',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_02',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_03',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_04',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_05',
+                type: 'sound'
+              },
+              {
+                name: 'Flats_01',
+                type: 'sound'
+              },
+              {
+                name: 'Flats_02',
+                type: 'sound'
+              },
+              {
+                name: 'Flats_03',
+                type: 'sound'
+              },
+              {
+                name: 'Flats_04',
+                type: 'sound'
+              },
+              {
+                name: 'Flats_05',
+                type: 'sound'
+              },
+              {
+                name: 'Platform_01',
+                type: 'sound'
+              },
+              {
+                name: 'Platform_02',
+                type: 'sound'
+              },
+              {
+                name: 'Platform_03',
+                type: 'sound'
+              },
+              {
+                name: 'Platform_04',
+                type: 'sound'
+              },
+              {
+                name: 'Platform_05',
+                type: 'sound'
+              },
+              {
+                name: 'Pump_01',
+                type: 'sound'
+              },
+              {
+                name: 'Pump_02',
+                type: 'sound'
+              },
+              {
+                name: 'Pump_03',
+                type: 'sound'
+              },
+              {
+                name: 'Pump_04',
+                type: 'sound'
+              },
+              {
+                name: 'Pump_05',
+                type: 'sound'
+              },
+              {
+                name: 'Wedge_01',
+                type: 'sound'
+              },
+              {
+                name: 'Wedge_02',
+                type: 'sound'
+              },
+              {
+                name: 'Wedge_03',
+                type: 'sound'
+              },
+              {
+                name: 'Wedge_04',
+                type: 'sound'
+              },
+              {
+                name: 'Wedge_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
             name: 'Snow',
             type: 'subcategory',
             data: [
@@ -1932,6 +2250,112 @@ const LIBRARIES = [
               },
               {
                 name: 'Water_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Wood',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Boots_01',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_02',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_03',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_04',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_05',
+                type: 'sound'
+              },
+              {
+                name: 'Flats_01',
+                type: 'sound'
+              },
+              {
+                name: 'Flats_02',
+                type: 'sound'
+              },
+              {
+                name: 'Flats_03',
+                type: 'sound'
+              },
+              {
+                name: 'Flats_04',
+                type: 'sound'
+              },
+              {
+                name: 'Flats_05',
+                type: 'sound'
+              },
+              {
+                name: 'Platform_01',
+                type: 'sound'
+              },
+              {
+                name: 'Platform_02',
+                type: 'sound'
+              },
+              {
+                name: 'Platform_03',
+                type: 'sound'
+              },
+              {
+                name: 'Platform_04',
+                type: 'sound'
+              },
+              {
+                name: 'Platform_05',
+                type: 'sound'
+              },
+              {
+                name: 'Pump_01',
+                type: 'sound'
+              },
+              {
+                name: 'Pump_02',
+                type: 'sound'
+              },
+              {
+                name: 'Pump_03',
+                type: 'sound'
+              },
+              {
+                name: 'Pump_04',
+                type: 'sound'
+              },
+              {
+                name: 'Pump_05',
+                type: 'sound'
+              },
+              {
+                name: 'Wedge_01',
+                type: 'sound'
+              },
+              {
+                name: 'Wedge_02',
+                type: 'sound'
+              },
+              {
+                name: 'Wedge_03',
+                type: 'sound'
+              },
+              {
+                name: 'Wedge_04',
+                type: 'sound'
+              },
+              {
+                name: 'Wedge_05',
                 type: 'sound'
               },
             ]
@@ -2222,6 +2646,92 @@ const LIBRARIES = [
             ]
           },
           {
+            name: 'Metal',
+            type: 'subcategory',
+            data: [
+              {
+                name: '8bit_01',
+                type: 'sound'
+              },
+              {
+                name: '8bit_02',
+                type: 'sound'
+              },
+              {
+                name: '8bit_03',
+                type: 'sound'
+              },
+              {
+                name: '8bit_04',
+                type: 'sound'
+              },
+              {
+                name: '8bit_05',
+                type: 'sound'
+              },
+              {
+                name: 'Arcade_01',
+                type: 'sound'
+              },
+              {
+                name: 'Arcade_02',
+                type: 'sound'
+              },
+              {
+                name: 'Arcade_03',
+                type: 'sound'
+              },
+              {
+                name: 'Arcade_04',
+                type: 'sound'
+              },
+              {
+                name: 'Arcade_05',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Robot_01',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Robot_02',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Robot_03',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Robot_04',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Robot_05',
+                type: 'sound'
+              },
+              {
+                name: 'Pixel_01',
+                type: 'sound'
+              },
+              {
+                name: 'Pixel_02',
+                type: 'sound'
+              },
+              {
+                name: 'Pixel_03',
+                type: 'sound'
+              },
+              {
+                name: 'Pixel_04',
+                type: 'sound'
+              },
+              {
+                name: 'Pixel_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
             name: 'Snow',
             type: 'subcategory',
             data: [
@@ -2481,6 +2991,92 @@ const LIBRARIES = [
           },
           {
             name: 'Water',
+            type: 'subcategory',
+            data: [
+              {
+                name: '8bit_01',
+                type: 'sound'
+              },
+              {
+                name: '8bit_02',
+                type: 'sound'
+              },
+              {
+                name: '8bit_03',
+                type: 'sound'
+              },
+              {
+                name: '8bit_04',
+                type: 'sound'
+              },
+              {
+                name: '8bit_05',
+                type: 'sound'
+              },
+              {
+                name: 'Arcade_01',
+                type: 'sound'
+              },
+              {
+                name: 'Arcade_02',
+                type: 'sound'
+              },
+              {
+                name: 'Arcade_03',
+                type: 'sound'
+              },
+              {
+                name: 'Arcade_04',
+                type: 'sound'
+              },
+              {
+                name: 'Arcade_05',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Robot_01',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Robot_02',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Robot_03',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Robot_04',
+                type: 'sound'
+              },
+              {
+                name: 'Big_Robot_05',
+                type: 'sound'
+              },
+              {
+                name: 'Pixel_01',
+                type: 'sound'
+              },
+              {
+                name: 'Pixel_02',
+                type: 'sound'
+              },
+              {
+                name: 'Pixel_03',
+                type: 'sound'
+              },
+              {
+                name: 'Pixel_04',
+                type: 'sound'
+              },
+              {
+                name: 'Pixel_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Wood',
             type: 'subcategory',
             data: [
               {

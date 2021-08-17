@@ -9,9 +9,31 @@ p-scrollpanel-bar-y	Scrollbar handle of a vertical bar
 
 .p-scrollpanel {
   .p-scrollpanel-content {
+    width: 100%; height: 100%;
     padding: 0;
+    overflow: auto;
+
   }
+
   .p-scrollpanel-bar-y {
     width: 3px;
   }
+
+  .p-scrollpanel-bar {
+    background: rgba(white, .4);
+  }
+}
+
+*::-webkit-scrollbar {
+  width: 3px;
+}
+ 
+*::-webkit-scrollbar-track {
+  // box-shadow: inset 0 0 6px green;
+  // background-color: red;
+}
+ 
+*::-webkit-scrollbar-thumb {
+  // background-color: red;
+  // outline: 1px solid slategrey;
 }

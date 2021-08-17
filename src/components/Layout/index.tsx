@@ -60,9 +60,7 @@ const Layout = (props: PropsType): JSX.Element => {
         <BrowserView>
           {
             currentRoute === 'app'
-            ? <ScrollPanel style={{width: '100%', height: '100%', overflowY: 'auto'}}>
-              { props.children }
-            </ScrollPanel>
+            ? <React.Fragment>{ props.children }</React.Fragment>
             : <div className = { styles.wrapper }>
               <Sidebar className = { styles.sidebar }/>
               <header className = { styles.header }>

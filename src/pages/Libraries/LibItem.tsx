@@ -15,7 +15,7 @@ interface PropsType {
 export const LibItem = (props: PropsType) => {
   const { data, setCurrent } = props
   
-  const { name, cover, tizer } = data
+  const { name, cover, tizer, id, develop } = data
   const history = useHistory()
   const audio = useMemo(() => new Audio(tizer), [tizer])
   const [ progress, setProgress ] = useState(0)
@@ -71,7 +71,7 @@ export const LibItem = (props: PropsType) => {
           <h1>{ name }</h1>
           <div className = { styles.controls }>
             <div className = { styles.buttons }>
-              <Link to = { `/app/${name}` }> Launch </Link>
+              <Link to = { `/app/${id}` }> Launch </Link>
               <i className = { !playing ? IconsUI.radialPlay: IconsUI.radialPause } 
                 onClick = {() => setPlaying(!playing)}/>
             </div>

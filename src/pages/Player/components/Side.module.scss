@@ -14,7 +14,13 @@
       left: $side-category-size;
       padding-left: 1rem;
 
-      > li {
+      .scrollPanel {
+        > div:nth-child(3) {
+          right: 1rem !important;
+        }
+      }
+
+      .subcategoryItem {
         > div {
           span {
             padding-left: .5rem;
@@ -54,7 +60,14 @@
       right: $side-category-size;
       padding-right: 1rem;
 
-      > li  {
+      .scrollPanel {
+        > div:nth-child(3) {
+         
+          right: calc(-100% - 1rem) !important;
+        }
+      }
+
+      .subcategoryItem  {
           
         > div {
           flex-direction: row-reverse;
@@ -141,7 +154,7 @@
         padding-top: 1rem;
         visibility: hidden;
 
-        > li  {
+        .subcategoryItem  {
           box-shadow: $side-category-shadow;
           
           > div {
@@ -258,4 +271,8 @@
       background: linear-gradient(180deg,#63eff5 0,#54c75e);
     }
   }
+}
+
+.scrollPanel {
+  height: 100vh;
 }

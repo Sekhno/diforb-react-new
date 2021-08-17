@@ -43,6 +43,7 @@ export interface FirebaseConfig {
 }
 
 export interface Library {
+  id: string,
   author: string,
   cover: string,
   cover_retina: string,
@@ -51,7 +52,8 @@ export interface Library {
   extra?: LibrariesCategory[],
   description: string,
   name: string,
-  tizer: string
+  tizer: string,
+  develop: boolean
 }
 
 interface LibrariesCategory {

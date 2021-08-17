@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { PlayState, Tween } from 'react-gsap'
 import { Skeleton } from 'primereact/skeleton'
+import { ScrollPanel } from 'primereact/scrollpanel'
 import { PropsSideInterface, SoundListType, ActiveSound } from '../types'
 import styles from './Side.module.scss'
 
@@ -87,48 +88,52 @@ export const RightSide = (props: PropsSideInterface) => {
                 <i className = { category.icon }/>
                 <span>{ category.name }</span>
               </div>
+              
               <ul className = { styles.subcategory }>
-                {
-                  category.data.map((subcategory, i) => (
-                    <Tween key = { subcategory.name } 
-                      from = {{ x: -50, opacity: 0 }} duration = { TIME } 
-                      stagger = {() => i * TIME}
-                      playState = { playStateSubcategory }>
-                      <li>
-                        <div className = { getClassIfTypeSound(subcategory.type, category.name, subcategory.name, i) }
-                          onClick = {() => clickSubcategory(i, category.name, subcategory.type, subcategory.name)}
-                        >
-                          <i className = { subcategory.icon || category.icon }/>
-                          <span datatype = { subcategory.name }>{ subcategory.name }</span>
-                        </div>
-                        {
-                          subcategory.type === SoundListType.sub &&
-                          <Tween
-                            from = {{ height: 0, opacity: 0 }} duration = { TIME }
-                            playState = { activeSubCategory === i ? PlayState.play : PlayState.reverse }>
-                            <ul className = { styles.sounds }>
-                              {
-                                subcategory.data.map((sound, i) => (
-                                  <li className = { styles.sound } 
-                                    key = { `${subcategory.name}_${sound.name}` } 
-                                    onClick = {() => clickSound(category.name, subcategory.name, sound.name, i)}
-                                  >
-                                    <span datatype = {sound.name} 
-                                      className = { loading && currentSound(category.name, subcategory.name, sound.name, i) 
-                                        ? styles.loading 
-                                        : !loading && currentSound(category.name, subcategory.name, sound.name, i) ? styles.active : '' }
-                                    >{ sound.name }</span>
-                                  </li>
-                                ))
-                              }
-                            </ul>
-                          </Tween>
-                        }
-                      </li>
-                    </Tween>
-                  ))
-                }
+                <ScrollPanel className = { styles.scrollPanel }>
+                  {
+                    category.data.map((subcategory, i) => (
+                      <Tween key = { subcategory.name } 
+                        from = {{ x: -50, opacity: 0 }} duration = { TIME } 
+                        stagger = {() => i * TIME}
+                        playState = { playStateSubcategory }>
+                        <li className = { styles.subcategoryItem }>
+                          <div className = { getClassIfTypeSound(subcategory.type, category.name, subcategory.name, i) }
+                            onClick = {() => clickSubcategory(i, category.name, subcategory.type, subcategory.name)}
+                          >
+                            <i className = { subcategory.icon || category.icon }/>
+                            <span datatype = { subcategory.name }>{ subcategory.name }</span>
+                          </div>
+                          {
+                            subcategory.type === SoundListType.sub &&
+                            <Tween
+                              from = {{ height: 0, opacity: 0 }} duration = { TIME }
+                              playState = { activeSubCategory === i ? PlayState.play : PlayState.reverse }>
+                              <ul className = { styles.sounds }>
+                                {
+                                  subcategory.data.map((sound, i) => (
+                                    <li className = { styles.sound } 
+                                      key = { `${subcategory.name}_${sound.name}` } 
+                                      onClick = {() => clickSound(category.name, subcategory.name, sound.name, i)}
+                                    >
+                                      <span datatype = {sound.name} 
+                                        className = { loading && currentSound(category.name, subcategory.name, sound.name, i) 
+                                          ? styles.loading 
+                                          : !loading && currentSound(category.name, subcategory.name, sound.name, i) ? styles.active : '' }
+                                      >{ sound.name }</span>
+                                    </li>
+                                  ))
+                                }
+                              </ul>
+                            </Tween>
+                          }
+                        </li>
+                      </Tween>
+                    ))
+                  }
+                </ScrollPanel>
               </ul>
+              
             </li>
           ))
         }
