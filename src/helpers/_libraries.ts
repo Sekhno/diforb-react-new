@@ -10550,7 +10550,1115 @@ const LIBRARIES = [
     name: 'Puzzle',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fpuzzle.jpg?alt=media&token=8652451d-4f7f-44b9-a0c1-f14a800a6b68',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Fpuzzle.jpg?alt=media&token=bbdec90d-37be-429a-bebd-817e193f91ae',
-    data: [],
+    data: [
+      {
+        name: 'Destroy',
+        type: 'category',
+        icon: 'puzzle-destroy',
+        data: [
+          {
+            name: 'Ice',
+            type: 'subcategory',
+            icon: 'puzzle-ice',
+            data: [
+              {
+                name: 'Ice_01',
+                type: 'sound'
+              },
+              {
+                name: 'Ice_02',
+                type: 'sound'
+              },
+              {
+                name: 'Ice_03',
+                type: 'sound'
+              },
+              {
+                name: 'Ice_04',
+                type: 'sound'
+              },
+              {
+                name: 'Ice_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Lock',
+            type: 'subcategory',
+            icon: 'puzzle-lock',
+            data: [
+              {
+                name: 'Lock_01',
+                type: 'sound'
+              },
+              {
+                name: 'Lock_02',
+                type: 'sound'
+              },
+              {
+                name: 'Lock_03',
+                type: 'sound'
+              },
+              {
+                name: 'Lock_04',
+                type: 'sound'
+              },
+              {
+                name: 'Lock_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Metal',
+            type: 'subcategory',
+            icon: 'puzzle-metal',
+            data: [
+              {
+                name: 'Metal_01',
+                type: 'sound'
+              },
+              {
+                name: 'Metal_02',
+                type: 'sound'
+              },
+              {
+                name: 'Metal_03',
+                type: 'sound'
+              },
+              {
+                name: 'Metal_04',
+                type: 'sound'
+              },
+              {
+                name: 'Metal_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Organic',
+            type: 'subcategory',
+            icon: 'puzzle-organic',
+            data: [
+              {
+                name: 'Organic_01',
+                type: 'sound'
+              },
+              {
+                name: 'Organic_02',
+                type: 'sound'
+              },
+              {
+                name: 'Organic_03',
+                type: 'sound'
+              },
+              {
+                name: 'Organic_04',
+                type: 'sound'
+              },
+              {
+                name: 'Organic_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Stone',
+            type: 'subcategory',
+            icon: 'puzzle-stone',
+            data: [
+              {
+                name: 'Stone_01',
+                type: 'sound'
+              },
+              {
+                name: 'Stone_02',
+                type: 'sound'
+              },
+              {
+                name: 'Stone_03',
+                type: 'sound'
+              },
+              {
+                name: 'Stone_04',
+                type: 'sound'
+              },
+              {
+                name: 'Stone_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Water',
+            type: 'subcategory',
+            icon: 'puzzle-water',
+            data: [
+              {
+                name: 'Water_01',
+                type: 'sound'
+              },
+              {
+                name: 'Water_02',
+                type: 'sound'
+              },
+              {
+                name: 'Water_03',
+                type: 'sound'
+              },
+              {
+                name: 'Water_04',
+                type: 'sound'
+              },
+              {
+                name: 'Water_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Wood',
+            type: 'subcategory',
+            icon: 'puzzle-wood',
+            data: [
+              {
+                name: 'Wood_01',
+                type: 'sound'
+              },
+              {
+                name: 'Wood_02',
+                type: 'sound'
+              },
+              {
+                name: 'Wood_03',
+                type: 'sound'
+              },
+              {
+                name: 'Wood_04',
+                type: 'sound'
+              },
+              {
+                name: 'Wood_05',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Jingle',
+        type: 'category',
+        icon: 'puzzle-jingle',
+        data: [
+          {
+            name: 'Negative',
+            type: 'subcategory',
+            icon: 'interface-negative',
+            data: [
+              {
+                name: 'Negative_01',
+                type: 'sound'
+              },
+              {
+                name: 'Negative_02',
+                type: 'sound'
+              },
+              {
+                name: 'Negative_03',
+                type: 'sound'
+              },
+              {
+                name: 'Negative_04',
+                type: 'sound'
+              },
+              {
+                name: 'Negative_05',
+                type: 'sound'
+              },
+              {
+                name: 'Negative_06',
+                type: 'sound'
+              },
+              {
+                name: 'Negative_07',
+                type: 'sound'
+              },
+              {
+                name: 'Negative_08',
+                type: 'sound'
+              },
+              {
+                name: 'Negative_09',
+                type: 'sound'
+              },
+              {
+                name: 'Negative_10',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Positive',
+            type: 'subcategory',
+            icon: 'interface-positive',
+            data: [
+              {
+                name: 'Positive_01',
+                type: 'sound'
+              },
+              {
+                name: 'Positive_02',
+                type: 'sound'
+              },
+              {
+                name: 'Positive_03',
+                type: 'sound'
+              },
+              {
+                name: 'Positive_04',
+                type: 'sound'
+              },
+              {
+                name: 'Positive_05',
+                type: 'sound'
+              },
+              {
+                name: 'Positive_06',
+                type: 'sound'
+              },
+              {
+                name: 'Positive_07',
+                type: 'sound'
+              },
+              {
+                name: 'Positive_08',
+                type: 'sound'
+              },
+              {
+                name: 'Positive_09',
+                type: 'sound'
+              },
+              {
+                name: 'Positive_10',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Match',
+        type: 'category',
+        icon: 'puzzle-match',
+        data: [
+          {
+            name: 'Digital',
+            type: 'subcategory',
+            icon: 'interface-digital',
+            data: [
+              {
+                name: '8bit_01_01',
+                type: 'sound'
+              },
+              {
+                name: '8bit_01_02',
+                type: 'sound'
+              },
+              {
+                name: '8bit_01_03',
+                type: 'sound'
+              },
+              {
+                name: '8bit_01_04',
+                type: 'sound'
+              },
+              {
+                name: '8bit_01_05',
+                type: 'sound'
+              },
+              {
+                name: '8bit_02_01',
+                type: 'sound'
+              },
+              {
+                name: '8bit_02_02',
+                type: 'sound'
+              },
+              {
+                name: '8bit_02_03',
+                type: 'sound'
+              },
+              {
+                name: '8bit_02_04',
+                type: 'sound'
+              },
+              {
+                name: '8bit_02_05',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_01_01',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_01_02',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_01_03',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_01_04',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_01_05',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_02_01',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_02_02',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_02_03',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_02_04',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_02_05',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_03_01',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_03_02',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_03_03',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_03_04',
+                type: 'sound'
+              },
+              {
+                name: 'Digital_03_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Musical',
+            type: 'subcategory',
+            icon: 'interface-music',
+            data: [
+              {
+                name: 'Musical_01_01',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_01_02',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_01_03',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_01_04',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_01_05',
+                type: 'sound'
+              },
+              {
+                name: 'Bubbles_01',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_02_02',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_02_03',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_02_04',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_02_05',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_03_01',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_03_02',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_03_03',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_03_04',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_03_05',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_04_01',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_04_02',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_04_03',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_04_04',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_04_05',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_05_01',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_05_02',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_05_03',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_05_04',
+                type: 'sound'
+              },
+              {
+                name: 'Musical_05_05',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Match_Elements',
+        type: 'category',
+        icon: 'puzzle-destroy2',
+        data: [
+          {
+            name: 'Bubbles',
+            type: 'sound',
+            icon: 'puzzle-bubbles'
+          },
+          {
+            name: 'Chimes',
+            type: 'sound',
+          },
+          {
+            name: 'Click',
+            type: 'sound',
+          },
+          {
+            name: 'Egg_Shell',
+            type: 'sound',
+          },
+          {
+            name: 'Glass',
+            type: 'sound',
+          },
+          {
+            name: 'Ice',
+            type: 'sound',
+            icon: 'puzzle-ice'
+          },
+          {
+            name: 'Metal',
+            type: 'sound',
+            icon: 'puzzle-metal'
+          },
+          {
+            name: 'Stones',
+            type: 'sound',
+            icon: 'puzzle-stone'
+          },
+          {
+            name: 'Wood',
+            type: 'sound',
+            icon: 'puzzle-wood'
+          },
+          {
+            name: 'Wood_Chimes',
+            type: 'sound',
+            icon: 'puzzle-wood'
+          },
+        ]
+      },
+      {
+        name: 'Other',
+        type: 'category',
+        icon: 'puzzle-other',
+        data: [
+          {
+            name: 'Gem_fall',
+            type: 'subcategory',
+            icon: 'puzzle-gemfall',
+            data: [
+              {
+                name: 'Gem_fall_01',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_02',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_03',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_04',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_05',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_06',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_07',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_08',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_09',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_10',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_11',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_12',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_13',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_14',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_fall_15',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Gem_mix',
+            type: 'subcategory',
+            icon: 'puzzle-gemmix',
+            data: [
+              {
+                name: 'Gem_Mix_01',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_Mix_02',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_Mix_03',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_Mix_04',
+                type: 'sound'
+              },
+              {
+                name: 'Gem_Mix_05',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Spell',
+        type: 'category',
+        icon: 'puzzle-spell',
+        data: [
+          {
+            name: 'Add_Time',
+            type: 'subcategory',
+            icon: 'puzzle-timeadd',
+            data: [
+              {
+                name: 'Add_Time_01',
+                type: 'sound'
+              },
+              {
+                name: 'Add_Time_02',
+                type: 'sound'
+              },
+              {
+                name: 'Add_Time_03',
+                type: 'sound'
+              },
+              {
+                name: 'Add_Time_04',
+                type: 'sound'
+              },
+              {
+                name: 'Add_Time_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Fire',
+            type: 'subcategory',
+            icon: 'puzzle-fire',
+            data: [
+              {
+                name: 'Fire_01',
+                type: 'sound'
+              },
+              {
+                name: 'Fire_02',
+                type: 'sound'
+              },
+              {
+                name: 'Fire_03',
+                type: 'sound'
+              },
+              {
+                name: 'Fire_04',
+                type: 'sound'
+              },
+              {
+                name: 'Fire_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Hit',
+            type: 'subcategory',
+            icon: 'puzzle-hit',
+            data: [
+              {
+                name: 'Hit_01',
+                type: 'sound'
+              },
+              {
+                name: 'Hit_02',
+                type: 'sound'
+              },
+              {
+                name: 'Hit_03',
+                type: 'sound'
+              },
+              {
+                name: 'Hit_04',
+                type: 'sound'
+              },
+              {
+                name: 'Hit_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Line_Remove',
+            type: 'subcategory',
+            icon: 'puzzle-lineremove',
+            data: [
+              {
+                name: 'Line_Remove_01',
+                type: 'sound'
+              },
+              {
+                name: 'Line_Remove_02',
+                type: 'sound'
+              },
+              {
+                name: 'Line_Remove_03',
+                type: 'sound'
+              },
+              {
+                name: 'Line_Remove_04',
+                type: 'sound'
+              },
+              {
+                name: 'Line_Remove_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Skill_Activation',
+            type: 'subcategory',
+            icon: 'puzzle-skillactivation',
+            data: [
+              {
+                name: 'Skill_Activation_01',
+                type: 'sound'
+              },
+              {
+                name: 'Skill_Activation_02',
+                type: 'sound'
+              },
+              {
+                name: 'Skill_Activation_03',
+                type: 'sound'
+              },
+              {
+                name: 'Skill_Activation_04',
+                type: 'sound'
+              },
+              {
+                name: 'Skill_Activation_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Water',
+            type: 'subcategory',
+            icon: 'puzzle-water',
+            data: [
+              {
+                name: 'Water_01',
+                type: 'sound'
+              },
+              {
+                name: 'Water_02',
+                type: 'sound'
+              },
+              {
+                name: 'Water_03',
+                type: 'sound'
+              },
+              {
+                name: 'Water_04',
+                type: 'sound'
+              },
+              {
+                name: 'Water_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Wind',
+            type: 'subcategory',
+            icon: 'puzzle-wind',
+            data: [
+              {
+                name: 'Wind_01',
+                type: 'sound'
+              },
+              {
+                name: 'Wind_02',
+                type: 'sound'
+              },
+              {
+                name: 'Wind_03',
+                type: 'sound'
+              },
+              {
+                name: 'Wind_04',
+                type: 'sound'
+              },
+              {
+                name: 'Wind_05',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Stars',
+        type: 'category',
+        icon: 'puzzle-stars',
+        data: [
+          {
+            name: 'Musical_01_01',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_01_02',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_01_03',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_02_01',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_02_02',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_02_03',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_03_01',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_03_02',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_03_03',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_04_01',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_04_02',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_04_03',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_05_01',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_05_02',
+            type: 'sound'
+          },
+          {
+            name: 'Musical_05_03',
+            type: 'sound'
+          }
+        ]
+      },
+      {
+        name: 'Swap',
+        type: 'category',
+        icon: 'puzzle-swap',
+        data: [
+          {
+            name: 'Bubbles',
+            type: 'subcategory',
+            icon: 'puzzle-bubbles',
+            data: [
+              {
+                name: 'Bubbles_01',
+                type: 'sound'
+              },
+              {
+                name: 'Bubbles_02',
+                type: 'sound'
+              },
+              {
+                name: 'Bubbles_03',
+                type: 'sound'
+              },
+              {
+                name: 'Bubbles_04',
+                type: 'sound'
+              },
+              {
+                name: 'Bubbles_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Mechanical',
+            type: 'subcategory',
+            icon: 'puzzle-mechanical',
+            data: [
+              {
+                name: 'Bubbles_01',
+                type: 'sound'
+              },
+              {
+                name: 'Bubbles_02',
+                type: 'sound'
+              },
+              {
+                name: 'Bubbles_03',
+                type: 'sound'
+              },
+              {
+                name: 'Bubbles_04',
+                type: 'sound'
+              },
+              {
+                name: 'Bubbles_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Simple',
+            type: 'subcategory',
+            data: [
+              {
+                name: 'Simple_01',
+                type: 'sound'
+              },
+              {
+                name: 'Simple_02',
+                type: 'sound'
+              },
+              {
+                name: 'Simple_03',
+                type: 'sound'
+              },
+              {
+                name: 'Simple_04',
+                type: 'sound'
+              },
+              {
+                name: 'Simple_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Snow',
+            type: 'subcategory',
+            icon: 'puzzle-snow',
+            data: [
+              {
+                name: 'Snow_01',
+                type: 'sound'
+              },
+              {
+                name: 'Snow_02',
+                type: 'sound'
+              },
+              {
+                name: 'Snow_03',
+                type: 'sound'
+              },
+              {
+                name: 'Snow_04',
+                type: 'sound'
+              },
+              {
+                name: 'Snow_05',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Stone',
+            type: 'subcategory',
+            icon: 'puzzle-stone',
+            data: [
+              {
+                name: 'Stone_01',
+                type: 'sound'
+              },
+              {
+                name: 'Stone_02',
+                type: 'sound'
+              },
+              {
+                name: 'Stone_03',
+                type: 'sound'
+              },
+              {
+                name: 'Stone_04',
+                type: 'sound'
+              },
+              {
+                name: 'Stone_05',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
+      },
+      {
+        name: 'Swap_Fail',
+        type: 'category',
+        icon: 'puzzle-swapfail',
+        data: [
+          {
+            name: 'Bubbles',
+            type: 'sound',
+            icon: 'puzzle-bubbles'
+          },
+          {
+            name: 'Mechanical',
+            type: 'sound',
+            icon: 'puzzle-mechanical'
+          },
+          {
+            name: 'Simple',
+            type: 'sound',
+          },
+          {
+            name: 'Snow',
+            type: 'sound',
+            icon: 'puzzle-snow'
+          },
+          {
+            name: 'Stone',
+            type: 'sound',
+            icon: 'puzzle-stone'
+          },
+        ]
+      },
+    ],
     description: 'In this library sounds of unsolved riddles, detective investigations, figures row collecting, various puzzles and other adventures are hidden. Also, here you can find musical jingles to strengthen pleasure from victories and smooth grief from defeats.',
     tizer: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/demo%2FPuzzle_tizer.mp3?alt=media&token=b55f0ced-8a18-4066-8fd3-d11bdb5fa861'
   },
