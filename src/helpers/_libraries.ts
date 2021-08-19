@@ -9541,37 +9541,1003 @@ const LIBRARIES = [
         name: 'Clothes',
         type: 'category',
         icon: 'pickup-clothes',
-        data: []
+        data: [
+          {
+            name: 'Backpack',
+            type: 'subcategory',
+            icon: 'pickup-backpack',
+            data: [
+              {
+                name: 'Backpack_01',
+                type: 'sound'
+              },
+              {
+                name: 'Backpack_02',
+                type: 'sound'
+              },
+              {
+                name: 'Backpack_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Belt',
+            type: 'subcategory',
+            icon: 'pickup-belt',
+            data: [
+              {
+                name: 'Belt_01',
+                type: 'sound'
+              },
+              {
+                name: 'Belt_02',
+                type: 'sound'
+              },
+              {
+                name: 'Belt_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Boots',
+            type: 'subcategory',
+            icon: 'pickup-boots',
+            data: [
+              {
+                name: 'Boots_01',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_02',
+                type: 'sound'
+              },
+              {
+                name: 'Boots_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Cotton',
+            type: 'subcategory',
+            icon: 'pickup-cotton',
+            data: [
+              {
+                name: 'Cotton_01',
+                type: 'sound'
+              },
+              {
+                name: 'Cotton_02',
+                type: 'sound'
+              },
+              {
+                name: 'Cotton_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'GearUp',
+            type: 'subcategory',
+            icon: 'pickup-gearup',
+            data: [
+              {
+                name: 'GearUp_01',
+                type: 'sound'
+              },
+              {
+                name: 'GearUp_02',
+                type: 'sound'
+              },
+              {
+                name: 'GearUp_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Leather',
+            type: 'subcategory',
+            icon: 'pickup-leather',
+            data: [
+              {
+                name: 'Leather_01',
+                type: 'sound'
+              },
+              {
+                name: 'Leather_02',
+                type: 'sound'
+              },
+              {
+                name: 'Leather_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Raincoat',
+            type: 'subcategory',
+            icon: 'pickup-raincoat',
+            data: [
+              {
+                name: 'Raincoat_01',
+                type: 'sound'
+              },
+              {
+                name: 'Raincoat_02',
+                type: 'sound'
+              },
+              {
+                name: 'Raincoat_03',
+                type: 'sound'
+              },
+            ]
+          },
+        ]
       },
       {
         name: 'Metal',
         type: 'category',
         icon: 'pickup-metal',
-        data: []
+        data: [
+          {
+            name: 'Armor',
+            type: 'subcategory',
+            icon: 'pickup-armor',
+            data: [
+              {
+                name: 'Armor_01',
+                type: 'sound'
+              },
+              {
+                name: 'Armor_02',
+                type: 'sound'
+              },
+              {
+                name: 'Armor_03',
+                type: 'sound'
+              },
+              {
+                name: 'Shield_01',
+                type: 'sound'
+              },
+              {
+                name: 'Shield_02',
+                type: 'sound'
+              },
+              {
+                name: 'Shield_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Arms',
+            type: 'subcategory',
+            icon: 'pickup-arms',
+            data: [
+              {
+                name: 'Gun_01',
+                type: 'sound'
+              },
+              {
+                name: 'Gun_02',
+                type: 'sound'
+              },
+              {
+                name: 'Gun_03',
+                type: 'sound'
+              },
+              {
+                name: 'Rifle_01',
+                type: 'sound'
+              },
+              {
+                name: 'Rifle_02',
+                type: 'sound'
+              },
+              {
+                name: 'Rifle_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Basket',
+            type: 'subcategory',
+            icon: 'pickup-metalbascket',
+            data: [
+              {
+                name: 'Basket_01',
+                type: 'sound'
+              },
+              {
+                name: 'Basket_02',
+                type: 'sound'
+              },
+              {
+                name: 'Basket_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Bottle',
+            type: 'subcategory',
+            icon: 'pickup-metalbottle',
+            data: [
+              {
+                name: 'Bottle_01',
+                type: 'sound'
+              },
+              {
+                name: 'Bottle_02',
+                type: 'sound'
+              },
+              {
+                name: 'Bottle_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Chain',
+            type: 'subcategory',
+            icon: 'pickup-chain',
+            data: [
+              {
+                name: 'Chain_01',
+                type: 'sound'
+              },
+              {
+                name: 'Chain_02',
+                type: 'sound'
+              },
+              {
+                name: 'Chain_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Fuelcan',
+            type: 'subcategory',
+            icon: 'pickup-fuelcan',
+            data: [
+              {
+                name: 'Fuelcan_01',
+                type: 'sound'
+              },
+              {
+                name: 'Fuelcan_02',
+                type: 'sound'
+              },
+              {
+                name: 'Fuelcan_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Keys',
+            type: 'subcategory',
+            icon: 'pickup-keys',
+            data: [
+              {
+                name: 'Carkeys_01',
+                type: 'sound'
+              },
+              {
+                name: 'Carkeys_02',
+                type: 'sound'
+              },
+              {
+                name: 'Carkeys_03',
+                type: 'sound'
+              },
+              {
+                name: 'Key_01',
+                type: 'sound'
+              },
+              {
+                name: 'Key_02',
+                type: 'sound'
+              },
+              {
+                name: 'Key_03',
+                type: 'sound'
+              },
+              {
+                name: 'Keys_01',
+                type: 'sound'
+              },
+              {
+                name: 'Keys_02',
+                type: 'sound'
+              },
+              {
+                name: 'Keys_03',
+                type: 'sound'
+              },
+            ]
+          },
+          {
+            name: 'Knife',
+            type: 'subcategory',
+            icon: 'pickup-knife',
+            data: [
+              {
+                name: 'Knife_01',
+                type: 'sound'
+              },
+              {
+                name: 'Knife_02',
+                type: 'sound'
+              },
+              {
+                name: 'Knife_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'SmallBox',
+            type: 'subcategory',
+            icon: 'pickup-smallbox',
+            data: [
+              {
+                name: 'SmallBox_01',
+                type: 'sound'
+              },
+              {
+                name: 'SmallBox_02',
+                type: 'sound'
+              },
+              {
+                name: 'SmallBox_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Sword',
+            type: 'subcategory',
+            icon: 'pickup-sword',
+            data: [
+              {
+                name: 'Sword_01',
+                type: 'sound'
+              },
+              {
+                name: 'Sword_02',
+                type: 'sound'
+              },
+              {
+                name: 'Sword_03',
+                type: 'sound'
+              }
+            ]
+          },
+        ]
       },
       {
         name: 'Other',
         type: 'category',
         icon: '',
-        data: []
+        data: [
+          {
+            name: 'Coin',
+            type: 'subcategory',
+            icon: 'pickup-coin',
+            data: [
+              {
+                name: 'Coin_01',
+                type: 'sound'
+              },
+              {
+                name: 'Coin_02',
+                type: 'sound'
+              },
+              {
+                name: 'Coin_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'CoinBag',
+            type: 'subcategory',
+            icon: 'pickup-coinbag',
+            data: [
+              {
+                name: 'CoinBag_01',
+                type: 'sound'
+              },
+              {
+                name: 'CoinBag_02',
+                type: 'sound'
+              },
+              {
+                name: 'CoinBag_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Crystal',
+            type: 'subcategory',
+            icon: 'pickup-crystal',
+            data: [
+              {
+                name: 'Crystal_01',
+                type: 'sound'
+              },
+              {
+                name: 'Crystal_02',
+                type: 'sound'
+              },
+              {
+                name: 'Crystal_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Cup',
+            type: 'subcategory',
+            icon: 'pickup-cup',
+            data: [
+              {
+                name: 'Cup_01',
+                type: 'sound'
+              },
+              {
+                name: 'Cup_02',
+                type: 'sound'
+              },
+              {
+                name: 'Cup_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Item',
+            type: 'subcategory',
+            icon: 'pickup-itempickup',
+            data: [
+              {
+                name: 'Item_01',
+                type: 'sound'
+              },
+              {
+                name: 'Item_02',
+                type: 'sound'
+              },
+              {
+                name: 'Item_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Marble',
+            type: 'subcategory',
+            icon: 'pickup-marble',
+            data: [
+              {
+                name: 'Marble_01',
+                type: 'sound'
+              },
+              {
+                name: 'Marble_02',
+                type: 'sound'
+              },
+              {
+                name: 'Marble_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Plate',
+            type: 'subcategory',
+            icon: 'pickup-plate',
+            data: [
+              {
+                name: 'Plate_01',
+                type: 'sound'
+              },
+              {
+                name: 'Plate_02',
+                type: 'sound'
+              },
+              {
+                name: 'Plate_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Suitecase',
+            type: 'subcategory',
+            icon: 'pickup-suitcase',
+            data: [
+              {
+                name: 'Suitecase_01',
+                type: 'sound'
+              },
+              {
+                name: 'Suitecase_02',
+                type: 'sound'
+              },
+              {
+                name: 'Suitecase_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Vessel',
+            type: 'subcategory',
+            icon: 'pickup-vessel',
+            data: [
+              {
+                name: 'Vessel_01',
+                type: 'sound'
+              },
+              {
+                name: 'Vessel_02',
+                type: 'sound'
+              },
+              {
+                name: 'Vessel_03',
+                type: 'sound'
+              }
+            ]
+          },
+        ]
       },
       {
-        name: '',
+        name: 'Paper',
         type: 'category',
-        icon: '',
-        data: []
+        icon: 'pickup-paper',
+        data: [
+          {
+            name: 'Book',
+            type: 'subcategory',
+            icon: 'pickup-book',
+            data: [
+              {
+                name: 'Book_01',
+                type: 'sound'
+              },
+              {
+                name: 'Book_02',
+                type: 'sound'
+              },
+              {
+                name: 'Book_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Cardbox',
+            type: 'subcategory',
+            icon: 'pickup-cardbox',
+            data: [
+              {
+                name: 'Cardbox_01',
+                type: 'sound'
+              },
+              {
+                name: 'Cardbox_02',
+                type: 'sound'
+              },
+              {
+                name: 'Cardbox_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Journal',
+            type: 'subcategory',
+            icon: 'pickup-journal',
+            data: [
+              {
+                name: 'Journal_01',
+                type: 'sound'
+              },
+              {
+                name: 'Journal_02',
+                type: 'sound'
+              },
+              {
+                name: 'Journal_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Map',
+            type: 'subcategory',
+            icon: 'pickup-map',
+            data: [
+              {
+                name: 'Map_01',
+                type: 'sound'
+              },
+              {
+                name: 'Map_02',
+                type: 'sound'
+              },
+              {
+                name: 'Map_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Newspaper',
+            type: 'subcategory',
+            icon: 'pickup-Newspaper',
+            data: [
+              {
+                name: 'Newspaper_01',
+                type: 'sound'
+              },
+              {
+                name: 'Newspaper_02',
+                type: 'sound'
+              },
+              {
+                name: 'Newspaper_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Paper',
+            type: 'subcategory',
+            icon: 'pickup-paper',
+            data: [
+              {
+                name: 'Paper_01',
+                type: 'sound'
+              },
+              {
+                name: 'Paper_02',
+                type: 'sound'
+              },
+              {
+                name: 'Paper_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Papyrus',
+            type: 'subcategory',
+            icon: 'pickup-papyrus',
+            data: [
+              {
+                name: 'Papyrus_01',
+                type: 'sound'
+              },
+              {
+                name: 'Papyrus_02',
+                type: 'sound'
+              },
+              {
+                name: 'Papyrus_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'PockerCard',
+            type: 'subcategory',
+            icon: 'pickup-pokercard',
+            data: [
+              {
+                name: 'PockerCard_01',
+                type: 'sound'
+              },
+              {
+                name: 'PockerCard_02',
+                type: 'sound'
+              },
+              {
+                name: 'PockerCard_03',
+                type: 'sound'
+              }
+            ]
+          },
+        ]
       },
       {
-        name: '',
+        name: 'Plastic',
         type: 'category',
-        icon: '',
-        data: []
+        icon: 'pickup-plastic',
+        data: [
+          {
+            name: 'Cellphone',
+            type: 'subcategory',
+            icon: 'pickup-cellphone',
+            data: [
+              {
+                name: 'Cellphone_01',
+                type: 'sound'
+              },
+              {
+                name: 'Cellphone_02',
+                type: 'sound'
+              },
+              {
+                name: 'Cellphone_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Flashlight',
+            type: 'subcategory',
+            icon: 'pickup-flashlight',
+            data: [
+              {
+                name: 'Flashlight_01',
+                type: 'sound'
+              },
+              {
+                name: 'Flashlight_02',
+                type: 'sound'
+              },
+              {
+                name: 'Flashlight_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Glasses',
+            type: 'subcategory',
+            icon: 'pickup-glasses',
+            data: [
+              {
+                name: 'Glasses_01',
+                type: 'sound'
+              },
+              {
+                name: 'Glasses_02',
+                type: 'sound'
+              },
+              {
+                name: 'Glasses_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Medicalbox',
+            type: 'subcategory',
+            icon: 'pickup-medicalbox',
+            data: [
+              {
+                name: 'Medicalbox_01',
+                type: 'sound'
+              },
+              {
+                name: 'Medicalbox_02',
+                type: 'sound'
+              },
+              {
+                name: 'Medicalbox_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Pen',
+            type: 'subcategory',
+            icon: 'pickup-pen',
+            data: [
+              {
+                name: 'Pen_01',
+                type: 'sound'
+              },
+              {
+                name: 'Pen_02',
+                type: 'sound'
+              },
+              {
+                name: 'Pen_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Phone',
+            type: 'subcategory',
+            icon: 'pickup-phone',
+            data: [
+              {
+                name: 'Phone_01',
+                type: 'sound'
+              },
+              {
+                name: 'Phone_02',
+                type: 'sound'
+              },
+              {
+                name: 'Phone_03',
+                type: 'sound'
+              }
+            ]
+          },
+        ]
       },
       {
-        name: '',
+        name: 'Wood',
         type: 'category',
-        icon: '',
-        data: []
+        icon: 'pickup-brushwood',
+        data: [
+          {
+            name: 'Barrel',
+            type: 'subcategory',
+            icon: 'pickup-barrel',
+            data: [
+              {
+                name: 'Barrel_01',
+                type: 'sound'
+              },
+              {
+                name: 'Barrel_02',
+                type: 'sound'
+              },
+              {
+                name: 'Barrel_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Box',
+            type: 'subcategory',
+            icon: 'pickup-box',
+            data: [
+              {
+                name: 'Box_01',
+                type: 'sound'
+              },
+              {
+                name: 'Box_02',
+                type: 'sound'
+              },
+              {
+                name: 'Box_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Brushwood',
+            type: 'subcategory',
+            icon: 'pickup-brushwood',
+            data: [
+              {
+                name: 'Brushwood_01',
+                type: 'sound'
+              },
+              {
+                name: 'Brushwood_02',
+                type: 'sound'
+              },
+              {
+                name: 'Brushwood_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Chest',
+            type: 'subcategory',
+            icon: 'pickup-chest',
+            data: [
+              {
+                name: 'Chest_01',
+                type: 'sound'
+              },
+              {
+                name: 'Chest_02',
+                type: 'sound'
+              },
+              {
+                name: 'Chest_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Log',
+            type: 'subcategory',
+            icon: 'pickup-log',
+            data: [
+              {
+                name: 'Log_01',
+                type: 'sound'
+              },
+              {
+                name: 'Log_02',
+                type: 'sound'
+              },
+              {
+                name: 'Log_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Pencil',
+            type: 'subcategory',
+            icon: 'pickup-pencil',
+            data: [
+              {
+                name: 'Pencil_01',
+                type: 'sound'
+              },
+              {
+                name: 'Pencil_02',
+                type: 'sound'
+              },
+              {
+                name: 'Pencil_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Plant',
+            type: 'subcategory',
+            icon: 'pickup-plant',
+            data: [
+              {
+                name: 'Plant_01',
+                type: 'sound'
+              },
+              {
+                name: 'Plant_02',
+                type: 'sound'
+              },
+              {
+                name: 'Plant_03',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Staff',
+            type: 'subcategory',
+            icon: 'pickup-staff',
+            data: [
+              {
+                name: 'Staff_01',
+                type: 'sound'
+              },
+              {
+                name: 'Staff_02',
+                type: 'sound'
+              },
+              {
+                name: 'Staff_03',
+                type: 'sound'
+              }
+            ]
+          },
+        ]
       },
     ],
     description: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fpick-up.jpg?alt=media&token=10c3be32-2b78-4240-a1a5-040e3378fb6c',
