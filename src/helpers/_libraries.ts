@@ -3335,7 +3335,7 @@ const LIBRARIES = [
   // Birds
   {
     author: 'Diforb',
-    id: 'birds',
+    id: 'Birds',
     name: 'Birds',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fbirds.jpg?alt=media&token=6259a9bd-ce74-4c3d-8a8b-26d1f5dca9b7',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Fbirds.jpg?alt=media&token=af10b873-6790-4ecd-9de8-d3c00076aa8a',
@@ -3558,6 +3558,7 @@ const LIBRARIES = [
           {
             name: 'Cuckoo',
             type: 'subcategory',
+            icon: 'birds-cuckoo',
             data: [
               {
                 name: 'Cuckoo_01',
@@ -3576,6 +3577,7 @@ const LIBRARIES = [
           {
             name: 'Magpie',
             type: 'subcategory',
+            icon: 'birds-magpie',
             data: [
               {
                 name: 'Magpie_01',
@@ -3594,6 +3596,7 @@ const LIBRARIES = [
           {
             name: 'Owls',
             type: 'subcategory',
+            icon: 'birds-owl',
             data: [
               {
                 name: 'Owls_01',
@@ -3624,6 +3627,7 @@ const LIBRARIES = [
           {
             name: 'Pigeons',
             type: 'subcategory',
+            icon: 'birds-pigeon',
             data: [
               {
                 name: 'Pigeons_01',
@@ -3646,6 +3650,7 @@ const LIBRARIES = [
           {
             name: 'Sparrow',
             type: 'subcategory',
+            icon: 'birds-sparrow',
             data: [
               {
                 name: 'Sparrow_01',
@@ -3676,6 +3681,7 @@ const LIBRARIES = [
           {
             name: 'Turkey',
             type: 'subcategory',
+            icon: 'birds-turkey',
             data: [
               {
                 name: 'Turkey_01',
@@ -3897,6 +3903,7 @@ const LIBRARIES = [
           {
             name: 'Knock',
             type: 'subcategory',
+            icon: 'birds-woodpeackercnock',
             data: [
               {
                 name: 'Knock_01',
@@ -3930,6 +3937,7 @@ const LIBRARIES = [
           {
             name: 'Sing',
             type: 'subcategory',
+            icon: 'birds-woodpeackersing',
             data: [
               {
                 name: 'Sing_01',
@@ -4491,7 +4499,7 @@ const LIBRARIES = [
   // Creatures
   {
     author: 'Diforb',
-    id: 'creatures',
+    id: 'Creatures',
     name: 'Creatures',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fcreatures.jpg?alt=media&token=2d8d1b6b-d12e-42bb-8282-928f41d85c72',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Fcreatures.jpg?alt=media&token=c747eb0f-316e-4d46-8134-341bcdb96de4',
@@ -5560,7 +5568,8 @@ const LIBRARIES = [
             ]
           }
         ]
-      },{
+      },
+      {
         name: 'Plastic',
         type: 'category',
         icon: 'destruction-plastic',
@@ -5754,7 +5763,8 @@ const LIBRARIES = [
             ]
           },
         ]
-      },{
+      },
+      {
         name: 'Wood',
         type: 'category',
         icon: 'destruction-wood',
@@ -11669,7 +11679,294 @@ const LIBRARIES = [
     name: 'Zoo',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fzoo.jpg?alt=media&token=6773d95a-0e16-44d4-86ce-42d6311cba9e',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Fzoo.jpg?alt=media&token=3795a971-2718-4734-8885-692292bceea4',
-    data: [],
+    data: [
+      {
+        name: 'Bear',
+        type: 'category',
+        icon: 'zoo-bear',
+        data: [
+          {
+            name: 'Bear_01',
+            type: 'sound'
+          },
+          {
+            name: 'Bear_02',
+            type: 'sound'
+          },
+          {
+            name: 'Bear_03',
+            type: 'sound'
+          },
+          {
+            name: 'Bear_04',
+            type: 'sound'
+          },
+          {
+            name: 'Bear_05',
+            type: 'sound'
+          },
+          {
+            name: 'Bear_06',
+            type: 'sound'
+          },
+          {
+            name: 'Bear_07',
+            type: 'sound'
+          },
+          {
+            name: 'Bear_08',
+            type: 'sound'
+          },
+        ]
+      },
+      {
+        name: 'Elephant',
+        type: 'category',
+        icon: 'zoo-elephant',
+        data: [
+          {
+            name: 'Elephant_01',
+            type: 'sound'
+          },
+          {
+            name: 'Elephant_02',
+            type: 'sound'
+          },
+          {
+            name: 'Elephant_03',
+            type: 'sound'
+          },
+          {
+            name: 'Elephant_04',
+            type: 'sound'
+          },
+          {
+            name: 'Elephant_05',
+            type: 'sound'
+          },
+          {
+            name: 'Elephant_06',
+            type: 'sound'
+          },
+          {
+            name: 'Elephant_07',
+            type: 'sound'
+          }
+        ]
+      },
+      {
+        name: 'Hippo',
+        type: 'category',
+        icon: 'zoo-hippo',
+        data: [
+          {
+            name: 'Hippo_01',
+            type: 'sound'
+          },
+          {
+            name: 'Hippo_02',
+            type: 'sound'
+          },
+          {
+            name: 'Hippo_03',
+            type: 'sound'
+          },
+          {
+            name: 'Hippo_04',
+            type: 'sound'
+          },
+          {
+            name: 'Hippo_05',
+            type: 'sound'
+          },
+          {
+            name: 'Hippo_06',
+            type: 'sound'
+          },
+          {
+            name: 'Hippo_07',
+            type: 'sound'
+          },
+          {
+            name: 'Hippo_08',
+            type: 'sound'
+          },
+          {
+            name: 'Hippo_09',
+            type: 'sound'
+          }
+        ]
+      },
+      {
+        name: 'Lion',
+        type: 'category',
+        icon: 'zoo-lion',
+        data: [
+          {
+            name: 'Lion_01',
+            type: 'sound'
+          },
+          {
+            name: 'Lion_02',
+            type: 'sound'
+          },
+          {
+            name: 'Lion_03',
+            type: 'sound'
+          },
+          {
+            name: 'Lion_04',
+            type: 'sound'
+          },
+          {
+            name: 'Lion_05',
+            type: 'sound'
+          },
+          {
+            name: 'Lion_06',
+            type: 'sound'
+          },
+          {
+            name: 'Lion_07',
+            type: 'sound'
+          },
+          {
+            name: 'Lion_08',
+            type: 'sound'
+          },
+          {
+            name: 'Lion_09',
+            type: 'sound'
+          }
+        ]
+      },
+      {
+        name: 'Monkey',
+        type: 'category',
+        icon: 'zoo-monkey',
+        data: [
+          {
+            name: 'Gibbons',
+            type: 'subcategory',
+            icon: 'zoo-gibbon',
+            data: [
+              {
+                name: 'Gibbons_01',
+                type: 'sound'
+              },
+              {
+                name: 'Gibbons_02',
+                type: 'sound'
+              },
+              {
+                name: 'Gibbons_03',
+                type: 'sound'
+              },
+              {
+                name: 'Gibbons_04',
+                type: 'sound'
+              },
+              {
+                name: 'Gibbons_05',
+                type: 'sound'
+              },
+              {
+                name: 'Gibbons_06',
+                type: 'sound'
+              },
+              {
+                name: 'Gibbons_07',
+                type: 'sound'
+              },
+              {
+                name: 'Gibbons_08',
+                type: 'sound'
+              },
+              {
+                name: 'Gibbons_09',
+                type: 'sound'
+              },
+              {
+                name: 'Gibbons_10',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Other',
+            type: 'subcategory',
+            icon: 'zoo-monkey',
+            data: [
+              {
+                name: 'Other_01',
+                type: 'sound'
+              },
+              {
+                name: 'Other_02',
+                type: 'sound'
+              },
+              {
+                name: 'Other_03',
+                type: 'sound'
+              },
+              {
+                name: 'Other_04',
+                type: 'sound'
+              },
+              {
+                name: 'Other_05',
+                type: 'sound'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'Wolf',
+        type: 'category',
+        icon: 'zoo-wolf',
+        data: [
+          {
+            name: 'Howling',
+            type: 'subcategory',
+            icon: 'zoo-wolf-howling',
+            data: [
+              {
+                name: 'Howling_01',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_02',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_03',
+                type: 'sound'
+              },
+              {
+                name: 'Howling_04',
+                type: 'sound'
+              }
+            ]
+          },
+          {
+            name: 'Snarl',
+            type: 'subcategory',
+            icon: 'zoo-wolf-sharl',
+            data: [
+              {
+                name: 'Snarl_01',
+                type: 'sound'
+              },
+              {
+                name: 'Snarl_02',
+                type: 'sound'
+              }
+            ]
+          }
+        ]
+      },
+    ],
     description: 'Here you can hear sounds of various wild and dangerous animals.You don\'t  need to risk your health in order to record them - we did it for you',
     tizer: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/demo%2FZoo_tizer.mp3?alt=media&token=9a7378e7-fb10-485c-91cb-197c83b725a5'
   },
