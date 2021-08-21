@@ -24,7 +24,7 @@ const NonAuthLayout = (props: PropsType): JSX.Element => {
   return (
     <div className = { styles.wrapper }>
       <div className = { styles.videoContainer }>
-        <video autoPlay loop muted width = '1280' height = '720'>
+        <video autoPlay loop muted playsInline width = '1280' height = '720'>
           <source src = { videoBackground } type = 'video/mp4'/>
         </video>
       </div>

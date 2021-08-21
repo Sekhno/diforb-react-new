@@ -53,7 +53,8 @@ export interface Library {
   description: string,
   name: string,
   tizer: string,
-  develop: boolean
+  develop: boolean,
+  four_sound: boolean
 }
 
 interface LibrariesCategory {

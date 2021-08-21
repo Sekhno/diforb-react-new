@@ -9536,6 +9536,7 @@ const LIBRARIES = [
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Fambience.jpg?alt=media&token=2e3e7a18-7cf6-49e0-b74e-8d15868e8eda',
     data: [],
     develop: true,
+    four_sound: true,
     description: 'Natural Ambience is a universal collection of high-quality sounds which can help you create the sound atmosphere of various locations such as a city, a forest, a beach, a cave, the underwater world and many other things. Thanks to the unique system of combination, you get the opportunity to create hundreds of original sounds.',
     tizer: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/demo%2FNatural_ambient_tizer.mp3?alt=media&token=099c288c-8a3f-4b52-901c-7cd0a43e1c5a'
   },

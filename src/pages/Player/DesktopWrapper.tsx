@@ -172,7 +172,6 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
               <Tween to = {{y: -20}} duration = {.3}/>
               <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
             </Timeline>
-            
           </div>
         </header>
         <div className = { styles.wrapper }>
