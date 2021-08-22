@@ -9,13 +9,20 @@ const rever3 = 'reverbs/YorkMinster.wav'
 
 let context: AudioContext, analyser: AnalyserNode, compressor: DynamicsCompressorNode
 let leftReverb: ConvolverNode, rightReverb: ConvolverNode
+let leftAdditionalReverb: ConvolverNode, rightAdditionalReverb: ConvolverNode
 let source1: AudioBufferSourceNode, source2: AudioBufferSourceNode
+let source3: AudioBufferSourceNode, source4: AudioBufferSourceNode
 let leftVolumeGain: GainNode, rightVolumeGain: GainNode
+let leftVolumeAdditionalGain: GainNode, rightVolumeAdditionalGain: GainNode
 let leftReverbGain: GainNode, rightReverbGain: GainNode
+let leftReverbAdditionalGain: GainNode, rightReverbAdditionalGain: GainNode
 let leftSoundBuffer: AudioBuffer, rightSoundBuffer: AudioBuffer
+let leftSoundAdditionalBuffer: AudioBuffer, rightSoundAdditionalBuffer: AudioBuffer
 let reverRoomBuffer: AudioBuffer, reverHallBuffer: AudioBuffer, reverStadiumBuffer: AudioBuffer
 let leftPitchValue = 1, rightPitchValue = 1
+let leftPitchAdditionalValue = 1, rightPitchAdditionalValue = 1
 let timeshiftValue = 0
+let timeshiftAdditionalValue = 0
 
 var bufferLength: number, dataArray: Uint8Array
 var canvas: HTMLCanvasElement | null = null
@@ -25,6 +32,7 @@ let streamDestinationNode: MediaStreamAudioDestinationNode
 let recSource: MediaStreamAudioSourceNode
 let rec: Recorder
 let leftVolumeValue: number = 1, rightVolumeValue: number = 1
+let leftVolumeAdditionalValue: number = 1, rightVolumeAdditionalValue: number = 1
 
 
 const setupRoutingGraph = (callback: Function): void => {

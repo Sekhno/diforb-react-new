@@ -18,8 +18,16 @@ const LeftSide = (props: PropsSideInterface) => {
   const [ activeSubCategory, setActiveSubcategory ] = useState(-1)
   const [ activeSound, setActiveSound ] = useState(-1)
   const [ playStateSubcategory, setPlayStateSubCategory ] = useState(PlayState.play)
-  const { library, loading, onChangeSound, onActive } = props
-  const data = library?.data ? library?.data : library?.main || []
+  const { library, loading, mode,  onChangeSound, onActive } = props
+  const format = library?.format || 'wav'
+
+  let data
+  if (mode) {
+    data = library[mode] || []
+  } else {
+    data = library?.data ? library?.data : library?.main || []
+  }
+
   const clickCategory = (i: number) => {
     setActiveSubcategory(-1)
     setPlayStateSubCategory(PlayState.reverse)
@@ -31,7 +39,7 @@ const LeftSide = (props: PropsSideInterface) => {
   }
   const clickSubcategory = (i: number, category: string, type: string, subcategory: string) => {
     if (type === SoundListType.sound) {
-      onChangeSound(`libraries/${library.name}/${category}/${subcategory}.wav`)
+      onChangeSound(`libraries/${library.id}/${category}/${subcategory}.${format}`)
       setActive({ category, sub: '', sound: subcategory})
       onActive({ category, sub: '', sound: subcategory })
     } else {
@@ -39,7 +47,7 @@ const LeftSide = (props: PropsSideInterface) => {
     }
   }
   const clickSound = (category: string, sub: string, sound: string, i: number) => {
-    onChangeSound(`libraries/${library.name}/${category}/${sub}/${sound}.wav`)
+    onChangeSound(`libraries/${library.id}/${category}/${sub}/${sound}.${format}`)
     setActiveSound(i)
     onActive({ category, sub, sound })
     setActive({ category, sub, sound })

@@ -49,12 +49,15 @@ export interface Library {
   cover_retina: string,
   data: LibrariesCategory[],
   main?: LibrariesCategory[],
+  main2?: LibrariesCategory[]
   extra?: LibrariesCategory[],
+  extra2?: LibrariesCategory[],
   description: string,
   name: string,
   tizer: string,
   develop: boolean,
-  four_sound: boolean
+  four_sound: boolean,
+  format: string
 }
 
 interface LibrariesCategory {

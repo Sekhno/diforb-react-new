@@ -9534,7 +9534,242 @@ const LIBRARIES = [
     name: 'Natural Ambience',
     cover: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fsimple%2Fambience.jpg?alt=media&token=185d15e1-bd77-4990-8d12-322232981227',
     cover_retina: 'https://firebasestorage.googleapis.com/v0/b/diforb-react-1ec55.appspot.com/o/images%2Fcovers%2Fretina%2Fambience.jpg?alt=media&token=2e3e7a18-7cf6-49e0-b74e-8d15868e8eda',
-    data: [],
+    format: 'mp3',
+    main: [
+      {
+        name: 'Animals',
+        type: 'category',
+        icon: 'amb-wolf',
+        data: [
+          {
+            name: 'Bats',
+            type: 'sound',
+            icon: 'amb-bats'
+          },
+          {
+            name: 'Crickets',
+            type: 'sound',
+            icon: 'amb-crickets'
+          },
+          {
+            name: 'Dogs',
+            type: 'sound',
+            icon: 'amb-dog'
+          },
+          {
+            name: 'Flies_And_Bees',
+            type: 'sound',
+            icon: 'amb-bees'
+          },
+          {
+            name: 'Frogs',
+            type: 'sound',
+            icon: 'amb-frog'
+          },
+          {
+            name: 'Wolf',
+            type: 'sound',
+            icon: 'amb-wolf'
+          },
+        ]
+      },
+      {
+        name: 'Birds',
+        type: 'category',
+        icon: 'amb-birds',
+        data: [
+          {
+            name: 'Chickens',
+            type: 'sound',
+            icon: 'amb-chicken'
+          },
+          {
+            name: 'Cuckoo',
+            type: 'sound',
+            icon: 'amb-cuckoo'
+          },
+          {
+            name: 'Ravens',
+            type: 'sound',
+            icon: 'amb-raver'
+          },
+          {
+            name: 'Seagulls',
+            type: 'sound',
+            icon: 'amb-seagull'
+          },
+          {
+            name: 'Birds',
+            type: 'sound',
+            icon: 'amb-birds'
+          },
+        ]
+      },
+    ],
+    main2: [
+      {
+        name: 'Exterior',
+        type: 'category',
+        icon: 'amb-location',
+        data: [
+          {
+            name: 'Beach_Day',
+            type: 'sound',
+            icon: 'amb-beach-day'
+          },
+          {
+            name: 'Beach_Night',
+            type: 'sound',
+            icon: 'amb-beach-night'
+          },
+          {
+            name: 'City_Day_Busy',
+            type: 'sound',
+            icon: 'amb-city-daysvg'
+          },
+          {
+            name: 'City_Night',
+            type: 'sound',
+            icon: 'amb-city-night2'
+          },
+          {
+            name: 'Forest_Day',
+            type: 'sound',
+            icon: 'amb-forest-day2'
+          },
+          {
+            name: 'Forest_Night',
+            type: 'sound',
+            icon: 'amb-forest-night2'
+          },
+          {
+            name: 'Main_Underwater',
+            type: 'sound',
+            icon: 'amb-underwater'
+          },
+          {
+            name: 'Park_Children',
+            type: 'sound',
+            icon: 'amb-location'
+          },
+        ]
+      },
+      {
+        name: 'Interior',
+        type: 'category',
+        icon: 'amb-big-room',
+        data: [
+          {
+            name: 'Big_Room',
+            type: 'sound',
+            icon: 'amb-big-room'
+          },
+          {
+            name: 'Cave',
+            type: 'sound',
+            icon: 'amb-cave'
+          },
+          {
+            name: 'Small_Room',
+            type: 'sound',
+            icon: 'amb-small-room'
+          },
+        ]
+      },
+    ],
+    extra: [
+      {
+        name: 'Nature',
+        type: 'category',
+        icon: 'amb-nature',
+        data: [
+          {
+            name: 'Rain',
+            type: 'sound',
+            icon: 'amb-rain'
+          },
+          {
+            name: 'Stream',
+            type: 'sound',
+            icon: 'amb-stream'
+          },
+          {
+            name: 'Thunder',
+            type: 'sound',
+            icon: 'amb-thunder'
+          },
+          {
+            name: 'Waterfall',
+            type: 'sound',
+            icon: 'amb-waterfall'
+          },
+          {
+            name: 'Waves',
+            type: 'sound',
+            icon: 'amb-waves'
+          },
+        ]
+      }
+    ],
+    extra2: [
+      {
+        name: 'Other',
+        type: 'category',
+        icon: 'amb-traffic',
+        data: [
+          {
+            name: 'Boat_Horn',
+            type: 'sound',
+            icon: 'amb-boat-horn'
+          },
+          {
+            name: 'Campfire',
+            type: 'sound',
+            icon: 'mystical'
+          },
+          {
+            name: 'Clock',
+            type: 'sound',
+            icon: 'amb-clock'
+          },
+          {
+            name: 'Construction',
+            type: 'sound',
+            icon: 'amb-construction'
+          },
+          {
+            name: 'Cooking',
+            type: 'sound',
+            icon: 'amb-cooking'
+          },
+          {
+            name: 'Fire',
+            type: 'sound',
+            icon: 'amb-fire'
+          },
+          {
+            name: 'Firefight',
+            type: 'sound',
+            icon: 'amb-firefight'
+          },
+          {
+            name: 'Traffic',
+            type: 'sound',
+            icon: 'amb-traffic'
+          },
+          {
+            name: 'Train',
+            type: 'sound',
+            icon: 'amb-train'
+          },
+          {
+            name: 'Walla',
+            type: 'sound',
+            icon: 'amb-walla'
+          },
+        ]
+      }
+    ],
     develop: true,
     four_sound: true,
     description: 'Natural Ambience is a universal collection of high-quality sounds which can help you create the sound atmosphere of various locations such as a city, a forest, a beach, a cave, the underwater world and many other things. Thanks to the unique system of combination, you get the opportunity to create hundreds of original sounds.',

@@ -52,7 +52,7 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   const { playing } = props
   const { id } = useParams<{id: string}>()
   const canvasRef = createRef()
-  const library = useSelector((state: StoreType) => state.dashboard.libraries).filter(v => v.name === id)[0]
+  const library = useSelector((state: StoreType) => state.dashboard.libraries).filter(v => v.id === id)[0]
   const dispatch = useDispatch()
   const [ activeLeftSound, setActiveLeftSound ] = useState(defaultActiveSound)
   const [ activeRightSound, setActiveRightSound ] = useState(defaultActiveSound)
@@ -65,6 +65,12 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   const [ rightReverb, setRightReverbs ] = useState(defaultReverState)
   const [ activeMenu, setActiveMenu ] = useState(false)
   const [ activeSoundAnimationState, setActiveSoundAnimationState ] = useState(PlayState.stopEnd)
+  
+  const [ leftMainSound, setLeftMainSound ] = useState(false)
+  const [ rightExtraSound, setRightExtraSound ] = useState(false)
+  const [ activeLeftAdditionalSound, setActiveLeftAdditionalSound ] = useState(defaultActiveSound)
+  const [ activeRightAdditionalSound, setActiveRightAdditionalSound ] = useState(defaultActiveSound)
+
   
   useEffect(() => {
     if (canvasRef && canvasRef.current) {
@@ -124,13 +130,13 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
     await setBufferToLeftSide(sound)
     setLoadingLeftSound(false)
   }
-
   const onSelectRightSound = async (sound: string) => {
     setLoadingRightSound(true)
     await setBufferToRightSide(sound)
     setLoadingRightSound(false)
   }
-
+  const onSelectLeftAdditionalSound = async (sound: string) => {}
+  const onSelectRightAdditionalSound = async (sound: string) => {}
   const onClickPlay = () => {
     if (!leftSoundBuffer && !rightSoundBuffer) {
       return setActiveSoundAnimationState(PlayState.restart)
@@ -154,34 +160,74 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   return (
     <React.Fragment>
       <main className = { activeMenu ? styles.openedMenu : '' }>
-        <header className = { styles.header }>
-          <div className = { styles.leftSide }>
-            <InputSwitch checked = { leftMute } onChange={(e) => onChangeLeftMute(e.value)} />
-            <i className = { leftMute ? 'icon-volume' : 'icon-volume-off' }/>
-            <Timeline target = {<span>{ activeLeftSound.sound }</span>} playState = { activeSoundAnimationState }
-              onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
-              <Tween to = {{y: -20}} duration = {.3}/>
-              <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
-            </Timeline>
-          </div>
-          <div className = { styles.rightSide }>
-            <InputSwitch checked = { rightMute } onChange={(e) => onChangeRightMute(e.value)} />
-            <i className = { rightMute ? 'icon-volume' : 'icon-volume-off' }/>
-            <Timeline target = {<span>{ activeRightSound.sound }</span>} playState = { activeSoundAnimationState }
-              onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
-              <Tween to = {{y: -20}} duration = {.3}/>
-              <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
-            </Timeline>
-          </div>
-        </header>
+        {
+          library?.four_sound ?
+          <header className = { styles.header }>
+            <div className = { styles.leftSide }>
+              <span>A</span>
+              <InputSwitch checked = { leftMainSound } onChange={(e) => setLeftMainSound(e.value)} />
+              <span>B</span>
+              <span>&#43303;</span>
+              <span className = 'amb-bats'></span>
+            </div>
+            <div className = { styles.rightSide }>
+              <span>D</span>
+              <InputSwitch checked = { rightExtraSound } onChange={(e) => setRightExtraSound(e.value)} />
+              <span>C</span>
+            </div>
+          </header> :
+          <header className = { styles.header }>
+            <div className = { styles.leftSide }>
+              <InputSwitch checked = { leftMute } onChange={(e) => onChangeLeftMute(e.value)} />
+              <i className = { leftMute ? 'icon-volume' : 'icon-volume-off' }/>
+              <Timeline target = {<span>{ activeLeftSound.sound }</span>} playState = { activeSoundAnimationState }
+                onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
+                <Tween to = {{y: -20}} duration = {.3}/>
+                <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
+              </Timeline>
+            </div>
+            <div className = { styles.rightSide }>
+              <InputSwitch checked = { rightMute } onChange={(e) => onChangeRightMute(e.value)} />
+              <i className = { rightMute ? 'icon-volume' : 'icon-volume-off' }/>
+              <Timeline target = {<span>{ activeRightSound.sound }</span>} playState = { activeSoundAnimationState }
+                onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
+                <Tween to = {{y: -20}} duration = {.3}/>
+                <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
+              </Timeline>
+            </div>
+          </header>
+        }
         <div className = { styles.wrapper }>
           <div className = { styles.leftSide }>
-            <LeftSide 
-              library = { library } 
-              loading = { loadingLeftSound }
-              onChangeSound = {(url) => onSelectLeftSound(url)}
-              onActive = {(active) => setActiveLeftSound(active)}
-            />
+            {
+              library?.four_sound ?
+              <React.Fragment>
+                {
+                  leftMainSound ? 
+                  <LeftSide 
+                    mode = 'main2'
+                    library = { library } 
+                    loading = { loadingLeftSound }
+                    onChangeSound = {(url) => onSelectLeftSound(url)}
+                    onActive = {(active) => setActiveLeftSound(active)}
+                  /> :
+                  <LeftSide 
+                    mode = 'main'
+                    library = { library } 
+                    loading = { loadingLeftSound }
+                    onChangeSound = {(url) => onSelectLeftSound(url)}
+                    onActive = {(active) => setActiveLeftSound(active)}
+                  />
+                }
+              </React.Fragment> :
+               <LeftSide 
+                library = { library } 
+                loading = { loadingLeftSound }
+                onChangeSound = {(url) => onSelectLeftSound(url)}
+                onActive = {(active) => setActiveLeftSound(active)}
+              />
+            }
+            
           </div>
           <div className = { styles.player }>
             {/* <div style = {{textAlign: 'center'}}>{ loading ? 'loading' : 'no loading' }</div>  */}
@@ -203,12 +249,35 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
             />
           </div>
           <div className = { styles.rightSide }>
-            <RightSide
-              library = { library } 
-              loading = { loadingRightSound }
-              onChangeSound = {(url) => onSelectRightSound(url)}
-              onActive = {(active) => setActiveRightSound(active)}
-            />
+            {
+              library?.four_sound ?
+              <React.Fragment>
+                {
+                  rightExtraSound ?
+                  <RightSide
+                    mode = 'extra2'
+                    library = { library } 
+                    loading = { loadingRightSound }
+                    onChangeSound = {(url) => onSelectRightSound(url)}
+                    onActive = {(active) => setActiveRightSound(active)}
+                  /> :
+                  <RightSide
+                    mode = 'extra'
+                    library = { library } 
+                    loading = { loadingRightSound }
+                    onChangeSound = {(url) => onSelectRightSound(url)}
+                    onActive = {(active) => setActiveRightSound(active)}
+                  />
+                }
+              </React.Fragment> :
+              <RightSide
+                library = { library } 
+                loading = { loadingRightSound }
+                onChangeSound = {(url) => onSelectRightSound(url)}
+                onActive = {(active) => setActiveRightSound(active)}
+              />
+            }
+            
           </div>
         </div>
       </main>
