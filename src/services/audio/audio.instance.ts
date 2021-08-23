@@ -44,11 +44,17 @@ const setupRoutingGraph = (callback: Function): void => {
 
   leftReverb = context.createConvolver()
   rightReverb = context.createConvolver()
+  leftAdditionalReverb = context.createConvolver()
+  rightAdditionalReverb = context.createConvolver()
 
   leftVolumeGain = context.createGain()
   rightVolumeGain = context.createGain()
   leftReverbGain = context.createGain()
   rightReverbGain = context.createGain()
+  leftVolumeAdditionalGain = context.createGain()
+  rightVolumeAdditionalGain = context.createGain()
+  leftReverbAdditionalGain = context.createGain()
+  rightReverbAdditionalGain = context.createGain()
 
   analyser.connect(context.destination)
   compressor.connect(analyser)
@@ -57,11 +63,19 @@ const setupRoutingGraph = (callback: Function): void => {
   leftVolumeGain.connect(compressor)
   leftReverb.connect(leftReverbGain)
   leftReverbGain.connect(compressor)
+  leftVolumeAdditionalGain.connect(leftAdditionalReverb)
+  leftVolumeAdditionalGain.connect(compressor)
+  leftAdditionalReverb.connect(leftReverbAdditionalGain)
+  leftReverbAdditionalGain.connect(compressor)
 
   rightVolumeGain.connect(rightReverb)
   rightVolumeGain.connect(compressor)
   rightReverb.connect(rightReverbGain)
   rightReverbGain.connect(compressor)
+  rightVolumeAdditionalGain.connect(rightAdditionalReverb)
+  rightVolumeAdditionalGain.connect(compressor)
+  rightAdditionalReverb.connect(rightReverbAdditionalGain)
+  rightReverbAdditionalGain.connect(compressor)
 
   analyser.fftSize = 2048
   bufferLength = analyser.frequencyBinCount
@@ -108,11 +122,33 @@ const setBufferToLeftSide = (sound: string): Promise<null> => {
   })
 }
 
+const setBufferToLeftAdditionalSide = (sound: string): Promise<null> => {
+  return new Promise((resolve, reject) => {
+    loadBuffer(sound).then((buffer: ArrayBuffer) => {
+      context.decodeAudioData(buffer, (data) => {
+        leftSoundAdditionalBuffer = data
+        resolve(null)
+      })
+    })
+  })
+}
+
 const setBufferToRightSide = (sound: string): Promise<null> => {
   return new Promise((resolve, reject) => {
     loadBuffer(sound).then((buffer: ArrayBuffer) => {
       context.decodeAudioData(buffer, (data) => {
         rightSoundBuffer = data
+        resolve(null)
+      })
+    })
+  })
+}
+
+const setBufferToRightAdditionalSide = (sound: string): Promise<null> => {
+  return new Promise((resolve, reject) => {
+    loadBuffer(sound).then((buffer: ArrayBuffer) => {
+      context.decodeAudioData(buffer, (data) => {
+        rightSoundAdditionalBuffer = data
         resolve(null)
       })
     })
@@ -148,12 +184,43 @@ const selectRightReverb = (type: ReverbType) => {
   }
 }
 
+const selectLeftAdditionalReverb = (type: ReverbType) => {
+  leftReverbAdditionalGain.connect(compressor)
+  
+  if (type === 'room') {
+    leftAdditionalReverb.buffer = reverRoomBuffer
+  } else if (type === 'hall') {
+    leftAdditionalReverb.buffer = reverHallBuffer
+  } else if (type === 'stadium') {
+    leftAdditionalReverb.buffer = reverStadiumBuffer
+  }
+}
+
+const selectRightAdditionalReverb = (type: ReverbType) => {
+  rightReverbAdditionalGain.connect(compressor)
+  if (type === 'room') {
+    rightAdditionalReverb.buffer = reverRoomBuffer
+  } else if (type === 'hall') {
+    rightAdditionalReverb.buffer = reverHallBuffer
+  } else if (type === 'stadium') {
+    rightAdditionalReverb.buffer = reverStadiumBuffer
+  }
+}
+
 const resetLeftReverb = () => {
   leftReverbGain && leftReverbGain.disconnect()
 }
 
 const resetRightReverb = () => {
   rightReverbGain && rightReverbGain.disconnect()
+}
+
+const resetLeftAdditionalReverb = () => {
+  leftReverbAdditionalGain && leftReverbAdditionalGain.disconnect()
+}
+
+const resetRightAdditionalReverb = () => {
+  rightReverbAdditionalGain && rightReverbAdditionalGain.disconnect()
 }
 
 const muteLeftSound = () => {
@@ -206,7 +273,10 @@ const changeRightPitchValue = (gain: number) => {
 
 const changeTimeshiftValue = (gain: number) => {
   timeshiftValue = gain
-  console.log(timeshiftValue)
+}
+
+const changeTimeshiftAdditionalValue = (gain: number) => {
+  timeshiftAdditionalValue = gain
 }
 
 const onPlay = () => {
@@ -214,6 +284,7 @@ const onPlay = () => {
     autoPlay = true
     const init = () => {
       let pausedSource1 = true, pausedSource2 = true
+      let pausedSource3 = true, pausedSource4 = true
       rec.clear()
       rec.record()
       
@@ -222,6 +293,7 @@ const onPlay = () => {
         source1.buffer = leftSoundBuffer
         source1.playbackRate.value = leftPitchValue
         source1.connect(leftVolumeGain)
+
         if (timeshiftValue < 0) {
           source1.start(context.currentTime + Math.abs(timeshiftValue / 25))
         } else {
@@ -230,8 +302,7 @@ const onPlay = () => {
         source1.addEventListener('ended', () => {
           source1.disconnect()
           pausedSource1 = true
-          if (pausedSource1 && pausedSource2) {
-            // dispatch(setPlaying(false))
+          if (pausedSource1 && pausedSource2 && pausedSource3 && pausedSource4) {
             rec.stop()
             autoPlay && init()
           }
@@ -243,6 +314,7 @@ const onPlay = () => {
         source2.buffer = rightSoundBuffer
         source2.playbackRate.value = rightPitchValue
         source2.connect(rightVolumeGain)
+
         if (timeshiftValue > 0) {
           source2.start(context.currentTime + (timeshiftValue / 25))
         } else {
@@ -251,13 +323,54 @@ const onPlay = () => {
         source2.addEventListener('ended', () => {
           source2.disconnect()
           pausedSource2 = true
-          if (pausedSource1 && pausedSource2) {
-            // dispatch(setPlaying(false))
+          if (pausedSource1 && pausedSource2 && pausedSource3 && pausedSource4) {
             rec.stop()
             autoPlay && init()
           }
         }, {once: true})
         pausedSource2 = false
+      }
+      if (leftSoundAdditionalBuffer) {
+        source3 = context.createBufferSource()
+        source3.buffer = leftSoundAdditionalBuffer
+        source3.playbackRate.value = leftPitchAdditionalValue
+        source3.connect(leftVolumeAdditionalGain)
+
+        if (timeshiftAdditionalValue < 0) {
+          source3.start(context.currentTime + Math.abs(timeshiftAdditionalValue / 25))
+        } else {
+          source3.start(context.currentTime)
+        }
+        source3.addEventListener('ended', () => {
+          source3.disconnect()
+          pausedSource3 = true
+          if (pausedSource1 && pausedSource2 && pausedSource3 && pausedSource4) {
+            rec.stop()
+            autoPlay && init()
+          }
+        }, {once: true})
+        pausedSource3 = false
+      }
+      if (rightSoundAdditionalBuffer) {
+        source4 = context.createBufferSource()
+        source4.buffer = rightSoundAdditionalBuffer
+        source4.playbackRate.value = rightPitchAdditionalValue
+        source4.connect(rightVolumeAdditionalGain)
+
+        if (timeshiftAdditionalValue < 0) {
+          source4.start(context.currentTime + Math.abs(timeshiftAdditionalValue / 25))
+        } else {
+          source4.start(context.currentTime)
+        }
+        source4.addEventListener('ended', () => {
+          source4.disconnect()
+          pausedSource4 = true
+          if (pausedSource1 && pausedSource2 && pausedSource3 && pausedSource4) {
+            rec.stop()
+            autoPlay && init()
+          }
+        }, {once: true})
+        pausedSource4 = false
       }
     }
     init()
@@ -274,6 +387,12 @@ const onStop = () => {
     }
     if (rightSoundBuffer) {
       source2.disconnect()
+    }
+    if (leftSoundAdditionalBuffer) {
+      source3.disconnect()
+    }
+    if (rightSoundAdditionalBuffer) {
+      source4.disconnect()
     }
     rec.stop()
     dispatch(setPlaying(false))
@@ -334,16 +453,21 @@ export {
   setupReverbBuffers,
   saveCanvasElem, 
   changeTimeshiftValue,
+  changeTimeshiftAdditionalValue,
   changeLeftVolumeGain, changeRightVolumeGain,
   changeLeftReverVolumeGain, changeRightReverVolumeGain,
   changeLeftPitchValue, changeRightPitchValue,
   selectLeftReverb, selectRightReverb,
+  selectLeftAdditionalReverb, selectRightAdditionalReverb,
   resetLeftReverb, resetRightReverb,
+  resetLeftAdditionalReverb, resetRightAdditionalReverb,
   setBufferToLeftSide, setBufferToRightSide,
+  setBufferToLeftAdditionalSide, setBufferToRightAdditionalSide,
   leftSoundBuffer, rightSoundBuffer,
+  leftSoundAdditionalBuffer, rightSoundAdditionalBuffer,
 
   onPlay, onStop,
   loadRecordFile,
   muteLeftSound, muteRightSound,
-  unmuteLeftSound, unmuteRightSound 
+  unmuteLeftSound, unmuteRightSound, 
 }

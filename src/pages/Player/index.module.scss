@@ -47,6 +47,16 @@ main {
     margin-right: 1rem;
     flex-direction: row-reverse;
   }
+
+  .switchSides {
+    background-color: $backround-color-black-8;
+    line-height: 1.3rem;
+    padding: 0 .5rem;
+    border-radius: 25px;
+    button {
+      cursor: pointer;
+    }
+  }
 }
 
 .wrapper {

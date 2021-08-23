@@ -9599,7 +9599,7 @@ const LIBRARIES = [
             icon: 'amb-seagull'
           },
           {
-            name: 'Birds',
+            name: 'Various_Birds',
             type: 'sound',
             icon: 'amb-birds'
           },
