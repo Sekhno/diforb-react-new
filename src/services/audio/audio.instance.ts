@@ -33,6 +33,7 @@ let recSource: MediaStreamAudioSourceNode
 let rec: Recorder
 let leftVolumeValue: number = 1, rightVolumeValue: number = 1
 let leftVolumeAdditionalValue: number = 1, rightVolumeAdditionalValue: number = 1
+let autoPlay = false
 
 
 const setupRoutingGraph = (callback: Function): void => {
@@ -210,50 +211,56 @@ const changeTimeshiftValue = (gain: number) => {
 
 const onPlay = () => {
   return (dispatch: Function) => {
-    let pausedSource1 = true, pausedSource2 = true
-    rec.clear()
-    rec.record()
-    
-    if (leftSoundBuffer) {
-      source1 = context.createBufferSource()
-      source1.buffer = leftSoundBuffer
-      source1.playbackRate.value = leftPitchValue
-      source1.connect(leftVolumeGain)
-      if (timeshiftValue < 0) {
-        source1.start(context.currentTime + Math.abs(timeshiftValue / 25))
-      } else {
-        source1.start(context.currentTime)
-      }
-      source1.addEventListener('ended', () => {
-        source1.disconnect()
-        pausedSource1 = true
-        if (pausedSource1 && pausedSource2) {
-          dispatch(setPlaying(false))
-          rec.stop()
+    autoPlay = true
+    const init = () => {
+      let pausedSource1 = true, pausedSource2 = true
+      rec.clear()
+      rec.record()
+      
+      if (leftSoundBuffer) {
+        source1 = context.createBufferSource()
+        source1.buffer = leftSoundBuffer
+        source1.playbackRate.value = leftPitchValue
+        source1.connect(leftVolumeGain)
+        if (timeshiftValue < 0) {
+          source1.start(context.currentTime + Math.abs(timeshiftValue / 25))
+        } else {
+          source1.start(context.currentTime)
         }
-      }, {once: true})
-      pausedSource1 = false
-    }
-    if (rightSoundBuffer) {
-      source2 = context.createBufferSource()
-      source2.buffer = rightSoundBuffer
-      source2.playbackRate.value = rightPitchValue
-      source2.connect(rightVolumeGain)
-      if (timeshiftValue > 0) {
-        source2.start(context.currentTime + (timeshiftValue / 25))
-      } else {
-        source2.start(context.currentTime)
+        source1.addEventListener('ended', () => {
+          source1.disconnect()
+          pausedSource1 = true
+          if (pausedSource1 && pausedSource2) {
+            // dispatch(setPlaying(false))
+            rec.stop()
+            autoPlay && init()
+          }
+        }, {once: true})
+        pausedSource1 = false
       }
-      source2.addEventListener('ended', () => {
-        source2.disconnect()
-        pausedSource2 = true
-        if (pausedSource1 && pausedSource2) {
-          dispatch(setPlaying(false))
-          rec.stop()
+      if (rightSoundBuffer) {
+        source2 = context.createBufferSource()
+        source2.buffer = rightSoundBuffer
+        source2.playbackRate.value = rightPitchValue
+        source2.connect(rightVolumeGain)
+        if (timeshiftValue > 0) {
+          source2.start(context.currentTime + (timeshiftValue / 25))
+        } else {
+          source2.start(context.currentTime)
         }
-      }, {once: true})
-      pausedSource2 = false
+        source2.addEventListener('ended', () => {
+          source2.disconnect()
+          pausedSource2 = true
+          if (pausedSource1 && pausedSource2) {
+            // dispatch(setPlaying(false))
+            rec.stop()
+            autoPlay && init()
+          }
+        }, {once: true})
+        pausedSource2 = false
+      }
     }
+    init()
     dispatch(setPlaying(true))
     
   }
@@ -261,6 +268,7 @@ const onPlay = () => {
 
 const onStop = () => {
   return (dispatch: Function) => {
+    autoPlay = false
     if (leftSoundBuffer) {
       source1.disconnect()
     }

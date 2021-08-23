@@ -77,7 +77,6 @@ const LeftSide = (props: PropsSideInterface) => {
   }
 
   return(
-    
       <div className = { styles.leftSide }>
         <ul className = { styles.categories }>
           {
@@ -110,6 +109,7 @@ const LeftSide = (props: PropsSideInterface) => {
                             <div className = { getClassIfTypeSound(subcategory.type, category.name, subcategory.name, i) }
                               onClick = {() => clickSubcategory(i, category.name, subcategory.type, subcategory.name)}
                             >
+                              {/* <span className='amb-icons'>&#43303;</span> */}
                               <i className = { subcategory.icon || category.icon }/>
                               <span datatype = { subcategory.name }>{ subcategory.name }</span>
                             </div>

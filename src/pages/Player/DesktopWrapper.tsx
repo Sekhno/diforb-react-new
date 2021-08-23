@@ -167,8 +167,8 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
               <span>A</span>
               <InputSwitch checked = { leftMainSound } onChange={(e) => setLeftMainSound(e.value)} />
               <span>B</span>
-              <span>&#43303;</span>
-              <span className = 'amb-bats'></span>
+              
+              
             </div>
             <div className = { styles.rightSide }>
               <span>D</span>
