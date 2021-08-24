@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { withRouter, useHistory, Link, useLocation, RouteComponentProps } from 'react-router-dom'
+import { withRouter, useHistory, useLocation, RouteComponentProps } from 'react-router-dom'
 import { useSelector }  from 'react-redux'
-import { BrowserView, MobileView, MobileOnlyView, TabletView, isMobileSafari, isIOS, isChrome, isIPad13, isMobile } from 'react-device-detect'
+import { BrowserView, MobileOnlyView, TabletView, isMobileSafari } from 'react-device-detect'
 import { ScrollPanel }      from 'primereact/scrollpanel'
 import { getFirebaseBackend } from '../../helpers/firebase.helper'
 import { StoreType }        from  '../../store/types'
@@ -14,12 +14,6 @@ import { useState } from 'react'
 
 interface PropsType extends RouteComponentProps {
   children: JSX.Element,
-}
-
-interface HeaderLeftSideItemType {
-  label: string,
-  icon: string,
-  url: string
 }
 
 const Layout = (props: PropsType): JSX.Element => {
@@ -48,7 +42,7 @@ const Layout = (props: PropsType): JSX.Element => {
     if (firebaseBackend?.getAuthenticatedUser() === null) {
       history.push('/login')
     }
-  }, [ isLogged ])
+  }, [ isLogged, history ])
 
   
   

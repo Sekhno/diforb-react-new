@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, ReactNode, createRef, RefObject, Fragment, SyntheticEvent } from 'react'
+import React, { FC, useEffect, useState, ReactNode, createRef, RefObject, useMemo } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { withRouter, useParams } from 'react-router-dom'
 import { PlayState, Tween, Timeline } from 'react-gsap'
@@ -13,6 +13,7 @@ import {
   changeTimeshiftValue,
   changeTimeshiftAdditionalValue,
   changeLeftVolumeGain, changeRightVolumeGain,
+  changeLeftAdditionalVolumeGain, changeRightAdditionalVolumeGain,
   changeLeftReverVolumeGain, changeRightReverVolumeGain,
   changeLeftPitchValue, changeRightPitchValue,
   leftSoundBuffer, rightSoundBuffer,
@@ -59,6 +60,8 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   const dispatch = useDispatch()
   const [ activeLeftSound, setActiveLeftSound ] = useState(defaultActiveSound)
   const [ activeRightSound, setActiveRightSound ] = useState(defaultActiveSound)
+  const [ activeLeftAdditionalSound, setActiveLeftAdditionalSound ] = useState(defaultActiveSound)
+  const [ activeRightAdditionalSound, setActiveRightAdditionalSound ] = useState(defaultActiveSound)
   const [ loadingLeftSound, setLoadingLeftSound ] = useState(false)
   const [ loadingRightSound, setLoadingRightSound ] = useState(false)
   const [ localPlayingState, setLocalPlayingState ] = useState(false)
@@ -68,13 +71,9 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   const [ rightReverb, setRightReverbs ] = useState(defaultReverState)
   const [ activeMenu, setActiveMenu ] = useState(false)
   const [ activeSoundAnimationState, setActiveSoundAnimationState ] = useState(PlayState.stopEnd)
-  
   const [ additionalSides, setAdditionalSides ] = useState(false)
-  const [ leftMainSound, setLeftMainSound ] = useState(false)
-  const [ rightExtraSound, setRightExtraSound ] = useState(false)
-  const [ activeLeftAdditionalSound, setActiveLeftAdditionalSound ] = useState(defaultActiveSound)
-  const [ activeRightAdditionalSound, setActiveRightAdditionalSound ] = useState(defaultActiveSound)
-
+  
+  console.log('additionalSides', additionalSides)
   
   useEffect(() => {
     if (canvasRef && canvasRef.current) {
@@ -130,14 +129,14 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   }, [ activeMenu ])
 
   const onChangeLeftSound = (sound: string) => {
-    if (leftMainSound) {
+    if (additionalSides) {
       onSelectLeftAdditionalSound(sound)
     } else {
       onSelectLeftSound(sound)
     }
   }
   const onChangeRightSound = (sound: string) => {
-    if (rightExtraSound) {
+    if (additionalSides) {
       onSelectRightAdditionalSound(sound)
     } else {
       onSelectRightSound(sound)
@@ -192,32 +191,30 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
     setRightMute(v)
   }
   const onChangeTimeshift = (v: number) => {
-    if (library.four_sound) {
-      // if ()
-    } else {
-      changeTimeshiftValue(v)
-    }
+    setAdditionalSides(prevState => {
+      if (prevState) {
+        changeTimeshiftAdditionalValue(v)
+      } else {
+        changeTimeshiftValue(v)
+      }
+      return prevState
+    })
+  }
+  const onChangeLeftVolumeGain = (v: number) => {
+    setAdditionalSides(prevState => {
+      if (prevState) {
+        changeLeftAdditionalVolumeGain(v)
+      } else {
+        changeLeftVolumeGain(v)
+      }
+      return prevState
+    })
   }
 
   return (
     <React.Fragment>
       <main className = { activeMenu ? styles.openedMenu : '' }>
         {
-          // library?.four_sound ?
-          // <header className = { styles.header }>
-          //   <div className = { styles.leftSide }>
-          //     <span>A</span>
-          //     <InputSwitch checked = { leftMainSound } onChange={(e) => setLeftMainSound(e.value)} />
-          //     <span>B</span>
-              
-              
-          //   </div>
-          //   <div className = { styles.rightSide }>
-          //     <span>D</span>
-          //     <InputSwitch checked = { rightExtraSound } onChange={(e) => setRightExtraSound(e.value)} />
-          //     <span>C</span>
-          //   </div>
-          // </header> :
           <header className = { styles.header }>
             <div className = { styles.leftSide }>
               <InputSwitch checked = { leftMute } onChange={(e) => onChangeLeftMute(e.value)} />
@@ -225,12 +222,21 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
               {
                 library?.four_sound &&
                 <div className = { styles.switchSides }>
-                  <button>A</button>
+                  <button className = { !additionalSides ? styles.active : '' }
+                    onClick = {() => setAdditionalSides(false)}
+                  >A</button>
                   <span>or</span>
-                  <button>B</button>
+                  <button className = { additionalSides ? styles.active : '' }
+                    onClick = {() => setAdditionalSides(true)}
+                  >B</button>
                 </div>
               }
-              <Timeline target = {<span>{ activeLeftSound.sound }</span>} playState = { activeSoundAnimationState }
+              <Timeline target = {
+                library?.four_sound ? 
+                <span>A: { activeLeftSound.sound } &amp; B: { activeLeftAdditionalSound.sound }</span> :
+                <span>{ activeLeftSound.sound }</span>
+              } 
+                playState = { activeSoundAnimationState }
                 onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
                 <Tween to = {{y: -20}} duration = {.3}/>
                 <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
@@ -239,7 +245,24 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
             <div className = { styles.rightSide }>
               <InputSwitch checked = { rightMute } onChange={(e) => onChangeRightMute(e.value)} />
               <i className = { rightMute ? 'icon-volume' : 'icon-volume-off' }/>
-              <Timeline target = {<span>{ activeRightSound.sound }</span>} playState = { activeSoundAnimationState }
+              {
+                library?.four_sound &&
+                <div className = { styles.switchSides }>
+                  <button className = { !additionalSides ? styles.active : '' }
+                    onClick = {() => setAdditionalSides(false)}
+                  >C</button>
+                  <span>or</span>
+                  <button className = { additionalSides ? styles.active : '' }
+                    onClick = {() => setAdditionalSides(true)}
+                  >D</button>
+                </div>
+              }
+              <Timeline target = {
+                  library?.four_sound ? 
+                  <span>C: { activeRightSound.sound } &amp; D: { activeRightAdditionalSound.sound }</span> :
+                  <span>{ activeRightSound.sound }</span>
+                } 
+                playState = { activeSoundAnimationState }
                 onComplete = {() => setActiveSoundAnimationState(PlayState.stopEnd)}>
                 <Tween to = {{y: -20}} duration = {.3}/>
                 <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
@@ -253,13 +276,13 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
               library?.four_sound ?
               <React.Fragment>
                 {
-                  leftMainSound ? 
+                  additionalSides ? 
                   <LeftSide 
                     mode = 'main2'
                     library = { library } 
                     loading = { loadingLeftSound }
                     onChangeSound = { onChangeLeftSound }
-                    onActive = { setActiveLeftSound }
+                    onActive = { setActiveLeftAdditionalSound }
                   /> :
                   <LeftSide 
                     mode = 'main'
@@ -280,13 +303,12 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
             
           </div>
           <div className = { styles.player }>
-            {/* <div style = {{textAlign: 'center'}}>{ loading ? 'loading' : 'no loading' }</div>  */}
             <Player 
               id = { id }
               ref = { canvasRef }
               playing = { localPlayingState }
-              changeTimeshiftValue = { changeTimeshiftValue }
-              changeLeftVolumeValue = { changeLeftVolumeGain }
+              changeTimeshiftValue = { onChangeTimeshift }
+              changeLeftVolumeValue = { onChangeLeftVolumeGain }
               changeRightVolumeValue = { changeRightVolumeGain }
               changeLeftPitchValue = { changeLeftPitchValue }
               changeRightPitchValue = { changeRightPitchValue }
@@ -303,13 +325,13 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
               library?.four_sound ?
               <React.Fragment>
                 {
-                  rightExtraSound ?
+                  additionalSides ?
                   <RightSide
                     mode = 'extra2'
                     library = { library } 
                     loading = { loadingRightSound }
                     onChangeSound = { onChangeRightSound }
-                    onActive = { setActiveRightSound }
+                    onActive = { setActiveRightAdditionalSound }
                   /> :
                   <RightSide
                     mode = 'extra'

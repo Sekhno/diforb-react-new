@@ -19,7 +19,7 @@ const NonAuthLayout = (props: PropsType): JSX.Element => {
     if (firebaseBackend?.getAuthenticatedUser() !== null) {
       history.push('/libraries')
     }
-  }, [ isLogged ])
+  }, [ isLogged, history, firebaseBackend ])
 
   return (
     <div className = { styles.wrapper }>

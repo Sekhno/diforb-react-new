@@ -28,7 +28,7 @@ const App = () => {
     if (firebaseBackend?.getAuthenticatedUser() !== null) {
       dispatch(loginSuccess())
     }
-  }, [])
+  }, [ dispatch ])
 
   return (
     <React.Fragment>

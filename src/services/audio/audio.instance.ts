@@ -21,8 +21,7 @@ let leftSoundAdditionalBuffer: AudioBuffer, rightSoundAdditionalBuffer: AudioBuf
 let reverRoomBuffer: AudioBuffer, reverHallBuffer: AudioBuffer, reverStadiumBuffer: AudioBuffer
 let leftPitchValue = 1, rightPitchValue = 1
 let leftPitchAdditionalValue = 1, rightPitchAdditionalValue = 1
-let timeshiftValue = 0
-let timeshiftAdditionalValue = 0
+let timeshiftValue = 0, timeshiftAdditionalValue = 0
 
 var bufferLength: number, dataArray: Uint8Array
 var canvas: HTMLCanvasElement | null = null
@@ -242,11 +241,21 @@ const unmuteRightSound = () => {
 }
 
 const changeLeftVolumeGain = (gain: number) => {
+  console.log('changeLeftVolumeGain: ' + leftVolumeGain.gain.value)
   leftVolumeGain.gain.value = (2 * gain) / 100
 }
 
 const changeRightVolumeGain = (gain: number) => {
   rightVolumeGain.gain.value = (2 * gain) / 100
+}
+
+const changeLeftAdditionalVolumeGain = (gain: number) => {
+  console.log('changeLeftAdditionalVolumeGain: ' + leftVolumeGain.gain.value)
+  leftVolumeAdditionalGain.gain.value = (2 * gain) / 100
+}
+
+const changeRightAdditionalVolumeGain = (gain: number) => {
+  rightVolumeAdditionalGain.gain.value = (2 * gain) / 100
 }
 
 const changeLeftReverVolumeGain = (gain: number) => {
@@ -455,6 +464,7 @@ export {
   changeTimeshiftValue,
   changeTimeshiftAdditionalValue,
   changeLeftVolumeGain, changeRightVolumeGain,
+  changeLeftAdditionalVolumeGain, changeRightAdditionalVolumeGain,
   changeLeftReverVolumeGain, changeRightReverVolumeGain,
   changeLeftPitchValue, changeRightPitchValue,
   selectLeftReverb, selectRightReverb,

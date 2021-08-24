@@ -51,8 +51,8 @@ export const Sidebar = (props: PropsType) => {
         <NavLink to = '/reviews' activeClassName = { styles.selected }>Reviews</NavLink>
       </div>
       <div className = { styles.socialLinks }>
-        <a className = 'icon-facebook' href = 'https://www.facebook.com/diforb/'/>
-        <a className = 'icon-twitter' href = 'https://twitter.com/diforb'/>
+        <a href = 'https://www.facebook.com/diforb/'><i className = 'icon-facebook'></i></a>
+        <a href = 'https://twitter.com/diforb'><i className = 'icon-twitter'></i></a>
       </div>
     </div>
   )

@@ -49,12 +49,16 @@ main {
   }
 
   .switchSides {
-    background-color: $backround-color-black-8;
+    background-color: $backround-color-black-6;
     line-height: 1.3rem;
     padding: 0 .5rem;
     border-radius: 25px;
     button {
       cursor: pointer;
+
+      &.active {
+        color: $green
+      }
     }
   }
 }
