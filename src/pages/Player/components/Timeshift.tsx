@@ -74,7 +74,6 @@ export const Timeshift = (props: PropsSliderInterface) => {
   }, [ handlerRef ])
 
   useEffect(() => {
-    
     let volume = null
     if (additionalSides) {
       volume = sessionStorage.getItem(SessionStorage.TimeshiftAdditional)
