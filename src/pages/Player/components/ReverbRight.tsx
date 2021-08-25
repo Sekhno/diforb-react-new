@@ -141,7 +141,6 @@ export const ReverbRight = (props: PropsSliderInterface) => {
         }
       }
       pure && setCurrent('')
-      console.log('rightAdditionalReverbState', rightAdditionalReverbState)
     } else {
       for (const key in rightReverbState) {
         if (rightReverbState[key]) {
@@ -151,7 +150,6 @@ export const ReverbRight = (props: PropsSliderInterface) => {
         }
       }
       pure && setCurrent('')
-      console.log('rightReverbState', rightReverbState)
     }
   }, [ additionalSides, rightReverbState, rightAdditionalReverbState ])
 

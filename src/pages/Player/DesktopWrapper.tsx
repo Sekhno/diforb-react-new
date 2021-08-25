@@ -76,6 +76,7 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   const [ activeSoundAnimationState, setActiveSoundAnimationState ] = useState(PlayState.stopEnd)
   const [ additionalSides, setAdditionalSides ] = useState(false)
   
+  
   useEffect(() => {
     if (canvasRef && canvasRef.current) {
       setupRoutingGraph(() => {
@@ -386,6 +387,7 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
               onClickPlay = { onClickPlay }
               onClickStop = { onClickStop }
               additionalSides = { additionalSides }
+              setAdditionalSides = { setAdditionalSides }
               leftReverbState = {leftReverb}
               rightReverbState = { rightReverb }
               leftAdditionalReverbState = { leftAdditionalReverb }

@@ -1,35 +1,54 @@
 import React, { createRef, useRef, useEffect, LegacyRef } from 'react'
 import { fromEvent, Subscription } from 'rxjs'
-import { MouseEvents, PropsSliderInterface } from '../types'
+import { MouseEvents, PropsSliderInterface, SessionStorage } from '../types'
 import styles from './RangeSlider.module.scss'
 
 
 export const Timeshift = (props: PropsSliderInterface) => {
-  const { onChange } = props
+  const { 
+    onChange, 
+    additionalSides, setAdditionalSides 
+  } = props
   const handlerRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
-  const handlerMove = (event: Event) => {
-    console.log((event as MouseEvent).offsetX)
-    let volume = Math.floor(140 - (event as MouseEvent).offsetX),
-        centerX = 125,
+  const translateHandler = (volume: number) => {
+    let centerX = 125,
         centerY = 267,
         radius = 240,
         angle = 0,
         numObjects = 1450,
         slice = Math.PI * 2 / numObjects,
-        x, y;
+        x, y
 		
-		if (volume > 71) volume = 70;
-		if (volume < -70) volume = -70;
+		if (volume > 71) volume = 70
+		if (volume < -70) volume = -70
 
-		angle = volume * slice;
-		x = centerX - Math.sin(angle) * radius;
-		y = centerY - Math.cos(angle) * radius;
+    setAdditionalSides && setAdditionalSides(
+      (prevState: boolean) => {
+        if (prevState) {
+          sessionStorage.setItem(SessionStorage.TimeshiftAdditional, `${volume}`)
+        } else {
+          sessionStorage.setItem(SessionStorage.Timeshift, `${volume}`)
+        }
+        return prevState
+      }
+    )
+    
+    
 
-		const prop = 'transform';
-		const value = `translate(${x}, ${y})`;
+		angle = volume * slice
+		x = centerX - Math.sin(angle) * radius
+		y = centerY - Math.cos(angle) * radius
+
+		const prop = 'transform'
+		const value = `translate(${x}, ${y})`
 
     handlerRef.current && handlerRef.current.setAttribute(prop, value)
     onChange && onChange(volume)
+  }
+  const handlerMove = (event: Event) => {
+    translateHandler(
+      Math.floor(140 - (event as MouseEvent).offsetX)
+    )
   }
 
   useEffect(() => {
@@ -53,6 +72,19 @@ export const Timeshift = (props: PropsSliderInterface) => {
       console.log('Destroy hendlerRef')
     }
   }, [ handlerRef ])
+
+  useEffect(() => {
+    
+    let volume = null
+    if (additionalSides) {
+      volume = sessionStorage.getItem(SessionStorage.TimeshiftAdditional)
+      volume && translateHandler(+volume)
+    } else {
+      volume = sessionStorage.getItem(SessionStorage.Timeshift)
+      volume && translateHandler(+volume)
+    }
+    volume && translateHandler(+volume)
+  }, [ additionalSides ])
 
   return (
     <svg x = '0px' y = '0px' width = '274px' height = '76px' viewBox = '0 0 274 76' enableBackground = 'new 0 0 274 76'>

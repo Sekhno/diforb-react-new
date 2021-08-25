@@ -36,6 +36,7 @@ export enum ReverbsEnum {
 export interface PropsSliderInterface {
   onChange?: (gain: number) => void
   onChangeReverbType?: (type: ReverbsEnum) => void
+  setAdditionalSides?: Function
   additionalSides?: boolean
   leftReverbState?: ReverState
 	rightReverbState?: ReverState
@@ -68,5 +69,10 @@ export interface StateToProps {
   player: { 
     playing: boolean 
   }
+}
+
+export enum SessionStorage {
+  Timeshift = '[Timeshift]',
+  TimeshiftAdditional = '[TimeshiftAdditional]'
 }
 

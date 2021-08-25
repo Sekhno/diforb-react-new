@@ -16,16 +16,17 @@ interface PlayerPropsInterface {
 	playing: boolean | undefined
 	changeTimeshiftValue: (gain: number) => void
 	changeLeftVolumeValue: (gain: number) => void
-	changeRightVolumeValue: (gain: number) => void,
-	changeLeftPitchValue: (gain: number) => void,
-	changeRightPitchValue: (gain: number) => void,
-	changeLeftReverVolumeGain: (gain: number) => void,
-	changeRightReverVolumeGain: (gain: number) => void,
-	changeLeftReverType: (gain: ReverbsEnum) => void,
-	changeRightReverType: (gain: ReverbsEnum) => void,
-	onClickPlay: () => void,
+	changeRightVolumeValue: (gain: number) => void
+	changeLeftPitchValue: (gain: number) => void
+	changeRightPitchValue: (gain: number) => void
+	changeLeftReverVolumeGain: (gain: number) => void
+	changeRightReverVolumeGain: (gain: number) => void
+	changeLeftReverType: (gain: ReverbsEnum) => void
+	changeRightReverType: (gain: ReverbsEnum) => void
+	onClickPlay: () => void
 	onClickStop: () => void
 	additionalSides: boolean
+	setAdditionalSides: Function
 	leftReverbState: ReverState
 	rightReverbState: ReverState
 	leftAdditionalReverbState: ReverState
@@ -37,6 +38,7 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 		id, playing, additionalSides,
 		leftReverbState, rightReverbState,
 		leftAdditionalReverbState, rightAdditionalReverbState,
+		setAdditionalSides,
 		changeTimeshiftValue,
 		changeLeftVolumeValue,
 		changeRightVolumeValue,
@@ -81,7 +83,11 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 						</div>
 					</div>
 					<div className = { styles.timeshift }>
-						<Timeshift onChange = {(gain) => changeTimeshiftValue(gain)}/>
+						<Timeshift 
+							additionalSides = { additionalSides }
+							setAdditionalSides = { setAdditionalSides }
+							onChange = {(gain) => changeTimeshiftValue(gain)}
+						/>
 					</div>
 					<div className = { styles.sliderMiddle }>
 						<div className = { styles.sliderMiddleLeft }>
