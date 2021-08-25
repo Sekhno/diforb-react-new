@@ -19,15 +19,20 @@ const reverbConfigs = [
 ]
 
 export const ReverbLeft = (props: PropsSliderInterface) => {
-  const [ current, setCurrent ] = useState<string | null>(null)
+  const [ current, setCurrent ] = useState<string>('')
   const clipRef: React.MutableRefObject<SVGRectElement | null> = useRef(null)
   const handlerRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
-  
+  const { 
+    onChange, onChangeReverbType, 
+    additionalSides,
+    leftReverbState, leftAdditionalReverbState
+  } = props
+
   let angle = STARTANGLE - DIFFANGLE / 2
   let centerX = RADIUS + OFFSETX, centerY = RADIUS - OFFSETY
   let X, Y
 
-  const { onChange, onChangeReverbType } = props
+  
   const handlerMove = (event: Event) => {
     const { offsetY } = (event as MouseEvent)
     if (offsetY > TOP && offsetY <= BOTTOM) {
@@ -42,7 +47,7 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
   }
   const clickHandle = (type: ReverbsEnum) => {
 		onChangeReverbType && onChangeReverbType(type)
-		setCurrent(type === current ? null : type)
+		setCurrent(type === current ? '' : type)
 	}
   const reverbBtns = reverbConfigs.map((value, index) => {
     index = index + 1
@@ -102,12 +107,6 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
     console.log(`X: ${X}, Y: ${Y}`)
     
     handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
-    // setInterval(() => {
-    //   angle += STEP 
-    //   X = Math.ceil(centerX - RADIUS * Math.sin(angle))
-    //   Y = Math.ceil(centerY - RADIUS * Math.cos(angle))
-    //   handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
-    // }, 10)
     clipRef.current?.setAttribute('y', String(Math.abs(0.6 * (TOP - BOTTOM))))
 
     if (handlerRef.current) {
@@ -128,6 +127,29 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
       mouseDownSubscribed.unsubscribe()
     }
   }, [ handlerRef, clipRef ])
+
+  useEffect(() => {
+    let pure = true
+    if (additionalSides && leftAdditionalReverbState) {
+      for (const key in leftAdditionalReverbState) {
+        if (leftAdditionalReverbState[key]) {
+          setCurrent(key)
+          pure = false
+          break
+        }
+      }
+      pure && setCurrent('')
+    } else {
+      for (const key in leftReverbState) {
+        if (leftReverbState[key]) {
+          setCurrent(key)
+          pure = false
+          break
+        }
+      }
+      pure && setCurrent('')
+    }
+  }, [ additionalSides, leftReverbState, leftAdditionalReverbState ])
 
   return (
     <svg x='0px' y='0px' width='200px' height='105px' viewBox='0 0 200 105' enableBackground='new 0 0 200 105'>

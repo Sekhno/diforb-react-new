@@ -36,6 +36,11 @@ export enum ReverbsEnum {
 export interface PropsSliderInterface {
   onChange?: (gain: number) => void
   onChangeReverbType?: (type: ReverbsEnum) => void
+  additionalSides?: boolean
+  leftReverbState?: ReverState
+	rightReverbState?: ReverState
+	leftAdditionalReverbState?: ReverState
+	rightAdditionalReverbState?: ReverState
 }
 
 export interface PropsSideInterface {
@@ -50,5 +55,18 @@ export interface ActiveSound {
   category: string
   sub: string
   sound: string
+}
+
+export interface ReverState {
+  [key: string]: boolean
+  // room: boolean,
+  // hall: boolean,
+  // stadium: boolean
+}
+
+export interface StateToProps {
+  player: { 
+    playing: boolean 
+  }
 }
 

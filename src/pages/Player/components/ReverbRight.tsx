@@ -24,12 +24,16 @@ export const ReverbRight = (props: PropsSliderInterface) => {
 	const [ current, setCurrent ] = useState<string | null>(null)
   const clipRef: React.MutableRefObject<SVGRectElement | null> = useRef(null)
   const handlerRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
+	const { 
+		onChange, onChangeReverbType, 
+		additionalSides, rightReverbState, rightAdditionalReverbState 
+	} = props
   
   let angle = STARTANGLE - DIFFANGLE / 2
   let centerX = RADIUS + OFFSETX, centerY = RADIUS - OFFSETY
   let X, Y
 
-  const { onChange, onChangeReverbType } = props
+  
   const handlerMove = (event: Event) => {
     const { offsetY } = (event as MouseEvent)
     if (offsetY > TOP && offsetY <= BOTTOM) {
@@ -125,6 +129,31 @@ export const ReverbRight = (props: PropsSliderInterface) => {
       mouseDownSubscribed.unsubscribe()
     }
   }, [ handlerRef, clipRef ])
+
+	useEffect(() => {
+    let pure = true
+    if (additionalSides && rightAdditionalReverbState) {
+      for (const key in rightAdditionalReverbState) {
+        if (rightAdditionalReverbState[key]) {
+          setCurrent(key)
+          pure = false
+          break
+        }
+      }
+      pure && setCurrent('')
+      console.log('rightAdditionalReverbState', rightAdditionalReverbState)
+    } else {
+      for (const key in rightReverbState) {
+        if (rightReverbState[key]) {
+          setCurrent(key)
+          pure = false
+          break
+        }
+      }
+      pure && setCurrent('')
+      console.log('rightReverbState', rightReverbState)
+    }
+  }, [ additionalSides, rightReverbState, rightAdditionalReverbState ])
 
 	return (
 		<svg x='0px' y='0px' width='200px' height='105px' viewBox='0 0 200 105' enableBackground='new 0 0 200 105'>

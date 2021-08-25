@@ -8,6 +8,6 @@ export interface StoreType {
     libraries: Library[]
   },
   player: {
-    playing: boolean
+    playing: boolean,
   }
 }

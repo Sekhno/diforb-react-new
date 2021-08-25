@@ -1,6 +1,6 @@
 import React, { forwardRef, RefObject, createRef, LegacyRef } from 'react'
 import { loadRecordFile } from '../../../services/audio/audio.instance'
-import { ReverbsEnum } from '../types'
+import { ReverbsEnum, ReverState } from '../types'
 import Timeshift 	from './Timeshift'
 import VolumeLeft from './VolumeLeft'
 import VolumeRight from './VolumeRight'
@@ -25,11 +25,18 @@ interface PlayerPropsInterface {
 	changeRightReverType: (gain: ReverbsEnum) => void,
 	onClickPlay: () => void,
 	onClickStop: () => void
+	additionalSides: boolean
+	leftReverbState: ReverState
+	rightReverbState: ReverState
+	leftAdditionalReverbState: ReverState
+	rightAdditionalReverbState: ReverState
 }
 
 export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 	const { 
-		id, playing,
+		id, playing, additionalSides,
+		leftReverbState, rightReverbState,
+		leftAdditionalReverbState, rightAdditionalReverbState,
 		changeTimeshiftValue,
 		changeLeftVolumeValue,
 		changeRightVolumeValue,
@@ -95,6 +102,9 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 					<div className = { styles.sliderBottom }>
 						<div className = { styles.sliderBottomLeft }>
 							<ReverbLeft 
+								additionalSides = { additionalSides }
+								leftReverbState = { leftReverbState }
+								leftAdditionalReverbState = { leftAdditionalReverbState }
 								onChange = { changeLeftReverVolumeGain } 
 								onChangeReverbType = { changeLeftReverType }
 							/>
@@ -109,6 +119,9 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 						</div>
 						<div className = { styles.sliderBottomRight }>
 							<ReverbRight 
+								additionalSides = { additionalSides }
+								rightReverbState = { rightReverbState }
+								rightAdditionalReverbState = { rightAdditionalReverbState }
 								onChange = { changeRightReverVolumeGain } 
 								onChangeReverbType = { changeRightReverType }
 							/>

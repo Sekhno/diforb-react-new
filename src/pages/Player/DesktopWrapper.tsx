@@ -15,6 +15,7 @@ import {
   changeLeftVolumeGain, changeRightVolumeGain,
   changeLeftAdditionalVolumeGain, changeRightAdditionalVolumeGain,
   changeLeftReverVolumeGain, changeRightReverVolumeGain,
+  changeLeftAdditionalReverVolumeGain, changeRightAdditionalReverVolumeGain,
   changeLeftPitchValue, changeRightPitchValue,
   leftSoundBuffer, rightSoundBuffer,
   leftSoundAdditionalBuffer, rightSoundAdditionalBuffer,
@@ -30,7 +31,7 @@ import {
 import Player from './components/Player'
 import LeftSide from './components/LeftSide'
 import RightSide from './components/RightSide'
-import { ReverbsEnum, ReverbType, KeypressEvent, ActiveSound } from './types'
+import { ReverbsEnum, ReverbType, KeypressEvent, ActiveSound, StateToProps, ReverState } from './types'
 import { StoreType } from '../../store/types'
 import { onLoadLibraries } from '../../async/dashboardAction'
 import LayoutSidebar  from '../../components/Layout/Sidebar'
@@ -41,7 +42,7 @@ interface PlayerProps {
   children?: ReactNode
   playing?: boolean
 }
-const defaultReverState = {
+const defaultReverState: ReverState = {
   room: false,
   hall: false,
   stadium: false
@@ -69,11 +70,11 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   const [ rightMute, setRightMute ] = useState(true)
   const [ leftReverb, setLeftReverbs ] = useState(defaultReverState)
   const [ rightReverb, setRightReverbs ] = useState(defaultReverState)
+  const [ leftAdditionalReverb, setLeftAdditionalReverbs ] = useState(defaultReverState)
+  const [ rightAdditionalReverb, setRightAdditionalReverbs ] = useState(defaultReverState)
   const [ activeMenu, setActiveMenu ] = useState(false)
   const [ activeSoundAnimationState, setActiveSoundAnimationState ] = useState(PlayState.stopEnd)
   const [ additionalSides, setAdditionalSides ] = useState(false)
-  
-  console.log('additionalSides', additionalSides)
   
   useEffect(() => {
     if (canvasRef && canvasRef.current) {
@@ -96,6 +97,8 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   useEffect(() => {
     const leftStateDisabled = Object.values(leftReverb).every(state => !state)
     const rightStateDisabled = Object.values(rightReverb).every(state => !state)
+    const leftAdditionalStateDisabled = Object.values(leftAdditionalReverb).every(state => !state)
+    const rightAdditionalStateDisabled = Object.values(rightAdditionalReverb).every(state => !state)
     if (leftStateDisabled) {
       resetLeftReverb()
     } else {
@@ -110,7 +113,21 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
         state && selectRightReverb(type as ReverbType)
       })
     }
-  }, [ leftReverb, rightReverb ])
+    if (leftAdditionalStateDisabled) {
+      resetLeftAdditionalReverb()
+    } else {
+      Object.entries(leftAdditionalReverb).forEach(([type, state]) => {
+        state && selectLeftAdditionalReverb(type as ReverbType)
+      })
+    }
+    if (rightAdditionalStateDisabled) {
+      resetRightAdditionalReverb()
+    } else {
+      Object.entries(rightAdditionalReverb).forEach(([type, state]) => {
+        state && selectRightAdditionalReverb(type as ReverbType)
+      })
+    }
+  }, [ leftReverb, rightReverb, leftAdditionalReverb, rightAdditionalReverb ])
 
   useEffect(() => {
     const keypressSubscription = fromEvent(document, KeypressEvent.KEYDOWN).pipe(
@@ -206,6 +223,56 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
         changeLeftAdditionalVolumeGain(v)
       } else {
         changeLeftVolumeGain(v)
+      }
+      return prevState
+    })
+  }
+  const onChangeRightVolumeGain = (v: number) => {
+    setAdditionalSides(prevState => {
+      if (prevState) {
+        changeRightAdditionalVolumeGain(v)
+      } else {
+        changeRightVolumeGain(v)
+      }
+      return prevState
+    })
+  }
+  const onChangeLeftReverVolumeGain = (v: number) => {
+    setAdditionalSides(prevState => {
+      if (prevState) {
+        changeLeftAdditionalReverVolumeGain(v)
+      } else {
+        changeLeftReverVolumeGain(v)
+      }
+      return prevState
+    })
+  }
+  const onChangeRightReverVolumeGain = (v: number) => {
+    setAdditionalSides(prevState => {
+      if (prevState) {
+        changeRightAdditionalReverVolumeGain(v)
+      } else {
+        changeRightReverVolumeGain(v)
+      }
+      return prevState
+    })
+  }
+  const onSetLeftReverbs = (type: ReverbsEnum) => {
+    setAdditionalSides(prevState => {
+      if (prevState) {
+        setLeftAdditionalReverbs({ ...defaultReverState, [type]: !leftAdditionalReverb[type] })
+      } else {
+        setLeftReverbs({ ...defaultReverState, [type]: !leftReverb[type] })
+      }
+      return prevState
+    })
+  }
+  const onSetRightReverbs = (type: ReverbsEnum) => {
+    setAdditionalSides(prevState => {
+      if (prevState) {
+        setRightAdditionalReverbs({ ...defaultReverState, [type]: !rightAdditionalReverb[type] })
+      } else {
+        setRightReverbs({ ...defaultReverState, [type]: !rightReverb[type] })
       }
       return prevState
     })
@@ -309,15 +376,21 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
               playing = { localPlayingState }
               changeTimeshiftValue = { onChangeTimeshift }
               changeLeftVolumeValue = { onChangeLeftVolumeGain }
-              changeRightVolumeValue = { changeRightVolumeGain }
+              changeRightVolumeValue = { onChangeRightVolumeGain }
               changeLeftPitchValue = { changeLeftPitchValue }
               changeRightPitchValue = { changeRightPitchValue }
-              changeLeftReverVolumeGain = { changeLeftReverVolumeGain }
-              changeRightReverVolumeGain = { changeRightReverVolumeGain }
-              changeLeftReverType = {(type: ReverbsEnum) => setLeftReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
-              changeRightReverType = {(type: ReverbsEnum) => setRightReverbs({ ...defaultReverState, [type]: !leftReverb[type] })}
+              changeLeftReverVolumeGain = { onChangeLeftReverVolumeGain }
+              changeRightReverVolumeGain = { onChangeRightReverVolumeGain }
+              changeLeftReverType = { onSetLeftReverbs }
+              changeRightReverType = { onSetRightReverbs }
               onClickPlay = { onClickPlay }
               onClickStop = { onClickStop }
+              additionalSides = { additionalSides }
+              leftReverbState = {leftReverb}
+              rightReverbState = { rightReverb }
+              leftAdditionalReverbState = { leftAdditionalReverb }
+              rightAdditionalReverbState = { rightAdditionalReverb }
+
             />
           </div>
           <div className = { styles.rightSide }>
@@ -359,12 +432,6 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
     </React.Fragment>
   )
   
-}
-
-interface StateToProps {
-  player: { 
-    playing: boolean 
-  }
 }
 
 const mapStateToProps = (state: StateToProps) => {

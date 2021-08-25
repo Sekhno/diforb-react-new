@@ -241,7 +241,6 @@ const unmuteRightSound = () => {
 }
 
 const changeLeftVolumeGain = (gain: number) => {
-  console.log('changeLeftVolumeGain: ' + leftVolumeGain.gain.value)
   leftVolumeGain.gain.value = (2 * gain) / 100
 }
 
@@ -250,7 +249,6 @@ const changeRightVolumeGain = (gain: number) => {
 }
 
 const changeLeftAdditionalVolumeGain = (gain: number) => {
-  console.log('changeLeftAdditionalVolumeGain: ' + leftVolumeGain.gain.value)
   leftVolumeAdditionalGain.gain.value = (2 * gain) / 100
 }
 
@@ -264,6 +262,14 @@ const changeLeftReverVolumeGain = (gain: number) => {
 
 const changeRightReverVolumeGain = (gain: number) => {
   rightReverbGain.gain.value = gain / 100
+}
+
+const changeLeftAdditionalReverVolumeGain = (gain: number) => {
+  leftReverbAdditionalGain.gain.value = gain / 100
+}
+
+const changeRightAdditionalReverVolumeGain = (gain: number) => {
+  rightReverbAdditionalGain.gain.value = gain / 100
 }
 
 const changeLeftPitchValue = (gain: number) => {
@@ -466,6 +472,7 @@ export {
   changeLeftVolumeGain, changeRightVolumeGain,
   changeLeftAdditionalVolumeGain, changeRightAdditionalVolumeGain,
   changeLeftReverVolumeGain, changeRightReverVolumeGain,
+  changeLeftAdditionalReverVolumeGain, changeRightAdditionalReverVolumeGain,
   changeLeftPitchValue, changeRightPitchValue,
   selectLeftReverb, selectRightReverb,
   selectLeftAdditionalReverb, selectRightAdditionalReverb,

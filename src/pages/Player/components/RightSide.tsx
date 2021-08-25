@@ -25,7 +25,7 @@ export const RightSide = (props: PropsSideInterface) => {
   if (mode) {
     data = library[mode] || []
   } else {
-    data = library?.data ? library?.data : library?.main || []
+    data = library?.data ? library?.data : library?.extra || []
   }
 
   const clickCategory = (i: number) => {
