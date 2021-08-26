@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { fromEvent, Subscription } from 'rxjs'
-import { MouseEvents, PropsSliderInterface } from '../types'
+import { MouseEvents, PropsSliderInterface, SessionStorage } from '../types'
 import styles from './RangeSlider.module.scss'
 
 const RADIUS = 233
@@ -17,34 +17,59 @@ export const VolumeRight = (props: PropsSliderInterface) => {
   let centerX = RADIUS + OFFSETX, centerY = RADIUS - OFFSETY
   let X, Y
 
-  const { onChange } = props
+  const { onChange, additionalSides, setAdditionalSides} = props
   const clipRef: React.MutableRefObject<SVGRectElement | null> = useRef(null)
   const handlerRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
+  const translateHandler = (value: number) => {
+    const offsetY = BOTTOM - value
+    angle = STARTANGLE + (offsetY - BOTTOM) * STEP
+    X = Math.ceil(centerX - RADIUS * Math.sin(angle)) - 2 * RADIUS
+    Y = Math.ceil(centerY - RADIUS * Math.cos(angle))
+    handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
+    clipRef.current?.setAttribute('y', String(offsetY))
+    onChange && onChange(value)
+  }
   const handlerMove = (event: Event) => {
     const { offsetY } = (event as MouseEvent)
-    
     if (offsetY > TOP && offsetY <= BOTTOM) {
       const value = (BOTTOM - offsetY)
-      angle = STARTANGLE + (offsetY - BOTTOM) * STEP
-      X = Math.ceil(centerX - RADIUS * Math.sin(angle)) - 2 * RADIUS
-      Y = Math.ceil(centerY - RADIUS * Math.cos(angle))
-      console.log(`translate(${X}, ${Y})`)
-      handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
-      clipRef.current?.setAttribute('y', String(offsetY))
-      console.log(value)
-      onChange && onChange(value)
+      setAdditionalSides && setAdditionalSides(
+        (prevState: boolean) => {
+          if (prevState) {
+            sessionStorage.setItem(SessionStorage.RightVolumeAdditional, `${value}`)
+          } else {
+            sessionStorage.setItem(SessionStorage.RightVolume, `${value}`)
+          }
+          return prevState
+        }
+      )
+      translateHandler(value)
     }
   }
 
   useEffect(() => {
-    let mouseDownSubscribed: Subscription
-    X = Math.ceil(centerX - RADIUS * Math.sin(angle)) - 2 * RADIUS
-    Y = Math.ceil(centerY - RADIUS * Math.cos(angle))
-    console.log(`X: ${X}, Y: ${Y}`)
-    // transform='translate(73,195)'
-    handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
-    clipRef.current?.setAttribute('y', String(Math.abs(0.5 * (TOP - BOTTOM))))
+    let volume = null
+    if (additionalSides) {
+      volume = sessionStorage.getItem(SessionStorage.RightVolumeAdditional)
+      volume && translateHandler(+volume)
+    } else {
+      volume = sessionStorage.getItem(SessionStorage.RightVolume)
+      volume && translateHandler(+volume)
+    }
+    if (volume) {
+      translateHandler(+volume)
+    } else {
+      X = Math.ceil(centerX - RADIUS * Math.sin(angle)) - 2 * RADIUS
+      Y = Math.ceil(centerY - RADIUS * Math.cos(angle))
+    
+      handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
+      clipRef.current?.setAttribute('y', String(Math.abs(0.5 * (TOP - BOTTOM))))
+    }
+  }, [ additionalSides ])
 
+  useEffect(() => {
+    let mouseDownSubscribed: Subscription
+    
     if (handlerRef.current) {
       const svgElem = handlerRef.current.parentNode as SVGAElement
       mouseDownSubscribed = fromEvent(handlerRef.current, MouseEvents.MOUSEDOWN)
@@ -62,7 +87,8 @@ export const VolumeRight = (props: PropsSliderInterface) => {
     return () => {
       mouseDownSubscribed.unsubscribe()
     }
-  }, [ handlerRef, clipRef ])
+  }, [ handlerRef ])
+
   return(
     <svg x='0px' y='0px' width='105px' height='227px' viewBox='0 0 105 227' enableBackground='new 0 0 105 227' >
       <g className = { styles.volumeRange }>

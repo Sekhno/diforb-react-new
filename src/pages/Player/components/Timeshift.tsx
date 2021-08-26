@@ -32,9 +32,6 @@ export const Timeshift = (props: PropsSliderInterface) => {
         return prevState
       }
     )
-    
-    
-
 		angle = volume * slice
 		x = centerX - Math.sin(angle) * radius
 		y = centerY - Math.cos(angle) * radius

@@ -98,7 +98,11 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 							/>
 						</div>
 						<div className = { styles.sliderMiddleRight }>
-							<VolumeRight onChange = { changeRightVolumeValue }/>
+							<VolumeRight 
+								additionalSides = { additionalSides }
+								setAdditionalSides = { setAdditionalSides }
+								onChange = { changeRightVolumeValue }
+							/>
 						</div>
 					</div>
 					<div className = { styles.pitchWrappers }>
