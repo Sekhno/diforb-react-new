@@ -19,7 +19,7 @@ export const VolumeLeft = (props: PropsSliderInterface) => {
   let centerX = RADIUS + OFFSETX, centerY = RADIUS - OFFSETY
   let X, Y
 
-  const { onChange } = props
+  const { onChange, additionalSides, setAdditionalSides } = props
   const clipRef: React.MutableRefObject<SVGRectElement | null> = useRef(null)
   const handlerRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
   const handlerMove = (event: Event) => {

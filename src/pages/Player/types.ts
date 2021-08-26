@@ -73,6 +73,10 @@ export interface StateToProps {
 
 export enum SessionStorage {
   Timeshift = '[Timeshift]',
-  TimeshiftAdditional = '[TimeshiftAdditional]'
+  TimeshiftAdditional = '[TimeshiftAdditional]',
+  LeftVolume = '[LeftVolume]',
+  LeftVolumeAdditional = '[LeftVolumeAdditional]',
+  RightVolume = '[RightVolume]',
+  RightVolumeAdditional = '[RightVolumeAdditional]',
 }
 
