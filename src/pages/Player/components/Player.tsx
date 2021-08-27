@@ -1,6 +1,6 @@
 import React, { forwardRef, RefObject, createRef, LegacyRef } from 'react'
 import { loadRecordFile } from '../../../services/audio/audio.instance'
-import { ReverbsEnum, ReverState } from '../types'
+import { ReverbsEnum, ReverState, Side } from '../types'
 import Timeshift 	from './Timeshift'
 import VolumeLeft from './VolumeLeft'
 import VolumeRight from './VolumeRight'
@@ -107,10 +107,20 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 					</div>
 					<div className = { styles.pitchWrappers }>
 						<div className = { styles.pitchLeft }>
-							<Knob onChange = { changeLeftPitchValue }/>
+							<Knob 
+								side = { Side.Left }
+								additionalSides = { additionalSides }
+								setAdditionalSides = { setAdditionalSides }
+								onChange = { changeLeftPitchValue }
+							/>
 						</div>
 						<div className = { styles.pitchRight }>
-							<Knob onChange = { changeRightPitchValue }/>
+							<Knob 
+								side = { Side.Right }
+								additionalSides = { additionalSides }
+								setAdditionalSides = { setAdditionalSides }
+								onChange = { changeRightPitchValue }
+							/>
 						</div>
 					</div>
 					<div className = { styles.sliderBottom }>

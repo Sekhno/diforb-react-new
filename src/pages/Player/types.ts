@@ -2,6 +2,11 @@ import { Library } from "../../helpers/firebase.interface"
 
 export type SideType = 'left' | 'right'
 
+export enum Side {
+  Left = 'left',
+  Right = 'right'
+}
+
 export type ReverbType = 'room' | 'hall' | 'stadium'
 
 export enum SoundListType {
@@ -81,6 +86,10 @@ export enum SessionStorage {
   LeftReverbVolume = '[LeftReverbVolume]',
   RightReverbVolume = '[RightReverbVolume]',
   LeftReverbVolumeAdditional = '[LeftReverbVolumeAdditional]',
-  RightReverbVolumeAdditional = '[RightReverbVolumeAdditional]'
+  RightReverbVolumeAdditional = '[RightReverbVolumeAdditional]',
+  LeftPitch = '[LeftPitch]',
+  RightPitch = '[RightPitch]',
+  LeftPitchAdditional = '[LeftPitchAdditional]',
+  RightPitchAdditional = '[RightPitchAdditional]'
 }
 
