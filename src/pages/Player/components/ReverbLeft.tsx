@@ -35,11 +35,11 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
   const translateHandler = (value: number) => {
     const offsetY = BOTTOM - value
     angle = STARTANGLE + (offsetY - BOTTOM) * STEP
-      X = Math.ceil(centerX - RADIUS * Math.sin(angle))
-      Y = Math.ceil(centerY - RADIUS * Math.cos(angle))
-      handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
-      clipRef.current?.setAttribute('y', String(offsetY))
-      onChange && onChange(value)
+    X = Math.ceil(centerX - RADIUS * Math.sin(angle))
+    Y = Math.ceil(centerY - RADIUS * Math.cos(angle))
+    handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
+    clipRef.current?.setAttribute('y', String(offsetY))
+    onChange && onChange(value)
   }
   const handlerMove = (event: Event) => {
     const { offsetY } = (event as MouseEvent)
