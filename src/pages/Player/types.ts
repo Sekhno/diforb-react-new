@@ -79,6 +79,8 @@ export enum SessionStorage {
   RightVolume = '[RightVolume]',
   RightVolumeAdditional = '[RightVolumeAdditional]',
   LeftReverbVolume = '[LeftReverbVolume]',
-  RightReverbVolume = '[RightReverbVolume]'
+  RightReverbVolume = '[RightReverbVolume]',
+  LeftReverbVolumeAdditional = '[LeftReverbVolumeAdditional]',
+  RightReverbVolumeAdditional = '[RightReverbVolumeAdditional]'
 }
 

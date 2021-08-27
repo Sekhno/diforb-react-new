@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { fromEvent, Subscription } from 'rxjs'
 import { MouseEvents, ReverbsEnum } from '../types'
-import { PropsSliderInterface } from '../types'
+import { PropsSliderInterface, SessionStorage } from '../types'
 import styles from './RangeSlider.module.scss'
 
 const RADIUS = 256
@@ -24,7 +24,7 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
   const handlerRef: React.MutableRefObject<SVGAElement | null> = useRef(null)
   const { 
     onChange, onChangeReverbType, 
-    additionalSides,
+    additionalSides, setAdditionalSides,
     leftReverbState, leftAdditionalReverbState
   } = props
 
@@ -32,17 +32,31 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
   let centerX = RADIUS + OFFSETX, centerY = RADIUS - OFFSETY
   let X, Y
 
-  
-  const handlerMove = (event: Event) => {
-    const { offsetY } = (event as MouseEvent)
-    if (offsetY > TOP && offsetY <= BOTTOM) {
-      const value = (BOTTOM - offsetY)
-      angle = STARTANGLE + (offsetY - BOTTOM) * STEP
+  const translateHandler = (value: number) => {
+    const offsetY = BOTTOM - value
+    angle = STARTANGLE + (offsetY - BOTTOM) * STEP
       X = Math.ceil(centerX - RADIUS * Math.sin(angle))
       Y = Math.ceil(centerY - RADIUS * Math.cos(angle))
       handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
       clipRef.current?.setAttribute('y', String(offsetY))
       onChange && onChange(value)
+  }
+  const handlerMove = (event: Event) => {
+    const { offsetY } = (event as MouseEvent)
+    if (offsetY > TOP && offsetY <= BOTTOM) {
+      const value = (BOTTOM - offsetY)
+      setAdditionalSides && setAdditionalSides(
+        (prevState: boolean) => {
+          console.log(prevState)
+          if (prevState) {
+            sessionStorage.setItem(SessionStorage.LeftReverbVolumeAdditional, `${value}`)
+          } else {
+            sessionStorage.setItem(SessionStorage.LeftReverbVolume, `${value}`)
+          }
+          return prevState
+        }
+      )
+      translateHandler(value)
     }
   }
   const clickHandle = (type: ReverbsEnum) => {
@@ -101,14 +115,29 @@ export const ReverbLeft = (props: PropsSliderInterface) => {
   })
 
   useEffect(() => {
-    let mouseDownSubscribed: Subscription
-    X = Math.ceil(centerX - RADIUS * Math.sin(angle))
-    Y = Math.ceil(centerY - RADIUS * Math.cos(angle))
-    console.log(`X: ${X}, Y: ${Y}`)
+    let volume = null
     
-    handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
-    clipRef.current?.setAttribute('y', String(Math.abs(0.6 * (TOP - BOTTOM))))
+    if (additionalSides) {
+      volume = sessionStorage.getItem(SessionStorage.LeftReverbVolumeAdditional)
+      volume && translateHandler(+volume)
+    } else {
+      volume = sessionStorage.getItem(SessionStorage.LeftReverbVolume)
+      volume && translateHandler(+volume)
+    }
+    if (volume) {
+      translateHandler(+volume)
+    } else {
+      X = Math.ceil(centerX - RADIUS * Math.sin(angle))
+      Y = Math.ceil(centerY - RADIUS * Math.cos(angle))
+      console.log(`X: ${X}, Y: ${Y}`)
+      
+      handlerRef?.current?.setAttribute('transform', `translate(${X}, ${Y})`)  
+      clipRef.current?.setAttribute('y', String(Math.abs(0.6 * (TOP - BOTTOM))))
+    }
+  }, [ additionalSides ])
 
+  useEffect(() => {
+    let mouseDownSubscribed: Subscription
     if (handlerRef.current) {
       const svgElem = handlerRef.current.parentNode as SVGAElement
       mouseDownSubscribed = fromEvent(handlerRef.current, MouseEvents.MOUSEDOWN)

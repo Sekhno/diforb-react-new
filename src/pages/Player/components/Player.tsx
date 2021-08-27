@@ -117,6 +117,7 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 						<div className = { styles.sliderBottomLeft }>
 							<ReverbLeft 
 								additionalSides = { additionalSides }
+								setAdditionalSides = { setAdditionalSides }
 								leftReverbState = { leftReverbState }
 								leftAdditionalReverbState = { leftAdditionalReverbState }
 								onChange = { changeLeftReverVolumeGain } 
@@ -134,6 +135,7 @@ export const Player = forwardRef((props: PlayerPropsInterface, ref) => {
 						<div className = { styles.sliderBottomRight }>
 							<ReverbRight 
 								additionalSides = { additionalSides }
+								setAdditionalSides = { setAdditionalSides }
 								rightReverbState = { rightReverbState }
 								rightAdditionalReverbState = { rightAdditionalReverbState }
 								onChange = { changeRightReverVolumeGain } 
