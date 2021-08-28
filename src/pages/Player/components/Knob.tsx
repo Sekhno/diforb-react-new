@@ -16,7 +16,18 @@ const Knob = memo((props: any) => {
 	} = props
 	const tensionKnob = createRef()
 	
-	let knobInput: KnobInput, initialValue = 0
+	let knobInput: KnobInput, 
+	initialValue = additionalSides ? (
+		Number(sessionStorage.getItem(
+			side === Side.Left ? SessionStorage.LeftPitchAdditional : SessionStorage.RightPitchAdditional
+		))
+	) : (
+		Number(sessionStorage.getItem(
+			side === Side.Left ? SessionStorage.LeftPitch : SessionStorage.RightPitch
+		))
+	)
+		
+	
 
 	useEffect(() => {
 		knobInput = new KnobInput(tensionKnob.current, {
@@ -31,7 +42,17 @@ const Knob = memo((props: any) => {
 				let endY = this.r * Math.sin(theta) + 20;
 				this.indicatorRing.setAttribute('d', `M20,20l0,-${this.r}A${this.r},${this.r},0,0,${norm < 0.5 ? 0 : 1},${endX},${endY}Z`);
 				if (knobInput && knobInput.value !== undefined) {
-					initialValue = knobInput.value
+					additionalSides ? (
+						Number(sessionStorage.setItem(
+							side === Side.Left ? SessionStorage.LeftPitchAdditional : SessionStorage.RightPitchAdditional,
+							`${knobInput.value}`
+						))
+					) : (
+						Number(sessionStorage.setItem(
+							side === Side.Left ? SessionStorage.LeftPitch : SessionStorage.RightPitch,
+							`${knobInput.value}`
+						))
+					)
 					onChange(knobInput.value)
 				}
 			},
@@ -39,8 +60,8 @@ const Knob = memo((props: any) => {
 			max: 100,
 			initial: initialValue,
 		})
-		// knobInput.updateToInputValue()
-	}, [tensionKnob])
+		
+	}, [ tensionKnob, additionalSides ])
 
 	return (
 		<div

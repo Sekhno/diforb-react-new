@@ -17,6 +17,7 @@ import {
   changeLeftReverVolumeGain, changeRightReverVolumeGain,
   changeLeftAdditionalReverVolumeGain, changeRightAdditionalReverVolumeGain,
   changeLeftPitchValue, changeRightPitchValue,
+  changeLeftAdditionalPitchValue, changeRightAdditionalPitchValue,
   leftSoundBuffer, rightSoundBuffer,
   leftSoundAdditionalBuffer, rightSoundAdditionalBuffer,
   selectLeftReverb, selectRightReverb,
@@ -278,6 +279,26 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
       return prevState
     })
   }
+  const onChangeLeftPitchValue = (v: number) => {
+    setAdditionalSides(prevState => {
+      if (prevState) {
+        changeLeftAdditionalPitchValue(v)
+      } else {
+        changeLeftPitchValue(v)
+      }
+      return prevState
+    })
+  }
+  const onChangeRightPitchValue = (v: number) => {
+    setAdditionalSides(prevState => {
+      if (prevState) {
+        changeRightAdditionalPitchValue(v)
+      } else {
+        changeRightPitchValue(v)
+      }
+      return prevState
+    })
+  }
 
   return (
     <React.Fragment>
@@ -378,8 +399,8 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
               changeTimeshiftValue = { onChangeTimeshift }
               changeLeftVolumeValue = { onChangeLeftVolumeGain }
               changeRightVolumeValue = { onChangeRightVolumeGain }
-              changeLeftPitchValue = { changeLeftPitchValue }
-              changeRightPitchValue = { changeRightPitchValue }
+              changeLeftPitchValue = { onChangeLeftPitchValue }
+              changeRightPitchValue = { onChangeRightPitchValue }
               changeLeftReverVolumeGain = { onChangeLeftReverVolumeGain }
               changeRightReverVolumeGain = { onChangeRightReverVolumeGain }
               changeLeftReverType = { onSetLeftReverbs }

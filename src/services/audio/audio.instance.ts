@@ -286,6 +286,20 @@ const changeRightPitchValue = (gain: number) => {
   }
 }
 
+const changeLeftAdditionalPitchValue = (gain: number) => {
+  leftPitchValue = 0.01 * (gain + 100 )
+  if (source3) {
+    source3.playbackRate.value = leftPitchValue
+  }
+}
+
+const changeRightAdditionalPitchValue = (gain: number) => {
+  rightPitchValue = 0.01 * (gain + 100 )
+  if (source4) {
+    source4.playbackRate.value = rightPitchValue
+  }
+}
+
 const changeTimeshiftValue = (gain: number) => {
   timeshiftValue = gain
 }
@@ -474,6 +488,7 @@ export {
   changeLeftReverVolumeGain, changeRightReverVolumeGain,
   changeLeftAdditionalReverVolumeGain, changeRightAdditionalReverVolumeGain,
   changeLeftPitchValue, changeRightPitchValue,
+  changeLeftAdditionalPitchValue, changeRightAdditionalPitchValue,
   selectLeftReverb, selectRightReverb,
   selectLeftAdditionalReverb, selectRightAdditionalReverb,
   resetLeftReverb, resetRightReverb,
