@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { BrowserView, MobileOnlyView, TabletView, isMobileSafari } from 'react-device-detect'
 import DesktopWrapper from './DesktopWrapper'
-import TabletWrapper from './TabletWrapper'
+import TabletWrapper  from './TabletWrapper'
+import MobileWrapper  from './MobileWrapper'
 
 
 const DiforbApp: FC = (): JSX.Element =>  {
@@ -27,7 +28,7 @@ const DiforbApp: FC = (): JSX.Element =>  {
         <TabletWrapper/>
       </TabletView>
       <MobileOnlyView>
-        Mobile version comming soon! 
+        <MobileWrapper/>
       </MobileOnlyView>
     </React.Fragment>
   )
