@@ -49,7 +49,6 @@ export const LibItem = (props: PropsType) => {
       audio.play()
     } 
     return () => {
-      // setLibItemPlaying(null)
       audio.removeEventListener('timeupdate', updateTime)
       audio.pause()
     }
@@ -58,8 +57,6 @@ export const LibItem = (props: PropsType) => {
   useEffect(() => {
     if (!audio.paused && libItemPlaying !== id) {
       setPlaying(false)
-      // audio.removeEventListener('timeupdate', updateTime)
-      // audio.pause()
     }
   }, [ libItemPlaying ])
 

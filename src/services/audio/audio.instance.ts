@@ -6,6 +6,7 @@ import { setPlaying }           from '../../pages/Player/playerSlice'
 const rever1 = 'reverbs/DomesticLivingRoom.wav'
 const rever2 = 'reverbs/ElvedenHallLordsCloakroom.wav'
 const rever3 = 'reverbs/YorkMinster.wav'
+const TIMEOUT = 1000
 
 let context: AudioContext, analyser: AnalyserNode, compressor: DynamicsCompressorNode
 let leftReverb: ConvolverNode, rightReverb: ConvolverNode
@@ -332,8 +333,10 @@ const onPlay = () => {
           source1.disconnect()
           pausedSource1 = true
           if (pausedSource1 && pausedSource2 && pausedSource3 && pausedSource4) {
-            rec.stop()
-            autoPlay && init()
+            setTimeout(() => {
+              rec.stop()
+              autoPlay && init()
+            }, TIMEOUT)
           }
         }, {once: true})
         pausedSource1 = false
@@ -353,8 +356,10 @@ const onPlay = () => {
           source2.disconnect()
           pausedSource2 = true
           if (pausedSource1 && pausedSource2 && pausedSource3 && pausedSource4) {
-            rec.stop()
-            autoPlay && init()
+            setTimeout(() => {
+              rec.stop()
+              autoPlay && init()
+            }, TIMEOUT)
           }
         }, {once: true})
         pausedSource2 = false
@@ -374,8 +379,10 @@ const onPlay = () => {
           source3.disconnect()
           pausedSource3 = true
           if (pausedSource1 && pausedSource2 && pausedSource3 && pausedSource4) {
-            rec.stop()
-            autoPlay && init()
+            setTimeout(() => {
+              rec.stop()
+              autoPlay && init()
+            }, TIMEOUT)
           }
         }, {once: true})
         pausedSource3 = false
@@ -395,8 +402,10 @@ const onPlay = () => {
           source4.disconnect()
           pausedSource4 = true
           if (pausedSource1 && pausedSource2 && pausedSource3 && pausedSource4) {
-            rec.stop()
-            autoPlay && init()
+            setTimeout(() => {
+              rec.stop()
+              autoPlay && init()
+            }, TIMEOUT)
           }
         }, {once: true})
         pausedSource4 = false
