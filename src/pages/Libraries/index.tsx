@@ -14,6 +14,7 @@ const Libraries = (): JSX.Element => {
   const libraries = useSelector((state: StoreType) => state.dashboard.libraries)
   const dispatch = useDispatch()
   const [ current, setCurerent ] = useState<Library|null>(null)
+  const [ libItemPlaying, setLibItemPlaying ] = useState(null)
 
   useEffect(() => {
     dispatch(onLoadLibraries())
@@ -29,7 +30,11 @@ const Libraries = (): JSX.Element => {
             ? <div className = 'p-col-12'>Downloading</div> 
             : libraries.map(library => (
               <div key = { library.name } className = 'p-col-12 p-md-6 p-lg-3' style = {{ padding: '0.2rem' }}>
-                <LibItem data = { library }/>
+                <LibItem 
+                  data = { library }
+                  libItemPlaying = { libItemPlaying }
+                  setLibItemPlaying = { setLibItemPlaying }
+                />
               </div>
             ))
           }
@@ -41,7 +46,11 @@ const Libraries = (): JSX.Element => {
           {
             libraries.map(library => (
               <div key = { library.name } style = {{ margin: '0.2rem' }}>
-                <LibItem data = { library } setCurrent = { setCurerent }/>
+                <LibItem 
+                  data = { library } setCurrent = { setCurerent }
+                  libItemPlaying = { libItemPlaying }
+                  setLibItemPlaying = { setLibItemPlaying }
+                />
               </div>
             ))
           }

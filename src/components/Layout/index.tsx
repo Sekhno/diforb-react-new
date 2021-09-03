@@ -74,13 +74,13 @@ const Layout = (props: PropsType): JSX.Element => {
       <MobileOnlyView>
         <MobileSidebar visible = { visibleSidebar } onHide = {() => setVisibleSidebar(false)}/>
         <div className = { styles.mobileWrapper } style = {{filter: visibleSidebar ?'blur(3px)' : 'blur(0)'}}>
-          {/* <header className = { styles.header }>
-            <button className = 'icon-menu' onTouchStart = {()=> setVisibleSidebar(!visibleSidebar)}/>
+          <header className = { styles.header }>
+            <button className = 'icon-menu' onClick = {()=> setVisibleSidebar(!visibleSidebar)}/>
             <span>
               <span className = { styles.currentRoute }>{ currentRoute }</span>
               { currentSubroute && <span className = { styles.currentSubroute  }>/{ currentSubroute }</span> }
             </span>
-          </header> */}
+          </header>
           <div className = { styles.content }>
             { props.children }
           </div>

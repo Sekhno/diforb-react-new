@@ -8,13 +8,14 @@ import { IconsUI } from '../../models/enums'
 import styles from './LibItem.module.scss'
 
 interface PropsType {
-  data: Library,
+  data: Library
   setCurrent?: (current: Library) => void
+  libItemPlaying: string | null
+  setLibItemPlaying: Function
 }
 
 export const LibItem = (props: PropsType) => {
-  const { data, setCurrent } = props
-  
+  const { data, setCurrent, libItemPlaying, setLibItemPlaying } = props
   const { name, cover, tizer, id, develop } = data
   const history = useHistory()
   const audio = useMemo(() => new Audio(tizer), [tizer])
@@ -43,16 +44,24 @@ export const LibItem = (props: PropsType) => {
 
   useEffect(() => {
     if (playing) {
+      setLibItemPlaying(id)
       audio.addEventListener('timeupdate', updateTime)
       audio.play()
     } 
     return () => {
+      // setLibItemPlaying(null)
       audio.removeEventListener('timeupdate', updateTime)
       audio.pause()
     }
   }, [ playing ])
 
-  
+  useEffect(() => {
+    if (!audio.paused && libItemPlaying !== id) {
+      setPlaying(false)
+      // audio.removeEventListener('timeupdate', updateTime)
+      // audio.pause()
+    }
+  }, [ libItemPlaying ])
 
   return(
     <React.Fragment>
@@ -91,7 +100,9 @@ export const LibItem = (props: PropsType) => {
             <h1>{ name }</h1>
             <div className = { styles.controls }>
               <div className = { styles.buttons }>
-                <button onTouchStart = {() => setCurrent && setCurrent(data)}>Info</button>
+                <button 
+                  onClick = {() => setCurrent && setCurrent(data)}
+                >Info</button>
                 <i className = { !playing ? IconsUI.radialPlay: IconsUI.radialPause } 
                   onClick = {() => setPlaying(!playing)}/>
               </div>

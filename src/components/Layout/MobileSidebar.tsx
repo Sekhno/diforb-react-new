@@ -17,7 +17,7 @@ export const MobileSidebar = (props: PropsType) => {
 
   return(
     <Sidebar visible = { visible } onHide={ onHide } icons = {(
-      <button className = 'icon-close' onTouchStart = { onHide }/>
+      <button className = 'icon-close' style = {{fontSize: '1.4rem'}} onClick = { onHide }/>
     )}>
       <div className = { styles.mobileSidebar }>
         <div className = { styles.user }>
