@@ -14,7 +14,12 @@ export const PanelInfo = () => {
   const libraries = useSelector((state: StoreType) => state.dashboard.libraries)
   
   const data = current?.data === null && current.main && current.extra 
-    ? [ ...current.main, ...current.extra ] : []
+    ? [ ...current.main, ...current.extra ] 
+    : current?.data === null && current.main && current.extra && current.main2 && current.extra2
+      ? [ ...current.main,  ...current.extra, ...current.main2, ...current.extra2 ]
+      : [ ...(current?.data || []) ]
+
+  
 
   useEffect(() => {
     setPanelCollapsed(id ? false : true)
@@ -29,7 +34,7 @@ export const PanelInfo = () => {
         current 
         ? <div className = 'p-grid'>
           <div className = 'p-col-12 p-md-6'>
-            <figure>
+            <figure className = { styles.image }>
               <img src = { current.cover_retina } alt = {current?.name} style = {{width: '100%'}}/>
             </figure>
             <div className = 'p-d-flex p-jc-around p-pt-3'>
@@ -37,7 +42,7 @@ export const PanelInfo = () => {
                 <i className = { IconsUI.radialPlay }/> <span>Demo</span>
               </button>
               <button className = 'btn launch'>
-                <Link to = {`/app/${ current.name }`}>Launch</Link>
+                <Link to = {`/app/${ current.id }`}>Launch</Link>
               </button>
             </div>
           </div>

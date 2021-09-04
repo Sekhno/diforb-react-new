@@ -5084,7 +5084,7 @@ const LIBRARIES = [
       {
         name: 'Dirt',
         type: 'category',
-        icon: 'destruction',
+        icon: 'destruction-dirt',
         data: [
           {
             name: 'FallingLight',
@@ -5185,7 +5185,7 @@ const LIBRARIES = [
       {
         name: 'Metal',
         type: 'category',
-        icon: 'destruction',
+        icon: 'destruction-metal',
         data: [
           {
             name: 'Creak',

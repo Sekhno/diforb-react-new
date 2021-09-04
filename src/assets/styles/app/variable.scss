@@ -50,9 +50,16 @@ $sidebar-field-bg-a4: $backround-color-black-4;
 $sidebar-field-bg-a6: $backround-color-black-6;
 $sidebar-field-bg-a8: $backround-color-black-8;
 
+// Libraries
+$libraries-libitem-hover-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 1) 100%);
+
 // Player Component
 $player-size: 623px;
 $player-header-size: 70px;
+$player-wrapper-shadow-width: 1000px;
+$player-wrapper-shadow-height: 330px;
+$player-wrapper-shadow-transX: translateX(calc(-50% + 157px));
+$player-wrapper-shadow-image: url(../../../assets/img/circle-shadow.png);
 $player-wrapper-bg: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(162,162,162,1) 100%);
 $player-holder-bg: url(../../../assets/img/player_pattern.png),
   radial-gradient(ellipse at center, #d9d9d3 21%,#f3f8f8 41%,#f5f5f5 55%,#ccc 95%);

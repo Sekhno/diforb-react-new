@@ -9,6 +9,25 @@
   border-radius: 50%;
 	background: $player-wrapper-bg;
 
+  &:before {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    content: '';
+    clear: both;
+    display: block;
+    width: $player-wrapper-shadow-width;
+    height: $player-wrapper-shadow-height;
+    background-image: $player-wrapper-shadow-image;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    
+   
+    transform: $player-wrapper-shadow-transX;
+    z-index: -1;
+    
+  }
+
   > .holder {
     padding:22px;
     width: 100%;
