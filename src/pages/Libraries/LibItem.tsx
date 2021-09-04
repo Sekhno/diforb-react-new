@@ -63,9 +63,9 @@ export const LibItem = (props: PropsType) => {
   return(
     <React.Fragment>
       <BrowserView>
-      {
-        !loadedPreview && <Skeleton height = '18vw'/>
-      }
+        {
+          !loadedPreview && <Skeleton height = '18vw'/>
+        }
         
         <div className = { styles.wrapper } 
           style = {!loadedPreview ? { position: 'absolute', opacity: 0 } : {position: 'static', opacity: 1}}>
@@ -91,7 +91,7 @@ export const LibItem = (props: PropsType) => {
       <MobileOnlyView>
         <div className = { styles.mobileWrapper }>
           <figure>
-            <img src = { cover } alt = { name } />
+            <img src = { cover } alt = { name } onLoad = {() => setLoadedPreview(true)}/>
           </figure>
           <section>
             <h1>{ name }</h1>
@@ -109,6 +109,7 @@ export const LibItem = (props: PropsType) => {
             </div>
           </section>
         </div>
+        
       </MobileOnlyView>
     </React.Fragment>
     

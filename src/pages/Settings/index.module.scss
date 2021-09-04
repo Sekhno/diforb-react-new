@@ -1,0 +1,22 @@
+@import '../../assets/styles/app/variable.scss';
+
+.wrapper {
+  padding: 1rem;
+
+  .inputtext {
+    
+    line-height: 30px;
+    appearance: none;
+    text-align: center;
+    color: $auth-form-input-color;
+    border-radius: 4px;
+    border: $auth-form-input-border;
+    background-color: $auth-form-input-background;
+    -webkit-text-fill-color: $auth-form-input-text-fill-color;
+    
+
+    & + label {
+      color: $white;
+    }
+  }
+}
