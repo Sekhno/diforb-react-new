@@ -14,7 +14,7 @@ const Terms = () => {
         <br/> <br />
         Getting any of sound effects from Diforb, you accept and agree to all the issues and terms stated in this License Agreement.
         <br /> <br />
-        If you have any questions, please, contact us by e-mail <a href = 'mailto:support@diforb.com'>support@diforb.com</a>
+        If you have any questions, please, contact us by e-mail <a href = 'mailto:promo@diforb.net'>promo@diforb.net</a>
       </p>
     </div>
   )

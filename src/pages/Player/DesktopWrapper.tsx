@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, ReactNode, createRef, RefObject, useMemo } from 'react'
+import React, { FC, useEffect, useState, ReactNode, createRef, RefObject } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { withRouter, useParams } from 'react-router-dom'
 import { PlayState, Tween, Timeline } from 'react-gsap'
@@ -86,7 +86,7 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
       })
     }
     dispatch(onLoadLibraries())
-  }, [])
+  })
 
   useEffect(() => {
     if (!playing) {
