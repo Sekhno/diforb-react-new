@@ -63,16 +63,16 @@ export const LibItem = (props: PropsType) => {
   return(
     <React.Fragment>
       <BrowserView>
-        {
-          !loadedPreview && <Skeleton height = '18vw'/>
-        }
+        {/*{*/}
+        {/*  !loadedPreview && <Skeleton height = '18vw'/>*/}
+        {/*}*/}
         
         <div className = { styles.wrapper } 
-          style = {!loadedPreview ? { position: 'absolute', opacity: 0 } : {position: 'static', opacity: 1}}>
-          <figure onClick = {() => {
-            history.push(`/libraries/${name}`)
-          }}>
-            <img src = { cover } alt = { name } onLoad = {() => setLoadedPreview(true) }/>
+             style = {!loadedPreview ? { position: 'absolute', opacity: 0 } : {position: 'static', opacity: 1}}>
+          <figure onClick = {() => { history.push(`/libraries/${name}`) }}>
+            <img src = { cover } alt = { name }
+                 className={ loadedPreview ? styles.loaded : '' }
+                 onLoad = {() => setLoadedPreview(true) }/>
           </figure>
           <h1>{ name }</h1>
           <div className = { styles.controls }>

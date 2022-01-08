@@ -13,7 +13,7 @@ import { Library } from '../../helpers/firebase.interface'
 const Libraries = (): JSX.Element => {
   const libraries = useSelector((state: StoreType) => state.dashboard.libraries)
   const dispatch = useDispatch()
-  const [ current, setCurerent ] = useState<Library|null>(null)
+  const [ current, setCurrent ] = useState<Library|null>(null)
   const [ libItemPlaying, setLibItemPlaying ] = useState(null)
 
   useEffect(() => {
@@ -41,13 +41,13 @@ const Libraries = (): JSX.Element => {
         </div>
       </BrowserView>
       <MobileOnlyView>
-        <MobileSidebarInfo current = { current } setCurerent = { setCurerent }/>
+        <MobileSidebarInfo current = { current } setCurerent = { setCurrent }/>
         <div style = {{ filter: current ? 'blur(3px)' : 'blur(0)' }}>
           {
             libraries.map(library => (
               <div key = { library.name } style = {{ margin: '0.2rem' }}>
                 <LibItem 
-                  data = { library } setCurrent = { setCurerent }
+                  data = { library } setCurrent = { setCurrent }
                   libItemPlaying = { libItemPlaying }
                   setLibItemPlaying = { setLibItemPlaying }
                 />
