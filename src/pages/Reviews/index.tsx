@@ -6,6 +6,7 @@ import { format } from 'date-fns'
 import { getFirebaseFirestore, getFirebaseBackend } from '../../helpers/firebase.helper'
 import { Review } from '../../helpers/firebase.interface'
 import styles     from './index.module.scss'
+import DuiAvatar from "../../components/Common/DuiAvatar";
 
 const REVIEWS = 'reviews'
 
@@ -85,11 +86,7 @@ const Reviews = () => {
               return (
                 <li key = {i}>
                   <div className = { styles.avatar }>
-                    {
-                      photo ?
-                      <Avatar image = { photo } shape = 'circle'/> :
-                      <Avatar icon = 'icon-user' shape = 'circle'/>
-                    }
+                    <DuiAvatar photo = { photo }/>
                   </div>
                   <div className = { styles.article }>
                     <div className = { styles.date }>
