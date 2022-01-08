@@ -119,6 +119,15 @@ a {
     border-top-color: transparent;
     border-radius: 0 0 3px 0;
   }
+
+  p, ul {
+    padding: 1rem;
+  }
+
+  .link {
+    color: $blue-dark;
+  }
+
 }
 
 

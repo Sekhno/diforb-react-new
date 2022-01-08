@@ -6,13 +6,13 @@
 @import '../node_modules/primereact/resources/themes/saga-blue/theme.css';
 @import '../node_modules/primereact/resources/primereact.min.css';
 // @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-@import 'primeflex/src/_variables.scss';
-@import 'primeflex/src/_grid.scss';
+@import '../node_modules/primeflex/src/_variables.scss';
+@import '../node_modules/primeflex/src/_grid.scss';
 // @import 'primeflex/src/_formlayout.scss';
-@import 'primeflex/src/_display.scss';
-@import 'primeflex/src/_text.scss';
-@import 'primeflex/src/flexbox/_flexbox.scss';
-@import 'primeflex/src/_spacing.scss';
+@import '../node_modules/primeflex/src/_display.scss';
+@import '../node_modules/primeflex/src/_text.scss';
+@import '../node_modules/primeflex/src/flexbox/_flexbox.scss';
+@import '../node_modules/primeflex/src/_spacing.scss';
 // @import 'primeflex/src/_elevation.scss';
 
 
@@ -53,7 +53,7 @@
 @import './assets/styles/app/progressbar.custom.scss';
 @import './assets/styles/app/button.custom.scss';
 @import './assets/styles/app/avatar.custom.scss';
-@import './assets//styles/app/tabmenu.custom.scss';
+@import './assets/styles/app/tabmenu.custom.scss';
 @import './assets/styles/app/inputswitch.custom.scss';
 @import './assets/styles/app/scrollpanel.custom.scss';
 @import './assets/styles/app/panel.custom.scss';

@@ -2,10 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-
 const Privacy = () => {
   return(
-    <div className = 'paperWrapper'>
+    <div className='paperWrapper'>
       <p>Protection of your privacy is crucial to us. We have taken all necessary precautions to ensure for your personal data to be protected and not passed on to any third parties. Please note that by entering our site, you agree to the privacy policy described below:</p>
 
       <h1>Collection of personal information consent</h1>
@@ -44,7 +43,7 @@ const Privacy = () => {
       <p>Like many other websites, we use the technology called "cookie" files for the registration of users and the usage of other functions of the site. A "cookie" is a small portion of data that is stored on your computer to collect data in order to improve our service. "Cookies" can not gather data off your hard disk or read other "cookie" files created by different sites. You can minimize or block "cookies" using the privacy settings of your web browser, however, this may affect the site performance. More information about "cookies" can be reached using the link - http://www.allaboutcookies.org/</p>
 
       <h1>Contact information</h1>
-      <p>If you have any questions, please, contact us by e-mail support@diforb.com</p>
+      <p>If you have any questions, please, contact us by e-mail <a className='link' href='mailto: promo@diforb.net'>DifOrb</a></p>
     </div>
   )
 }
