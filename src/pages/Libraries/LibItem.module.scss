@@ -15,13 +15,12 @@
     overflow: hidden;
 
     img {
+      display: block;
       width: 100%;
       position: absolute;
       left: 50%; top: 50%;
       transform: translate3d(-50%, -50%, 0) scale(1);
       opacity: 0;
-      //object-fit: cover;
-      //transform: scale(1);
       transition: all .5s;
 
       &.loaded {
@@ -35,32 +34,24 @@
       float: left;
     }
 
-    //&::after, &::before {
-    //  position: absolute;
-    //  content: '';
-    //  clear: both;
-    //  display: block;
-    //  opacity: 0;
-    //  transition: opacity .3s cubic-bezier(0.39, 0.575, 0.565, 1);
-    //}
-    //
-    //&::after {
-    //  top: 0; left: 0;
-    //  width: 100%;
-    //  height: 100%;
-    //  background: $libraries-libitem-hover-gradient;
-    //  z-index: 0;
-    //}
+    .shadow {
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      width: 100%; height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+      padding-bottom: 1rem;
 
-    //&::before {
-    //  bottom: 1rem;
-    //  content: 'click for details';
-    //  width: 100%;
-    //  text-transform: uppercase;
-    //  text-align: center;
-    //  color: $green;
-    //  z-index: 1;
-    //}
+      text-transform: uppercase;
+      text-align: center;
+      color: $green;
+
+      background: $libraries-libitem-hover-gradient;
+      transition: opacity .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+      opacity: 0;
+      z-index: 1;
+    }
 
     &:hover {
       cursor: pointer;
@@ -69,7 +60,7 @@
         transform: translate3d(-50%, -50%, 0) scale(1.1);
       }
 
-      &::after, &::before {
+      .shadow {
         opacity: 1;
       }
     }

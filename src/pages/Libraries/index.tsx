@@ -1,6 +1,6 @@
-import React, { useEffect, useState, createRef, Fragment } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
-import { withRouter, useParams, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { BrowserView, MobileOnlyView } from 'react-device-detect'
 
 import { StoreType }        from '../../store/types'
@@ -21,7 +21,7 @@ const Libraries = (): JSX.Element => {
   }, [])
 
   return (
-    <React.Fragment>
+    <Fragment>
       <BrowserView>
         <PanelInfo/>
         <div className = 'p-grid' style = {{margin: '.2rem'}}>
@@ -56,7 +56,7 @@ const Libraries = (): JSX.Element => {
           }
         </div>
       </MobileOnlyView>
-    </React.Fragment>
+    </Fragment>
   )
 }
 
