@@ -86,7 +86,7 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
       })
     }
     dispatch(onLoadLibraries())
-  })
+  }, [])
 
   useEffect(() => {
     if (!playing) {
