@@ -331,7 +331,6 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
                 <Tween to = {{y: 0}} ease = 'Bounce.easeOut'/>
               </Timeline>
             </div>
-            <div>Press Esc key for startup menu</div>
             <div className = { styles.rightSide }>
               <InputSwitch checked = { rightMute } onChange={(e) => onChangeRightMute(e.value)} />
               <i className = { rightMute ? 'icon-volume' : 'icon-volume-off' }/>
