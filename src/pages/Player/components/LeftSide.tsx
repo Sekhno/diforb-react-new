@@ -91,7 +91,7 @@ const LeftSide = (props: PropsSideInterface) => {
             ) :
             data.map((category, i) => (
               <li key = { category.name } 
-                className = { activeCategory === i ? styles.active : '' }>
+                  className = { activeCategory === i ? styles.active : '' }>
                 <div onClick = {() => clickCategory(i)}>
                   <i className = { category.icon }/>
                   <span>{ category.name }</span>
@@ -102,12 +102,12 @@ const LeftSide = (props: PropsSideInterface) => {
                     {
                       category.data.map((subcategory, i) => (
                         <Tween key = { subcategory.name } 
-                          from = {{ x: -50, opacity: 0 }} duration = { TIME } 
-                          stagger = {() => i * TIME}
-                          playState = { playStateSubcategory }>
+                               from = {{ x: -50, opacity: 0 }} duration = { TIME }
+                               stagger = {() => i * TIME}
+                               playState = { playStateSubcategory }>
                           <li className = { styles.subcategoryItem }>
                             <div className = { getClassIfTypeSound(subcategory.type, category.name, subcategory.name, i) }
-                              onClick = {() => clickSubcategory(i, category.name, subcategory.type, subcategory.name)}
+                                 onClick = {() => clickSubcategory(i, category.name, subcategory.type, subcategory.name)}
                             >
                               {/* <span className='amb-icons'>&#43303;</span> */}
                               <i className = { subcategory.icon || category.icon }/>
