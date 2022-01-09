@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { BrowserView, MobileOnlyView } from 'react-device-detect'
 import { ProgressBar, ProgressBarProps } from 'primereact/progressbar'
-import { Skeleton } from 'primereact/skeleton'
 import { Library } from '../../helpers/firebase.interface'
 import { IconsUI } from '../../models/enums'
 import styles from './LibItem.module.scss'
@@ -16,7 +15,7 @@ interface PropsType {
 
 export const LibItem = (props: PropsType) => {
   const { data, setCurrent, libItemPlaying, setLibItemPlaying } = props
-  const { name, cover, tizer, id, develop } = data
+  const { name, cover, tizer, id } = data
   const history = useHistory()
   const audio = useMemo(() => new Audio(tizer), [tizer])
   const [ progress, setProgress ] = useState(0)
@@ -63,16 +62,13 @@ export const LibItem = (props: PropsType) => {
   return(
     <React.Fragment>
       <BrowserView>
-        {/*{*/}
-        {/*  !loadedPreview && <Skeleton height = '18vw'/>*/}
-        {/*}*/}
         
-        <div className = { styles.wrapper } 
-             style = {!loadedPreview ? { position: 'absolute', opacity: 0 } : {position: 'static', opacity: 1}}>
+        <div className = { styles.wrapper }>
           <figure onClick = {() => { history.push(`/libraries/${name}`) }}>
             <img src = { cover } alt = { name }
                  className={ loadedPreview ? styles.loaded : '' }
                  onLoad = {() => setLoadedPreview(true) }/>
+            <div className = { styles.shadow }>click for details</div>
           </figure>
           <h1>{ name }</h1>
           <div className = { styles.controls }>
