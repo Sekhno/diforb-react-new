@@ -1,6 +1,6 @@
 import React from 'react'
-import { Avatar }             from 'primereact/avatar'
 import { getFirebaseBackend } from '../../helpers/firebase.helper'
+import DuiAvatar from "../Common/DuiAvatar";
 
 const stylesWrapper = {
   display: 'flex',
@@ -12,15 +12,11 @@ const stylesName = {
 }
 
 export const CustomAvatar = () => {
-  const user = getFirebaseBackend()?.getAuthenticatedUser()
+  const user = getFirebaseBackend()?.getAuthenticatedUser();
+
   return(
     <div style = { stylesWrapper }>
-      {
-        user?.photoURL
-        ? <Avatar image = { user?.photoURL } shape = 'circle'/>
-        : <Avatar icon = 'icon-avatar' shape = 'circle'/>
-      }
-      
+      <DuiAvatar photo = { user?.photoURL || '' }/>
       <div style = { stylesName }>
         <b>Hello</b> <br /> 
         <span>{ user?.displayName ? user?.displayName : user?.email }</span> 
