@@ -10,17 +10,6 @@
   .categories {
     align-items: flex-start;
 
-    > li {
-      > div {
-        > span {
-          width: 100%;
-          text-align: center;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-    }
-
     .subcategory {
       left: $side-category-size;
       padding-left: 1rem;
@@ -66,17 +55,6 @@
 .rightSide {
   .categories {
     align-items: flex-end;
-
-    > li {
-      > div {
-        > span {
-          width: 100%;
-          text-align: center;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
-    }
 
     .subcategory {
       right: $side-category-size;
@@ -138,6 +116,15 @@
       width: $side-category-size;
       height: $side-category-size;
       box-shadow: $side-category-shadow;
+
+      > div {
+        > span {
+          width: 100%;
+          text-align: center;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
       
       &.active {
         > div {
@@ -292,6 +279,21 @@
       
       background: linear-gradient(180deg,#63eff5 0,#54c75e);
     }
+  }
+
+  .arrowUp,
+  .arrowDown {
+    position: fixed;
+    width: $side-category-size;
+    text-align: center;
+  }
+
+  .arrowUp {
+    top: $side-category-arrow-up-top;
+  }
+
+  .arrowDown {
+    bottom: $side-category-arrow-down-bottom;
   }
 }
 

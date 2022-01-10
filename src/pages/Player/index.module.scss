@@ -63,7 +63,7 @@ main {
 .wrapper {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: $side-wrapper-height;
   // overflow: hidden;
   display: grid;
   grid-template-columns: [LEFT] 1fr [LEFT_SIDE_PLAYER] 650px [RIGHT_SIDE_PLAYER] 1fr [RIGHT];
@@ -109,7 +109,7 @@ main {
     justify-content: center;
     align-items: center;
     position: relative;
-    top: -$side-category-size
+    top: $player-offset-top;
   }
 }
 
