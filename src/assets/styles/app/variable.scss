@@ -56,6 +56,7 @@ $libraries-libitem-hover-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0.5)
 // Player Component
 $player-size: 623px;
 $player-header-size: 70px;
+$player-offset-top: -40px;
 $player-wrapper-shadow-width: 1000px;
 $player-wrapper-shadow-height: 330px;
 $player-wrapper-shadow-transX: translateX(calc(-50% + 157px));
@@ -77,8 +78,12 @@ $player-wave-bg-image:
 $player-wave-bg-size: 90px 90px, 90px 90px, 15px 15px, 15px 15px, 5px 5px, 5px 5px;
 $player-wave-bg-position: -2px 0px, 0px -2px, -1px 1px, 1px -1px, 0px -4px, -4px 0px;
 
+
 // Left & Right Side Component
+$side-wrapper-height: calc(100vh - 71px);
 $side-category-size: 80px;
+$side-category-arrow-up-top: 71px;
+$side-category-arrow-down-bottom: 0px;
 $side-category-shadow: 0 -1px rgba(black, .1) inset, 0 1px rgba(white, .2);
 $side-sound-active-shadow: 1px 1px 1px black;
 

@@ -86,6 +86,11 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
       })
     }
     dispatch(onLoadLibraries())
+    {
+      const wrapper = document.querySelector('#wrapper')
+      const height: number = (wrapper as HTMLElement).getBoundingClientRect().height
+      console.log(height)
+    }
   }, [])
 
   useEffect(() => {
@@ -359,7 +364,7 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
             </div>
           </header>
         }
-        <div className = { styles.wrapper }>
+        <div className = { styles.wrapper } id='wrapper'>
           <div className = { styles.leftSide }>
             {
               library?.four_sound ?

@@ -55,14 +55,14 @@ const LeftSide = (props: PropsSideInterface) => {
   const currentSound = (visibleCategory: string, visibleSub: string, visibleSound: string, i: number): boolean => {
     const { category, sub, sound } = active
     return visibleCategory === category 
-    && visibleSub === sub
-    && visibleSound === sound
-    && activeSound === i
+      && visibleSub === sub
+        && visibleSound === sound
+          && activeSound === i
   }
   const currentSubSound = (visibleCategory: string, visibleSubSound: string, i: number): boolean => {
     const { category, sound } = active
     return visibleCategory === category 
-    && visibleSubSound === sound
+      && visibleSubSound === sound
   }
   const getClassIfTypeSound = (type: string, visibleCategory: string, visibleSound: string, i: number) => {
     if (type === SoundListType.sound) {
@@ -78,6 +78,7 @@ const LeftSide = (props: PropsSideInterface) => {
 
   return(
       <div className = { styles.leftSide }>
+
         <ul className = { styles.categories }>
           {
             !library ? (
@@ -146,10 +147,18 @@ const LeftSide = (props: PropsSideInterface) => {
             ))
           }
         </ul>
-        <Tween to = {{ y: activeCategory * 80 }} duration = { TIME }  ease = 'back.out(1.7)'
-          playState = { PlayState.play }>
+        <Tween to = {{ y: activeCategory * 80 }}
+               duration = { TIME }
+               ease = 'back.out(1.7)'
+               playState = { PlayState.play }>
           <div className = { styles.categoryShadow }/>
         </Tween>
+        {/*<div className = { styles.arrowUp }>*/}
+        {/*  <i className='icon-chevron-up'/>*/}
+        {/*</div>*/}
+        {/*<div className = { styles.arrowDown }>*/}
+        {/*  <i className='icon-chevron-down'/>*/}
+        {/*</div>*/}
       </div>
     
   )
