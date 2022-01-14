@@ -36,7 +36,7 @@ import { ReverbsEnum, ReverbType, KeypressEvent, ActiveSound, StateToProps, Reve
 import { StoreType } from '../../store/types'
 import { onLoadLibraries } from '../../async/dashboardAction'
 import LayoutSidebar  from '../../components/Layout/Sidebar'
-import layotStyles from '../../components/Layout/index.module.scss'
+import layoutStyles from '../../components/Layout/index.module.scss'
 import styles from './index.module.scss'
 
 interface PlayerProps {
@@ -454,8 +454,11 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
           </div>
         </div>
       </main>
-      <Sidebar className = { styles.menu } visible = { activeMenu } fullScreen onHide={() => setActiveMenu(false)}>
-        <LayoutSidebar className = { layotStyles.sidebar }/>
+      <Sidebar className = { styles.menu }
+               visible = { activeMenu }
+               fullScreen
+               onHide={() => setActiveMenu(false)}>
+        <LayoutSidebar className = { layoutStyles.sidebar }/>
       </Sidebar>
     </React.Fragment>
   )

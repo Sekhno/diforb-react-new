@@ -1,5 +1,22 @@
 @import '../../assets/styles/app/variable.scss';
 
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInLeft {
+  animation-name: fadeInLeft;
+}
+
+
 .wrapper {
   margin: auto;
   max-width: 1280px;
@@ -8,7 +25,9 @@
   grid-template-columns: [start] 270px [middleStart] 1rem [middleEnd] auto [end];
   grid-template-rows: [top] 70px [endHeader] auto [bottom];
 
+
   .sidebar {
+
     grid-column-start: start;
     grid-column-end: middleStart;
     grid-row-start: top;
@@ -56,10 +75,13 @@
 .sidebar {
   display: flex;
   flex-direction: column;
+  animation-name: fadeInLeft;
+  animation-duration: .3s;
 
   > div {
     border-bottom: $sidebar-field-border-bottom;
     background-color: $sidebar-field-bg-a4;
+
   }
 
   .logo {
@@ -239,4 +261,5 @@
     }
   }
 }
+
 
