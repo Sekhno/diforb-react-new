@@ -116,9 +116,13 @@ main {
 .menu {
   background-color: $backround-color-black-4 !important;
 
+  [class='p-sidebar-header'] {
+    display: none !important;
+  }
+
   [class='p-sidebar-header'],
   [class='p-sidebar-content'] {
-    padding: 0;
+    padding: 0 !important;
     display: flex;
 
     > div {
