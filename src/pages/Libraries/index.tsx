@@ -30,10 +30,9 @@ const Libraries = (): JSX.Element => {
             ? <div className = 'p-col-12'>Downloading</div> 
             : libraries.map(library => (
               <div key = { library.name } className = 'p-col-12 p-md-6 p-lg-3' style = {{ padding: '0.2rem' }}>
-                <LibItem 
-                  data = { library }
-                  libItemPlaying = { libItemPlaying }
-                  setLibItemPlaying = { setLibItemPlaying }
+                <LibItem  data = { library }
+                          libItemPlaying = { libItemPlaying }
+                          setLibItemPlaying = { setLibItemPlaying }
                 />
               </div>
             ))
@@ -46,10 +45,9 @@ const Libraries = (): JSX.Element => {
           {
             libraries.map(library => (
               <div key = { library.name } style = {{ margin: '0.2rem' }}>
-                <LibItem 
-                  data = { library } setCurrent = { setCurrent }
-                  libItemPlaying = { libItemPlaying }
-                  setLibItemPlaying = { setLibItemPlaying }
+                <LibItem  data = { library } setCurrent = { setCurrent }
+                          libItemPlaying = { libItemPlaying }
+                          setLibItemPlaying = { setLibItemPlaying }
                 />
               </div>
             ))
