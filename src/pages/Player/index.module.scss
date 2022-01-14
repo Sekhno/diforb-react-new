@@ -119,11 +119,10 @@ main {
   [class='p-sidebar-header'],
   [class='p-sidebar-content'] {
     padding: 0;
-    
     display: flex;
+
     > div {
       width: 300px;
     }
-    // background-color: $backround-color-black-6;
   }
 }
