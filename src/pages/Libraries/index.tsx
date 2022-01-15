@@ -9,6 +9,7 @@ import LibItem              from './LibItem'
 import PanelInfo            from './PanelInfo'
 import MobileSidebarInfo    from './MobileSidebarInfo'
 import { Library } from '../../helpers/firebase.interface'
+import { DuiPreload } from '../../components/Common/DuiPreload'
 
 const Libraries = (): JSX.Element => {
   const libraries = useSelector((state: StoreType) => state.dashboard.libraries)
@@ -18,7 +19,7 @@ const Libraries = (): JSX.Element => {
 
   useEffect(() => {
     dispatch(onLoadLibraries())
-  }, [])
+  }, [dispatch])
 
   return (
     <Fragment>
@@ -27,7 +28,7 @@ const Libraries = (): JSX.Element => {
         <div className = 'p-grid' style = {{margin: '.2rem'}}>
           {
             !libraries.length
-            ? <div className = 'p-col-12'>Downloading</div> 
+            ? <div className = 'p-col-12'><DuiPreload/></div>
             : libraries.map(library => (
               <div key = { library.name } className = 'p-col-12 p-md-6 p-lg-3' style = {{ padding: '0.2rem' }}>
                 <LibItem  data = { library }

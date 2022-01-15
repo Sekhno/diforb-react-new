@@ -27,7 +27,8 @@
 
 
   .sidebar {
-
+    animation-name: initial;
+    animation-duration: initial;
     grid-column-start: start;
     grid-column-end: middleStart;
     grid-row-start: top;
