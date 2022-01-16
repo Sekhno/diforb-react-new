@@ -1,10 +1,11 @@
-import React, { FC, useEffect, useState, ReactNode, createRef, RefObject } from 'react'
+import React, {FC, useEffect, useState, ReactNode, createRef, RefObject, useRef} from 'react'
 import { connect, useDispatch, useSelector } from 'react-redux'
 import { withRouter, useParams } from 'react-router-dom'
 import { PlayState, Tween, Timeline } from 'react-gsap'
 import { fromEvent, filter, distinctUntilChanged } from 'rxjs'
 import { InputSwitch } from 'primereact/inputswitch'
 import { Sidebar } from 'primereact/sidebar'
+import { Toast } from 'primereact/toast';
 import { 
   setupRoutingGraph, 
   setupReverbBuffers,
@@ -58,6 +59,7 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
   const { playing } = props
   const { id } = useParams<{id: string}>()
   const canvasRef = createRef()
+  const toast = useRef<any>(null)
   const library = useSelector((state: StoreType) => state.dashboard.libraries).filter(v => v.id === id)[0]
   const dispatch = useDispatch()
   const [ activeLeftSound, setActiveLeftSound ] = useState(defaultActiveSound)
@@ -90,6 +92,9 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
       const wrapper = document.querySelector('#wrapper')
       const height: number = (wrapper as HTMLElement).getBoundingClientRect().height
       console.log(height)
+    }
+    if (toast) {
+      toast.current.show({ severity: 'info', summary: 'Info', detail: 'Press Esc for Menu', sticky: true });
     }
   }, [])
 
@@ -460,6 +465,7 @@ const DesktopWrapper: FC = (props: PlayerProps): JSX.Element =>  {
                onHide={() => setActiveMenu(false)}>
         <LayoutSidebar className = { layoutStyles.sidebar }/>
       </Sidebar>
+      <Toast ref = { toast } position = 'bottom-center' />
     </React.Fragment>
   )
   
