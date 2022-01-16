@@ -6,6 +6,7 @@ import { PropsSideInterface, SoundListType, ActiveSound } from '../types'
 import styles from './Side.module.scss'
 
 const TIME = .3
+const HEIGHT = (window.innerHeight - 88) + 'px'
 const defaultActiveSound: ActiveSound = {
   category: '',
   sub: '',
@@ -98,7 +99,7 @@ export const RightSide = (props: PropsSideInterface) => {
               </div>
               
               <ul className = { styles.subcategory }>
-                <ScrollPanel className = { styles.scrollPanel }>
+                <ScrollPanel className = { styles.scrollPanel } style={{ height: HEIGHT, width: '100%' }}>
                   {
                     category.data.map((subcategory, i) => (
                       <Tween key = { subcategory.name } 
