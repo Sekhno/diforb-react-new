@@ -1,0 +1,26 @@
+//p-toast	Main container element.
+//p-toast-container	Container of a message item.
+//p-toast-item	Message element.
+//p-toast-icon-close	Close icon of a message.
+//p-toast-image	Severity icon.
+//p-toast-message	Container of message texts.
+//p-toast-title	Summary of the message.
+
+.p-toast-icon-close {
+  > span {
+    font-family: 'Diforb_ui' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    &:after {
+      content: "\c108";
+    }
+  }
+}
