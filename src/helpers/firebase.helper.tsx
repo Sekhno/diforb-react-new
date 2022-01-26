@@ -1,4 +1,6 @@
 import firebase from 'firebase/app'
+import 'firebase/analytics';
+
 
 // Add the Firebase products that you want to use
 import 'firebase/auth'
@@ -16,6 +18,7 @@ class FirebaseAuthBackend {
     if (firebaseConfig) {
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig)
+      firebase.analytics()
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
           // localStorage.setItem('authUser', JSON.stringify(user))
