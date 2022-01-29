@@ -3,7 +3,9 @@ import { PlayState, Tween } from 'react-gsap'
 import { Skeleton } from 'primereact/skeleton'
 import { ScrollPanel } from 'primereact/scrollpanel'
 import { PropsSideInterface, SoundListType, ActiveSound } from '../types'
+import SubName from './SubName';
 import styles from './Side.module.scss'
+
 
 const TIME = .3
 const HEIGHT = (window.innerHeight - 88) + 'px'
@@ -117,20 +119,19 @@ const LeftSide = (props: PropsSideInterface) => {
                             </div>
                             {
                               subcategory.type === SoundListType.sub &&
-                              <Tween
-                                from = {{ height: 0, opacity: 0 }} duration = { TIME }
-                                playState = { activeSubCategory === i ? PlayState.play : PlayState.reverse }>
+                              <Tween from = {{ height: 0, opacity: 0 }}
+                                     duration = { TIME }
+                                     playState = { activeSubCategory === i ? PlayState.play : PlayState.reverse }>
                                 <ul className = { styles.sounds }>
                                   {
                                     subcategory.data.map((sound, i) => (
                                       <li className = { styles.sound } 
-                                        key = { `${subcategory.name}_${sound.name}` } 
-                                        onClick = {() => clickSound(category.name, subcategory.name, sound.name, i)}
-                                      >
+                                          key = { `${subcategory.name}_${sound.name}` }
+                                          onClick = {() => clickSound(category.name, subcategory.name, sound.name, i)}>
                                         <span datatype = {sound.name} 
-                                          className = { loading && currentSound(category.name, subcategory.name, sound.name, i) 
-                                            ? styles.loading 
-                                            : !loading && currentSound(category.name, subcategory.name, sound.name, i) ? styles.active : '' }
+                                              className = { loading && currentSound(category.name, subcategory.name, sound.name, i)
+                                                ? styles.loading
+                                                : !loading && currentSound(category.name, subcategory.name, sound.name, i) ? styles.active : '' }
                                         >{ sound.name }</span>
                                       </li>
                                     ))
