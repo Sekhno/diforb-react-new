@@ -23,6 +23,7 @@
       .subcategoryItem {
         > div {
           span {
+            white-space: nowrap;
             padding-left: .5rem;
           }
         }
@@ -73,6 +74,7 @@
           flex-direction: row-reverse;
 
           span {
+            white-space: nowrap;
             padding-right: .5rem;
           }
         }
