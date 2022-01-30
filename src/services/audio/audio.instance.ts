@@ -17,8 +17,8 @@ let leftVolumeGain: GainNode, rightVolumeGain: GainNode
 let leftVolumeAdditionalGain: GainNode, rightVolumeAdditionalGain: GainNode
 let leftReverbGain: GainNode, rightReverbGain: GainNode
 let leftReverbAdditionalGain: GainNode, rightReverbAdditionalGain: GainNode
-let leftSoundBuffer: AudioBuffer, rightSoundBuffer: AudioBuffer
-let leftSoundAdditionalBuffer: AudioBuffer, rightSoundAdditionalBuffer: AudioBuffer
+let leftSoundBuffer: AudioBuffer|undefined, rightSoundBuffer: AudioBuffer|undefined
+let leftSoundAdditionalBuffer: AudioBuffer|undefined, rightSoundAdditionalBuffer: AudioBuffer|undefined
 let reverRoomBuffer: AudioBuffer, reverHallBuffer: AudioBuffer, reverStadiumBuffer: AudioBuffer
 let leftPitchValue = 1, rightPitchValue = 1
 let leftPitchAdditionalValue = 1, rightPitchAdditionalValue = 1
@@ -37,6 +37,7 @@ let autoPlay = false
 
 
 const setupRoutingGraph = (callback: Function): void => {
+  resetBuffers();
   context = new (window.AudioContext || (window as any).webkitAudioContext)()
 
   analyser = context.createAnalyser()
@@ -88,6 +89,8 @@ const setupRoutingGraph = (callback: Function): void => {
   compressor.connect(streamDestinationNode)
 
   callback && callback()
+
+  console.log(leftSoundBuffer, rightSoundBuffer, leftSoundAdditionalBuffer, rightSoundAdditionalBuffer)
 }
 
 const loadBuffer = (url: string): Promise<ArrayBuffer> => {
@@ -485,6 +488,12 @@ const loadRecordFile = () => {
   })
 }
 
+const resetBuffers = () => {
+  leftSoundBuffer = undefined;
+  rightSoundBuffer = undefined;
+  leftSoundAdditionalBuffer = undefined;
+  rightSoundAdditionalBuffer = undefined;
+}
 
 export { 
   setupRoutingGraph, 

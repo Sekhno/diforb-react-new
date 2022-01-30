@@ -1,4 +1,4 @@
-const LIBRARIES = [
+  const LIBRARIES = [
   // INTERFACE
   {
     author: 'Diforb',
