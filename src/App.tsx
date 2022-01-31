@@ -36,24 +36,22 @@ const App = () => {
         <Switch>
           {
             publicRoutes.map((route, idx) => (
-              <AppRoute
-                path = { route.path }
-                layout = { NonAuthLayout }
-                component = { route.component }
-                key = { idx }
-                isAuthProtected = { false }
+              <AppRoute path = { route.path }
+                        layout = { NonAuthLayout }
+                        component = { route.component }
+                        key = { idx }
+                        isAuthProtected = { false }
               />
             ))
           }
           { 
             authProtectedRoutes.map((route, idx) => (
-              <AppRoute
-                path = { route.path }
-                layout = { Layout }
-                component = { route.component }
-                key = { idx }
-                isAuthProtected = { true }
-                exact
+              <AppRoute path = { route.path }
+                        layout = { Layout }
+                        component = { route.component }
+                        key = { idx }
+                        isAuthProtected = { true }
+                        exact
               />
             )) 
           }
