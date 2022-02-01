@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 export const Support = () => {
   return(
     <div>
-      Support
+      Support - Coming soon!
     </div>
   )
 }
