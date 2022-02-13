@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { InputText } from 'primereact/inputtext'
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { InputText } from 'primereact/inputtext';
+import { InputTextarea } from 'primereact/inputtextarea';
 import { Dropdown } from 'primereact/dropdown';
+import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { useFormik } from 'formik';
 import { CountryService } from '../../services/CountryService';
-import styles from './index.module.scss'
-import countriesData from '../../models/json/countries.json'
-import { Country } from '../../models/country'
+import styles from './index.module.scss';
+import countriesData from '../../models/json/countries.json';
+import { Country } from '../../models/country';
 
-type FormFieldName = 'email';
+type FormFieldName = 'email' | 'message';
 
 interface Errors {
   email?: string;
+  message?: string;
 }
 
 export const Support = () => {
@@ -26,6 +29,7 @@ export const Support = () => {
     initialValues: {
       email: '',
       country: null,
+      message: ''
     },
     validate: (data) => {
       let errors: Errors = {};
@@ -36,6 +40,9 @@ export const Support = () => {
       }
       else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)) {
         errors.email = 'Invalid email address. E.g. example@email.com';
+      }
+      if (!data.message) {
+        errors.message = 'Message is required.'
       }
 
       return errors;
@@ -56,29 +63,41 @@ export const Support = () => {
   return(
     <div className={styles.wrapper}>
       <div className="card p-fluid">
+        <form onSubmit={formik.handleSubmit} className="p-fluid">
+          <div className="p-float-label p-input-icon-right dui-mt-6">
+            <i className="pi pi-envelope" />
+            <InputText id="email"
+                       name="email"
+                       value={formik.values.email}
+                       onChange={formik.handleChange}
+                       className={classNames({ 'p-invalid': isFormFieldValid('email') })} />
+            <label htmlFor="email"
+                   className={classNames({ 'p-error': isFormFieldValid('email') })}
+            >Email*</label>
+            {getFormErrorMessage('email')}
+          </div>
 
-        <div className="p-float-label p-input-icon-right dui-mb-8">
-          <i className="pi pi-envelope" />
-          <InputText id="email"
-                     name="email"
-                     value={formik.values.email}
-                     onChange={formik.handleChange}
-                     className={classNames({ 'p-invalid': isFormFieldValid('email') })} />
-          <label htmlFor="email"
-                 className={classNames({ 'p-error': isFormFieldValid('email') })}
-          >Email*</label>
-        </div>
-        {getFormErrorMessage('email')}
+          <div className="p-float-label dui-mt-6">
+            <Dropdown id="country"
+                      name="country"
+                      value={formik.values.country}
+                      options={countriesData}
+                      optionLabel="name"
+                      onChange={formik.handleChange}/>
+            <label htmlFor="country">Country</label>
+          </div>
+          <div className="p-float-label dui-mt-6">
+            <InputTextarea id="message" autoResize
+                           value={formik.values.message}
+                           onChange={formik.handleChange} />
+            <label htmlFor="message"
+                   className={classNames({ 'p-error': isFormFieldValid('message') })}
+            >Message</label>
+            {getFormErrorMessage('message')}
+          </div>
 
-        <div className="p-float-label dui-mb-8">
-          <Dropdown id="country"
-                    name="country"
-                    value={formik.values.country}
-                    onChange={formik.handleChange}
-                    options={countries}
-                    optionLabel="name" />
-          <label htmlFor="country">Country</label>
-        </div>
+          <Button type="submit" label="Submit" className="dui-mt-4" />
+        </form>
       </div>
     </div>
   )
