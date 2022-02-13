@@ -4,8 +4,9 @@
   margin-top: 1rem;
   padding: 1rem;
 
-  .input {
-    width: 100%;
+  > div {
+    max-width: 360px;
+    margin: auto;
   }
 
 }
