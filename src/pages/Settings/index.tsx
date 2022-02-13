@@ -14,11 +14,6 @@ const Settings = () => {
   
   return(
     <div className = { styles.wrapper }>
-      {/* <fieldset>
-        <legend>Name</legend>
-        { user?.displayName }
-      </fieldset> */}
-
       <div className = 'card'>
         <div className = 'p-fluid p-grid'>
           <div className = 'p-field p-col-3'>

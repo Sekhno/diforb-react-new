@@ -10,6 +10,7 @@
     "bootstrap": "^5.0.2",
     "date-fns": "^2.23.0",
     "firebase": "^8.6.8",
+    "formik": "^2.2.9",
     "gsap": "^3.7.1",
     "inline-worker": "^1.1.0",
     "node-sass": "^4.14.1",
