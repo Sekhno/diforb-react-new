@@ -8,6 +8,7 @@ import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { useFormik } from 'formik';
 import { CountryService } from '../../services/CountryService';
+import { getFirebaseFirestore, getFirebaseBackend } from '../../helpers/firebase.helper'
 import styles from './index.module.scss';
 import countriesData from '../../models/json/countries.json';
 import { Country } from '../../models/country';
@@ -19,7 +20,11 @@ interface Errors {
   message?: string;
 }
 
+const SUPPORT = 'support';
+
 export const Support = () => {
+  const db = getFirebaseFirestore();
+  const user = getFirebaseBackend()?.getAuthenticatedUser();
   const [countries, setCountries] = useState<Country[]>(countriesData);
   const [showMessage, setShowMessage] = useState(false);
   const [formData, setFormData] = useState({});
@@ -52,13 +57,37 @@ export const Support = () => {
       setShowMessage(true);
 
       formik.resetForm();
+      sendMessageToSupport()
     }
   });
 
   const isFormFieldValid = (name: FormFieldName) => !!(formik.touched[name] && formik.errors[name]);
-  const getFormErrorMessage = (name: FormFieldName) => {
+  const getFormErrorMessage = (name: FormFieldName) =>
+  {
     return isFormFieldValid(name) && <small className="p-error">{formik.errors[name]}</small>;
   };
+
+  const sendMessageToSupport = () =>
+  {
+    const { email, country, message } = formik.values;
+    const date = new Date();
+
+    if (!user) {
+      console.log('You don\'t registered!');
+      return;
+    }
+    if (!message) {
+      console.log('Your review is empty! Please type your review about our DifOrb!');
+      return;
+    }
+
+
+    db.collection(SUPPORT).doc(email || 'undefined')
+        .set({ email, country, date, message})
+        .then(() => {
+
+        }).catch(console.error)
+  }
 
   return(
     <div className={styles.wrapper}>

@@ -19,25 +19,25 @@ const Reviews = () => {
   const [ used, setUsed ] = useState(false)
   
   const saveReview = () => {
-    if (!user) return setError('You don\'t registrated!')
+    if (!user) return setError('You don\'t registered!')
     if (!review) {
-      return setError('Your review is empty! Please type your review about our Diforb!')
+      return setError('Your review is empty! Please type your review about our DifOrb!')
     }
     const { email, displayName, photoURL } = user
 
-    db.collection(REVIEWS).doc(email || 'undefineds').set({
+    db.collection(REVIEWS).doc(email || 'undefined').set({
       name: displayName,
       photo: photoURL,
       date: new Date(),
       review: review 
     })
     .then(() => {
-      gerReviews()
+      getReviews()
     })
     .catch(console.error)
   }
 
-  const gerReviews = () => {
+  const getReviews = () => {
     db.collection(REVIEWS).get()
       .then((querySnapshot) => {
         const reviews: Review[] = []
@@ -53,7 +53,7 @@ const Reviews = () => {
   }
 
   useEffect(() => {
-    gerReviews()
+    getReviews()
   }, [])
 
   return(
