@@ -8,7 +8,8 @@ import { Button } from 'primereact/button';
 import { classNames } from 'primereact/utils';
 import { useFormik } from 'formik';
 import { CountryService } from '../../services/CountryService';
-import { getFirebaseFirestore, getFirebaseBackend } from '../../helpers/firebase.helper'
+import { getFirebaseFirestore, getFirebaseBackend } from '../../helpers/firebase.helper';
+import { randomString } from '../../utils/randomString';
 import styles from './index.module.scss';
 import countriesData from '../../models/json/countries.json';
 import { Country } from '../../models/country';
@@ -70,7 +71,6 @@ export const Support = () => {
   const sendMessageToSupport = () =>
   {
     const { email, country, message } = formik.values;
-    const date = new Date();
 
     if (!user) {
       console.log('You don\'t registered!');
@@ -81,8 +81,11 @@ export const Support = () => {
       return;
     }
 
+    const date = new Date();
+    const id = randomString(16)
 
-    db.collection(SUPPORT).doc(email || 'undefined')
+
+    db.collection(SUPPORT).doc(id)
         .set({ email, country, date, message})
         .then(() => {
 
