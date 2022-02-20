@@ -16,17 +16,13 @@ type ProviderType = firebase.auth.GoogleAuthProvider_Instance | firebase.auth.Fa
 class FirebaseAuthBackend {
   constructor(firebaseConfig: FirebaseConfig) {
     if (firebaseConfig) {
-      // Initialize Firebase
-      console.log(firebase)
-      firebase.initializeApp(firebaseConfig)
-      firebase.analytics()
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
       firebase.performance()
-      firebase.auth().onAuthStateChanged(user => {
+      firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          // localStorage.setItem('authUser', JSON.stringify(user))
           this.setLoggeedInUser(user)
         } else {
-          // localStorage.removeItem('authUser')
           this.removeLoggeedInUser()
         }
       })
@@ -265,4 +261,12 @@ const getFirebaseFirestore = () => {
   return firebase.firestore()
 }
 
-export { initFirebaseBackend, getFirebaseBackend, getFirebaseStorage, getFirebaseFirestore }
+/**
+ * firebase analytics
+ * */
+const logEvent = (eventName: string, eventParams?: Record<string, string>) => {
+  const analytics =  firebase.analytics();
+  analytics.logEvent(eventName, eventParams)
+}
+
+export { initFirebaseBackend, getFirebaseBackend, getFirebaseStorage, getFirebaseFirestore, logEvent }

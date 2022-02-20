@@ -1,18 +1,21 @@
-import React, { FC, useEffect } from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import { BrowserView, MobileOnlyView, TabletView, isMobileSafari } from 'react-device-detect'
-import DesktopWrapper from './DesktopWrapper'
-import TabletWrapper  from './TabletWrapper'
-import MobileWrapper  from './MobileWrapper'
+import React, { FC, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { BrowserView, MobileOnlyView, TabletView, isMobileSafari } from 'react-device-detect';
+import { logEvent } from '../../helpers/firebase.helper';
+import { EventName } from '../../helpers/GoogleAnalyticsEvent.enum';
+import DesktopWrapper from './DesktopWrapper';
+import TabletWrapper  from './TabletWrapper';
+import MobileWrapper  from './MobileWrapper';
 
 
 const DiforbApp: FC = (): JSX.Element =>  {
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
+    document.body.style.overflow = 'hidden';
+    logEvent(EventName.LOADED_LIBRARY);
 
     return () => {
-      document.body.style.overflow = 'auto'
+      document.body.style.overflow = 'auto';
     }
   })
 
